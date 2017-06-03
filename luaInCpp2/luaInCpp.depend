@@ -1,0 +1,83 @@
+# depslib dependency file v1.0
+1496510716 source:g:\+ 00 + projects\c++\final year project\luaincpp\main.cpp
+	<lua.hpp>
+	<string>
+	<iostream>
+
+1464627208 g:\+ 00 + projects\c++\final year project\luaincpp\lua\include\lua.h
+	<stdarg.h>
+	<stddef.h>
+	"luaconf.h"
+
+1465589111 g:\+ 00 + projects\c++\final year project\luaincpp\lua\include\luaconf.h
+	<limits.h>
+	<stddef.h>
+	<stdint.h>
+	<assert.h>
+
+1448281782 g:\+ 00 + projects\c++\final year project\luaincpp\lua\include\lauxlib.h
+	<stddef.h>
+	<stdio.h>
+	"lua.h"
+
+1391711552 g:\+ 00 + projects\c++\final year project\luaincpp\lua\include\lualib.h
+	"lua.h"
+
+1103766784 g:\+ 00 + projects\c++\final year project\luaincpp\lua\include\lua.hpp
+	"lua.h"
+	"lualib.h"
+	"lauxlib.h"
+
+1103766784 g:\+ 00 + projects\c++\final year project\luaincpp\lua\lua.hpp
+	"lua.h"
+	"lualib.h"
+	"lauxlib.h"
+
+1482425480 g:\+ 00 + projects\c++\final year project\luaincpp\lua\lua.h
+	<stdarg.h>
+	<stddef.h>
+	"luaconf.h"
+
+1482415730 g:\+ 00 + projects\c++\final year project\luaincpp\lua\luaconf.h
+	<limits.h>
+	<stddef.h>
+	<stdint.h>
+	<assert.h>
+
+1484244866 g:\+ 00 + projects\c++\final year project\luaincpp\lua\lualib.h
+	"lua.h"
+
+1481039671 g:\+ 00 + projects\c++\final year project\luaincpp\lua\lauxlib.h
+	<stddef.h>
+	<stdio.h>
+	"lua.h"
+
+1496510716 source:g:\+ 00 + projects\c++\final year project\luaincpp2\main.cpp
+	<lua.hpp>
+	<string>
+	<iostream>
+
+1103766784 g:\+ 00 + projects\c++\final year project\luaincpp2\lua\include\lua.hpp
+	"lua.h"
+	"lualib.h"
+	"lauxlib.h"
+
+1464627208 g:\+ 00 + projects\c++\final year project\luaincpp2\lua\include\lua.h
+	<stdarg.h>
+	<stddef.h>
+	"luaconf.h"
+
+1465589111 g:\+ 00 + projects\c++\final year project\luaincpp2\lua\include\luaconf.h
+	<limits.h>
+	<stddef.h>
+	<stdint.h>
+	<assert.h>
+
+1391711552 g:\+ 00 + projects\c++\final year project\luaincpp2\lua\include\lualib.h
+	"lua.h"
+
+1448281782 g:\+ 00 + projects\c++\final year project\luaincpp2\lua\include\lauxlib.h
+	<stddef.h>
+	<stdio.h>
+	"lua.h"
+
