@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 
-
+#include "Dog.h"
 
 //used by lua to output a series of variables
 static int l_LogOut(lua_State *L) {
@@ -51,6 +51,8 @@ int main(int argc, char** argv)
     luaL_openlibs(L);
     //register a C++ function with lua
     lua_register(L, "logout", l_LogOut);
+    //register the dog class
+    RegisterDog(L);
 
     //run the script
     int err = luaL_dofile(L,"test.lua");
@@ -60,7 +62,7 @@ int main(int argc, char** argv)
     }
 
     //call the lua function called add from C++
-    std::cout << "from lua: " << Add(L, 15, 35) << std::endl;
+    std::cout << "from C++: " << Add(L, 15, 35) << std::endl;
 
     lua_close(L);
 

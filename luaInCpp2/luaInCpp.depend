@@ -81,10 +81,11 @@
 	<stdio.h>
 	"lua.h"
 
-1496515975 source:g:\+ 00 + projects\c++\finalyearproject\luaincpp2\main.cpp
+1496517514 source:g:\+ 00 + projects\c++\finalyearproject\luaincpp2\main.cpp
 	<lua.hpp>
 	<string>
 	<iostream>
+	"Dog.h"
 
 1103766784 g:\+ 00 + projects\c++\finalyearproject\luaincpp2\lua\include\lua.hpp
 	"lua.h"
@@ -133,4 +134,13 @@
 	<stddef.h>
 	<stdio.h>
 	"lua.h"
+
+1496517484 source:g:\+ 00 + projects\c++\finalyearproject\luaincpp2\src\dog.cpp
+	"Dog.h"
+	<string>
+	<iostream>
+
+1496517438 g:\+ 00 + projects\c++\finalyearproject\luaincpp2\include\dog.h
+	<lua.hpp>
+	<string>
 
