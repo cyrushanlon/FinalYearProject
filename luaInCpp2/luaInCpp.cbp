@@ -13,10 +13,11 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
-					<Add directory="lua/include" />
+					<Add directory="../lua/include" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
-					<Add library="lua/liblua53.a" />
+					<Add library="../lua/liblua53.a" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -26,9 +27,12 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
+					<Add directory="../lua/include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add library="../lua/liblua53.a" />
 				</Linker>
 			</Target>
 		</Build>
@@ -36,7 +40,9 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/Dog.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Dog.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
