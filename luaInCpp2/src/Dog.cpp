@@ -12,7 +12,7 @@ Dog::Dog(std::string name)
 
 void Dog::Talk(std::string words)
 {
-    std::cout << "from C++: " <<this->name << " said " << words;
+    std::cout << "from C++: " <<this->name << " said " << words <<std::endl;
 }
 
 std::string Dog::GetName()

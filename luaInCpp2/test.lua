@@ -9,4 +9,4 @@ end
 
 local dog = Dog("Spot")
 print("from lua: the dogs name is ".. dog:getName())
-print(dog:talk("bark!"))
+dog:talk("bark!")
