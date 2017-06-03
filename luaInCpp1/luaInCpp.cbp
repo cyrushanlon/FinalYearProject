@@ -13,10 +13,10 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
-					<Add directory="lua/include" />
+					<Add directory="../lib/lua/include" />
 				</Compiler>
 				<Linker>
-					<Add library="lua/liblua53.a" />
+					<Add library="../lib/lua/liblua53.a" />
 				</Linker>
 			</Target>
 			<Target title="Release">
