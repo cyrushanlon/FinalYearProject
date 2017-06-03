@@ -2,8 +2,6 @@
 #include <string>
 #include <iostream>
 
-
-
 //used by lua to output a series of variables
 static int l_LogOut(lua_State *L) {
 
