@@ -81,3 +81,56 @@
 	<stdio.h>
 	"lua.h"
 
+1496513600 source:g:\+ 00 + projects\c++\finalyearproject\luaincpp2\main.cpp
+	<lua.hpp>
+	<string>
+	<iostream>
+
+1103766784 g:\+ 00 + projects\c++\finalyearproject\luaincpp2\lua\include\lua.hpp
+	"lua.h"
+	"lualib.h"
+	"lauxlib.h"
+
+1464627208 g:\+ 00 + projects\c++\finalyearproject\luaincpp2\lua\include\lua.h
+	<stdarg.h>
+	<stddef.h>
+	"luaconf.h"
+
+1465589111 g:\+ 00 + projects\c++\finalyearproject\luaincpp2\lua\include\luaconf.h
+	<limits.h>
+	<stddef.h>
+	<stdint.h>
+	<assert.h>
+
+1391711552 g:\+ 00 + projects\c++\finalyearproject\luaincpp2\lua\include\lualib.h
+	"lua.h"
+
+1448281782 g:\+ 00 + projects\c++\finalyearproject\luaincpp2\lua\include\lauxlib.h
+	<stddef.h>
+	<stdio.h>
+	"lua.h"
+
+1103766784 g:\+ 00 + projects\c++\finalyearproject\lua\include\lua.hpp
+	"lua.h"
+	"lualib.h"
+	"lauxlib.h"
+
+1464627208 g:\+ 00 + projects\c++\finalyearproject\lua\include\lua.h
+	<stdarg.h>
+	<stddef.h>
+	"luaconf.h"
+
+1465589111 g:\+ 00 + projects\c++\finalyearproject\lua\include\luaconf.h
+	<limits.h>
+	<stddef.h>
+	<stdint.h>
+	<assert.h>
+
+1391711552 g:\+ 00 + projects\c++\finalyearproject\lua\include\lualib.h
+	"lua.h"
+
+1448281782 g:\+ 00 + projects\c++\finalyearproject\lua\include\lauxlib.h
+	<stddef.h>
+	<stdio.h>
+	"lua.h"
+
