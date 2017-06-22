@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add option="-static-libgcc" />
 					<Add directory="../lib/sfml/include" />
 				</Compiler>
 				<Linker>
