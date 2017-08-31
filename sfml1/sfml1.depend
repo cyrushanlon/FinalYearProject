@@ -390,6 +390,13 @@
 	<string>
 	<vector>
 
-1496522425 source:g:\+ 00 + projects\c++\finalyearproject\sfml1\main.cpp
+1504202531 source:g:\+ 00 + projects\c++\finalyearproject\sfml1\main.cpp
 	<SFML/Graphics.hpp>
+	"Drawable.h"
+
+1504202554 g:\+ 00 + projects\c++\finalyearproject\sfml1\include\drawable.h
+	<SFML/Graphics.hpp>
+
+1504207741 source:g:\+ 00 + projects\c++\finalyearproject\sfml1\src\drawable.cpp
+	"Drawable.h"
 

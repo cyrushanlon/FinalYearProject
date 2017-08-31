@@ -1,10 +1,16 @@
 #include <SFML/Graphics.hpp>
+#include "Drawable.h"
+
+std::vector<Drawable> Drawables;
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    sf::RenderWindow window(sf::VideoMode(400, 400), "SFML works!");
+
+    Drawable newSprite;
+    newSprite.SetTexture("resources/textures/smile.png");
+
+    Drawables.push_back(newSprite);
 
     while (window.isOpen())
     {
@@ -16,7 +22,10 @@ int main()
         }
 
         window.clear();
-        window.draw(shape);
+        for(int i = 0; i < Drawables.size(); i++)
+        {
+            Drawables.at(i).Draw(&window);
+        }
         window.display();
     }
 
