@@ -3,7 +3,7 @@
 #include "Drawable.h"
 #include "ResourceManager.h"
 
-std::vector<Drawable> Drawables;
+std::vector<Drawable*> Drawables;
 
 int main()
 {
@@ -11,22 +11,22 @@ int main()
 
     ResourceManager rscManager;
 
-    Drawable newSprite;
-    newSprite.SetTexture(&rscManager, "resources/textures/smile.png");
+    Drawable newSprite(&rscManager);
+    newSprite.SetTexture("resources/textures/smile.png");
 
-    Drawable newSprite1;
-    newSprite1.SetTexture(&rscManager, "resources/textures/smile.png");
+    Drawable newSprite1(&rscManager);
+    newSprite1.SetTexture("resources/textures/smile.png");
 
-    Drawable newSprite2;
-    newSprite2.SetTexture(&rscManager, "resources/textures/smile.png");
+    Drawable newSprite2(&rscManager);
+    newSprite2.SetTexture("resources/textures/smile.png");
 
-    Drawable newSprite3;
-    newSprite3.SetTexture(&rscManager, "resources/textures/smile.png");
+    Drawable newSprite3(&rscManager);
+    newSprite3.SetTexture("resources/textures/smile.png");
 
-    Drawables.push_back(newSprite);
-    Drawables.push_back(newSprite1);
-    Drawables.push_back(newSprite2);
-    Drawables.push_back(newSprite3);
+    Drawables.push_back(&newSprite);
+    Drawables.push_back(&newSprite1);
+    Drawables.push_back(&newSprite2);
+    Drawables.push_back(&newSprite3);
 
     while (window.isOpen())
     {
@@ -40,7 +40,7 @@ int main()
         window.clear();
         for(unsigned int i = 0; i < Drawables.size(); i++)
         {
-            Drawables.at(i).Draw(&window);
+            Drawables.at(i)->Draw(&window);
         }
         window.display();
     }

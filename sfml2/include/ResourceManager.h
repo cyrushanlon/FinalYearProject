@@ -14,6 +14,7 @@ public:
     virtual ~ResourceManager();
 
     sf::Texture Load(std::string);
+    void Unload(std::string);
 
 protected:
 

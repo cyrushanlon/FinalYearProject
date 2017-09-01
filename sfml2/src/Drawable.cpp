@@ -1,13 +1,13 @@
 #include "Drawable.h"
 
-Drawable::Drawable()
+Drawable::Drawable(ResourceManager* rscManager)
 {
-    //ctor
+    this->manager = rscManager;
 }
 
 Drawable::~Drawable()
 {
-    //dtor
+    manager->Unload(this->textureUri);
 }
 
 void Drawable::Draw(sf::RenderWindow *window)
@@ -22,9 +22,10 @@ sf::Vector2f Drawable::GetPos()
 
 //TODO
 //Move this into the resource management system once it is created
-void Drawable::SetTexture(ResourceManager* manager, std::string TexturePath)
+void Drawable::SetTexture(std::string uri)
 {
-    this->texture = manager->Load(TexturePath);
+    this->texture = this->manager->Load(uri);
+    this->textureUri = uri;
 
     this->sprite.setTexture(this->texture);
 }

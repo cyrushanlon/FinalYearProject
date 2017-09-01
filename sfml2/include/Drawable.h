@@ -7,16 +7,19 @@
 class Drawable
 {
 public:
-    Drawable();
+    Drawable(ResourceManager*);
     virtual ~Drawable();
     virtual void Draw(sf::RenderWindow*);
     sf::Vector2f GetPos();
-    void SetTexture(ResourceManager*, std::string);
+
+    void SetTexture(std::string);
 protected:
 
 private:
     sf::Sprite sprite;
     sf::Texture texture;
+    std::string textureUri;
+    ResourceManager* manager;
 };
 
 #endif // DRAWABLE_H

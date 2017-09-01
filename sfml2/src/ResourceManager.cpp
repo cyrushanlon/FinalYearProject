@@ -29,9 +29,24 @@ sf::Texture ResourceManager::Load(std::string uri)
         newResource.Useage = 0;
 
         textures.insert({uri, newResource});
+        std::cout << "[ResourceManager] Loaded  |\"" << uri <<"\"" <<std::endl;
     }
 
     textures[uri].Useage++;
-    std::cout<<textures[uri].Useage;
     return textures[uri].Texture;
+}
+
+void ResourceManager::Unload(std::string uri)
+{
+    //if the resource actually exists
+    if (this->textures.count(uri) == 1)
+    {
+        int curCount = textures[uri].Useage--;
+
+        if (curCount <= 1) //use 1 here as the decrement happens after the assignment so when val is 1 actual val is 0
+        {
+            this->textures.erase(uri);
+            std::cout << "[ResourceManager] Removed |\"" << uri <<"\""<<std::endl;
+        }
+    }
 }
