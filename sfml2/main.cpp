@@ -35,6 +35,11 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+            if (event.type == sf::Event::KeyPressed ||
+                event.type == sf::Event::KeyReleased)
+            {
+                //inpManager.AddEvent(event, event.type == sf::Event::KeyPressed);
+            }
         }
 
         window.clear();

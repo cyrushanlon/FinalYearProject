@@ -7,7 +7,7 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/sfml2" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/sfml3" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -56,9 +56,13 @@
 			<Add directory="G:/+ 00 + Projects/C++/FinalYearProject/lib/sfml/lib" />
 		</Linker>
 		<Unit filename="include/Drawable.h" />
+		<Unit filename="include/InputManager.h" />
+		<Unit filename="include/Resource.h" />
 		<Unit filename="include/ResourceManager.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Drawable.cpp" />
+		<Unit filename="src/InputManager.cpp" />
+		<Unit filename="src/Resource.cpp" />
 		<Unit filename="src/ResourceManager.cpp" />
 		<Extensions>
 			<code_completion />

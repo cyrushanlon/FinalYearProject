@@ -3,6 +3,7 @@
 
 #include<SFML/Graphics.hpp>
 
+//will also hold sounds and etc here
 class Resource
 {
     public:

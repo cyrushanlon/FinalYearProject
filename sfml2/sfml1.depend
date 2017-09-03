@@ -407,7 +407,7 @@
 	<SFML/Graphics.hpp>
 	"ResourceManager.h"
 
-1504237896 source:g:\+ 00 + projects\c++\finalyearproject\sfml2\src\resourcemanager.cpp
+1504237988 source:g:\+ 00 + projects\c++\finalyearproject\sfml2\src\resourcemanager.cpp
 	"ResourceManager.h"
 	<iostream>
 
@@ -421,9 +421,15 @@
 	"Drawable.h"
 	"ResourceManager.h"
 
-1504236968 g:\+ 00 + projects\c++\finalyearproject\sfml2\include\resource.h
+1504285996 g:\+ 00 + projects\c++\finalyearproject\sfml2\include\resource.h
 	<SFML/Graphics.hpp>
 
 1504237125 source:g:\+ 00 + projects\c++\finalyearproject\sfml2\src\resource.cpp
 	"Resource.h"
+
+1504287100 source:g:\+ 00 + projects\c++\finalyearproject\sfml2\src\inputmanager.cpp
+	"InputManager.h"
+
+1504452960 g:\+ 00 + projects\c++\finalyearproject\sfml2\include\inputmanager.h
+	<SFML/Window.hpp>
 
