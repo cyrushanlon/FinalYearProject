@@ -10,15 +10,18 @@ public:
     Drawable(ResourceManager*);
     virtual ~Drawable();
     virtual void Draw(sf::RenderWindow*);
-    sf::Vector2f GetPos();
 
+    virtual sf::Vector2f GetPos();
+    virtual void SetPos(sf::Vector2f);
+
+    //Drawable only, we dont want these to be virtual
     void SetTexture(std::string);
 protected:
 
 private:
     sf::Sprite sprite;
     sf::Texture texture;
-    std::string textureUri;
+    std::string textureUri; //used in the dtor to free the resource
     ResourceManager* manager;
 };
 

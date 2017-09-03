@@ -13,6 +13,7 @@ int main()
 
     Drawable newSprite(&rscManager);
     newSprite.SetTexture("resources/textures/smile.png");
+    newSprite.SetPos(sf::Vector2f(100.f, 100.f));
 
     Drawable newSprite1(&rscManager);
     newSprite1.SetTexture("resources/textures/smile.png");
