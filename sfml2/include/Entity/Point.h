@@ -7,8 +7,8 @@
 class Point
 {
     public:
-        Point() {}
-        virtual ~Point() {}
+        Point();
+        virtual ~Point(){}
         virtual void Think(sf::Time);
     protected:
 

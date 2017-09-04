@@ -2,7 +2,12 @@
 
 #include "Global.h"
 
-void Point::Think(sf::Time dt)
+Point::Point()
 {
     Points.push_back(this);
+}
+
+void Point::Think(sf::Time dt)
+{
+
 }
