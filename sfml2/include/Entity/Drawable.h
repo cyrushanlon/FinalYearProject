@@ -3,11 +3,14 @@
 
 #include <SFML/Graphics.hpp>
 #include "ResourceManager.h"
+#include "Entity/Point.h"
 
-class Drawable
+class Drawable : public Point
 {
 public:
     Drawable(ResourceManager*);
+    Drawable(ResourceManager*, std::string);
+
     virtual ~Drawable();
     virtual void Draw(sf::RenderWindow*);
 

@@ -1,8 +1,16 @@
 #include "Drawable.h"
 
+#include "Global.h"
+
 Drawable::Drawable(ResourceManager* rscManager)
 {
     this->manager = rscManager;
+    Drawables.push_back(this);
+}
+
+Drawable::Drawable(ResourceManager* rscManager, std::string texturePath) :Drawable(rscManager)
+{
+    this->SetTexture(texturePath);
 }
 
 Drawable::~Drawable()

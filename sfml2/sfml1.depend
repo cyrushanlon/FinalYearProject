@@ -400,8 +400,9 @@
 1504207741 source:g:\+ 00 + projects\c++\finalyearproject\sfml1\src\drawable.cpp
 	"Drawable.h"
 
-1504470590 source:g:\+ 00 + projects\c++\finalyearproject\sfml2\src\drawable.cpp
+1504490360 source:g:\+ 00 + projects\c++\finalyearproject\sfml2\src\drawable.cpp
 	"Drawable.h"
+	"Global.h"
 
 1504470483 g:\+ 00 + projects\c++\finalyearproject\sfml2\include\drawable.h
 	<SFML/Graphics.hpp>
@@ -416,10 +417,11 @@
 	<map>
 	<SFML/Graphics.hpp>
 
-1504470279 source:g:\+ 00 + projects\c++\finalyearproject\sfml2\main.cpp
+1504490393 source:g:\+ 00 + projects\c++\finalyearproject\sfml2\main.cpp
 	<SFML/Graphics.hpp>
-	"Drawable.h"
+	"Entity/Drawable.h"
 	"ResourceManager.h"
+	"Global.h"
 
 1504285996 g:\+ 00 + projects\c++\finalyearproject\sfml2\include\resource.h
 	<SFML/Graphics.hpp>
@@ -432,4 +434,23 @@
 
 1504470268 g:\+ 00 + projects\c++\finalyearproject\sfml2\include\inputmanager.h
 	<SFML/Window.hpp>
+
+1504490368 g:\+ 00 + projects\c++\finalyearproject\sfml2\include\entity\drawable.h
+	<SFML/Graphics.hpp>
+	"ResourceManager.h"
+	"Entity/Point.h"
+
+1504487623 g:\+ 00 + projects\c++\finalyearproject\sfml2\include\entity\point.h
+	<SFML/System.hpp>
+
+1504487594 source:g:\+ 00 + projects\c++\finalyearproject\sfml2\src\point.cpp
+	"Entity/Point.h"
+
+1504490063 g:\+ 00 + projects\c++\finalyearproject\sfml2\include\global.h
+	<vector>
+	"Drawable.h"
+	"Point.h"
+
+1504490047 source:g:\+ 00 + projects\c++\finalyearproject\sfml2\src\global.cpp
+	"Global.h"
 

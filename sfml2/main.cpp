@@ -1,9 +1,8 @@
 #include <SFML/Graphics.hpp>
 
-#include "Drawable.h"
+#include "Entity/Drawable.h"
 #include "ResourceManager.h"
-
-std::vector<Drawable*> Drawables;
+#include "Global.h"
 
 int main()
 {
@@ -11,26 +10,20 @@ int main()
 
     ResourceManager rscManager;
 
-    Drawable newSprite(&rscManager);
-    newSprite.SetTexture("resources/textures/smile.png");
+    Drawable newSprite(&rscManager, "resources/textures/smile.png");
     newSprite.SetPos(sf::Vector2f(100.f, 100.f));
 
-    Drawable newSprite1(&rscManager);
-    newSprite1.SetTexture("resources/textures/smile.png");
+    Drawable newSprite1(&rscManager, "resources/textures/smile.png");
+    Drawable newSprite2(&rscManager, "resources/textures/smile.png");
+    Drawable newSprite3(&rscManager, "resources/textures/smile.png");
 
-    Drawable newSprite2(&rscManager);
-    newSprite2.SetTexture("resources/textures/smile.png");
-
-    Drawable newSprite3(&rscManager);
-    newSprite3.SetTexture("resources/textures/smile.png");
-
-    Drawables.push_back(&newSprite);
-    Drawables.push_back(&newSprite1);
-    Drawables.push_back(&newSprite2);
-    Drawables.push_back(&newSprite3);
+    //used to get dt during the main loop
+    sf::Clock deltaClock;
 
     while (window.isOpen())
     {
+        //Events
+        //
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -43,6 +36,17 @@ int main()
             }
         }
 
+        //Think
+        //
+        sf::Time dt = deltaClock.restart();
+
+        for(unsigned int i = 0; i < Points.size(); i++)
+        {
+            Points.at(i)->Think(dt);
+        }
+
+        //Draw
+        //
         window.clear();
         for(unsigned int i = 0; i < Drawables.size(); i++)
         {
