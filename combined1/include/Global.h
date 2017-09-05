@@ -1,13 +1,17 @@
 #ifndef GLOBAL_H_INCLUDED
 #define GLOBAL_H_INCLUDED
 
-#include <vector>
+#include <map>
+
 #include "Drawable.h"
 #include "Point.h"
+#include "LuaState.h"
 
 //TODO
 //change to map with ID as key
-extern std::vector<Drawable*> Drawables;
-extern std::vector<Point*> Points;
+extern std::map<std::string, Drawable*> Drawables;
+extern std::map<std::string, Point*> Points;
+
+extern LuaState Lua;
 
 #endif // GLOBAL_H_INCLUDED

@@ -2,13 +2,13 @@
 
 #include "Global.h"
 
-Drawable::Drawable(ResourceManager* rscManager)
+Drawable::Drawable(std::string ID, ResourceManager* rscManager) : Point(ID) //call base constructor
 {
     this->manager = rscManager;
-    Drawables.push_back(this);
+    Drawables[this->ID] = this;
 }
 
-Drawable::Drawable(ResourceManager* rscManager, std::string texturePath) :Drawable(rscManager)
+Drawable::Drawable(std::string ID, ResourceManager* rscManager, std::string texturePath) : Drawable(ID, rscManager)//call other constructor
 {
     this->SetTexture(texturePath);
 }

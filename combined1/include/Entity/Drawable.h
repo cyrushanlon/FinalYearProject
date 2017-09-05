@@ -8,8 +8,8 @@
 class Drawable : public Point
 {
 public:
-    Drawable(ResourceManager*);
-    Drawable(ResourceManager*, std::string);
+    Drawable(std::string, ResourceManager*);
+    Drawable(std::string, ResourceManager*, std::string);
 
     virtual ~Drawable();
     virtual void Draw(sf::RenderWindow*);

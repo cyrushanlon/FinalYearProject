@@ -1,4 +1,6 @@
 #include "Global.h"
 
-std::vector<Drawable*> Drawables;
-std::vector<Point*> Points;
+std::map<std::string, Drawable*> Drawables;
+std::map<std::string, Point*> Points;
+
+LuaState Lua;

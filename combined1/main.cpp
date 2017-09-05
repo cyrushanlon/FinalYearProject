@@ -10,12 +10,14 @@ int main()
 
     ResourceManager rscManager;
 
-    Drawable newSprite(&rscManager, "resources/textures/smile.png");
-    newSprite.SetPos(sf::Vector2f(100.f, 100.f));
+    //create a series of test drawables
+    Drawable newSprite("newSprite", &rscManager, "resources/textures/smile.png");
+    Drawable newSprite1("newSprite1", &rscManager, "resources/textures/smile.png");
+    Drawable newSprite2("newSprite2", &rscManager, "resources/textures/smile.png");
+    Drawable newSprite3("newSprite3", &rscManager, "resources/textures/smile.png");
 
-    Drawable newSprite1(&rscManager, "resources/textures/smile.png");
-    Drawable newSprite2(&rscManager, "resources/textures/smile.png");
-    Drawable newSprite3(&rscManager, "resources/textures/smile.png");
+    //get drawable from the global drawables map using its ID and then change its position
+    Drawables["newSprite"]->SetPos(sf::Vector2f(100.f, 100.f));
 
     //used to get dt during the main loop
     sf::Clock deltaClock;
@@ -40,17 +42,17 @@ int main()
         //
         sf::Time dt = deltaClock.restart();
 
-        for(unsigned int i = 0; i < Points.size(); i++)
+        for( auto const& x : Points)
         {
-            Points.at(i)->Think(dt);
+            x.second->Think(dt);
         }
 
         //Draw
         //
         window.clear();
-        for(unsigned int i = 0; i < Drawables.size(); i++)
+        for( auto const& x : Drawables)
         {
-            Drawables.at(i)->Draw(&window);
+            x.second->Draw(&window);
         }
         window.display();
     }

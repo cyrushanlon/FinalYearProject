@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="sfml2" />
+		<Option title="GameEngine" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -48,6 +48,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add directory="G:/+ 00 + Projects/C++/FinalYearProject/lib/sfml/include" />
+			<Add directory="../lib/lua/include" />
 		</Compiler>
 		<Linker>
 			<Add library="mingw32" />
@@ -55,18 +56,21 @@
 			<Add library="gdi32" />
 			<Add library="winmm" />
 			<Add library="dxguid" />
+			<Add library="../lib/lua/liblua53.a" />
 			<Add directory="G:/+ 00 + Projects/C++/FinalYearProject/lib/sfml/lib" />
 		</Linker>
 		<Unit filename="include/Entity/Drawable.h" />
 		<Unit filename="include/Entity/Point.h" />
 		<Unit filename="include/Global.h" />
 		<Unit filename="include/InputManager.h" />
+		<Unit filename="include/LuaState.h" />
 		<Unit filename="include/Resource.h" />
 		<Unit filename="include/ResourceManager.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Drawable.cpp" />
 		<Unit filename="src/Global.cpp" />
 		<Unit filename="src/InputManager.cpp" />
+		<Unit filename="src/LuaState.cpp" />
 		<Unit filename="src/Point.cpp" />
 		<Unit filename="src/Resource.cpp" />
 		<Unit filename="src/ResourceManager.cpp" />

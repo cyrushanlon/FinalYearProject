@@ -7,16 +7,15 @@
 class Point
 {
     public:
-        Point();
+        Point(std::string);
         virtual ~Point(){}
         virtual void Think(sf::Time);
 
         std::string GetID();
         void SetID(std::string);
     protected:
-
+        const std::string ID;
     private:
-        std::string ID;
 };
 
 #endif // POINT_H
