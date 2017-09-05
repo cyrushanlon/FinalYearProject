@@ -456,3 +456,84 @@
 1504490047 source:g:\+ 00 + projects\c++\finalyearproject\sfml2\src\global.cpp
 	"Global.h"
 
+1504491352 source:g:\+ 00 + projects\c++\finalyearproject\combined1\main.cpp
+	<SFML/Graphics.hpp>
+	"Entity/Drawable.h"
+	"ResourceManager.h"
+	"Global.h"
+
+1504490368 g:\+ 00 + projects\c++\finalyearproject\combined1\include\entity\drawable.h
+	<SFML/Graphics.hpp>
+	"ResourceManager.h"
+	"Entity/Point.h"
+
+1504237284 g:\+ 00 + projects\c++\finalyearproject\combined1\include\resourcemanager.h
+	"Resource.h"
+	<map>
+	<SFML/Graphics.hpp>
+
+1504285996 g:\+ 00 + projects\c++\finalyearproject\combined1\include\resource.h
+	<SFML/Graphics.hpp>
+
+1504578051 g:\+ 00 + projects\c++\finalyearproject\combined1\include\entity\point.h
+	<SFML/System.hpp>
+
+1504490063 g:\+ 00 + projects\c++\finalyearproject\combined1\include\global.h
+	<vector>
+	"Drawable.h"
+	"Point.h"
+
+1504490360 source:g:\+ 00 + projects\c++\finalyearproject\combined1\src\drawable.cpp
+	"Drawable.h"
+	"Global.h"
+
+1504490047 source:g:\+ 00 + projects\c++\finalyearproject\combined1\src\global.cpp
+	"Global.h"
+
+1504470271 source:g:\+ 00 + projects\c++\finalyearproject\combined1\src\inputmanager.cpp
+	"InputManager.h"
+
+1504470268 g:\+ 00 + projects\c++\finalyearproject\combined1\include\inputmanager.h
+	<SFML/Window.hpp>
+
+1504491341 source:g:\+ 00 + projects\c++\finalyearproject\combined1\src\point.cpp
+	"Entity/Point.h"
+	"Global.h"
+
+1504237125 source:g:\+ 00 + projects\c++\finalyearproject\combined1\src\resource.cpp
+	"Resource.h"
+
+1504237988 source:g:\+ 00 + projects\c++\finalyearproject\combined1\src\resourcemanager.cpp
+	"ResourceManager.h"
+	<iostream>
+
+1504577099 source:g:\+ 00 + projects\c++\finalyearproject\combined1\src\luastate.cpp
+	"LuaState.h"
+
+1504576770 g:\+ 00 + projects\c++\finalyearproject\combined1\include\luastate.h
+	<lua.hpp>
+
+1103766784 g:\+ 00 + projects\c++\finalyearproject\lib\lua\include\lua.hpp
+	"lua.h"
+	"lualib.h"
+	"lauxlib.h"
+
+1464627208 g:\+ 00 + projects\c++\finalyearproject\lib\lua\include\lua.h
+	<stdarg.h>
+	<stddef.h>
+	"luaconf.h"
+
+1465589111 g:\+ 00 + projects\c++\finalyearproject\lib\lua\include\luaconf.h
+	<limits.h>
+	<stddef.h>
+	<stdint.h>
+	<assert.h>
+
+1391711552 g:\+ 00 + projects\c++\finalyearproject\lib\lua\include\lualib.h
+	"lua.h"
+
+1448281782 g:\+ 00 + projects\c++\finalyearproject\lib\lua\include\lauxlib.h
+	<stddef.h>
+	<stdio.h>
+	"lua.h"
+
