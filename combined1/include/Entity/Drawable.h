@@ -2,14 +2,13 @@
 #define DRAWABLE_H
 
 #include <SFML/Graphics.hpp>
-#include "ResourceManager.h"
 #include "Entity/Point.h"
 
 class Drawable : public Point
 {
 public:
-    Drawable(std::string, ResourceManager*);
-    Drawable(std::string, ResourceManager*, std::string);
+    Drawable(std::string);
+    Drawable(std::string, std::string);
 
     virtual ~Drawable();
     virtual void Draw(sf::RenderWindow*);
@@ -25,7 +24,6 @@ private:
     sf::Sprite sprite;
     sf::Texture texture;
     std::string textureUri; //used in the dtor to free the resource
-    ResourceManager* manager;
 };
 
 #endif // DRAWABLE_H

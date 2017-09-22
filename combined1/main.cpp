@@ -8,16 +8,14 @@ int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 640), "SFML works!");
 
-    ResourceManager rscManager;
-
     //create a series of test drawables
-    Drawable newSprite("newSprite", &rscManager, "resources/textures/smile.png");
-    Drawable newSprite1("newSprite1", &rscManager, "resources/textures/smile.png");
-    Drawable newSprite2("newSprite2", &rscManager, "resources/textures/smile.png");
-    Drawable newSprite3("newSprite3", &rscManager, "resources/textures/smile.png");
+    //Drawable newSprite("newSprite", "resources/textures/smile.png");
+    //Drawable newSprite1("newSprite1", "resources/textures/smile.png");
+    //Drawable newSprite2("newSprite2", "resources/textures/smile.png");
+    //Drawable newSprite3("newSprite3", "resources/textures/smile.png");
 
     //get drawable from the global drawables map using its ID and then change its position
-    Drawables["newSprite"]->SetPos(sf::Vector2f(100.f, 100.f));
+    //Drawables["ID1"]->SetPos(sf::Vector2f(100.f, 100.f));
 
     //used to get dt during the main loop
     sf::Clock deltaClock;
