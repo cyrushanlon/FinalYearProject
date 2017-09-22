@@ -70,6 +70,7 @@
 		<Unit filename="src/Drawable.cpp" />
 		<Unit filename="src/Global.cpp" />
 		<Unit filename="src/InputManager.cpp" />
+		<Unit filename="src/L_Drawable.cpp" />
 		<Unit filename="src/LuaState.cpp" />
 		<Unit filename="src/Point.cpp" />
 		<Unit filename="src/Resource.cpp" />

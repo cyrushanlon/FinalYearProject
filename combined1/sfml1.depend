@@ -456,15 +456,14 @@
 1504490047 source:g:\+ 00 + projects\c++\finalyearproject\sfml2\src\global.cpp
 	"Global.h"
 
-1504634562 source:g:\+ 00 + projects\c++\finalyearproject\combined1\main.cpp
+1506043384 source:g:\+ 00 + projects\c++\finalyearproject\combined1\main.cpp
 	<SFML/Graphics.hpp>
 	"Entity/Drawable.h"
 	"ResourceManager.h"
 	"Global.h"
 
-1504634399 g:\+ 00 + projects\c++\finalyearproject\combined1\include\entity\drawable.h
+1506040175 g:\+ 00 + projects\c++\finalyearproject\combined1\include\entity\drawable.h
 	<SFML/Graphics.hpp>
-	"ResourceManager.h"
 	"Entity/Point.h"
 
 1504237284 g:\+ 00 + projects\c++\finalyearproject\combined1\include\resourcemanager.h
@@ -478,17 +477,18 @@
 1504634659 g:\+ 00 + projects\c++\finalyearproject\combined1\include\entity\point.h
 	<SFML/System.hpp>
 
-1504633919 g:\+ 00 + projects\c++\finalyearproject\combined1\include\global.h
+1506040189 g:\+ 00 + projects\c++\finalyearproject\combined1\include\global.h
 	<map>
 	"Drawable.h"
 	"Point.h"
+	"ResourceManager.h"
 	"LuaState.h"
 
-1504634363 source:g:\+ 00 + projects\c++\finalyearproject\combined1\src\drawable.cpp
+1506042554 source:g:\+ 00 + projects\c++\finalyearproject\combined1\src\drawable.cpp
 	"Drawable.h"
 	"Global.h"
 
-1504634248 source:g:\+ 00 + projects\c++\finalyearproject\combined1\src\global.cpp
+1506038707 source:g:\+ 00 + projects\c++\finalyearproject\combined1\src\global.cpp
 	"Global.h"
 
 1504470271 source:g:\+ 00 + projects\c++\finalyearproject\combined1\src\inputmanager.cpp
@@ -497,7 +497,7 @@
 1504470268 g:\+ 00 + projects\c++\finalyearproject\combined1\include\inputmanager.h
 	<SFML/Window.hpp>
 
-1504634215 source:g:\+ 00 + projects\c++\finalyearproject\combined1\src\point.cpp
+1504634752 source:g:\+ 00 + projects\c++\finalyearproject\combined1\src\point.cpp
 	"Entity/Point.h"
 	"Global.h"
 
@@ -508,11 +508,14 @@
 	"ResourceManager.h"
 	<iostream>
 
-1504633697 source:g:\+ 00 + projects\c++\finalyearproject\combined1\src\luastate.cpp
+1506043089 source:g:\+ 00 + projects\c++\finalyearproject\combined1\src\luastate.cpp
 	"LuaState.h"
+	"Lua/L_Drawable.h"
+	<iostream>
 
-1504576770 g:\+ 00 + projects\c++\finalyearproject\combined1\include\luastate.h
+1506041254 g:\+ 00 + projects\c++\finalyearproject\combined1\include\luastate.h
 	<lua.hpp>
+	<SFML/System/Vector2.hpp>
 
 1103766784 g:\+ 00 + projects\c++\finalyearproject\lib\lua\include\lua.hpp
 	"lua.h"
@@ -537,4 +540,20 @@
 	<stddef.h>
 	<stdio.h>
 	"lua.h"
+
+1506042575 source:g:\+ 00 + projects\c++\finalyearproject\combined1\src\l_drawable.cpp
+	<lua.hpp>
+	"Drawable.h"
+	"Global.h"
+
+1506042575 g:\+ 00 + projects\c++\finalyearproject\combined1\src\l_drawable.cpp
+	<lua.hpp>
+	"Drawable.h"
+	"Global.h"
+
+1506043455 g:\+ 00 + projects\c++\finalyearproject\combined1\include\lua\l_drawable.h
+	<lua.hpp>
+	"Drawable.h"
+	"Global.h"
+	<iostream>
 
