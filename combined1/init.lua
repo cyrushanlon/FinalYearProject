@@ -1,7 +1,11 @@
-local drawable = Drawable.New("ID1", "resources/textures/smile.png");
-print(drawable:GetPos().x, drawable:GetPos().y)
-drawable:SetPos(100, 100)
-print(drawable:GetPos().x, drawable:GetPos().y)
+local drawable
+
+function Init()
+    drawable = Drawable.New("ID1", "resources/textures/smile.png");
+    drawable:SetPos(100, 100)
+end
+
+
 
 function Think(dt)
 

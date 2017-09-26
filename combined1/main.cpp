@@ -9,8 +9,11 @@
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 640), "SFML works!");
-    window.setFramerateLimit(0);
+    window.setFramerateLimit(500);
     window.setVerticalSyncEnabled(false);
+
+    //calls the lua function Init()
+    Lua.CallLuaInitialise();
 
     //used to get dt during the main loop
     sf::Clock deltaClock;

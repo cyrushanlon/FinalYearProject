@@ -14,6 +14,7 @@ class LuaState
 
         void PushVector2f(sf::Vector2f);
         void CallLuaThink(sf::Time);
+        void CallLuaInitialise();
 
     protected:
 
