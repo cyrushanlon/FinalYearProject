@@ -50,3 +50,15 @@ void LuaState::PushVector2f(sf::Vector2f vec)
     //add the key/value pair to the table at the top of the stack
     lua_settable(this->state,-3);
 }
+
+void LuaState::CallLuaThink(sf::Time dt)
+{
+    //load the function from global
+    lua_getglobal(this->L(),"Think");
+    if(lua_isfunction(this->L(), -1) )
+    {
+        //push function argument onto stack
+        lua_pushnumber(this->L(), dt.asSeconds());
+        lua_pcall(this->L(),1,0,0);
+    }
+}

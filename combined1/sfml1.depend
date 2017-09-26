@@ -456,11 +456,12 @@
 1504490047 source:g:\+ 00 + projects\c++\finalyearproject\sfml2\src\global.cpp
 	"Global.h"
 
-1506043384 source:g:\+ 00 + projects\c++\finalyearproject\combined1\main.cpp
+1506394565 source:g:\+ 00 + projects\c++\finalyearproject\combined1\main.cpp
 	<SFML/Graphics.hpp>
 	"Entity/Drawable.h"
 	"ResourceManager.h"
 	"Global.h"
+	<iostream>
 
 1506040175 g:\+ 00 + projects\c++\finalyearproject\combined1\include\entity\drawable.h
 	<SFML/Graphics.hpp>
@@ -508,14 +509,15 @@
 	"ResourceManager.h"
 	<iostream>
 
-1506043089 source:g:\+ 00 + projects\c++\finalyearproject\combined1\src\luastate.cpp
+1506393048 source:g:\+ 00 + projects\c++\finalyearproject\combined1\src\luastate.cpp
 	"LuaState.h"
 	"Lua/L_Drawable.h"
 	<iostream>
 
-1506041254 g:\+ 00 + projects\c++\finalyearproject\combined1\include\luastate.h
+1506391972 g:\+ 00 + projects\c++\finalyearproject\combined1\include\luastate.h
 	<lua.hpp>
 	<SFML/System/Vector2.hpp>
+	<SFML/System/Time.hpp>
 
 1103766784 g:\+ 00 + projects\c++\finalyearproject\lib\lua\include\lua.hpp
 	"lua.h"

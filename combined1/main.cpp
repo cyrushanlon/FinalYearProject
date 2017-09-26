@@ -4,18 +4,13 @@
 #include "ResourceManager.h"
 #include "Global.h"
 
+#include <iostream>
+
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 640), "SFML works!");
-
-    //create a series of test drawables
-    //Drawable newSprite("newSprite", "resources/textures/smile.png");
-    //Drawable newSprite1("newSprite1", "resources/textures/smile.png");
-    //Drawable newSprite2("newSprite2", "resources/textures/smile.png");
-    //Drawable newSprite3("newSprite3", "resources/textures/smile.png");
-
-    //get drawable from the global drawables map using its ID and then change its position
-    //Drawables["ID1"]->SetPos(sf::Vector2f(100.f, 100.f));
+    window.setFramerateLimit(0);
+    window.setVerticalSyncEnabled(false);
 
     //used to get dt during the main loop
     sf::Clock deltaClock;
@@ -29,7 +24,7 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
-            if (event.type == sf::Event::KeyPressed ||
+            else if (event.type == sf::Event::KeyPressed ||
                 event.type == sf::Event::KeyReleased)
             {
                 //inpManager.AddEvent(event, event.type == sf::Event::KeyPressed);
@@ -40,10 +35,14 @@ int main()
         //
         sf::Time dt = deltaClock.restart();
 
+        //first we do the C++ think
+        //we might want to move this into lua so its all together, performance shouldnt be an issue
         for( auto const& x : Points)
         {
             x.second->Think(dt);
         }
+        //this calls the lua think function
+        Lua.CallLuaThink(dt);
 
         //Draw
         //
