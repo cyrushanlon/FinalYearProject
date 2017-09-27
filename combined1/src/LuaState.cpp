@@ -1,15 +1,19 @@
+#include <iostream>
+
 #include "LuaState.h"
 
 #include "Lua/L_Drawable.h"
-#include <iostream>
+#include "Lua/L_Input.h"
+
 
 LuaState::LuaState()
 {
     this->state = luaL_newstate();
     luaL_openlibs(this->state);
 
-    //register the drawable C++ class for use in Lua
+    //register everything from C++ into lua
     RegisterDrawable();
+    RegisterInput();
 
     //run the init script
     int err = luaL_dofile(this->state,"init.lua");

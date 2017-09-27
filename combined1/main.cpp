@@ -1,10 +1,11 @@
+#include <iostream>
+
 #include <SFML/Graphics.hpp>
 
 #include "Entity/Drawable.h"
 #include "ResourceManager.h"
 #include "Global.h"
 
-#include <iostream>
 
 int main()
 {
@@ -27,11 +28,6 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
-            else if (event.type == sf::Event::KeyPressed ||
-                event.type == sf::Event::KeyReleased)
-            {
-                //inpManager.AddEvent(event, event.type == sf::Event::KeyPressed);
-            }
         }
 
         //Think

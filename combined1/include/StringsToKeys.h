@@ -1,0 +1,4 @@
+#ifndef STRINGSTOKEYS_H
+#define STRINGSTOKEYS_H
+
+#endif // STRINGSTOKEYS_H

@@ -65,6 +65,7 @@
 		<Unit filename="include/InputManager.h" />
 		<Unit filename="include/LuaState.h" />
 		<Unit filename="include/Lua/L_Drawable.h" />
+		<Unit filename="include/Lua/L_Input.h" />
 		<Unit filename="include/Resource.h" />
 		<Unit filename="include/ResourceManager.h" />
 		<Unit filename="main.cpp" />

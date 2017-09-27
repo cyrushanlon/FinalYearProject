@@ -9,6 +9,12 @@
 //functions required to use the class in lua
 //initial example found here: https://gist.github.com/kizzx2/1594905
 
+static Drawable* l_CheckDrawable(int i)
+{
+    // This checks that the argument is a userdata with the metatable "luaL_Drawable"
+    return *(Drawable **)luaL_checkudata(Lua.L(), i, "luaL_Drawable");
+}
+
 //we should pass the lua state in here but instead we will use the global object instead
 static int l_Drawable_Constructor(lua_State *L)
 {
@@ -47,13 +53,7 @@ static int l_Drawable_Constructor(lua_State *L)
     return 1;
 }
 
-Drawable* l_CheckDrawable(int i)
-{
-    // This checks that the argument is a userdata with the metatable "luaL_Drawable"
-    return *(Drawable **)luaL_checkudata(Lua.L(), i, "luaL_Drawable");
-}
-
-int l_Drawable_GetPos(lua_State * l)
+static int l_Drawable_GetPos(lua_State * l)
 {
     Drawable* drawable = l_CheckDrawable(1);
 
@@ -65,18 +65,18 @@ int l_Drawable_GetPos(lua_State * l)
     return 1;
 }
 
-int l_Drawable_SetPos(lua_State * l)
+static int l_Drawable_SetPos(lua_State * l)
 {
     Drawable* drawable = l_CheckDrawable(1);
-    double x = luaL_checknumber(Lua.L(), 2);
-    double y = luaL_checknumber(Lua.L(), 3);
+    double x = luaL_checknumber(l, 2);
+    double y = luaL_checknumber(l, 3);
 
     drawable->SetPos(sf::Vector2f(x, y));
 
     return 0;
 }
 
-int l_Drawable_Destructor(lua_State * l)
+static int l_Drawable_Destructor(lua_State * l)
 {
     Drawable * drawable = l_CheckDrawable(1);
     delete drawable;
@@ -84,7 +84,7 @@ int l_Drawable_Destructor(lua_State * l)
     return 0;
 }
 
-void RegisterDrawable()
+static void RegisterDrawable()
 {
     //defines the functions and their C counterparts
     luaL_Reg sDrawableRegs[] =
