@@ -30,9 +30,35 @@ static int l_Input_IsKeyPressed(lua_State *L)
     return 1;
 }
 
+static int l_Input_GetMousePos(lua_State *L)
+{
+    //get the current mouse positon and return it to lua
+    Lua.PushVector2i(sf::Mouse::getPosition(Window));
+
+    return 1;
+}
+
+static int l_Input_SetMousePos(lua_State *L)
+{
+    //if there is 1 argument
+    if (lua_gettop(L) == 2)
+    {
+        //get the string passed in from the top of the stack
+        float x = luaL_checknumber(L, 1);
+        float y = luaL_checknumber(L, 1);
+
+        //check that the key is real
+        sf::Mouse::setPosition(sf::Vector2i(x,y), Window);
+    }
+
+    return 0;
+}
+
 static void RegisterInput()
 {
     lua_register(Lua.L(), "IsKeyPressed", l_Input_IsKeyPressed);
+    lua_register(Lua.L(), "GetMousePos", l_Input_GetMousePos);
+    lua_register(Lua.L(), "SetMousePos", l_Input_SetMousePos);
 }
 
 #endif // L_INPUT

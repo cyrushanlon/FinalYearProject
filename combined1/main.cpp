@@ -9,9 +9,9 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(800, 640), "SFML works!");
-    window.setFramerateLimit(500);
-    window.setVerticalSyncEnabled(false);
+    Window.create(sf::VideoMode(800, 640), "SFML works!");
+    Window.setFramerateLimit(500);
+    Window.setVerticalSyncEnabled(false);
 
     //calls the lua function Init()
     Lua.CallLuaInitialise();
@@ -19,15 +19,19 @@ int main()
     //used to get dt during the main loop
     sf::Clock deltaClock;
 
-    while (window.isOpen())
+    while (Window.isOpen())
     {
         //Events
         //
         sf::Event event;
-        while (window.pollEvent(event))
+        while (Window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
-                window.close();
+                Window.close();
+            if (event.type == sf::Event::KeyPressed)
+                if (event.key.code == sf::Keyboard::Escape)
+                    Window.close();
+
         }
 
         //Think
@@ -45,12 +49,12 @@ int main()
 
         //Draw
         //
-        window.clear();
+        Window.clear();
         for( auto const& x : Drawables)
         {
-            x.second->Draw(&window);
+            x.second->Draw(&Window);
         }
-        window.display();
+        Window.display();
     }
 
     return 0;

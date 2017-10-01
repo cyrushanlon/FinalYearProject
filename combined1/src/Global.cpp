@@ -1,5 +1,7 @@
 #include "Global.h"
 
+sf::RenderWindow Window;
+
 std::map<std::string, Drawable*> Drawables;
 std::map<std::string, Point*> Points;
 

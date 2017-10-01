@@ -22,11 +22,6 @@ void Drawable::Draw(sf::RenderWindow *window)
     window->draw(this->sprite);
 }
 
-sf::Vector2f Drawable::GetPos()
-{
-    return this->sprite.getPosition();
-}
-
 void Drawable::SetTexture(std::string uri)
 {
     //dont really want a local version of the texture but sometimes we may want to have some special texture specific behaviour
@@ -36,7 +31,32 @@ void Drawable::SetTexture(std::string uri)
     this->sprite.setTexture(this->texture);
 }
 
+sf::Vector2f Drawable::GetPos()
+{
+    return this->sprite.getPosition();
+}
+
 void Drawable::SetPos(sf::Vector2f pos)
 {
     this->sprite.setPosition(pos);
+}
+
+float Drawable::GetAng()
+{
+    return this->sprite.getRotation();
+}
+
+void Drawable::SetAng(float ang)
+{
+    this->sprite.setRotation(ang);
+}
+
+sf::Vector2f Drawable::GetOrigin()
+{
+    return this->sprite.getOrigin();
+}
+
+void Drawable::SetOrigin(sf::Vector2f origin)
+{
+    this->sprite.setOrigin(origin);
 }

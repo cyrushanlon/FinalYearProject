@@ -76,6 +76,51 @@ static int l_Drawable_SetPos(lua_State * l)
     return 0;
 }
 
+static int l_Drawable_GetAng(lua_State * l)
+{
+    Drawable* drawable = l_CheckDrawable(1);
+
+    float ang = drawable->GetAng();
+    //use the LuaState helper to push the angle onto the stack
+    lua_pushnumber(l, ang);
+
+    //we return a single variable to Lua
+    return 1;
+}
+
+static int l_Drawable_SetAng(lua_State * l)
+{
+    Drawable* drawable = l_CheckDrawable(1);
+    float ang = luaL_checknumber(l, 2);
+
+    drawable->SetAng(ang);
+
+    return 0;
+}
+
+static int l_Drawable_GetOrigin(lua_State * l)
+{
+    Drawable* drawable = l_CheckDrawable(1);
+
+    sf::Vector2f origin = drawable->GetOrigin();
+    //use the LuaState helper to push the vector onto the stack
+    Lua.PushVector2f(origin);
+
+    //we return a single variable to Lua
+    return 1;
+}
+
+static int l_Drawable_SetOrigin(lua_State * l)
+{
+    Drawable* drawable = l_CheckDrawable(1);
+    double x = luaL_checknumber(l, 2);
+    double y = luaL_checknumber(l, 3);
+
+    drawable->SetOrigin(sf::Vector2f(x, y));
+
+    return 0;
+}
+
 static int l_Drawable_Destructor(lua_State * l)
 {
     Drawable * drawable = l_CheckDrawable(1);
@@ -92,6 +137,10 @@ static void RegisterDrawable()
         { "New", l_Drawable_Constructor },
         { "GetPos", l_Drawable_GetPos },
         { "SetPos", l_Drawable_SetPos },
+        { "GetAng", l_Drawable_GetAng },
+        { "SetAng", l_Drawable_SetAng },
+        { "GetOrigin", l_Drawable_GetOrigin },
+        { "SetOrigin", l_Drawable_SetOrigin },
         { "__gc", l_Drawable_Destructor },
         { NULL, NULL }
     };

@@ -15,6 +15,10 @@ public:
 
     virtual sf::Vector2f GetPos();
     virtual void SetPos(sf::Vector2f);
+    virtual float GetAng();
+    virtual void SetAng(float);
+    virtual sf::Vector2f GetOrigin();
+    virtual void SetOrigin(sf::Vector2f);
 
     //Drawable only, we dont want these to be virtual
     void SetTexture(std::string);
