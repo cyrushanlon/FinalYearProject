@@ -1,0 +1,130 @@
+\documentclass[11pt,a4paper,titlepage]{article}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[none]{hyphenat}
+\usepackage{textcomp}
+\usepackage{parskip}
+
+\author{Cyrus Hanlon}
+\title{A Scriptable 2D Game Engine}
+
+\setlength{\parskip}{1em}
+
+\begin{document}
+	\maketitle
+	
+	\definecolor{listinggray}{gray}{0.9}
+	\definecolor{lbcolor}{rgb}{0.95,0.95,0.95}
+	\lstset{
+		backgroundcolor=\color{lbcolor},
+		captionpos=b,
+		tabsize=4,    
+		%   rulecolor=,
+		language=[GNU]C++,
+		basicstyle=\footnotesize,
+		upquote=true,
+		aboveskip={1.5\baselineskip},
+		columns=fixed,
+		showstringspaces=false,
+		extendedchars=false,
+		breaklines=true,
+		numbersep=5pt,
+		prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+		frame=lines,
+		numbers=left,
+		showtabs=false,
+		showspaces=false,
+		showstringspaces=false,
+		identifierstyle=\ttfamily,
+		keywordstyle=\color[rgb]{0,0,1},
+		commentstyle=\color[rgb]{0,0.392,0},
+		stringstyle=\color{red},
+		numberstyle=\color[rgb]{0.205, 0.142, 0.73},
+	}
+
+	\begin{lstlisting}
+	#include<stdio.h>
+	#include<iostream>
+	// A comment
+	int main(void)
+	{
+		printf("Hello World\n");
+		return 0;
+	}
+	\end{lstlisting}
+	
+	The report should describe (concisely) existing work with the aim of 
+	
+	(1) contextualising the project.
+		
+		Where does it fit in the bigger picture, why does it exist?
+
+		There are many game engines that already exist but nothing combines ease of use with raw speed.
+		
+		From Unreal Engine with its complete design versus much lighter weight engines such as LÖVE, there is a very wide range of technologies and techniques at work. There is a definitive gap between large heavy engines and the small and lightweight that I intend to fill. By having many features written into the core engine but keeping a lightweight and easy to use API at the front, it will be possible to quickly learn how to easily prototype games, as well as, achieve excellent real world performance.
+	
+	(2) point out useful techniques and algorithms that will be employed in the solution. 
+		
+		How to bind Lua?
+		
+	(3) analyse critically and compare existing work (e.g., conference and journal articles, pieces of software) that address a (significantly) similar	problem to the one addressed by one’s project.
+	
+		articles/papers on scripting languages
+		pros and cons of each language
+			eco system and ease of learning
+			ease of implementation
+		games that already use languages
+		
+		A very important part of any game engine is the interface between developer and the inner workings. There are many scripting languages that can be chosen from.
+		
+		%https://codeplea.com/game-scripting-languages
+		%http://www.academia.edu/5492685/An_Analysis_of_Scripting_Languages_for_Research_in_Applied_Computing
+		
+		Discuss Lua as a language and why its a good choice to use for this project
+		
+		Main languages to use
+			C++
+			C\#
+			C
+			Java
+			objective C
+			HTML5
+			
+		
+		Scripting languages to use https://github.com/r-lyeh/scriptorium
+			Lua
+			C\# %hash needs escaping
+			Pawn
+			Squirrel
+			Io
+			Javascript
+			GameMonkey
+			AngelScript
+			Scheme
+			Action script
+			TinyScheme
+			C jit
+			Wren
+			Lily
+			Python
+			Java
+			PHP
+	
+		Performance of
+			Love2D
+			Unreal 
+			Engine 
+			Unity 
+			Cry Engine 
+			Source (Garrysmod)
+			Game Studio
+			id Tech (5/6?)
+			MonoGame
+			Cocos
+			OGRE
+						
+
+\end{document}

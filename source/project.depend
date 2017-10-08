@@ -1,6 +1,10 @@
 # depslib dependency file v1.0
-1446671342 source:g:\+ 00 + projects\c++\final year project\sfml1\main.cpp
+1506821071 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
+	<iostream>
 	<SFML/Graphics.hpp>
+	"Entity/Drawable.h"
+	"ResourceManager.h"
+	"Global.h"
 
 1486739997 g:\+ 00 + projects\c++\finalyearproject\lib\sfml\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -390,95 +394,22 @@
 	<string>
 	<vector>
 
-1504202531 source:g:\+ 00 + projects\c++\finalyearproject\sfml1\main.cpp
+1506819587 g:\+ 00 + projects\c++\finalyearproject\source\include\entity\drawable.h
 	<SFML/Graphics.hpp>
-	"Drawable.h"
+	"Entity/Point.h"
 
-1504202554 g:\+ 00 + projects\c++\finalyearproject\sfml1\include\drawable.h
-	<SFML/Graphics.hpp>
+1504634659 g:\+ 00 + projects\c++\finalyearproject\source\include\entity\point.h
+	<SFML/System.hpp>
 
-1504207741 source:g:\+ 00 + projects\c++\finalyearproject\sfml1\src\drawable.cpp
-	"Drawable.h"
-
-1504490360 source:g:\+ 00 + projects\c++\finalyearproject\sfml2\src\drawable.cpp
-	"Drawable.h"
-	"Global.h"
-
-1504470483 g:\+ 00 + projects\c++\finalyearproject\sfml2\include\drawable.h
-	<SFML/Graphics.hpp>
-	"ResourceManager.h"
-
-1504237988 source:g:\+ 00 + projects\c++\finalyearproject\sfml2\src\resourcemanager.cpp
-	"ResourceManager.h"
-	<iostream>
-
-1504237284 g:\+ 00 + projects\c++\finalyearproject\sfml2\include\resourcemanager.h
+1504237284 g:\+ 00 + projects\c++\finalyearproject\source\include\resourcemanager.h
 	"Resource.h"
 	<map>
 	<SFML/Graphics.hpp>
 
-1504491242 source:g:\+ 00 + projects\c++\finalyearproject\sfml2\main.cpp
-	<SFML/Graphics.hpp>
-	<iostream>
-	"Entity/Drawable.h"
-	"ResourceManager.h"
-	"Global.h"
-
-1504285996 g:\+ 00 + projects\c++\finalyearproject\sfml2\include\resource.h
+1504285996 g:\+ 00 + projects\c++\finalyearproject\source\include\resource.h
 	<SFML/Graphics.hpp>
 
-1504237125 source:g:\+ 00 + projects\c++\finalyearproject\sfml2\src\resource.cpp
-	"Resource.h"
-
-1504470271 source:g:\+ 00 + projects\c++\finalyearproject\sfml2\src\inputmanager.cpp
-	"InputManager.h"
-
-1504470268 g:\+ 00 + projects\c++\finalyearproject\sfml2\include\inputmanager.h
-	<SFML/Window.hpp>
-
-1504490368 g:\+ 00 + projects\c++\finalyearproject\sfml2\include\entity\drawable.h
-	<SFML/Graphics.hpp>
-	"ResourceManager.h"
-	"Entity/Point.h"
-
-1504491333 g:\+ 00 + projects\c++\finalyearproject\sfml2\include\entity\point.h
-	<SFML/System.hpp>
-
-1504491341 source:g:\+ 00 + projects\c++\finalyearproject\sfml2\src\point.cpp
-	"Entity/Point.h"
-	"Global.h"
-
-1504490063 g:\+ 00 + projects\c++\finalyearproject\sfml2\include\global.h
-	<vector>
-	"Drawable.h"
-	"Point.h"
-
-1504490047 source:g:\+ 00 + projects\c++\finalyearproject\sfml2\src\global.cpp
-	"Global.h"
-
-1506820732 source:g:\+ 00 + projects\c++\finalyearproject\combined1\main.cpp
-	<iostream>
-	<SFML/Graphics.hpp>
-	"Entity/Drawable.h"
-	"ResourceManager.h"
-	"Global.h"
-
-1506819587 g:\+ 00 + projects\c++\finalyearproject\combined1\include\entity\drawable.h
-	<SFML/Graphics.hpp>
-	"Entity/Point.h"
-
-1504237284 g:\+ 00 + projects\c++\finalyearproject\combined1\include\resourcemanager.h
-	"Resource.h"
-	<map>
-	<SFML/Graphics.hpp>
-
-1504285996 g:\+ 00 + projects\c++\finalyearproject\combined1\include\resource.h
-	<SFML/Graphics.hpp>
-
-1504634659 g:\+ 00 + projects\c++\finalyearproject\combined1\include\entity\point.h
-	<SFML/System.hpp>
-
-1506820638 g:\+ 00 + projects\c++\finalyearproject\combined1\include\global.h
+1506820638 g:\+ 00 + projects\c++\finalyearproject\source\include\global.h
 	<map>
 	<SFML/Window/Keyboard.hpp>
 	<SFML/Window.hpp>
@@ -487,37 +418,7 @@
 	"ResourceManager.h"
 	"LuaState.h"
 
-1506819953 source:g:\+ 00 + projects\c++\finalyearproject\combined1\src\drawable.cpp
-	"Drawable.h"
-	"Global.h"
-
-1506820747 source:g:\+ 00 + projects\c++\finalyearproject\combined1\src\global.cpp
-	"Global.h"
-
-1504470271 source:g:\+ 00 + projects\c++\finalyearproject\combined1\src\inputmanager.cpp
-	"InputManager.h"
-
-1504470268 g:\+ 00 + projects\c++\finalyearproject\combined1\include\inputmanager.h
-	<SFML/Window.hpp>
-
-1504634752 source:g:\+ 00 + projects\c++\finalyearproject\combined1\src\point.cpp
-	"Entity/Point.h"
-	"Global.h"
-
-1504237125 source:g:\+ 00 + projects\c++\finalyearproject\combined1\src\resource.cpp
-	"Resource.h"
-
-1504237988 source:g:\+ 00 + projects\c++\finalyearproject\combined1\src\resourcemanager.cpp
-	"ResourceManager.h"
-	<iostream>
-
-1506820509 source:g:\+ 00 + projects\c++\finalyearproject\combined1\src\luastate.cpp
-	<iostream>
-	"LuaState.h"
-	"Lua/L_Drawable.h"
-	"Lua/L_Input.h"
-
-1506820494 g:\+ 00 + projects\c++\finalyearproject\combined1\include\luastate.h
+1506820494 g:\+ 00 + projects\c++\finalyearproject\source\include\luastate.h
 	<lua.hpp>
 	<SFML/System/Vector2.hpp>
 	<SFML/System/Time.hpp>
@@ -546,23 +447,43 @@
 	<stdio.h>
 	"lua.h"
 
-1506042575 source:g:\+ 00 + projects\c++\finalyearproject\combined1\src\l_drawable.cpp
-	<lua.hpp>
+1506819953 source:g:\+ 00 + projects\c++\finalyearproject\source\src\drawable.cpp
 	"Drawable.h"
 	"Global.h"
 
-1506042575 g:\+ 00 + projects\c++\finalyearproject\combined1\src\l_drawable.cpp
-	<lua.hpp>
-	"Drawable.h"
+1506820747 source:g:\+ 00 + projects\c++\finalyearproject\source\src\global.cpp
 	"Global.h"
 
-1506820471 g:\+ 00 + projects\c++\finalyearproject\combined1\include\lua\l_drawable.h
+1504470271 source:g:\+ 00 + projects\c++\finalyearproject\source\src\inputmanager.cpp
+	"InputManager.h"
+
+1504470268 g:\+ 00 + projects\c++\finalyearproject\source\include\inputmanager.h
+	<SFML/Window.hpp>
+
+1506820509 source:g:\+ 00 + projects\c++\finalyearproject\source\src\luastate.cpp
+	<iostream>
+	"LuaState.h"
+	"Lua/L_Drawable.h"
+	"Lua/L_Input.h"
+
+1506820471 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_drawable.h
 	<lua.hpp>
 	"Drawable.h"
 	"Global.h"
 	<iostream>
 
-1506820984 g:\+ 00 + projects\c++\finalyearproject\combined1\include\lua\l_input.h
+1506820984 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_input.h
 	"Global.h"
+	<iostream>
+
+1504634752 source:g:\+ 00 + projects\c++\finalyearproject\source\src\point.cpp
+	"Entity/Point.h"
+	"Global.h"
+
+1504237125 source:g:\+ 00 + projects\c++\finalyearproject\source\src\resource.cpp
+	"Resource.h"
+
+1504237988 source:g:\+ 00 + projects\c++\finalyearproject\source\src\resourcemanager.cpp
+	"ResourceManager.h"
 	<iostream>
 
