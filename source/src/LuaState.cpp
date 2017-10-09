@@ -83,7 +83,11 @@ void LuaState::CallLuaThink(sf::Time dt)
     {
         //push function argument onto stack
         lua_pushnumber(this->L(), dt.asSeconds());
-        lua_pcall(this->L(),1,0,0); // 1 args, 0 returns
+        int err = lua_pcall(this->L(),1,0,0); // 1 args, 0 returns
+        if(err)
+        {
+            std::cout << "lua error: " << luaL_checkstring(this->state, -1) << std::endl;
+        }
     }
 }
 
@@ -93,6 +97,10 @@ void LuaState::CallLuaInitialise()
     lua_getglobal(this->L(),"Init");
     if(lua_isfunction(this->L(), -1) )
     {
-        lua_pcall(this->L(),0,0,0); // 0 args, 0 returns
+        int err = lua_pcall(this->L(),0,0,0); // 0 args, 0 returns
+        if(err)
+        {
+            std::cout << "lua error: " << luaL_checkstring(this->state, -1) << std::endl;
+        }
     }
 }

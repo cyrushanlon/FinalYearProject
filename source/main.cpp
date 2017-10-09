@@ -6,10 +6,33 @@
 #include "ResourceManager.h"
 #include "Global.h"
 
+//TODO
+/*
+
+separate sprite pos from pos
+virtual sizes rather than pixels
+
+both
+hook/callback system
+Sound
+Anims
+Box2D
+Settings
+UI
+
+Lua
+texture manip
+window manip
+
+
+Blockly(?) https://developers.google.com/blockly/
+
+Docs
+*/
 
 int main()
 {
-    Window.create(sf::VideoMode(800, 640), "SFML works!");
+    Window.create(sf::VideoMode(1920, 1080), "SFML works!", sf::Style::Fullscreen);
     Window.setFramerateLimit(500);
     Window.setVerticalSyncEnabled(false);
 
@@ -31,7 +54,6 @@ int main()
             if (event.type == sf::Event::KeyPressed)
                 if (event.key.code == sf::Keyboard::Escape)
                     Window.close();
-
         }
 
         //Think
@@ -49,7 +71,7 @@ int main()
 
         //Draw
         //
-        Window.clear();
+        Window.clear(sf::Color::White);
         for( auto const& x : Drawables)
         {
             x.second->Draw(&Window);
