@@ -2,3 +2,7 @@
 */bin/
 */obj/
 /lib/sfml
+Report/document.aux
+Report/document.log
+Report/document.synctex.gz
+Report/document.pdf
