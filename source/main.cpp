@@ -9,8 +9,7 @@
 //TODO
 /*
 
-separate sprite pos from pos
-virtual sizes rather than pixels
+virtual sizes rather than pixels so different resolutions look the same
 
 both
 hook/callback system
@@ -19,6 +18,8 @@ Anims
 Box2D
 Settings
 UI
+treat userdata as a table so we can add custom fields whenever in Lua
+camera
 
 Lua
 texture manip
@@ -32,7 +33,7 @@ Docs
 
 int main()
 {
-    Window.create(sf::VideoMode(1920, 1080), "SFML works!", sf::Style::Fullscreen);
+    Window.create(sf::VideoMode(1280, 720), "SFML works!");
     Window.setFramerateLimit(500);
     Window.setVerticalSyncEnabled(false);
 

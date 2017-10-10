@@ -2,6 +2,7 @@
 
 #include "LuaState.h"
 
+#include "Lua/L_Window.h"
 #include "Lua/L_Drawable.h"
 #include "Lua/L_Input.h"
 
@@ -12,6 +13,7 @@ LuaState::LuaState()
     luaL_openlibs(this->state);
 
     //register everything from C++ into lua
+    RegisterWindow();
     RegisterDrawable();
     RegisterInput();
 
@@ -56,6 +58,26 @@ void LuaState::PushVector2f(sf::Vector2f vec)
 }
 
 void LuaState::PushVector2i(sf::Vector2i vec)
+{
+    //create a new table at the top of the stack
+    lua_newtable(this->state);
+
+    //push key
+    lua_pushstring(this->state, "x");
+    //push value
+    lua_pushnumber(this->state, vec.x);
+    //add the key/value pair to the table at the top of the stack
+    lua_settable(this->state,-3);
+
+    //push key
+    lua_pushstring(this->state, "y");
+    //push value
+    lua_pushnumber(this->state, vec.y);
+    //add the key/value pair to the table at the top of the stack
+    lua_settable(this->state,-3);
+}
+
+void LuaState::PushVector2u(sf::Vector2u vec)
 {
     //create a new table at the top of the stack
     lua_newtable(this->state);

@@ -15,6 +15,7 @@ class LuaState
         //TODO template the push vectors
         void PushVector2f(sf::Vector2f);
         void PushVector2i(sf::Vector2i);
+        void PushVector2u(sf::Vector2u);
         void CallLuaThink(sf::Time);
         void CallLuaInitialise();
 
