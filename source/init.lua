@@ -12,6 +12,14 @@ local ball = {
     vel = {x = -50, y = 150}
 }
 
+function HookLostFocus()
+    print("lost")
+end
+
+function HookGainedFocus()
+    print("gained")
+end
+
 function Init()
     settings.windowSize = Window.GetSize()
 
@@ -39,6 +47,7 @@ function PhysThink(dt)
     local ballSize = ball.obj:GetSize()
     local paddleSize = paddle:GetSize()
 
+    --------------
     --AABB check on ball and paddle, this could be replaced with box2d but that might be considered overkill in this case
     --the ball bounces off the sides and top too
 
@@ -55,7 +64,6 @@ function PhysThink(dt)
             local maxDistance = paddleSize.x / 2
 
             local mult = ((paddleCenter - ballCenter) / -maxDistance)
-            print(mult)
 
             ball.vel.x = ball.vel.x + (settings.speedmultval * mult)
             ball.vel.y = ball.vel.y * (1 + math.abs(mult))
@@ -81,11 +89,6 @@ function PhysThink(dt)
         ball.vel.x = -settings.maxspeed
     elseif ball.vel.y < -settings.maxspeed then
         ball.vel.y = -settings.maxspeed
-    end
-
-    --there seems to be a case where vel is set to 0
-    if ball.vel.y < 1 and ball.vel.y > -1 then
-        ball.vel.y = 1
     end
 
     MoveBall(dt)

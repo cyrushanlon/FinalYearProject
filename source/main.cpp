@@ -38,7 +38,7 @@ int main()
     Window.setVerticalSyncEnabled(false);
 
     //calls the lua function Init()
-    Lua.CallLuaInitialise();
+    Lua.Initialise();
 
     //used to get dt during the main loop
     sf::Clock deltaClock;
@@ -55,6 +55,10 @@ int main()
             if (event.type == sf::Event::KeyPressed)
                 if (event.key.code == sf::Keyboard::Escape)
                     Window.close();
+            if (event.type == sf::Event::LostFocus)
+                Lua.HookLostFocus();
+            if (event.type == sf::Event::GainedFocus)
+                Lua.HookGainedFocus();
         }
 
         //Think
@@ -68,7 +72,7 @@ int main()
             x.second->Think(dt);
         }
         //this calls the lua think function
-        Lua.CallLuaThink(dt);
+        Lua.Think(dt);
 
         //Draw
         //

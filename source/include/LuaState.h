@@ -16,8 +16,10 @@ class LuaState
         void PushVector2f(sf::Vector2f);
         void PushVector2i(sf::Vector2i);
         void PushVector2u(sf::Vector2u);
-        void CallLuaThink(sf::Time);
-        void CallLuaInitialise();
+        void Think(sf::Time);
+        void Initialise();
+        void HookLostFocus();
+        void HookGainedFocus();
 
     protected:
 

@@ -97,7 +97,7 @@ void LuaState::PushVector2u(sf::Vector2u vec)
     lua_settable(this->state,-3);
 }
 
-void LuaState::CallLuaThink(sf::Time dt)
+void LuaState::Think(sf::Time dt)
 {
     //load the function from global
     lua_getglobal(this->L(),"Think");
@@ -113,10 +113,38 @@ void LuaState::CallLuaThink(sf::Time dt)
     }
 }
 
-void LuaState::CallLuaInitialise()
+void LuaState::Initialise()
 {
     //load the function from global
     lua_getglobal(this->L(),"Init");
+    if(lua_isfunction(this->L(), -1) )
+    {
+        int err = lua_pcall(this->L(),0,0,0); // 0 args, 0 returns
+        if(err)
+        {
+            std::cout << "lua error: " << luaL_checkstring(this->state, -1) << std::endl;
+        }
+    }
+}
+
+void LuaState::HookGainedFocus()
+{
+    //load the function from global
+    lua_getglobal(this->L(),"HookGainedFocus");
+    if(lua_isfunction(this->L(), -1) )
+    {
+        int err = lua_pcall(this->L(),0,0,0); // 0 args, 0 returns
+        if(err)
+        {
+            std::cout << "lua error: " << luaL_checkstring(this->state, -1) << std::endl;
+        }
+    }
+}
+
+void LuaState::HookLostFocus()
+{
+    //load the function from global
+    lua_getglobal(this->L(),"HookLostFocus");
     if(lua_isfunction(this->L(), -1) )
     {
         int err = lua_pcall(this->L(),0,0,0); // 0 args, 0 returns
