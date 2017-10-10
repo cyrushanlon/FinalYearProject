@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1506821071 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
+1507659438 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Entity/Drawable.h"
@@ -394,7 +394,7 @@
 	<string>
 	<vector>
 
-1506819587 g:\+ 00 + projects\c++\finalyearproject\source\include\entity\drawable.h
+1507659815 g:\+ 00 + projects\c++\finalyearproject\source\include\entity\drawable.h
 	<SFML/Graphics.hpp>
 	"Entity/Point.h"
 
@@ -418,7 +418,7 @@
 	"ResourceManager.h"
 	"LuaState.h"
 
-1506820494 g:\+ 00 + projects\c++\finalyearproject\source\include\luastate.h
+1507657261 g:\+ 00 + projects\c++\finalyearproject\source\include\luastate.h
 	<lua.hpp>
 	<SFML/System/Vector2.hpp>
 	<SFML/System/Time.hpp>
@@ -447,7 +447,7 @@
 	<stdio.h>
 	"lua.h"
 
-1506819953 source:g:\+ 00 + projects\c++\finalyearproject\source\src\drawable.cpp
+1507659849 source:g:\+ 00 + projects\c++\finalyearproject\source\src\drawable.cpp
 	"Drawable.h"
 	"Global.h"
 
@@ -460,13 +460,14 @@
 1504470268 g:\+ 00 + projects\c++\finalyearproject\source\include\inputmanager.h
 	<SFML/Window.hpp>
 
-1506820509 source:g:\+ 00 + projects\c++\finalyearproject\source\src\luastate.cpp
+1507657295 source:g:\+ 00 + projects\c++\finalyearproject\source\src\luastate.cpp
 	<iostream>
 	"LuaState.h"
+	"Lua/L_Window.h"
 	"Lua/L_Drawable.h"
 	"Lua/L_Input.h"
 
-1506820471 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_drawable.h
+1507660338 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_drawable.h
 	<lua.hpp>
 	"Drawable.h"
 	"Global.h"
@@ -486,4 +487,9 @@
 1504237988 source:g:\+ 00 + projects\c++\finalyearproject\source\src\resourcemanager.cpp
 	"ResourceManager.h"
 	<iostream>
+
+1507657779 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_window.h
+	<lua.hpp>
+	"Global.h"
+	<SFML/Graphics.hpp>
 

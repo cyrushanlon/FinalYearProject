@@ -31,13 +31,24 @@ void Drawable::SetTexture(std::string uri)
     this->sprite.setTexture(this->texture);
 }
 
+sf::Texture Drawable::GetTexture()
+{
+    return this->texture;
+}
+
+sf::Sprite Drawable::GetSprite()
+{
+    return this->sprite;
+}
+
 sf::Vector2f Drawable::GetPos()
 {
-    return this->sprite.getPosition();
+    return this->virtualPos;
 }
 
 void Drawable::SetPos(sf::Vector2f pos)
 {
+    this->virtualPos = pos;
     this->sprite.setPosition(pos);
 }
 

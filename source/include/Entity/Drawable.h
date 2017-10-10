@@ -22,9 +22,12 @@ public:
 
     //Drawable only, we dont want these to be virtual
     void SetTexture(std::string);
+    sf::Texture GetTexture();
+    sf::Sprite GetSprite();
 protected:
 
 private:
+    sf::Vector2f virtualPos;
     sf::Sprite sprite;
     sf::Texture texture;
     std::string textureUri; //used in the dtor to free the resource

@@ -121,6 +121,26 @@ static int l_Drawable_SetOrigin(lua_State * l)
     return 0;
 }
 
+static int l_Drawable_GetSize(lua_State * l)
+{
+    Drawable* drawable = l_CheckDrawable(1);
+
+    auto bounds = drawable->GetSprite().getGlobalBounds();
+
+    sf::Vector2f size = sf::Vector2f(bounds.width, bounds.height);
+    //use the LuaState helper to push the vector onto the stack
+    Lua.PushVector2f(size);
+
+    //we return a single variable to Lua
+    return 1;
+}
+
+static int l_Drawable_SetSize(lua_State * l)
+{
+    return 0;
+}
+
+
 static int l_Drawable_Destructor(lua_State * l)
 {
     Drawable * drawable = l_CheckDrawable(1);
@@ -139,6 +159,8 @@ static void RegisterDrawable()
         { "SetPos", l_Drawable_SetPos },
         { "GetAng", l_Drawable_GetAng },
         { "SetAng", l_Drawable_SetAng },
+        { "GetSize", l_Drawable_GetSize },
+        { "SetSize", l_Drawable_SetSize },
         { "GetOrigin", l_Drawable_GetOrigin },
         { "SetOrigin", l_Drawable_SetOrigin },
         { "__gc", l_Drawable_Destructor },
