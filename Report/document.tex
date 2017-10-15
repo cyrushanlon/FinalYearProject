@@ -24,12 +24,38 @@
 	
 	\definecolor{listinggray}{gray}{0.9}
 	\definecolor{lbcolor}{rgb}{0.95,0.95,0.95}
-	\lstset{
+	\lstdefinestyle{C++}{
+		language=[GNU]C++,
 		backgroundcolor=\color{lbcolor},
 		captionpos=b,
 		tabsize=4,    
 		%   rulecolor=,
-		language=[GNU]C++,
+		basicstyle=\footnotesize,
+		upquote=true,
+		aboveskip={1.5\baselineskip},
+		columns=fixed,
+		showstringspaces=false,
+		extendedchars=false,
+		breaklines=true,
+		numbersep=5pt,
+		prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+		frame=lines,
+		numbers=left,
+		showtabs=false,
+		showspaces=false,
+		showstringspaces=false,
+		identifierstyle=\ttfamily,
+		keywordstyle=\color[rgb]{0,0,1},
+		commentstyle=\color[rgb]{0,0.392,0},
+		stringstyle=\color{red},
+		numberstyle=\color[rgb]{0.205, 0.142, 0.73},
+	}
+	\lstdefinestyle{Lua}{
+		language=[5.2]Lua,
+		backgroundcolor=\color{lbcolor},
+		captionpos=b,
+		tabsize=4,    
+		%   rulecolor=,
 		basicstyle=\footnotesize,
 		upquote=true,
 		aboveskip={1.5\baselineskip},
@@ -51,7 +77,7 @@
 		numberstyle=\color[rgb]{0.205, 0.142, 0.73},
 	}
 
-	\begin{lstlisting}
+	\begin{lstlisting}[style=C++]
 	#include<stdio.h>
 	#include<iostream>
 	// A comment
@@ -90,38 +116,58 @@
 		%https://codeplea.com/game-scripting-languages
 		%http://www.academia.edu/5492685/An_Analysis_of_Scripting_Languages_for_Research_in_Applied_Computing
 		\newpage
-		Discuss Lua as a language and why its a good choice to use for this project
 
 		Lua was created as a language for extending applications, there was an increase in demand for customizable applications and no language available that combined procedural features with powerful data description facilities.~\cite{Ierusalimschy02software} It is lightweight due to its low memory footprint and is easy to implement using its C API.
 
 		Functions are first class values
+
 		Cross platform due to its interpreter being written in ANSI C
 
 		Advanced features:
 		Garbage collection
 		Closures
 		Proper tail calls to allow for recursion
-		Coercion
-		Coroutines (not multiple threads)
+
+		Lua's support for coercion allows for the automatic conversion of strings and numbers, this helps developers with rapid development as they would not need to have to think about converting types in many situations when Lua itself handles it for them.
+
+		A coroutine is similar to a thread in that it has its own line of execution, its own stack, its own local variables, and its own instruction pointer but shares global variables and almost anything else with other coroutines. The main difference to a thread is that a program with threads runs things concurrently while a coroutine in Lua is collaborative and at any given time only 1 is running~\cite{Ierusalimschy:2013:PLT:2502646}. While there may not be a performance gain from using coroutines, it allows a developer to easily orchestrate multitasking that would otherwise be difficult to implement.
+
 		Dynamic Module Loading
 
 		Classes do not exist in Lua but object oriented programming is possible through the use of first class value functions in conjunction with tables. Multiple inheritance is possible through the use of metatables.
 		
 		Lua came from the languages SOL and DEL~\cite{Ierusalimschy01theevolution} both of which were made by Tecgraf.
 
-		Lua has some syntactic sugar which helps to simplify what the Lua developer will have to interact with
-		table[\"place\"] is identical to table.place
-		table {
-			\"foo\" = 45,
-			\"tab\" = {
-				x = 23
-			}
-		}
-		table.tab.x is 23
+		Lua has some syntactic sugar which helps to simplify what the Lua developer will have to interact with.
 
-		table.func(self, 100)
-		table:func(100)
-		They are the same
+		\begin{minipage}{\linewidth}
+			\begin{lstlisting}[style=C++]
+	--Declare a table using syntactic sugar
+	local table = {
+		foo= 45,
+		tab = {
+			x = 23
+		},
+		place = 10
+	}
+	
+	--Declare an example member-like function
+	function table:func(y)
+		print(self.tab.x + y)
+	end
+
+	print(table.place) 			  --prints out 10
+	print(table["place"])         --prints out 10
+
+	print(table.tab.x) 			  --prints out 23
+	print(table["tab"]["x"])      --prints out 23
+	print(table.tab["x"])         --prints out 23
+
+	table.func(table, 175)        --prints out 198
+	table:func(150)			      --prints out 173
+	print(table.func)             --prints out function: address
+			\end{lstlisting}
+		\end{minipage}
 
 		Lua is not interpreted directly but is instead compiled into bytecode first. This is then run on the Lua virtual machine, due to the fact that it is first compiled into bytecode, Lua is a fast language.
 
@@ -129,8 +175,10 @@
 
 		The Lua C API is very minimalistic and is intended for embedding Lua into applications.
 
-
+		Lua is widely used in games thanks to its simple learning curve, ease of implementation for the game developers and its fast execution time. It is also used in various non game settings such as in embedded systems using eLua~\cite{eLua}.
 		
+		\newpage
+
 		Main languages to use
 			C++
 			C\#

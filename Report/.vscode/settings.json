@@ -38,5 +38,8 @@
     "cSpell.ignoreRegExpList": [
   "\\\\\\w*(\\[.*?\\])?(\\{.*?\\})?",
   "\\$.+?\\$"
+],
+"cSpell.words": [
+  "Lua's"
 ]
 }
