@@ -1,15 +1,21 @@
 \documentclass[11pt,a4paper,titlepage]{article}
 
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{csquotes}
+
 \usepackage{listings}
 \usepackage{xcolor}
-
-\usepackage[utf8x]{inputenc}
 \usepackage[none]{hyphenat}
 \usepackage{textcomp}
 \usepackage{parskip}
 
 \author{Cyrus Hanlon}
 \title{A Scriptable 2D Game Engine}
+
+%Library
+\usepackage[backend=bibtex,style=numeric]{biblatex}
+\addbibresource{document.bib}
 
 \setlength{\parskip}{1em}
 
@@ -59,12 +65,13 @@
 	The report should describe (concisely) existing work with the aim of 
 	
 	(1) contextualising the project.
-		
+	
 		Where does it fit in the bigger picture, why does it exist?
 
 		There are many game engines that already exist but nothing combines ease of use with raw speed.
 		
-		From Unreal Engine with its complete design versus much lighter weight engines such as LÖVE, there is a very wide range of technologies and techniques at work. There is a definitive gap between large heavy engines and the small and lightweight that I intend to fill. By having many features written into the core engine but keeping a lightweight and easy to use API at the front, it will be possible to quickly learn how to easily prototype games, as well as, achieve excellent real world performance.
+		From Unreal Engine~\cite{UE} with its complete design 
+		versus much lighter weight engines such as LÖVE~\cite{LOVE}, there is a very wide range of technologies and techniques at work. There is a definitive gap between large heavy engines and the small and lightweight that I intend to fill. By having many features written into the core engine but keeping a lightweight and easy to use API at the front, it will be possible to quickly learn how to easily prototype games, as well as, achieve excellent real world performance.
 	
 	(2) point out useful techniques and algorithms that will be employed in the solution. 
 		
@@ -82,8 +89,47 @@
 		
 		%https://codeplea.com/game-scripting-languages
 		%http://www.academia.edu/5492685/An_Analysis_of_Scripting_Languages_for_Research_in_Applied_Computing
-		
+		\newpage
 		Discuss Lua as a language and why its a good choice to use for this project
+
+		Lua was created as a language for extending applications, there was an increase in demand for customizable applications and no language available that combined procedural features with powerful data description facilities.~\cite{Ierusalimschy02software} It is lightweight due to its low memory footprint and is easy to implement using its C API.
+
+		Functions are first class values
+		Cross platform due to its interpreter being written in ANSI C
+
+		Advanced features:
+		Garbage collection
+		Closures
+		Proper tail calls to allow for recursion
+		Coercion
+		Coroutines (not multiple threads)
+		Dynamic Module Loading
+
+		Classes do not exist in Lua but object oriented programming is possible through the use of first class value functions in conjunction with tables. Multiple inheritance is possible through the use of metatables.
+		
+		Lua came from the languages SOL and DEL~\cite{Ierusalimschy01theevolution} both of which were made by Tecgraf.
+
+		Lua has some syntactic sugar which helps to simplify what the Lua developer will have to interact with
+		table[\"place\"] is identical to table.place
+		table {
+			\"foo\" = 45,
+			\"tab\" = {
+				x = 23
+			}
+		}
+		table.tab.x is 23
+
+		table.func(self, 100)
+		table:func(100)
+		They are the same
+
+		Lua is not interpreted directly but is instead compiled into bytecode first. This is then run on the Lua virtual machine, due to the fact that it is first compiled into bytecode, Lua is a fast language.
+
+		The Lua virtual machine is register based
+
+		The Lua C API is very minimalistic and is intended for embedding Lua into applications.
+
+
 		
 		Main languages to use
 			C++
@@ -93,7 +139,7 @@
 			objective C
 			HTML5
 			
-		
+
 		Scripting languages to use https://github.com/r-lyeh/scriptorium
 			Lua
 			C\# %hash needs escaping
@@ -105,6 +151,7 @@
 			AngelScript
 			Scheme
 			Action script
+
 			TinyScheme
 			C jit
 			Wren
@@ -125,6 +172,7 @@
 			MonoGame
 			Cocos
 			OGRE
-						
-
+			
+\newpage
+\printbibliography{}
 \end{document}
