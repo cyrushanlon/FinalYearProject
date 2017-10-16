@@ -77,16 +77,9 @@
 		numberstyle=\color[rgb]{0.205, 0.142, 0.73},
 	}
 
-	\begin{lstlisting}[style=C++]
-	#include<stdio.h>
-	#include<iostream>
-	// A comment
-	int main(void)
-	{
-		printf("Hello World\n");
-		return 0;
-	}
-	\end{lstlisting}
+	\begin{minipage}{\linewidth}
+		\lstinputlisting[style=C++]{codeSamples/1.cpp}
+	\end{minipage}
 	
 	The report should describe (concisely) existing work with the aim of 
 	
@@ -141,32 +134,7 @@
 		Lua has some syntactic sugar which helps to simplify what the Lua developer will have to interact with.
 
 		\begin{minipage}{\linewidth}
-			\begin{lstlisting}[style=C++]
-	--Declare a table using syntactic sugar
-	local table = {
-		foo= 45,
-		tab = {
-			x = 23
-		},
-		place = 10
-	}
-	
-	--Declare an example member-like function
-	function table:func(y)
-		print(self.tab.x + y)
-	end
-
-	print(table.place) 			  --prints out 10
-	print(table["place"])         --prints out 10
-
-	print(table.tab.x) 			  --prints out 23
-	print(table["tab"]["x"])      --prints out 23
-	print(table.tab["x"])         --prints out 23
-
-	table.func(table, 175)        --prints out 198
-	table:func(150)			      --prints out 173
-	print(table.func)             --prints out function: address
-			\end{lstlisting}
+			\lstinputlisting[style=Lua]{codeSamples/1.lua}
 		\end{minipage}
 
 		Lua is not interpreted directly but is instead compiled into bytecode first. This is then run on the Lua virtual machine, due to the fact that it is first compiled into bytecode, Lua is a fast language.
