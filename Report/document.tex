@@ -76,105 +76,99 @@
 		stringstyle=\color{red},
 		numberstyle=\color[rgb]{0.205, 0.142, 0.73},
 	}
-
-	\begin{minipage}{\linewidth}
-		\lstinputlisting[style=C++]{codeSamples/1.cpp}
-	\end{minipage}
+		
+	There are many game engines that already exist but nothing combines ease of use with raw speed.
 	
-	The report should describe (concisely) existing work with the aim of 
+	From Unreal Engine~\cite{UE} with its complete design 
+	versus much lighter weight engines such as LÖVE~\cite{LOVE}, there is a very wide range of technologies and techniques at work. There is a definitive gap between large heavy engines and the small and lightweight that I intend to fill. By having many features written into the core engine but keeping a lightweight and easy to use API at the front, it will be possible to quickly learn how to easily prototype games, as well as, achieve excellent real world performance.
+
+	A very important part of any game engine is the interface between developer and the inner workings. There are many scripting languages that can be chosen from.
 	
-	(1) contextualising the project.
-	
-		Where does it fit in the bigger picture, why does it exist?
-
-		There are many game engines that already exist but nothing combines ease of use with raw speed.
+	point out useful techniques and algorithms that will be employed in the solution. 
 		
-		From Unreal Engine~\cite{UE} with its complete design 
-		versus much lighter weight engines such as LÖVE~\cite{LOVE}, there is a very wide range of technologies and techniques at work. There is a definitive gap between large heavy engines and the small and lightweight that I intend to fill. By having many features written into the core engine but keeping a lightweight and easy to use API at the front, it will be possible to quickly learn how to easily prototype games, as well as, achieve excellent real world performance.
-	
-	(2) point out useful techniques and algorithms that will be employed in the solution. 
-		
-		How to bind Lua?
-		
-	(3) analyse critically and compare existing work (e.g., conference and journal articles, pieces of software) that address a (significantly) similar	problem to the one addressed by one’s project.
-	
-		articles/papers on scripting languages
-		pros and cons of each language
-			eco system and ease of learning
-			ease of implementation
-		games that already use languages
-		
-		A very important part of any game engine is the interface between developer and the inner workings. There are many scripting languages that can be chosen from.
-		
-		%https://codeplea.com/game-scripting-languages
-		%http://www.academia.edu/5492685/An_Analysis_of_Scripting_Languages_for_Research_in_Applied_Computing
-		\newpage
-
-		Lua was created as a language for extending applications, there was an increase in demand for customizable applications and no language available that combined procedural features with powerful data description facilities.~\cite{Ierusalimschy02software} It is lightweight due to its low memory footprint and is easy to implement using its C API.
-
-		Functions are first class values
-
-		Cross platform due to its interpreter being written in ANSI C
-
-		Advanced features:
-		Garbage collection
-		Closures
-		Proper tail calls to allow for recursion
-
-		Lua's support for coercion allows for the automatic conversion of strings and numbers, this helps developers with rapid development as they would not need to have to think about converting types in many situations when Lua itself handles it for them.
-
-		A coroutine is similar to a thread in that it has its own line of execution, its own stack, its own local variables, and its own instruction pointer but shares global variables and almost anything else with other coroutines. The main difference to a thread is that a program with threads runs things concurrently while a coroutine in Lua is collaborative and at any given time only 1 is running~\cite{Ierusalimschy:2013:PLT:2502646}. While there may not be a performance gain from using coroutines, it allows a developer to easily orchestrate multitasking that would otherwise be difficult to implement.
-
-		Dynamic Module Loading
-
-		Classes do not exist in Lua but object oriented programming is possible through the use of first class value functions in conjunction with tables. Multiple inheritance is possible through the use of metatables.
-		
-		Lua came from the languages SOL and DEL~\cite{Ierusalimschy01theevolution} both of which were made by Tecgraf.
-
-		Lua has some syntactic sugar which helps to simplify what the Lua developer will have to interact with.
-
-		\begin{minipage}{\linewidth}
-			\lstinputlisting[style=Lua]{codeSamples/1.lua}
-		\end{minipage}
-
-		Lua is not interpreted directly but is instead compiled into bytecode first. This is then run on the Lua virtual machine, due to the fact that it is first compiled into bytecode, Lua is a fast language.
-
-		The Lua virtual machine is register based
-
-		The Lua C API is very minimalistic and is intended for embedding Lua into applications.
-
-		Lua is widely used in games thanks to its simple learning curve, ease of implementation for the game developers and its fast execution time. It is also used in various non game settings such as in embedded systems using eLua~\cite{eLua}.
-		
-		\newpage
-
-		Main languages to use
-			C++
-			C\#
-			C
-			Java
-			objective C
-			HTML5
+	How to bind Lua?
 			
+	%useful?
+	%https://codeplea.com/game-scripting-languages
+	%http://www.academia.edu/5492685/An_Analysis_of_Scripting_Languages_for_Research_in_Applied_Computing
 
-		Scripting languages to use https://github.com/r-lyeh/scriptorium
-			Lua
-			C\# %hash needs escaping
-			Pawn
-			Squirrel
-			Io
-			Javascript
-			GameMonkey
-			AngelScript
-			Scheme
-			Action script
+	\newpage
 
-			TinyScheme
-			C jit
-			Wren
-			Lily
-			Python
-			Java
-			PHP
+	Main languages to use
+	C++
+	C\#
+	C
+	Java
+	objective C
+	HTML5
+	
+	Scripting languages to use https://github.com/r-lyeh/scriptorium
+		Lua
+		C\# %hash needs escaping
+		Pawn
+		Squirrel
+		Io
+		Javascript
+		GameMonkey
+		AngelScript
+		Scheme
+		Action script
+		TinyScheme
+		C jit
+		Wren
+		Lily
+		Python
+		Java
+		PHP
+
+	\newpage
+
+	Lua was created for extending applications, there was an increase in demand for customization and no was language available that combined procedural features with powerful data description facilities.~\cite{Ierusalimschy02software} Lua came from the languages SOL and DEL~\cite{Ierusalimschy01theevolution} both of which were made by the company Tecgraf.
+	
+	talk about sol and del
+	
+	Lua is widely used in games and game engines thanks to its simple learning curve, ease of implementation using the provided minimalistic C API and its fast execution when compared to similar languages. It is also used in many non game settings such as in embedded systems using eLua~\cite{eLua} thanks to its low memory footprint.
+	
+	Lua is not interpreted directly but is instead compiled into bytecode first, this is then run on the Lua virtual machine. Because of this Lua is a fast language especially with the use of LuaJIT~\cite{LuaJIT}.
+
+	talk about the Lua virtual machine is register based
+
+	talk about intro to lua syntax
+
+	Classes do not exist in Lua but object oriented programming is possible through the use of first class value functions in conjunction with tables. Multiple inheritance is possible through the use of metatables.
+
+	Lua's support for coercion allows for the automatic conversion of strings and numbers, this helps developers with rapid development as they would not need to have to think about converting types in many situations when Lua itself handles it for them.
+
+	A coroutine is similar to a thread in that it has its own line of execution, its own stack, its own local variables, and its own instruction pointer but shares global variables and almost anything else with other coroutines. The main difference to a thread is that a program with threads runs things concurrently while a coroutine in Lua is collaborative and at any given time only 1 is running~\cite{Ierusalimschy:2013:PLT:2502646}. While there may not be a performance gain from using coroutines, it allows a developer to easily orchestrate multitasking that would otherwise be difficult to implement.
+
+	\newpage
+	Lua has some syntactic sugar which helps to simplify what the Lua developer will have to interact with.
+
+	\lstinputlisting[style=Lua, label={lst:SyntacticSugarSample1}, caption={Syntactic Sugar Sample 1}, firstline=1, lastline=8]{codeSamples/1.lua}
+	In listing~\ref{lst:SyntacticSugarSample1} we can see how to inline declare a table with a sub table that is also inline declared.
+
+	\lstinputlisting[style=Lua, label={lst:SyntacticSugarSample2}, caption={Syntactic Sugar Sample 2}, firstline=17, lastline=21]{codeSamples/1.lua}
+	We can see how to declare a member function using some syntactic sugar in listing~\ref{lst:SyntacticSugarSample2}. Which is equivalent to listing~\ref{lst:SyntacticSugarSample3}.
+
+	\lstinputlisting[style=Lua, label={lst:SyntacticSugarSample3}, caption={Syntactic Sugar Sample 3}, firstline=10, lastline=15]{codeSamples/1.lua}
+
+	There are also several ways to access entries within a table.
+
+	\lstinputlisting[style=Lua, label={lst:SyntacticSugarSample4}, caption={Syntactic Sugar Sample 4}, firstline=23, lastline=25]{codeSamples/1.lua}
+
+	\newpage
+
+	talk about:
+
+	Advanced features:
+	Cross platform due to its interpreter being written in ANSI C
+	Functions are first class values
+	Garbage collection
+	Closures
+	Proper tail calls to allow for recursion
+	Dynamic Module Loading
+
+	\newpage
 	
 		Performance of
 			Love2D

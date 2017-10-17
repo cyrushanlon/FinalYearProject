@@ -1,5 +1,5 @@
---Declare a table using syntactic sugar
-local table = {
+--Inline declaration of a table
+local tab1 = {
     foo= 45,
     tab = {
         x = 23
@@ -7,18 +7,19 @@ local table = {
     place = 10
 }
 
---Declare an example member-like function
-function table:func(y)
+--Declaration of an example member-like function
+function tab1:func(y)
     print(self.tab.x + y)
 end
 
-print(table.place) 			  --prints out 10
-print(table["place"])         --prints out 10
+tab1:func(25)
 
-print(table.tab.x) 			  --prints out 23
-print(table["tab"]["x"])      --prints out 23
-print(table.tab["x"])         --prints out 23
+function tab1.func(self, y)
+    print(self.tab.x + y)
+end
 
-table.func(table, 175)        --prints out 198
-table:func(150)			      --prints out 173
-print(table.func)             --prints out function: address
+tab1.func(tab1, 25)
+
+print(tab1.place) 			 --prints out 10
+print(tab1["place"])         --prints out 10
+print(tab1.tab["x"])         --prints out 23
