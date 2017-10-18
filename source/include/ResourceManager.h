@@ -15,7 +15,7 @@ public:
     ResourceManager();
     virtual ~ResourceManager();
 
-    sf::Texture LoadTexture(std::string);
+    std::shared_ptr<sf::Texture> LoadTexture(std::string);
 /*
     template<class T>
     T Load(std::string uri)

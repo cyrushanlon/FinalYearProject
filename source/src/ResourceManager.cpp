@@ -11,20 +11,20 @@ ResourceManager::~ResourceManager()
     //dtor
 }
 
-sf::Texture ResourceManager::LoadTexture(std::string uri)
+std::shared_ptr<sf::Texture> ResourceManager::LoadTexture(std::string uri)
 {
     if (this->textures.count(uri) != 1)
     {
-        sf::Texture resource;
-        resource.loadFromFile(uri);
+        auto tex = std::shared_ptr<sf::Texture>(new sf::Texture);
+        tex.get()->loadFromFile(uri);
 
         //transparency mask on magenta
-        sf::Image img = resource.copyToImage();
+        sf::Image img = tex.get()->copyToImage();
         img.createMaskFromColor(sf::Color::Magenta);
-        resource.loadFromImage(img);
+        tex.get()->loadFromImage(img);
 
         Resource<sf::Texture> newResource;
-        newResource.resource = resource;
+        newResource.resource = tex;
         newResource.Useage = 0;
 
         textures.insert({uri, newResource});

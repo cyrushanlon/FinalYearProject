@@ -1,6 +1,8 @@
 #ifndef RESOURCE_H
 #define RESOURCE_H
 
+#include<memory>
+
 #include<SFML/Graphics.hpp>
 
 #include "ResourceInterface.h"
@@ -21,7 +23,7 @@ class Resource : public ResourceInterface
             //dtor
         }
 
-        T resource;
+        std::shared_ptr<T> resource;
         unsigned Useage;
 
     protected:

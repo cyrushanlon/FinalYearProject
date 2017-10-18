@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1508266723 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
+1508347289 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Entity/Drawable.h"
@@ -401,14 +401,15 @@
 1504634659 g:\+ 00 + projects\c++\finalyearproject\source\include\entity\point.h
 	<SFML/System.hpp>
 
-1508337485 g:\+ 00 + projects\c++\finalyearproject\source\include\resourcemanager.h
+1508347469 g:\+ 00 + projects\c++\finalyearproject\source\include\resourcemanager.h
 	"Resource.h"
 	<map>
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<iostream>
 
-1508336871 g:\+ 00 + projects\c++\finalyearproject\source\include\resource.h
+1508347501 g:\+ 00 + projects\c++\finalyearproject\source\include\resource.h
+	<memory>
 	<SFML/Graphics.hpp>
 	"ResourceInterface.h"
 
@@ -450,7 +451,7 @@
 	<stdio.h>
 	"lua.h"
 
-1508336885 source:g:\+ 00 + projects\c++\finalyearproject\source\src\drawable.cpp
+1508347569 source:g:\+ 00 + projects\c++\finalyearproject\source\src\drawable.cpp
 	"Drawable.h"
 	"Global.h"
 

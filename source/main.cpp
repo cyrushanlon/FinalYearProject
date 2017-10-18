@@ -20,6 +20,7 @@ Settings
 UI
 treat userdata as a table so we can add custom fields whenever in Lua
 camera
+networking
 
 Lua
 texture manip
