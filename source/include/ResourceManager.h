@@ -14,40 +14,38 @@ class ResourceManager
 public:
     ResourceManager();
     virtual ~ResourceManager();
+    void Unload(std::string);
 
     std::shared_ptr<sf::Texture> LoadTexture(std::string);
-/*
-    template<class T>
-    T Load(std::string uri)
-    {
-        //we need to load the resource from disk
-        if (this->resources.count(uri) != 1)
-        {
-            //we need to read from file and insert it into the map
-            T resource;
-            resource.loadFromFile(uri);
-
-            Resource<T> newResource;
-            newResource.resource = resource;
-            newResource.Useage = 0;
-
-            resources.insert({uri, &newResource});
-            std::cout << "[ResourceManager] Loaded  |\"" << uri <<"\"" <<std::endl;
-        }
-
-        resources[uri]->Useage++;
-        Resource<T> rsc = *static_cast<Resource<T> *>(resources[uri]);
-
-        return rsc.resource;
-    }
-*/
-    void Unload(std::string);
+    std::shared_ptr<sf::SoundBuffer> LoadSoundBuffer(std::string);
 
 protected:
 
 private:
-    std::map<std::string, Resource<sf::Texture>> textures;
-    //std::map<std::string, Resource<sf::SoundBuffer>> sounds;
+    std::map<std::string, ResourceInterface*> resources;
+
+    //templated functions cant be declared in another file
+    //generic load from map function
+    template<class T>
+    std::shared_ptr<T> load(std::string uri)
+    {
+        if (this->resources.count(uri) != 1)
+        {
+            std::shared_ptr<T> rsc = std::shared_ptr<T>(new T);
+            rsc.get()->loadFromFile(uri);
+
+            Resource<T>* newResource = new Resource<T>(rsc, 0);
+
+            resources.insert({uri, newResource});
+            std::cout << "[ResourceManager] Loaded  |\"" << uri <<"\"" <<std::endl;
+        }
+
+        resources[uri]->Useage++;
+        auto rsc = resources[uri];
+
+        return dynamic_cast<Resource<T>*>(rsc)->resource;
+    }
+
 };
 
 #endif // RESOURCEMANAGER_H

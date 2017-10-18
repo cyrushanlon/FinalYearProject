@@ -2,8 +2,7 @@
 #define RESOURCE_H
 
 #include<memory>
-
-#include<SFML/Graphics.hpp>
+#include <iostream>
 
 #include "ResourceInterface.h"
 
@@ -18,13 +17,18 @@ class Resource : public ResourceInterface
         {
             //ctor
         }
+        Resource(std::shared_ptr<T> rsc, unsigned usage)
+        {
+            this->resource = rsc;
+            this->Useage = usage;
+        }
         virtual ~Resource()
         {
+            std::cout << "oh no!!" << std::endl;
             //dtor
         }
 
         std::shared_ptr<T> resource;
-        unsigned Useage;
 
     protected:
 
