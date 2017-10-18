@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1507661758 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
+1508266723 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Entity/Drawable.h"
@@ -401,13 +401,16 @@
 1504634659 g:\+ 00 + projects\c++\finalyearproject\source\include\entity\point.h
 	<SFML/System.hpp>
 
-1504237284 g:\+ 00 + projects\c++\finalyearproject\source\include\resourcemanager.h
+1508337485 g:\+ 00 + projects\c++\finalyearproject\source\include\resourcemanager.h
 	"Resource.h"
 	<map>
 	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	<iostream>
 
-1504285996 g:\+ 00 + projects\c++\finalyearproject\source\include\resource.h
+1508336871 g:\+ 00 + projects\c++\finalyearproject\source\include\resource.h
 	<SFML/Graphics.hpp>
+	"ResourceInterface.h"
 
 1506820638 g:\+ 00 + projects\c++\finalyearproject\source\include\global.h
 	<map>
@@ -447,7 +450,7 @@
 	<stdio.h>
 	"lua.h"
 
-1507659849 source:g:\+ 00 + projects\c++\finalyearproject\source\src\drawable.cpp
+1508336885 source:g:\+ 00 + projects\c++\finalyearproject\source\src\drawable.cpp
 	"Drawable.h"
 	"Global.h"
 
@@ -460,7 +463,7 @@
 1504470268 g:\+ 00 + projects\c++\finalyearproject\source\include\inputmanager.h
 	<SFML/Window.hpp>
 
-1507661731 source:g:\+ 00 + projects\c++\finalyearproject\source\src\luastate.cpp
+1507661865 source:g:\+ 00 + projects\c++\finalyearproject\source\src\luastate.cpp
 	<iostream>
 	"LuaState.h"
 	"Lua/L_Window.h"
@@ -481,10 +484,10 @@
 	"Entity/Point.h"
 	"Global.h"
 
-1504237125 source:g:\+ 00 + projects\c++\finalyearproject\source\src\resource.cpp
+1508266015 source:g:\+ 00 + projects\c++\finalyearproject\source\src\resource.cpp
 	"Resource.h"
 
-1504237988 source:g:\+ 00 + projects\c++\finalyearproject\source\src\resourcemanager.cpp
+1508337527 source:g:\+ 00 + projects\c++\finalyearproject\source\src\resourcemanager.cpp
 	"ResourceManager.h"
 	<iostream>
 
@@ -492,4 +495,112 @@
 	<lua.hpp>
 	"Global.h"
 	<SFML/Graphics.hpp>
+
+1508264613 g:\+ 00 + projects\c++\finalyearproject\source\include\resourceinterface.h
+
+1508264580 source:g:\+ 00 + projects\c++\finalyearproject\source\src\resourceinterface.cpp
+	"ResourceInterface.h"
+
+1486739997 g:\+ 00 + projects\c++\finalyearproject\lib\sfml\include\sfml\audio.hpp
+	<SFML/System.hpp>
+	<SFML/Audio/InputSoundFile.hpp>
+	<SFML/Audio/Listener.hpp>
+	<SFML/Audio/Music.hpp>
+	<SFML/Audio/OutputSoundFile.hpp>
+	<SFML/Audio/Sound.hpp>
+	<SFML/Audio/SoundBuffer.hpp>
+	<SFML/Audio/SoundBufferRecorder.hpp>
+	<SFML/Audio/SoundFileFactory.hpp>
+	<SFML/Audio/SoundFileReader.hpp>
+	<SFML/Audio/SoundFileWriter.hpp>
+	<SFML/Audio/SoundRecorder.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/Audio/SoundStream.hpp>
+
+1486740055 g:\+ 00 + projects\c++\finalyearproject\lib\sfml\include\sfml\audio\inputsoundfile.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+
+1486739997 g:\+ 00 + projects\c++\finalyearproject\lib\sfml\include\sfml\audio\export.hpp
+	<SFML/Config.hpp>
+
+1486739997 g:\+ 00 + projects\c++\finalyearproject\lib\sfml\include\sfml\audio\listener.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/Vector3.hpp>
+
+1486740055 g:\+ 00 + projects\c++\finalyearproject\lib\sfml\include\sfml\audio\music.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundStream.hpp>
+	<SFML/Audio/InputSoundFile.hpp>
+	<SFML/System/Mutex.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+	<vector>
+
+1486740055 g:\+ 00 + projects\c++\finalyearproject\lib\sfml\include\sfml\audio\soundstream.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/System/Thread.hpp>
+	<SFML/System/Time.hpp>
+	<SFML/System/Mutex.hpp>
+	<cstdlib>
+
+1486739997 g:\+ 00 + projects\c++\finalyearproject\lib\sfml\include\sfml\audio\soundsource.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/AlResource.hpp>
+	<SFML/System/Vector3.hpp>
+
+1486739997 g:\+ 00 + projects\c++\finalyearproject\lib\sfml\include\sfml\audio\alresource.hpp
+	<SFML/Audio/Export.hpp>
+
+1486739997 g:\+ 00 + projects\c++\finalyearproject\lib\sfml\include\sfml\audio\outputsoundfile.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<string>
+
+1486739997 g:\+ 00 + projects\c++\finalyearproject\lib\sfml\include\sfml\audio\sound.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/System/Time.hpp>
+	<cstdlib>
+
+1486739997 g:\+ 00 + projects\c++\finalyearproject\lib\sfml\include\sfml\audio\soundbuffer.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/AlResource.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+	<vector>
+	<set>
+
+1486739997 g:\+ 00 + projects\c++\finalyearproject\lib\sfml\include\sfml\audio\soundbufferrecorder.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundBuffer.hpp>
+	<SFML/Audio/SoundRecorder.hpp>
+	<vector>
+
+1486739997 g:\+ 00 + projects\c++\finalyearproject\lib\sfml\include\sfml\audio\soundrecorder.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/AlResource.hpp>
+	<SFML/System/Thread.hpp>
+	<SFML/System/Time.hpp>
+	<vector>
+	<string>
+
+1486739997 g:\+ 00 + projects\c++\finalyearproject\lib\sfml\include\sfml\audio\soundfilefactory.hpp
+	<SFML/Audio/Export.hpp>
+	<string>
+	<vector>
+	<SFML/Audio/SoundFileFactory.inl>
+
+1486739997 g:\+ 00 + projects\c++\finalyearproject\lib\sfml\include\sfml\audio\soundfilefactory.inl
+
+1486739997 g:\+ 00 + projects\c++\finalyearproject\lib\sfml\include\sfml\audio\soundfilereader.hpp
+	<SFML/Audio/Export.hpp>
+	<string>
+
+1486739997 g:\+ 00 + projects\c++\finalyearproject\lib\sfml\include\sfml\audio\soundfilewriter.hpp
+	<SFML/Audio/Export.hpp>
+	<string>
 

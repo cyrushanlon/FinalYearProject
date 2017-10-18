@@ -1,5 +1,6 @@
 #include "ResourceManager.h"
 #include<iostream>
+
 ResourceManager::ResourceManager()
 {
     //ctor
@@ -10,22 +11,20 @@ ResourceManager::~ResourceManager()
     //dtor
 }
 
-sf::Texture ResourceManager::Load(std::string uri)
+sf::Texture ResourceManager::LoadTexture(std::string uri)
 {
-    //we need to load the resource from disk
     if (this->textures.count(uri) != 1)
     {
-        //we need to read from file and insert it into the map
-        sf::Texture texture;
-        texture.loadFromFile(uri); //maybe we want the path to be added here so the user doesnt have to bother
+        sf::Texture resource;
+        resource.loadFromFile(uri);
 
         //transparency mask on magenta
-        auto img = texture.copyToImage();
+        sf::Image img = resource.copyToImage();
         img.createMaskFromColor(sf::Color::Magenta);
-        texture.loadFromImage(img);
+        resource.loadFromImage(img);
 
-        Resource newResource;
-        newResource.Texture = texture;
+        Resource<sf::Texture> newResource;
+        newResource.resource = resource;
         newResource.Useage = 0;
 
         textures.insert({uri, newResource});
@@ -33,8 +32,36 @@ sf::Texture ResourceManager::Load(std::string uri)
     }
 
     textures[uri].Useage++;
-    return textures[uri].Texture;
+    auto rsc = textures[uri];
+    //std::unique_ptr<Resource<sf::Texture>> rsc = dynamic_cast<std::unique_ptr<Resource<sf::Texture>>>(resources[uri]);
+
+    return rsc.resource;
 }
+
+/*
+T Load(std::string uri)
+{
+    //we need to load the resource from disk
+    if (this->resources.count(uri) != 1)
+    {
+        //we need to read from file and insert it into the map
+        T resource;
+        resource.loadFromFile(uri);
+
+        Resource<T> newResource;
+        newResource.resource = resource;
+        newResource.Useage = 0;
+
+        resources.insert({uri, &newResource});
+        std::cout << "[ResourceManager] Loaded  |\"" << uri <<"\"" <<std::endl;
+    }
+
+    resources[uri]->Useage++;
+    Resource<T> rsc = *static_cast<Resource<T> *>(resources[uri]);
+
+    return rsc.resource;
+}
+*/
 
 void ResourceManager::Unload(std::string uri)
 {

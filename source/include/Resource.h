@@ -3,14 +3,25 @@
 
 #include<SFML/Graphics.hpp>
 
-//will also hold sounds and etc here
-class Resource
+#include "ResourceInterface.h"
+
+template <class T>
+class Resource : public ResourceInterface
 {
     public:
-        Resource();
-        virtual ~Resource();
+        //Resource();
+        //virtual ~Resource();
 
-        sf::Texture Texture;
+        Resource()
+        {
+            //ctor
+        }
+        virtual ~Resource()
+        {
+            //dtor
+        }
+
+        T resource;
         unsigned Useage;
 
     protected:

@@ -67,6 +67,7 @@
 		<Unit filename="include/Lua/L_Drawable.h" />
 		<Unit filename="include/Lua/L_Input.h" />
 		<Unit filename="include/Resource.h" />
+		<Unit filename="include/ResourceInterface.h" />
 		<Unit filename="include/ResourceManager.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Drawable.cpp" />
@@ -75,6 +76,7 @@
 		<Unit filename="src/LuaState.cpp" />
 		<Unit filename="src/Point.cpp" />
 		<Unit filename="src/Resource.cpp" />
+		<Unit filename="src/ResourceInterface.cpp" />
 		<Unit filename="src/ResourceManager.cpp" />
 		<Extensions>
 			<code_completion />
