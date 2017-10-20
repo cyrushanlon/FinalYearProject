@@ -17,6 +17,7 @@
         "Garrysmod",
         "identifierstyle",
         "iostream",
+        "ipairs",
         "keywordstyle",
         "LÖVE",
         "Lua's",

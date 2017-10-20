@@ -76,6 +76,14 @@
 		stringstyle=\color{red},
 		numberstyle=\color[rgb]{0.205, 0.142, 0.73},
 	}
+
+\tableofcontents{}
+\newpage
+\part{Terms Of Reference}
+	TODO:
+	Convert the word version to Latex
+\part{Literature review}
+\section{Introduction}
 		
 	There are many game engines that already exist but nothing combines ease of use with raw speed.
 	
@@ -123,22 +131,62 @@
 
 	\newpage
 
+\section{Lua}
+
+\subsection{About Lua}
 	Lua was created for extending applications, there was an increase in demand for customisation and no was language available that combined procedural features with powerful data description facilities.~\cite{Ierusalimschy02software} Lua came from the languages SOL and DEL~\cite{Ierusalimschy01theevolution} both of which were made by the company Tecgraf.
 	
 	SOL is an acronym for Simple Object Language was a specialized data description language used for customising software. The SOL syntax was strongly influenced by the syntax of BiBTeX~\cite{Lamport:1989:LDP:63364}. DEL is an acronym for Data Entry Language, an entity in DEL is essentially an object or record in other languages~\cite{Ierusalimschy01theevolution}. Lua was created as a unique combination of the two more primitive languages, it was designed to avoid strange syntax so that anyone could use it effectively and for the language to have built in type checking.
 	
 	Lua is widely used in games and game engines thanks to its simple learning curve, ease of implementation using the provided minimalistic C API and its fast execution when compared to similar languages. It is also used in many non game settings such as in embedded systems using eLua~\cite{eLua} thanks to its low memory footprint.
-	
+
+\subsubsection{Running Lua}
 	Lua is not interpreted directly but is instead compiled into bytecode first, this is then run on the Lua virtual machine. Because of this Lua is a fast language especially with the use of LuaJIT~\cite{LuaJIT}. Lua executes code by first compiling it for a virtual machine, Lua used a stack based virtual machine initially but with the release of Lua 5.0, Lua began to use a register based machine. It also uses a stack for allocating activation records where the registers live~\cite{IerusalimschyImplementation}.
 
+\subsubsection{Syntax}
 	The syntax of Lua was designed so that it combined simple procedural syntax with powerful data description constructs, the general syntax is very easy to learn with its roots in SOL and DEL both designed for ease of use. It borrows much of its syntax from other languages, its comment syntax, for example, is similar to that of Haskell and SQL. It's control flow is similar to that of pascal using extra keywords such as then for if statements quite unlike C which the language is written in.
+
+	if while repeat func etc
+
+	return multiple values from a function
+
+	multiple assignment local a, b = 5, 6
+
+	no bitwise operators
+
+	iterators
+
+	tables starting at 1
+
+\subsubsection{Tables}
+	Tables are the only data structure in Lua but are extremely flexible and can be used to provide the functionality of almost any data structure as required. They are very similar in use to a hash map and allow for any variable of any type to be assigned to a key or value within the same table with the exception of nil, it is also possible to treat a table similar to an array as shown in listing~\ref{lst:TablesSample1}.
+	\lstinputlisting[style=Lua, label={lst:TablesSample1}, caption={Tables in Lua Sample 1}, firstline=27, lastline=36]{codeSamples/1.lua}
+
+	Lua has a variety of built in functions for the use of manipulating and getting data from tables all available through the table library.
+	table.concat, table.insert, table.maxn, table.move, table.pack, table.remove, table.sort, table.unpack
+
+	To loop over all key-value pairs in a table lua provides the ipairs and pairs iterators. Used with a for loop a Lua developer is provided with a powerful method of quickly and easily accessing anything within a table as shown in listing~\ref{lst:TablesSample2}.
+	\lstinputlisting[style=Lua, label={lst:TablesSample2}, caption={Tables in Lua Sample 2}, firstline=38, lastline=61]{codeSamples/1.lua}
+
+	The pairs function iterates over all elements in a table while the ipairs function will return all key-value pairs starting at the first index and stopping when it hits the first nil value.~\cite{Ierusalimschy:2013:PLT:2502646} 
+	
+	Getting the length of a Lua array is found by calling table.getn(tab) however, to find the size of a table with mixed key types or non-consecutive indices, a for loop with a count variable would have to be used. In cases where mixed key types are used it shouldn't be required to know the size as the pairs cannot be accessed by a normal for loop is any case.
+	
+\subsubsection{Metatables}
+	meta tables
+
+\subsubsection{Object Oriented Programming}
+	prototyping and whatever
 
 	Classes do not exist in Lua but object oriented programming is possible through the use of first class value functions in conjunction with tables. Multiple inheritance is possible through the use of metatables.
 
+\subsubsection{Coercion}
 	Lua's support for coercion allows for the automatic conversion of strings and numbers, this helps developers with rapid development as they would not need to have to think about converting types in many situations when Lua itself handles it for them.
 
+\subsubsection{Couroutines}
 	A coroutine is similar to a thread in that it has its own line of execution, its own stack, its own local variables, and its own instruction pointer but shares global variables and almost anything else with other coroutines. The main difference to a thread is that a program with threads runs things concurrently while a coroutine in Lua is collaborative and at any given time only 1 is running~\cite{Ierusalimschy:2013:PLT:2502646}. While there may not be a performance gain from using coroutines, it allows a developer to easily orchestrate multitasking that would otherwise be difficult to implement.
 
+\subsubsection{Sugar}
 	Lua has some syntactic sugar which helps to simplify what the Lua developer will have to interact with.
 
 	\lstinputlisting[style=Lua, label={lst:SyntacticSugarSample1}, caption={Syntactic Sugar Sample 1}, firstline=1, lastline=8]{codeSamples/1.lua}
@@ -149,23 +197,26 @@
 
 	\lstinputlisting[style=Lua, label={lst:SyntacticSugarSample3}, caption={Syntactic Sugar Sample 3}, firstline=10, lastline=15]{codeSamples/1.lua}
 
-	\newpage There are also several ways to access entries within a table all of which can be mixed and matched based on the programmers preference.
+	There are also several ways to access entries within a table all of which can be mixed and matched based on the programmers preference.
 
 	\lstinputlisting[style=Lua, label={lst:SyntacticSugarSample4}, caption={Syntactic Sugar Sample 4}, firstline=23, lastline=25]{codeSamples/1.lua}
 
-	\newpage
+\subsubsection{Closures}
 
-	talk about:
+\subsubsection{Proper Tail Calls}
+Proper tail calls to allow for recursion
 
-	Advanced features:
-	Cross platform due to its interpreter being written in ANSI C
-	Functions are first class values
-	Garbage collection
-	Closures
-	Proper tail calls to allow for recursion
-	Dynamic Module Loading
+\subsubsection{Functional Programming}
+Functions are first class values
 
-	\newpage
+\subsubsection{Dynamic Module Loading}
+
+\subsubsection{Garbage Collection}
+
+\subsubsection{The Lua C API}
+
+\newpage
+\section{Game Engines}
 	
 		Performance of
 			Love2D
