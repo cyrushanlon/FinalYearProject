@@ -59,3 +59,11 @@ end
 1	105
 2	this is another string
 ]]
+
+local x = 30
+
+if x > 25 then
+    print("x is less than 25")
+else if x < 35 then
+    print("x is greater than 35")
+end -- prints out x is less than 25

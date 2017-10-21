@@ -144,7 +144,13 @@
 	Lua is not interpreted directly but is instead compiled into bytecode first, this is then run on the Lua virtual machine. Because of this Lua is a fast language especially with the use of LuaJIT~\cite{LuaJIT}. Lua executes code by first compiling it for a virtual machine, Lua used a stack based virtual machine initially but with the release of Lua 5.0, Lua began to use a register based machine. It also uses a stack for allocating activation records where the registers live~\cite{IerusalimschyImplementation}.
 
 \subsubsection{Syntax}
-	The syntax of Lua was designed so that it combined simple procedural syntax with powerful data description constructs, the general syntax is very easy to learn with its roots in SOL and DEL both designed for ease of use. It borrows much of its syntax from other languages, its comment syntax, for example, is similar to that of Haskell and SQL. It's control flow is similar to that of pascal using extra keywords such as then for if statements quite unlike C which the language is written in.
+	The syntax of Lua was designed so that it combined simple procedural syntax with powerful data description constructs, the general syntax is very easy to learn with its roots in SOL and DEL both designed for ease of use. It borrows much of its syntax from other languages, its comment syntax, for example, is similar to that of Haskell and SQL. It's control flow is similar to that of pascal using extra keywords such as then for if statements quite unlike C, which the language is written in. It is, however, renowned for being very easy to write with its simple sytax and extremely powerful tables.
+
+	Lua has support for all of the major flow of control statements. The most common style in similar languages is the C style using curly brackets to dictate the block and parenthesis to dictate the boolean statement however in Lua the parenthesis are not required and a then end is used instead of curly brackets, this is quite a strange syntax choice and closely resembles that of pascal with its begin and end. A quirk when working with Lua is the fact that tables start at an index of 1 instead of 0 as is very common throughout programming languages.
+
+	An example of an if statement is shown in listing~\ref{lst:SyntaxSample1}. The use of elseif is quite unique and avoids the need to use an end per if.
+
+	\lstinputlisting[style=Lua, label={lst:SyntaxSample1}, caption={Lua Syntax Sample 1}, firstline=63, lastline=69]{codeSamples/1.lua}
 
 	if while repeat func etc
 

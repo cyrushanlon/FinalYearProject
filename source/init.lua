@@ -3,13 +3,13 @@ local settings = {}
 settings.paddle = {}
 settings.paddle.y = 100
 settings.paddle.depth = 0
-settings.maxspeed = 500
+settings.maxspeed = 1500
 settings.speedmultval = 300
 
 --objects
 local paddle
 local ball = {
-    vel = {x = -50, y = 150}
+    vel = {x = -50, y = 500}
 }
 
 function HookLostFocus()
