@@ -138,17 +138,19 @@
 	
 	SOL is an acronym for Simple Object Language was a specialized data description language used for customising software. The SOL syntax was strongly influenced by the syntax of BiBTeX~\cite{Lamport:1989:LDP:63364}. DEL is an acronym for Data Entry Language, an entity in DEL is essentially an object or record in other languages~\cite{Ierusalimschy01theevolution}. Lua was created as a unique combination of the two more primitive languages, it was designed to avoid strange syntax so that anyone could use it effectively and for the language to have built in type checking.
 	
-	Lua is widely used in games and game engines thanks to its simple learning curve, ease of implementation using the provided minimalistic C API and its fast execution when compared to similar languages. It is also used in many non game settings such as in embedded systems using eLua~\cite{eLua} thanks to its low memory footprint.
-
+	Lua is written in C and so, is very cross platform~\cite{LuaSource}, it is used in projects ranging from Cheat Engine~\cite{CheatEngine} running on computers to Android and iOS games using something such as Cocos2d~\cite{COCOS2D}. Therefore Lua is widely used thanks to its simple learning curve, ease of implementation using the provided minimalistic C API and its fast execution when compared to similar languages. It is especially widely used in games It is also used in many non game settings such as in embedded systems using eLua~\cite{eLua} thanks to its low memory footprint.
+		
 \subsubsection{Running Lua}
 	Lua is not interpreted directly but is instead compiled into bytecode first, this is then run on the Lua virtual machine. Because of this Lua is a fast language especially with the use of LuaJIT~\cite{LuaJIT}. Lua executes code by first compiling it for a virtual machine, Lua used a stack based virtual machine initially but with the release of Lua 5.0, Lua began to use a register based machine. It also uses a stack for allocating activation records where the registers live~\cite{IerusalimschyImplementation}.
 
+	Lua can also be used from the command line which allows for productivity scripts to be written and used without the need for it to be embedded into another application. Lua can also be used as a standalone program using the tool srLua which was created by one of the Lua authors~\cite{tecgrafLibAndTools}, this allows the language to be used almost anywhere on anything.
+
 \subsubsection{Syntax}
-	The syntax of Lua was designed so that it combined simple procedural syntax with powerful data description constructs, the general syntax is very easy to learn with its roots in SOL and DEL both designed for ease of use. It borrows much of its syntax from other languages, its comment syntax, for example, is similar to that of Haskell and SQL. It's control flow is similar to that of pascal using extra keywords such as then for if statements quite unlike C, which the language is written in. It is, however, renowned for being very easy to write with its simple sytax and extremely powerful tables.
+	The syntax of Lua was designed so that it combined simple procedural syntax with powerful data description constructs, the general syntax is very easy to learn with its roots in SOL and DEL both designed for ease of use. It borrows much of its syntax from other languages, its comment syntax, for example, is similar to that of Haskell and SQL. It's control flow is similar to that of pascal using extra keywords such as then for if statements quite unlike C, which the language is written in. It is, however, renowned for being very easy to write with its simple syntax and extremely powerful tables.
 
 	Lua has support for all of the major flow of control statements. The most common style in similar languages is the C style using curly brackets to dictate the block and parenthesis to dictate the boolean statement however in Lua the parenthesis are not required and a then end is used instead of curly brackets, this is quite a strange syntax choice and closely resembles that of pascal with its begin and end. A quirk when working with Lua is the fact that tables start at an index of 1 instead of 0 as is very common throughout programming languages.
 
-	An example of an if statement is shown in listing~\ref{lst:SyntaxSample1}. The use of elseif is quite unique and avoids the need to use an end per if.
+	An example of an if statement is shown in listing~\ref{lst:SyntaxSample1}. The use of elseif as a single keyword is quite unique and avoids the need to use an end per if.
 
 	\lstinputlisting[style=Lua, label={lst:SyntaxSample1}, caption={Lua Syntax Sample 1}, firstline=63, lastline=69]{codeSamples/1.lua}
 
@@ -161,8 +163,6 @@
 	no bitwise operators
 
 	iterators
-
-	tables starting at 1
 
 \subsubsection{Tables}
 	Tables are the only data structure in Lua but are extremely flexible and can be used to provide the functionality of almost any data structure as required. They are very similar in use to a hash map and allow for any variable of any type to be assigned to a key or value within the same table with the exception of nil, it is also possible to treat a table similar to an array as shown in listing~\ref{lst:TablesSample1}.
