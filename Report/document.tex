@@ -186,11 +186,17 @@
 
 	Classes do not exist in Lua but object oriented programming is possible through the use of first class value functions in conjunction with tables. Multiple inheritance is possible through the use of metatables.
 
+	examples
+
 \subsubsection{Coercion}
 	Lua's support for coercion allows for the automatic conversion of strings and numbers, this helps developers with rapid development as they would not need to have to think about converting types in many situations when Lua itself handles it for them.
 
+	examples
+
 \subsubsection{Couroutines}
 	A coroutine is similar to a thread in that it has its own line of execution, its own stack, its own local variables, and its own instruction pointer but shares global variables and almost anything else with other coroutines. The main difference to a thread is that a program with threads runs things concurrently while a coroutine in Lua is collaborative and at any given time only 1 is running~\cite{Ierusalimschy:2013:PLT:2502646}. While there may not be a performance gain from using coroutines, it allows a developer to easily orchestrate multitasking that would otherwise be difficult to implement.
+
+	examples
 
 \subsubsection{Sugar}
 	Lua has some syntactic sugar which helps to simplify what the Lua developer will have to interact with.
@@ -207,6 +213,8 @@
 
 	\lstinputlisting[style=Lua, label={lst:SyntacticSugarSample4}, caption={Syntactic Sugar Sample 4}, firstline=23, lastline=25]{codeSamples/1.lua}
 
+	the # operator on tables
+
 \subsubsection{Closures}
 
 \subsubsection{Proper Tail Calls}
@@ -215,9 +223,21 @@ Proper tail calls to allow for recursion
 \subsubsection{Functional Programming}
 Functions are first class values
 
-\subsubsection{Dynamic Module Loading}
+\subsubsection{Dynamic Module and Library Loading}
+
+	Intro
+
+	Lua allows for loading modules at run time that were not required at build time, this allows for extremely flexible program extensions. A module is made available through the use of an  ordinary table with functions or variables being accessed through the table.
+
+	Loading, compiling then executing Lua files from within Lua is easily possible and allows for things such as hot reloading code vastly improving the development rate as developers could just save a file and the Lua program would simply start using it.
+
+	example of a simple module being created
 
 \subsubsection{Garbage Collection}
+
+	Lua automatically manages memory, Lua destroys objects when all references to them are lost. There is no function to delete them manually, a program can only create objects which means that the developer will not need to bother with the majority of memory management~\cite{Ierusalimschy:2013:PLT:2502646}. Lua has no issues dealing with cyclic references unlike simple garbage collectors. Lua does allow for manually calling the garbage collector using the collectgarbage function as even the best garbage collector isn't perfect, the Lua garbage collector sometimes needs some help. It is even possible to manually pause, stop and restart the garbage collector to allow for fine tuned adjustments to the use of memory in a Lua program, it is also possible to get the total amount of memory being used.
+
+examples of why you would manually do gc stuff
 
 \subsubsection{The Lua C API}
 
