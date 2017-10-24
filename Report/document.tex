@@ -77,42 +77,19 @@
 		numberstyle=\color[rgb]{0.205, 0.142, 0.73},
 	}
 
-\tableofcontents{}
-\newpage
-\part{Terms Of Reference}
-	TODO:
-	Convert the word version to Latex
-\part{Literature review}
-\section{Introduction}
-		
-	There are many game engines that already exist but nothing combines ease of use with raw speed.
-	
-	From Unreal Engine~\cite{UE} with its complete design 
-	versus much lighter weight engines such as LÖVE~\cite{LOVE}, there is a very wide range of technologies and techniques at work. There is a definitive gap between large heavy engines and the small and lightweight that I intend to fill. By having many features written into the core engine but keeping a lightweight and easy to use API at the front, it will be possible to quickly learn how to easily prototype games, as well as, achieve excellent real world performance.
-
-	A very important part of any game engine is the interface between developer and the inner workings. There are many scripting languages that can be chosen from.
-	
-	point out useful techniques and algorithms that will be employed in the solution. 
-		
-	How to bind Lua?
-			
-	%useful?
-	%https://codeplea.com/game-scripting-languages
-	%http://www.academia.edu/5492685/An_Analysis_of_Scripting_Languages_for_Research_in_Applied_Computing
-
+	\tableofcontents{}
 	\newpage
 
-	Main languages to use
-	C++
-	C\#
-	C
-	Java
-	objective C
-	HTML5
-	
-	Scripting languages to use https://github.com/r-lyeh/scriptorium
+	\section{Introduction}
+			
+		There are many game engines that already exist but nothing combines ease of use with raw speed.
+		
+		From Unreal Engine~\cite{UE} with its complete design 
+		versus much lighter weight engines such as LÖVE~\cite{LOVE}, there is a very wide range of technologies and techniques at work. There is a definitive gap between large heavy engines and the small and lightweight that I intend to fill. By having many features written into the core engine but keeping a lightweight and easy to use API at the front, it will be possible to quickly learn how to easily prototype games, as well as, achieve excellent real world performance.
+
+		A very important part of any game engine is the interface between developer and the inner workings. There are many scripting languages that can be chosen from and there are many important factors that come into play when selecting a language to use, the most important factors include: popularity, speed and learning curve.
+
 		Lua
-		C\# %hash needs escaping
 		Pawn
 		Squirrel
 		Io
@@ -120,143 +97,157 @@
 		GameMonkey
 		AngelScript
 		Scheme
-		Action script
 		TinyScheme
-		C jit
 		Wren
 		Lily
 		Python
-		Java
-		PHP
+		
+		point out useful techniques and algorithms that will be employed in the solution. 
+			
+		How to bind Lua?
+				
+		%useful?
+		%https://codeplea.com/game-scripting-languages
+		%http://www.academia.edu/5492685/An_Analysis_of_Scripting_Languages_for_Research_in_Applied_Computing
+		
+	\newpage
+
+	\section{Lua}
+		\subsection{About Lua}
+			Lua was created for extending applications, there was an increase in demand for customisation and no was language available that combined procedural features with powerful data description facilities.~\cite{Ierusalimschy02software} Lua came from the languages SOL and DEL~\cite{Ierusalimschy01theevolution} both of which were made by the company Tecgraf.
+			
+			SOL is an acronym for Simple Object Language was a specialized data description language used for customising software. The SOL syntax was strongly influenced by the syntax of BiBTeX~\cite{Lamport:1989:LDP:63364}. DEL is an acronym for Data Entry Language, an entity in DEL is essentially an object or record in other languages~\cite{Ierusalimschy01theevolution}. Lua was created as a unique combination of the two more primitive languages, it was designed to avoid strange syntax so that anyone could use it effectively and for the language to have built in type checking.
+			
+			Lua is written in C and so, is very cross platform~\cite{LuaSource}, it is used in projects ranging from Cheat Engine~\cite{CheatEngine} running on computers to Android and iOS games using something such as Cocos2d~\cite{COCOS2D}. Therefore Lua is widely used thanks to its simple learning curve, ease of implementation using the provided minimalistic C API and its fast execution when compared to similar languages. It is especially widely used in games It is also used in many non game settings such as in embedded systems using eLua~\cite{eLua} thanks to its low memory footprint.
+				
+		\subsubsection{Running Lua}
+			Lua is not interpreted directly but is instead compiled into bytecode first, this is then run on the Lua virtual machine. Because of this Lua is a fast language especially with the use of LuaJIT~\cite{LuaJIT}. Lua executes code by first compiling it for a virtual machine, Lua used a stack based virtual machine initially but with the release of Lua 5.0, Lua began to use a register based machine. It also uses a stack for allocating activation records where the registers live~\cite{IerusalimschyImplementation}.
+
+			Lua can also be used from the command line which allows for productivity scripts to be written and used without the need for it to be embedded into another application. Lua can also be used as a standalone program using the tool srLua which was created by one of the Lua authors~\cite{tecgrafLibAndTools}, this allows the language to be used almost anywhere on anything.
+
+		\subsubsection{Syntax}
+			The syntax of Lua was designed so that it combined simple procedural syntax with powerful data description constructs, the general syntax is very easy to learn with its roots in SOL and DEL both designed for ease of use. It borrows much of its syntax from other languages, its comment syntax, for example, is similar to that of Haskell and SQL. It's control flow is similar to that of pascal using extra keywords such as then for if statements quite unlike C, which the language is written in. It is, however, renowned for being very easy to write with its simple syntax and extremely powerful tables.
+
+			Lua has support for all of the major flow of control statements. The most common style in similar languages is the C style using curly brackets to dictate the block and parenthesis to dictate the boolean statement however in Lua the parenthesis are not required and a then end is used instead of curly brackets, this is quite a strange syntax choice and closely resembles that of pascal with its begin and end. A quirk when working with Lua is the fact that tables start at an index of 1 instead of 0 as is very common throughout programming languages.
+
+			An example of Lua's control statements are shown in listing~\ref{lst:SyntaxSample1}. The use of elseif as a single keyword is quite unique and avoids the need to use an end per if. The conditions in each of the statements do not need to be wrapped in parenthesis and allow for logical operators. 
+
+			\lstinputlisting[style=Lua, label={lst:SyntaxSample1}, caption={Lua Syntax Sample 1}, firstline=63, lastline=80]{codeSamples/1.lua}
+
+			There are two types of for loop in Lua, one is a numeric for and is shown in listing~\ref{lst:SyntaxSample1}, the other is the generic for that uses an iterator and allows for the traversal of all values, they will be discussed later. The numeric for uses a very simple syntax and so is very easy to write, the first argument is the starting value of the iteration variable, the second is the end value and the third is the value to add with each loop.
+
+			The logical operators in Lua are `and', `or' and `not'. Logical operators and control statement expressions take nil and false as false and anything else as true~\cite{LuaMan} This allows for some unique syntax that more advanced Lua programmers will use to reduce the amount of code required.
+
+			Each of the three logical operators behave differently when used in this way. The `and' operator returns its first argument if it is false and otherwise returns its second argument. The `or' operator returns its first argument if this value isn't false and returns its second argument otherwise. The `not' operator always returns true or false based on the following argument. The Lua 5.3 manual~\cite{LuaMan} has an excellent set of examples as shown in listing~\ref{lst:SyntaxSample2}.
+
+			\lstinputlisting[style=Lua, label={lst:SyntaxSample2}, caption={Lua Syntax Sample 2 (taken from \cite{LuaMan})}, firstline=82, lastline=89]{codeSamples/1.lua}
+
+			Using this behaviour of logical operators allows for quickly and easily assigning variables using a configuration.
+
+			func etc
+
+			return multiple values from a function
+
+			multiple assignment local a, b = 5, 6
+
+			bitwise operators
+
+			.. concatenation
+
+			iterators
+
+			Lua has some syntactic sugar which helps to simplify what the Lua developer will have to interact with.
+			
+			\lstinputlisting[style=Lua, label={lst:SyntacticSugarSample1}, caption={Syntactic Sugar Sample 1}, firstline=1, lastline=8]{codeSamples/1.lua}
+			In listing~\ref{lst:SyntacticSugarSample1} we can see how to inline declare a table with a sub table that is also inline declared.
+
+			\lstinputlisting[style=Lua, label={lst:SyntacticSugarSample2}, caption={Syntactic Sugar Sample 2}, firstline=17, lastline=21]{codeSamples/1.lua}
+			We can see how to declare a member function using some syntactic sugar in listing~\ref{lst:SyntacticSugarSample2}. Which is equivalent to listing~\ref{lst:SyntacticSugarSample3}.
+
+			\lstinputlisting[style=Lua, label={lst:SyntacticSugarSample3}, caption={Syntactic Sugar Sample 3}, firstline=10, lastline=15]{codeSamples/1.lua}
+
+			There are also several ways to access entries within a table all of which can be mixed and matched based on the programmers preference.
+
+			\lstinputlisting[style=Lua, label={lst:SyntacticSugarSample4}, caption={Syntactic Sugar Sample 4}, firstline=23, lastline=25]{codeSamples/1.lua}
+
+			the \# operator on tables
+
+		\subsubsection{Tables}
+			Tables are the only data structure in Lua but are extremely flexible and can be used to provide the functionality of almost any data structure as required. They are very similar in use to a hash map and allow for any variable of any type to be assigned to a key or value within the same table with the exception of nil, it is also possible to treat a table similar to an array as shown in listing~\ref{lst:TablesSample1}.
+			\lstinputlisting[style=Lua, label={lst:TablesSample1}, caption={Tables in Lua Sample 1}, firstline=27, lastline=36]{codeSamples/1.lua}
+
+			Lua has a variety of built in functions for the use of manipulating and getting data from tables all available through the table library~\cite{LuaMan}.
+
+			To loop over all key-value pairs in a table lua provides the ipairs and pairs iterators. Used with a for loop a Lua developer is provided with a powerful method of quickly and easily accessing anything within a table as shown in listing~\ref{lst:TablesSample2}.
+			\lstinputlisting[style=Lua, label={lst:TablesSample2}, caption={Tables in Lua Sample 2}, firstline=38, lastline=61]{codeSamples/1.lua}
+
+			The pairs function iterates over all elements in a table while the ipairs function will return all key-value pairs starting at the first index and stopping when it hits the first nil value.~\cite{Ierusalimschy:2013:PLT:2502646} 
+			
+			Getting the length of a Lua array is found by calling table.getn(tab) however, to find the size of a table with mixed key types or non-consecutive indices, a for generic loop with a count variable would have to be used. In cases where mixed key types are used it shouldn't be required to know the size as the pairs cannot be accessed by a normal for loop is any case.
+
+			Weak tables are tables that consist of elements that are weak references, this can be the keys or the values, if the only reference left to an object is a weak reference the garbage colector collects it. They are often used when a word needs to be reserved without actually creating an object in memory.
+			
+		\subsubsection{Metatables}
+			meta tables
+
+		\subsubsection{Object Oriented Programming}
+			prototyping and whatever
+
+			Classes do not exist in Lua but object oriented programming is possible through the use of first class value functions in conjunction with tables. Multiple inheritance is possible through the use of metatables.
+
+			examples
+
+		\subsubsection{Coercion}
+			Lua's support for coercion allows for the automatic conversion of strings and numbers, this helps developers with rapid development as they would not need to have to think about converting types in many situations when Lua itself handles it for them.
+
+			examples
+
+		\subsubsection{Couroutines}
+			A coroutine is similar to a thread in that it has its own line of execution, its own stack, its own local variables, and its own instruction pointer but shares global variables and almost anything else with other coroutines. The main difference to a thread is that a program with threads runs things concurrently while a coroutine in Lua is collaborative and at any given time only 1 is running~\cite{Ierusalimschy:2013:PLT:2502646}. While there may not be a performance gain from using coroutines, it allows a developer to easily orchestrate multitasking that would otherwise be difficult to implement.
+
+			examples
+
+
+		\subsubsection{Functional Programming}
+			Functions are first class values
+		\subsubsection{Proper Tail Calls}
+			Proper tail calls to allow for recursion
+
+		\subsubsection{Dynamic Module and Library Loading}
+
+			Intro
+
+			Lua allows for loading modules at run time that were not required at build time, this allows for extremely flexible program extensions. A module is made available through the use of an  ordinary table with functions or variables being accessed through the table.
+
+			Loading, compiling then executing Lua files from within Lua is easily possible and allows for things such as hot reloading code vastly improving the development rate as developers could just save a file and the Lua program would simply start using it.
+
+			example of a simple module being created
+
+		\subsubsection{Garbage Collection}
+
+			Lua automatically manages memory, Lua destroys objects when all references to them are lost. There is no function to delete them manually, a program can only create objects which means that the developer will not need to bother with the majority of memory management~\cite{Ierusalimschy:2013:PLT:2502646}. Lua has no issues dealing with cyclic references unlike simple garbage collectors. Lua does allow for manually calling the garbage collector using the collectgarbage function as even the best garbage collector isn't perfect, the Lua garbage collector sometimes needs some help. It is even possible to manually pause, stop and restart the garbage collector to allow for fine tuned adjustments to the use of memory in a Lua program, it is also possible to get the total amount of memory being used.
+
+			examples of why you would manually do gc stuff
+
+		\subsubsection{The Lua C API}
 
 	\newpage
 
-\section{Lua}
-
-\subsection{About Lua}
-	Lua was created for extending applications, there was an increase in demand for customisation and no was language available that combined procedural features with powerful data description facilities.~\cite{Ierusalimschy02software} Lua came from the languages SOL and DEL~\cite{Ierusalimschy01theevolution} both of which were made by the company Tecgraf.
-	
-	SOL is an acronym for Simple Object Language was a specialized data description language used for customising software. The SOL syntax was strongly influenced by the syntax of BiBTeX~\cite{Lamport:1989:LDP:63364}. DEL is an acronym for Data Entry Language, an entity in DEL is essentially an object or record in other languages~\cite{Ierusalimschy01theevolution}. Lua was created as a unique combination of the two more primitive languages, it was designed to avoid strange syntax so that anyone could use it effectively and for the language to have built in type checking.
-	
-	Lua is written in C and so, is very cross platform~\cite{LuaSource}, it is used in projects ranging from Cheat Engine~\cite{CheatEngine} running on computers to Android and iOS games using something such as Cocos2d~\cite{COCOS2D}. Therefore Lua is widely used thanks to its simple learning curve, ease of implementation using the provided minimalistic C API and its fast execution when compared to similar languages. It is especially widely used in games It is also used in many non game settings such as in embedded systems using eLua~\cite{eLua} thanks to its low memory footprint.
+	\section{Game Engines}
 		
-\subsubsection{Running Lua}
-	Lua is not interpreted directly but is instead compiled into bytecode first, this is then run on the Lua virtual machine. Because of this Lua is a fast language especially with the use of LuaJIT~\cite{LuaJIT}. Lua executes code by first compiling it for a virtual machine, Lua used a stack based virtual machine initially but with the release of Lua 5.0, Lua began to use a register based machine. It also uses a stack for allocating activation records where the registers live~\cite{IerusalimschyImplementation}.
+			Performance of
+				Love2D
+				Unreal 
+				Engine 
+				Unity 
+				Cry Engine 
+				Source (Garrysmod)
+				Game Studio
+				id Tech (5/6?)
+				MonoGame
+				Cocos
+				OGRE	
+	\newpage
 
-	Lua can also be used from the command line which allows for productivity scripts to be written and used without the need for it to be embedded into another application. Lua can also be used as a standalone program using the tool srLua which was created by one of the Lua authors~\cite{tecgrafLibAndTools}, this allows the language to be used almost anywhere on anything.
-
-\subsubsection{Syntax}
-	The syntax of Lua was designed so that it combined simple procedural syntax with powerful data description constructs, the general syntax is very easy to learn with its roots in SOL and DEL both designed for ease of use. It borrows much of its syntax from other languages, its comment syntax, for example, is similar to that of Haskell and SQL. It's control flow is similar to that of pascal using extra keywords such as then for if statements quite unlike C, which the language is written in. It is, however, renowned for being very easy to write with its simple syntax and extremely powerful tables.
-
-	Lua has support for all of the major flow of control statements. The most common style in similar languages is the C style using curly brackets to dictate the block and parenthesis to dictate the boolean statement however in Lua the parenthesis are not required and a then end is used instead of curly brackets, this is quite a strange syntax choice and closely resembles that of pascal with its begin and end. A quirk when working with Lua is the fact that tables start at an index of 1 instead of 0 as is very common throughout programming languages.
-
-	An example of an if statement is shown in listing~\ref{lst:SyntaxSample1}. The use of elseif as a single keyword is quite unique and avoids the need to use an end per if.
-
-	\lstinputlisting[style=Lua, label={lst:SyntaxSample1}, caption={Lua Syntax Sample 1}, firstline=63, lastline=69]{codeSamples/1.lua}
-
-	if while repeat func etc
-
-	return multiple values from a function
-
-	multiple assignment local a, b = 5, 6
-
-	no bitwise operators
-
-	iterators
-
-\subsubsection{Tables}
-	Tables are the only data structure in Lua but are extremely flexible and can be used to provide the functionality of almost any data structure as required. They are very similar in use to a hash map and allow for any variable of any type to be assigned to a key or value within the same table with the exception of nil, it is also possible to treat a table similar to an array as shown in listing~\ref{lst:TablesSample1}.
-	\lstinputlisting[style=Lua, label={lst:TablesSample1}, caption={Tables in Lua Sample 1}, firstline=27, lastline=36]{codeSamples/1.lua}
-
-	Lua has a variety of built in functions for the use of manipulating and getting data from tables all available through the table library.
-	table.concat, table.insert, table.maxn, table.move, table.pack, table.remove, table.sort, table.unpack
-
-	To loop over all key-value pairs in a table lua provides the ipairs and pairs iterators. Used with a for loop a Lua developer is provided with a powerful method of quickly and easily accessing anything within a table as shown in listing~\ref{lst:TablesSample2}.
-	\lstinputlisting[style=Lua, label={lst:TablesSample2}, caption={Tables in Lua Sample 2}, firstline=38, lastline=61]{codeSamples/1.lua}
-
-	The pairs function iterates over all elements in a table while the ipairs function will return all key-value pairs starting at the first index and stopping when it hits the first nil value.~\cite{Ierusalimschy:2013:PLT:2502646} 
-	
-	Getting the length of a Lua array is found by calling table.getn(tab) however, to find the size of a table with mixed key types or non-consecutive indices, a for loop with a count variable would have to be used. In cases where mixed key types are used it shouldn't be required to know the size as the pairs cannot be accessed by a normal for loop is any case.
-	
-\subsubsection{Metatables}
-	meta tables
-
-\subsubsection{Object Oriented Programming}
-	prototyping and whatever
-
-	Classes do not exist in Lua but object oriented programming is possible through the use of first class value functions in conjunction with tables. Multiple inheritance is possible through the use of metatables.
-
-	examples
-
-\subsubsection{Coercion}
-	Lua's support for coercion allows for the automatic conversion of strings and numbers, this helps developers with rapid development as they would not need to have to think about converting types in many situations when Lua itself handles it for them.
-
-	examples
-
-\subsubsection{Couroutines}
-	A coroutine is similar to a thread in that it has its own line of execution, its own stack, its own local variables, and its own instruction pointer but shares global variables and almost anything else with other coroutines. The main difference to a thread is that a program with threads runs things concurrently while a coroutine in Lua is collaborative and at any given time only 1 is running~\cite{Ierusalimschy:2013:PLT:2502646}. While there may not be a performance gain from using coroutines, it allows a developer to easily orchestrate multitasking that would otherwise be difficult to implement.
-
-	examples
-
-\subsubsection{Sugar}
-	Lua has some syntactic sugar which helps to simplify what the Lua developer will have to interact with.
-
-	\lstinputlisting[style=Lua, label={lst:SyntacticSugarSample1}, caption={Syntactic Sugar Sample 1}, firstline=1, lastline=8]{codeSamples/1.lua}
-	In listing~\ref{lst:SyntacticSugarSample1} we can see how to inline declare a table with a sub table that is also inline declared.
-
-	\lstinputlisting[style=Lua, label={lst:SyntacticSugarSample2}, caption={Syntactic Sugar Sample 2}, firstline=17, lastline=21]{codeSamples/1.lua}
-	We can see how to declare a member function using some syntactic sugar in listing~\ref{lst:SyntacticSugarSample2}. Which is equivalent to listing~\ref{lst:SyntacticSugarSample3}.
-
-	\lstinputlisting[style=Lua, label={lst:SyntacticSugarSample3}, caption={Syntactic Sugar Sample 3}, firstline=10, lastline=15]{codeSamples/1.lua}
-
-	There are also several ways to access entries within a table all of which can be mixed and matched based on the programmers preference.
-
-	\lstinputlisting[style=Lua, label={lst:SyntacticSugarSample4}, caption={Syntactic Sugar Sample 4}, firstline=23, lastline=25]{codeSamples/1.lua}
-
-	the # operator on tables
-
-\subsubsection{Closures}
-
-\subsubsection{Proper Tail Calls}
-Proper tail calls to allow for recursion
-
-\subsubsection{Functional Programming}
-Functions are first class values
-
-\subsubsection{Dynamic Module and Library Loading}
-
-	Intro
-
-	Lua allows for loading modules at run time that were not required at build time, this allows for extremely flexible program extensions. A module is made available through the use of an  ordinary table with functions or variables being accessed through the table.
-
-	Loading, compiling then executing Lua files from within Lua is easily possible and allows for things such as hot reloading code vastly improving the development rate as developers could just save a file and the Lua program would simply start using it.
-
-	example of a simple module being created
-
-\subsubsection{Garbage Collection}
-
-	Lua automatically manages memory, Lua destroys objects when all references to them are lost. There is no function to delete them manually, a program can only create objects which means that the developer will not need to bother with the majority of memory management~\cite{Ierusalimschy:2013:PLT:2502646}. Lua has no issues dealing with cyclic references unlike simple garbage collectors. Lua does allow for manually calling the garbage collector using the collectgarbage function as even the best garbage collector isn't perfect, the Lua garbage collector sometimes needs some help. It is even possible to manually pause, stop and restart the garbage collector to allow for fine tuned adjustments to the use of memory in a Lua program, it is also possible to get the total amount of memory being used.
-
-examples of why you would manually do gc stuff
-
-\subsubsection{The Lua C API}
-
-\newpage
-\section{Game Engines}
-	
-		Performance of
-			Love2D
-			Unreal 
-			Engine 
-			Unity 
-			Cry Engine 
-			Source (Garrysmod)
-			Game Studio
-			id Tech (5/6?)
-			MonoGame
-			Cocos
-			OGRE
-			
-\newpage
-\printbibliography{}
+	\printbibliography{}
 \end{document}

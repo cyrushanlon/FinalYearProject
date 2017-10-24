@@ -61,9 +61,29 @@ end
 ]]
 
 local x = 30
-
 if x > 25 then
     print("x is less than 25")
-else if x < 35 then
+elseif x < 35 then
     print("x is greater than 35")
 end -- prints out x is less than 25
+
+while true do 
+    print("loop!")
+end --this loops forever printing loop!
+
+repeat
+    print("loop!")
+until false --this loops forever printing loop!
+
+for i=1, 10, 3 do
+    print(i)
+end -- prints 1 4 7 10
+
+10 or 20            --> 10
+10 or error()       --> 10
+nil or "a"          --> "a"
+nil and 10          --> nil
+false and error()   --> false
+false and nil       --> false
+false or nil        --> nil
+10 and 20           --> 20
