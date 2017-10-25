@@ -87,3 +87,19 @@ false and error()   --> false
 false and nil       --> false
 false or nil        --> nil
 10 and 20           --> 20
+
+function func(x) return 50 end
+
+function tailCall(x)
+    return func(x)
+end
+
+function sum(...) 
+    local args={...}
+    local ans = 0
+    for k, v in pairs(args) do
+        ans = ans + v
+    end
+    --returns the sum of all values and the number of values
+    return ans, #args
+end
