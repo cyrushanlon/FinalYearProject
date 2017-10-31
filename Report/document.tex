@@ -130,15 +130,15 @@
 
 			Lua has support for all of the major flow of control statements. The most common style in similar languages is the C style using curly brackets to dictate the block and parenthesis to dictate the boolean statement however in Lua the parenthesis are not required and a then end is used instead of curly brackets, this is quite a strange syntax choice and closely resembles that of pascal with its begin and end. A quirk when working with Lua is the fact that tables start at an index of 1 instead of 0 as is very common throughout programming languages.
 
-			An example of Lua's control statements are shown in listing~\ref{lst:SyntaxSample1}. The use of elseif as a single keyword is quite unique and avoids the need to use an end per if. The conditions in each of the statements do not need to be wrapped in parenthesis and allow for logical operators. 
+			An example of Lua's control statements are shown in listing~\ref{lst:SyntaxSample1}. The use of \texttt{elseif} as a single keyword is useful and avoids the need to use an \texttt{end} per \texttt{if}. The conditions in each of the statements do not need to be wrapped in parenthesis and allow for logical operators. 
 
 			\lstinputlisting[style=Lua, label={lst:SyntaxSample1}, caption={Lua Syntax Sample 1}, firstline=63, lastline=80]{codeSamples/1.lua}
 
-			There are two types of for loop in Lua, one is a numeric for and is shown in listing~\ref{lst:SyntaxSample1}, the other is the generic for that uses an iterator and allows for the traversal of all values, they will be discussed later. The numeric for uses a very simple syntax and so is very easy to write, the first argument is the starting value of the iteration variable, the second is the end value and the third is the value to add with each loop.
+			There are two types of \texttt{for} loop in Lua, one is a numeric \texttt{for} and is shown in listing~\ref{lst:SyntaxSample1}, the other is the generic \texttt{for} that uses an iterator and allows for the traversal of all values, they will be discussed later. The numeric \texttt{for} uses a very simple syntax and so is very easy to write, the first argument is the starting value of the iteration variable, the second is the end value and the third is the value to add with each loop.
 
-			The logical operators in Lua are `and', `or' and `not'. Logical operators and control statement expressions take nil and false as false and anything else as true~\cite{LuaMan} This allows for some unique syntax that more advanced Lua programmers will use to reduce the amount of code required.
+			The logical operators in Lua are \texttt{and}, \texttt{or} and \texttt{not}. Logical operators and control statement expressions take \texttt{nil} and \texttt{false} as \texttt{false} and anything else as \texttt{true}~\cite{LuaMan} This allows for some unique syntax that more advanced Lua programmers will use to reduce the amount of code required.
 
-			Each of the three logical operators behave differently when used in this way. The `and' operator returns its first argument if it is false and otherwise returns its second argument. The `or' operator returns its first argument if this value isn't false and returns its second argument otherwise. The `not' operator always returns true or false based on the following argument. The Lua 5.3 manual~\cite{LuaMan} has an excellent set of examples as shown in listing~\ref{lst:SyntaxSample2}.
+			Each of the three logical operators behave differently when used in this way. The \texttt{and} operator returns its first argument if it is \texttt{false} and otherwise returns its second argument. The \texttt{or} operator returns its first argument if this value isn't \texttt{false} and returns its second argument otherwise. The \texttt{not} operator always returns \texttt{true} or \texttt{false} based on the argument. The Lua 5.3 manual~\cite{LuaMan} has an excellent set of examples as shown in listing~\ref{lst:SyntaxSample2}.
 
 			\lstinputlisting[style=Lua, label={lst:SyntaxSample2}, caption={Lua Syntax Sample 2 (taken from \cite{LuaMan})}, firstline=82, lastline=89]{codeSamples/1.lua}
 
@@ -169,19 +169,19 @@
 			the \# operator on tables
 
 		\subsubsection{Tables}
-			Tables are the only data structure in Lua but are extremely flexible and can be used to provide the functionality of almost any data structure as required. They are very similar in use to a hash map and allow for any variable of any type to be assigned to a key or value within the same table with the exception of nil, it is also possible to treat a table similar to an array as shown in listing~\ref{lst:TablesSample1}.
+			Tables are the only data structure in Lua but are extremely flexible and can be used to provide the functionality of almost any data structure as required. They are very similar in use to a hash map and allow for any variable of any type to be assigned to a key or value within the same table with the exception of \texttt{nil}, it is also possible to treat a table similar to an array as shown in listing~\ref{lst:TablesSample1}.
 			\lstinputlisting[style=Lua, label={lst:TablesSample1}, caption={Tables in Lua Sample 1}, firstline=27, lastline=36]{codeSamples/1.lua}
 
 			Lua has a variety of built in functions for the use of manipulating and getting data from tables all available through the table library~\cite{LuaMan}.
 
-			To loop over all key-value pairs in a table lua provides the ipairs and pairs iterators. Used with a for loop a Lua developer is provided with a powerful method of quickly and easily accessing anything within a table as shown in listing~\ref{lst:TablesSample2}.
+			To loop over all key-value pairs in a table lua provides the \texttt{ipairs} and \texttt{pairs} iterators. Used with a \texttt{for} loop a Lua developer is provided with a powerful method of quickly and easily accessing anything within a table as shown in listing~\ref{lst:TablesSample2}.
 			\lstinputlisting[style=Lua, label={lst:TablesSample2}, caption={Tables in Lua Sample 2}, firstline=38, lastline=61]{codeSamples/1.lua}
 
-			The pairs function iterates over all elements in a table while the ipairs function will return all key-value pairs starting at the first index and stopping when it hits the first nil value.~\cite{Ierusalimschy:2013:PLT:2502646} 
+			The \texttt{pairs} function iterates over all elements in a table while the \texttt{ipairs} function will return all key-value pairs starting at the first index and stopping when it hits the first nil value.~\cite{Ierusalimschy:2013:PLT:2502646} 
 			
-			Getting the length of a Lua array is found by calling table.getn(tab) however, to find the size of a table with mixed key types or non-consecutive indices, a for generic loop with a count variable would have to be used. In cases where mixed key types are used it shouldn't be required to know the size as the pairs cannot be accessed by a normal for loop is any case.
+			Getting the length of a Lua array is found by calling \texttt{table.getn(tab)} however, to find the size of a table with mixed key types or non-consecutive indices, a generic \texttt{for} loop with a count variable would have to be used. In cases where mixed key types are used it shouldn't be required to know the size as the pairs cannot be accessed by a normal for loop is any case.
 
-			Weak tables are tables that consist of elements that are weak references, this can be the keys or the values, if the only reference left to an object is a weak reference the garbage colector collects it. They are often used when a word needs to be reserved without actually creating an object in memory.
+			Weak tables are tables that consist of elements that are weak references, this can be the keys or the values, if the only reference left to an object is a weak reference the garbage collector collects it. They are often used when a word needs to be reserved without actually creating an object in memory.
 			
 		\subsubsection{Metatables}
 			meta tables
@@ -219,7 +219,7 @@
 
 			Intro 
 
-			Lua allows for loading modules at run time that were not required at build time, this allows for extremely flexible program extensions. A module is made available through the use of an  ordinary table with functions or variables being accessed through the table.
+			Lua allows for loading modules at run time that were not required at build time, this allows for extremely flexible program extensions. A module is made available through the use of an ordinary table with functions or variables being accessed through the table.
 
 			Loading, compiling then executing Lua files from within Lua is easily possible and allows for things such as hot reloading code vastly improving the development rate as developers could just save a file and the Lua program would simply start using it.
 
@@ -227,7 +227,7 @@
 
 		\subsubsection{Garbage Collection}
 
-			Lua automatically manages memory, Lua destroys objects when all references to them are lost. There is no function to delete them manually, a program can only create objects which means that the developer will not need to bother with the majority of memory management~\cite{Ierusalimschy:2013:PLT:2502646}. Lua has no issues dealing with cyclic references unlike simple garbage collectors. Lua does allow for manually calling the garbage collector using the collectgarbage function as even the best garbage collector isn't perfect, the Lua garbage collector sometimes needs some help. It is even possible to manually pause, stop and restart the garbage collector to allow for fine tuned adjustments to the use of memory in a Lua program, it is also possible to get the total amount of memory being used.
+			Lua automatically manages memory, Lua destroys objects when all references to them are lost. There is no function to delete them manually, a program can only create objects which means that the developer will not need to bother with the majority of memory management~\cite{Ierusalimschy:2013:PLT:2502646}. Lua has no issues dealing with cyclic references unlike simple garbage collectors. Lua allows for manually calling the garbage collector using the \texttt{collectgarbage} function as even the best garbage collector isn't perfect, the Lua garbage collector sometimes needs some help. It is even possible to manually pause, stop and restart the garbage collector to allow for fine tuned adjustments to the use of memory in a Lua program, it is also possible to get the total amount of memory being used.
 
 			examples of why you would manually do gc stuff
 
