@@ -105,6 +105,7 @@
 		point out useful techniques and algorithms that will be employed in the solution. 
 			
 		How to bind Lua?
+		What needs to be accessed through the scripting language?
 				
 		%useful?
 		%https://codeplea.com/game-scripting-languages
@@ -116,25 +117,25 @@
 		\subsection{About Lua}
 			Lua was created for extending applications, there was an increase in demand for customisation and no was language available that combined procedural features with powerful data description facilities.~\cite{Ierusalimschy02software} Lua came from the languages SOL and DEL~\cite{Ierusalimschy01theevolution} both of which were made by the company Tecgraf.
 			
-			SOL is an acronym for Simple Object Language was a specialized data description language used for customising software. The SOL syntax was strongly influenced by the syntax of BiBTeX~\cite{Lamport:1989:LDP:63364}. DEL is an acronym for Data Entry Language, an entity in DEL is essentially an object or record in other languages~\cite{Ierusalimschy01theevolution}. Lua was created as a unique combination of the two more primitive languages, it was designed to avoid strange syntax so that anyone could use it effectively and for the language to have built in type checking.
+			SOL is an acronym for Simple Object Language was a specialized data description language used for customising software. The SOL syntax was strongly influenced by the syntax of BiBTeX~\cite{Lamport:1989:LDP:63364}. DEL is an acronym for Data Entry Language, an entity in DEL is essentially an object or record in other languages~\cite{Ierusalimschy01theevolution}. Lua was created as a unique combination of the two more primitive languages, it was designed to avoid unique syntax so that anyone could use it effectively with limited training and for the language to have built in type checking.
 			
-			Lua is written in C and so, is very cross platform~\cite{LuaSource}, it is used in projects ranging from Cheat Engine~\cite{CheatEngine} running on computers to Android and iOS games using something such as Cocos2d~\cite{COCOS2D}. Therefore Lua is widely used thanks to its simple learning curve, ease of implementation using the provided minimalistic C API and its fast execution when compared to similar languages. It is especially widely used in games It is also used in many non game settings such as in embedded systems using eLua~\cite{eLua} thanks to its low memory footprint.
+			Lua is written in C and so, is very cross platform~\cite{LuaSource}, it is used in projects ranging from Cheat Engine~\cite{CheatEngine}, an open source memory scanner and hex editor for Windows, to Android and iOS games using something such as Cocos2d~\cite{COCOS2D}, an open source software framework used in the creation of apps or games. Therefore Lua is widely used thanks to its simple learning curve, ease of implementation using the provided minimalistic C API and its fast execution when compared to similar languages. It is also used in many non game settings such as in embedded systems using eLua~\cite{eLua} thanks to its low memory footprint.
 				
 		\subsubsection{Running Lua}
-			Lua is not interpreted directly but is instead compiled into bytecode first, this is then run on the Lua virtual machine. Because of this Lua is a fast language especially with the use of LuaJIT~\cite{LuaJIT}. Lua executes code by first compiling it for a virtual machine, Lua used a stack based virtual machine initially but with the release of Lua 5.0, Lua began to use a register based machine. It also uses a stack for allocating activation records where the registers live~\cite{IerusalimschyImplementation}.
+			Lua is not interpreted directly but is instead compiled into bytecode, this is then run on the Lua virtual machine. Because of this Lua is a fast language, considering how high level it is. Lua used a stack based virtual machine initially but with the release of Lua 5.0, Lua began to use a register based machine. It also uses a stack for allocating activation records where the registers live~\cite{IerusalimschyImplementation}.
 
-			Lua can also be used from the command line which allows for productivity scripts to be written and used without the need for it to be embedded into another application. Lua can also be used as a standalone program using the tool srLua which was created by one of the Lua authors~\cite{tecgrafLibAndTools}, this allows the language to be used almost anywhere on anything.
+			Register based vs stack based
+
+			Lua can also be used from the command line which allows for productivity scripts to be written and used without the need for it to be embedded into another application. Lua can also be used as a standalone program using the tool srLua which was created by one of the Lua authors~\cite{tecgrafLibAndTools}, this allows the language to be used almost anywhere on almost anything.
 
 		\subsubsection{Syntax}
-			The syntax of Lua was designed so that it combined simple procedural syntax with powerful data description constructs, the general syntax is very easy to learn with its roots in SOL and DEL both designed for ease of use. It borrows much of its syntax from other languages, its comment syntax, for example, is similar to that of Haskell and SQL. It's control flow is similar to that of pascal using extra keywords such as then for if statements quite unlike C, which the language is written in. It is, however, renowned for being very easy to write with its simple syntax and extremely powerful tables.
-
-			Lua has support for all of the major flow of control statements. The most common style in similar languages is the C style using curly brackets to dictate the block and parenthesis to dictate the boolean statement however in Lua the parenthesis are not required and a then end is used instead of curly brackets, this is quite a strange syntax choice and closely resembles that of pascal with its begin and end. A quirk when working with Lua is the fact that tables start at an index of 1 instead of 0 as is very common throughout programming languages.
+			The syntax of Lua was designed so that it combined simple procedural syntax with powerful data description constructs, the general syntax is very easy to learn with its roots in SOL and DEL, both were designed for ease of use. It borrows much of its syntax from other languages, its comment syntax, for example, is similar to that of Haskell and SQL. It's control flow is similar to that of pascal using keywords such as \texttt{then} and \texttt{end} for \texttt{if} statements. It is, however, renowned for being very easy to write with its simple syntax and extremely powerful table constructs. A quirk when working with Lua is the fact that tables start at an index of 1 instead of 0 as is very common throughout programming languages.
 
 			An example of Lua's control statements are shown in listing~\ref{lst:SyntaxSample1}. The use of \texttt{elseif} as a single keyword is useful and avoids the need to use an \texttt{end} per \texttt{if}. The conditions in each of the statements do not need to be wrapped in parenthesis and allow for logical operators. 
 
 			\lstinputlisting[style=Lua, label={lst:SyntaxSample1}, caption={Lua Syntax Sample 1}, firstline=63, lastline=80]{codeSamples/1.lua}
 
-			There are two types of \texttt{for} loop in Lua, one is a numeric \texttt{for} and is shown in listing~\ref{lst:SyntaxSample1}, the other is the generic \texttt{for} that uses an iterator and allows for the traversal of all values, they will be discussed later. The numeric \texttt{for} uses a very simple syntax and so is very easy to write, the first argument is the starting value of the iteration variable, the second is the end value and the third is the value to add with each loop.
+			There are two types of \texttt{for} loop in Lua, one is a numeric \texttt{for} and is shown in listing~\ref{lst:SyntaxSample1}, the other is the generic \texttt{for} that uses an iterator and allows for the traversal of all values. The numeric \texttt{for} uses a very simple syntax and so is very easy to write, the first argument is the starting value of the iteration variable, the second is the end value and the third is the value to add with each loop.
 
 			The logical operators in Lua are \texttt{and}, \texttt{or} and \texttt{not}. Logical operators and control statement expressions take \texttt{nil} and \texttt{false} as \texttt{false} and anything else as \texttt{true}~\cite{LuaMan} This allows for some unique syntax that more advanced Lua programmers will use to reduce the amount of code required.
 
@@ -142,7 +143,7 @@
 
 			\lstinputlisting[style=Lua, label={lst:SyntaxSample2}, caption={Lua Syntax Sample 2 (taken from \cite{LuaMan})}, firstline=82, lastline=89]{codeSamples/1.lua}
 
-			Using this behaviour of logical operators allows for quickly and easily assigning variables using a configuration.
+			Using this behaviour of logical operators allows for quickly and easily assigning variables using, for example, a configuration file.
 
 			multiple assignment local a, b = 5, 6
 
@@ -177,9 +178,9 @@
 			To loop over all key-value pairs in a table lua provides the \texttt{ipairs} and \texttt{pairs} iterators. Used with a \texttt{for} loop a Lua developer is provided with a powerful method of quickly and easily accessing anything within a table as shown in listing~\ref{lst:TablesSample2}.
 			\lstinputlisting[style=Lua, label={lst:TablesSample2}, caption={Tables in Lua Sample 2}, firstline=38, lastline=61]{codeSamples/1.lua}
 
-			The \texttt{pairs} function iterates over all elements in a table while the \texttt{ipairs} function will return all key-value pairs starting at the first index and stopping when it hits the first nil value.~\cite{Ierusalimschy:2013:PLT:2502646} 
+			The \texttt{pairs} function iterates over all elements in a table while the \texttt{ipairs} function will return all key-value pairs where the keys are numbers, starting at the first index and stopping when it hits the first nil value.~\cite{Ierusalimschy:2013:PLT:2502646} 
 			
-			Getting the length of a Lua array is found by calling \texttt{table.getn(tab)} however, to find the size of a table with mixed key types or non-consecutive indices, a generic \texttt{for} loop with a count variable would have to be used. In cases where mixed key types are used it shouldn't be required to know the size as the pairs cannot be accessed by a normal for loop is any case.
+			Getting the length of a Lua array is found by calling \texttt{table.getn(tab)} however, to find the size of a table with mixed key types or non-consecutive indices, a generic \texttt{for} loop with a count variable would have to be used. In cases where mixed key types are used it shouldn't be required to know the size as the pairs cannot be accessed by a normal for loop in any case.
 
 			Weak tables are tables that consist of elements that are weak references, this can be the keys or the values, if the only reference left to an object is a weak reference the garbage collector collects it. They are often used when a word needs to be reserved without actually creating an object in memory.
 			
