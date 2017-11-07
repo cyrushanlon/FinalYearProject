@@ -87,7 +87,7 @@
 		From Unreal Engine~\cite{UE} with its complete design 
 		versus much lighter weight engines such as LÖVE~\cite{LOVE}, there is a very wide range of technologies and techniques at work. There is a definitive gap between large heavy engines and the small and lightweight that I intend to fill. By having many features written into the core engine but keeping a lightweight and easy to use API at the front, it will be possible to quickly learn how to prototype games, as well as, achieve excellent real world performance.
 
-		A very important part of any game engine is the interface between developer and the inner workings. There are many scripting languages that can be chosen from and there are many important factors that come into play when selecting a language to use, the most important factors include: popularity, speed and learning curve. Lua is at the top of the pile, especially when it comes to games. Other languages such as JavaScript and Python are extremely popular in other areas but are not anywhere near as often used in games as they are more difficult to bind.
+		A very important part of any game engine is the interface between developer and the inner workings. There are many scripting languages that can be chosen from and there are many important factors that come into play when selecting a language to use, the most important factors include: popularity, speed and learning curve. Lua is at the top of the pile when it comes to games. Other languages such as JavaScript and Python are extremely popular in other areas but are not anywhere near as often used in games as they are more difficult to bind.
 
 		Lua
 		Pawn
@@ -140,18 +140,15 @@
 			The logical operators in Lua are \texttt{and}, \texttt{or} and \texttt{not}. Logical operators and control statement expressions take \texttt{nil} and \texttt{false} as \texttt{false} and anything else as \texttt{true}~\cite{LuaMan} This allows for some unique syntax that more advanced Lua programmers will use to reduce the amount of code required.
 
 			Each of the three logical operators behave differently when used in this way. The \texttt{and} operator returns its first argument if it is \texttt{false} and otherwise returns its second argument. The \texttt{or} operator returns its first argument if this value isn't \texttt{false} and returns its second argument otherwise. The \texttt{not} operator always returns \texttt{true} or \texttt{false} based on the argument. The Lua 5.3 manual~\cite{LuaMan} has an excellent set of examples as shown in listing~\ref{lst:SyntaxSample2}.
-
 			\lstinputlisting[style=Lua, label={lst:SyntaxSample2}, caption={Lua Syntax Sample 2 (taken from \cite{LuaMan})}, firstline=82, lastline=89]{codeSamples/1.lua}
 
 			Using this behaviour of logical operators allows for quickly and easily assigning variables using, for example, a configuration file.
 
-			multiple assignment local a, b = 5, 6
+			Lua allows for assigning multiple variables on the same line as shown in listing~\ref{lst:SyntaxSample3}. When used in conjunction with returning multiple values from a function this can reduce the amount of code required and therefore improve development time.
+			\lstinputlisting[style=Lua, label={lst:SyntaxSample3}, caption={Lua Syntax Sample 3}, firstline=134, lastline=135]{codeSamples/1.lua} 
 
-			bitwise operators
-
-			.. concatenation
-
-			iterators
+			With the introduction of Lua 5.2, the \texttt{bit32} library added support for bitwise operations and with Lua 5.3 came native support for bitwise operators. Behaviour is exactly the same as in any other language with support for them as is shown in listing~\ref{lst:bitwise1}.
+			\lstinputlisting[style=Lua, label={lst:bitwise1}, caption={Lua Bitwise Operations}, firstline=137, lastline=142]{codeSamples/1.lua} 
 
 			Lua has some syntactic sugar which helps to simplify what the Lua developer will have to interact with.
 			
@@ -166,6 +163,13 @@
 			There are also several ways to access entries within a table all of which can be mixed and matched based on the programmers preference.
 
 			\lstinputlisting[style=Lua, label={lst:SyntacticSugarSample4}, caption={Syntactic Sugar Sample 4}, firstline=23, lastline=25]{codeSamples/1.lua}
+
+			Lua's support for coercion allows for the automatic conversion of strings and numbers, this helps developers with rapid development as they would not need to have to think about converting types in many situations when Lua itself handles it for them. Bitwise operators always convert numbers to integers, mathematic operations always convert operands to floats ~\cite{LuaMan}.
+			
+			String concatenation using the \texttt{..} operator converts numbers to strings wherever is needed but using the \texttt{string.format} function will allow for fine tuned control of how the number will be converted.
+
+			Examples of Lua's coercion in action are shown in listing~\ref{lst:Coercion 1}.
+			\lstinputlisting[style=Lua, label={lst:Coercion 1}, caption={Coercion Sample 1}, firstline=144, lastline=148]{codeSamples/1.lua}
 
 			the \# operator on tables
 
@@ -195,11 +199,6 @@
 
 			Weak tables are tables that consist of elements that are weak references, this can be the keys or the values, if the only reference left to an object is a weak reference the garbage collector collects it. They are often used when a word needs to be reserved without actually creating an object in memory.
 			
-		\subsubsection{Coercion}
-			Lua's support for coercion allows for the automatic conversion of strings and numbers, this helps developers with rapid development as they would not need to have to think about converting types in many situations when Lua itself handles it for them.
-
-			examples
-
 		\subsubsection{Metatables and Object Oriented Programming}
 			All tables in Lua are permitted to have a metatable\cite{Ierusalimschy:2013:PLT:2502646}. They allow for changing the behaviour of various aspects of a lua table, such as the add operator, by setting the \texttt{\_\_add} value to a new function this code will be called instead of the default add functionality as is shown in listing~\ref{lst:MetaTables1}.
 			\lstinputlisting[style=Lua, label={lst:MetaTables1}, caption={Metatables Sample 1}, firstline=107, lastline=117]{codeSamples/1.lua}

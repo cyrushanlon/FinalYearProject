@@ -1,4 +1,4 @@
---Inline declaration of a table
+-- Inline declaration of a table
 local tab = {
     foo= 45,
     tab = {
@@ -7,7 +7,7 @@ local tab = {
     place = 10
 }
 
---Declaration of an example member-like function
+-- Declaration of an example member-like function
 function tab:func(y)
     print(self.tab.x + y)
 end
@@ -20,20 +20,20 @@ end
 
 tab1.func(tab, 25)
 
-print(tab.place) 			 --prints out 10
-print(tab["place"])         --prints out 10
-print(tab.tab["x"])         --prints out 23
+print(tab.place) 			-- prints out 10
+print(tab["place"])         -- prints out 10
+print(tab.tab["x"])         -- prints out 23
 
---declaration of a table using numerical indices
+-- declaration of a table using numerical indices
 local array = {
     "this is a string",
     105,
     function(x) print("this is a function"..x) end
 } 
 
-print(array[1])             --prints out this is a string
-print(array[2])             --prints out 105
-array[3]("!")               --prints out this is a function!
+print(array[1])             -- prints out this is a string
+print(array[2])             -- prints out 105
+array[3]("!")               -- prints out this is a function!
 
 local tab = {
     foo = "this is a string",
@@ -69,11 +69,11 @@ end -- prints out x is less than 25
 
 while true do 
     print("loop!")
-end --this loops forever printing loop!
+end -- this loops forever printing loop!
 
 repeat
     print("loop!")
-until false --this loops forever printing loop!
+until false -- this loops forever printing loop!
 
 for i=1, 10, 3 do
     print(i)
@@ -100,18 +100,18 @@ function sum(...)
     for k, v in pairs(args) do
         ans = ans + v
     end
-    --returns the sum of all values and the number of values
+    -- returns the sum of all values and the number of values
     return ans, #args
 end
 
 local metatable = {
     __add = function (a, b)
-        return 5 --the result will always be 5
+        return 5 -- the result will always be 5
     end
 }
 
 t1 = {}
---set the meta table of t1 to metatable
+-- set the meta table of t1 to metatable
 setmetatable(t1, metatable)
 local t2 = t1 + t1
 print(t2) -- prints out 5
@@ -128,5 +128,21 @@ function Dog:bark()
     print("Bark!")
 end
 
-local myDog = Dog:new() --creates instance of Dog
-myDog:bark() --prints out Bark!
+local myDog = Dog:new() -- creates instance of Dog
+myDog:bark() -- prints out Bark!
+
+a, b = 100, 200
+print(a + b) -- prints out 300
+
+print(1 & 2)  -- bitwise and prints out 0
+print(3 | 4)  -- bitwise or prints out 7
+print(5 ~ 6)  -- bitwise xor prints out 3
+print(7 >> 1) -- bitwise left shift prints out 3
+print(8 << 1) -- bitwise left shift prints out 16
+print(~9)     -- bitwise not prints out -10
+
+print(1 .. 2.2 .. "three")          -- prints out 12.2three
+print("1" & "2")                    -- prints out 0
+print(1.1 & 2)                      -- errors out
+print("1.1" / 2.2)                  -- prints out 0.5
+print(string.format("%f", "5.5"))   -- prints out 5.500000
