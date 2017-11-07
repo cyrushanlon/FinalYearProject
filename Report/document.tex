@@ -169,6 +169,17 @@
 
 			the \# operator on tables
 
+		\subsubsection{Functions}
+			Lua allows for a function to return multiple values, this is quite a strange concept and can have some downsides, it can make it quite difficult to correctly name a function to reflect the return values. It is a very powerful feature and if handled correctly can improve productivity especially when combined with Lua's variable number of arguments. An example is shown in listing~\ref{lst:Functions1}.
+			\lstinputlisting[style=Lua, label={lst:Functions1}, caption={Functions Sample 1}, firstline=97, lastline=105]{codeSamples/1.lua}
+
+			Functions, in Lua, are first class values with proper lexical scoping~\cite{Ierusalimschy:2013:PLT:2502646}. A first class value in Lua means that a function is essentially the same as any other regular variable, this allows a Lua developer to pass functions into other functions as arguments, return functions, use functions of keys and values of tables and can be assigned to a variable. This is a very valuable trait for a high level scripting language to have as it allows for very interesting techniques such as functional programming.
+
+			Lua has proper tail calls which allows for recursion. If the last thing that a function does is call another function, the calling function is no longer required and is no longer required on the stack, this allows for an infinite recursion without overflowing the stack~\cite{Ierusalimschy:2013:PLT:2502646}. An example of a Lua tail call is shown in listing~\ref{lst:Functions2}.
+			\lstinputlisting[style=Lua, label={lst:Functions2}, caption={Functions Sample 2}, firstline=91, lastline=95]{codeSamples/1.lua}
+
+			Without proper tail calls, recursion could overflow the stack but with proper tail calls this is impossible and fits in perfectly with a high level scripting language such as Lua.
+
 		\subsubsection{Tables}
 			Tables are the only data structure in Lua but are extremely flexible and can be used to provide the functionality of almost any data structure as required. They are very similar in use to a hash map and allow for any variable of any type to be assigned to a key or value within the same table with the exception of \texttt{nil}, it is also possible to treat a table similar to an array as shown in listing~\ref{lst:TablesSample1}.
 			\lstinputlisting[style=Lua, label={lst:TablesSample1}, caption={Tables in Lua Sample 1}, firstline=27, lastline=36]{codeSamples/1.lua}
@@ -184,37 +195,24 @@
 
 			Weak tables are tables that consist of elements that are weak references, this can be the keys or the values, if the only reference left to an object is a weak reference the garbage collector collects it. They are often used when a word needs to be reserved without actually creating an object in memory.
 			
-		\subsubsection{Metatables}
-			meta tables
-
-		\subsubsection{Object Oriented Programming}
-			prototyping and whatever
-
-			Classes do not exist in Lua but object oriented programming is possible through the use of first class value functions in conjunction with tables. Multiple inheritance is possible through the use of metatables.
-
-			examples
-
 		\subsubsection{Coercion}
 			Lua's support for coercion allows for the automatic conversion of strings and numbers, this helps developers with rapid development as they would not need to have to think about converting types in many situations when Lua itself handles it for them.
 
 			examples
 
+		\subsubsection{Metatables and Object Oriented Programming}
+			All tables in Lua are permitted to have a metatable\cite{Ierusalimschy:2013:PLT:2502646}. They allow for changing the behaviour of various aspects of a lua table, such as the add operator, by setting the \texttt{\_\_add} value to a new function this code will be called instead of the default add functionality as is shown in listing~\ref{lst:MetaTables1}.
+			\lstinputlisting[style=Lua, label={lst:MetaTables1}, caption={Metatables Sample 1}, firstline=107, lastline=117]{codeSamples/1.lua}
+
+			These functions are called metamethods and allow for any interaction with a table to be altered. While classes do not exist in Lua, using a meta table and first class value functions, behaviour similar to object oriented programming can be achieved especially with the use of factory methods. An example of a class is shown in listing~\ref{lst:MetaTables2}. On line 13 a table with the metatable \texttt{Dog} is created and returned to \texttt{myDog}.
+			\lstinputlisting[style=Lua, label={lst:MetaTables2}, caption={Metatables Sample 2}, firstline=119, lastline=132]{codeSamples/1.lua}
+
+			While this concept is very useful, if the \texttt{new} function is ever changed by mistake, a difficult to locate bug could be created.
+
 		\subsubsection{Couroutines}
 			A coroutine is similar to a thread in that it has its own line of execution, its own stack, its own local variables, and its own instruction pointer but shares global variables and almost anything else with other coroutines. The main difference to a thread is that a program with threads runs things concurrently while a coroutine in Lua is collaborative and at any given time only 1 is running~\cite{Ierusalimschy:2013:PLT:2502646}. While there may not be a performance gain from using coroutines, it allows a developer to easily orchestrate multitasking that would otherwise be difficult to implement.
 
-			examples
-
-
-		\subsubsection{Functions}
-			Lua allows for a function to return multiple values, this is quite a strange concept and can have some downsides, it can make it quite difficult to correctly name a function to reflect the return values. It is a very powerful feature and if handled correctly can improve productivity especially when combined with Lua's variable number of arguments. An example is shown in listing~\ref{lst:Functions1}.
-			\lstinputlisting[style=Lua, label={lst:Functions1}, caption={Functions Sample 1}, firstline=97, lastline=105]{codeSamples/1.lua}
-
-			Functions, in Lua, are first class values with proper lexical scoping~\cite{Ierusalimschy:2013:PLT:2502646}. A first class value in Lua means that a function is essentially the same as any other regular variable, this allows a Lua developer to pass functions into other functions as arguments, return functions, use functions of keys and values of tables and can be assigned to a variable. This is a very valuable trait for a high level scripting language to have as it allows for very interesting techniques such as functional programming.
-
-			Lua has proper tail calls which allows for recursion. If the last thing that a function does is call another function, the calling function is no longer required and is no longer required on the stack, this allows for an infinite recursion without overflowing the stack~\cite{Ierusalimschy:2013:PLT:2502646}. An example of a Lua tail call is shown in listing~\ref{lst:Functions2}.
-			\lstinputlisting[style=Lua, label={lst:Functions2}, caption={Functions Sample 2}, firstline=91, lastline=95]{codeSamples/1.lua}
-
-			Without proper tail calls recursion could overflow the stack however with proper tail calls this is impossible and fits in perfectly with a high level scripting language such as Lua. 
+			examples 
 
 		\subsubsection{Dynamic Module and Library Loading}
 

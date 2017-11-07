@@ -103,3 +103,30 @@ function sum(...)
     --returns the sum of all values and the number of values
     return ans, #args
 end
+
+local metatable = {
+    __add = function (a, b)
+        return 5 --the result will always be 5
+    end
+}
+
+t1 = {}
+--set the meta table of t1 to metatable
+setmetatable(t1, metatable)
+local t2 = t1 + t1
+print(t2) -- prints out 5
+
+Dog = {}
+function Dog:new()
+    local o = {}
+    setmetatable(o, self)
+    self.__index = self
+    return o
+end
+
+function Dog:bark()
+    print("Bark!")
+end
+
+local myDog = Dog:new() --creates instance of Dog
+myDog:bark() --prints out Bark!
