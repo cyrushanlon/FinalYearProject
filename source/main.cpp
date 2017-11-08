@@ -11,21 +11,24 @@
 
 virtual sizes rather than pixels so different resolutions look the same
 
-both
-hook/callback system
-Sound
-Anims
+BOTH
+_________________
+level loading/saving
 Box2D
 Settings
-UI
-treat userdata as a table so we can add custom fields whenever in Lua
 camera
+screen shake
+draw order (things that might need to be on top of other things etc) (convert map to vector?)
+Anims
+treat userdata as a table so we can add custom fields whenever in Lua
+UI
 networking
 
-Lua
-texture manip
-window manip
-LuaJIT?
+LUA
+_________________
+texture
+window
+Sound
 
 Blockly(?) https://developers.google.com/blockly/
 
