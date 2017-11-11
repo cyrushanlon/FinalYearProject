@@ -6,6 +6,8 @@ settings.paddle.depth = 0
 settings.maxspeed = 1500
 settings.speedmultval = 300
 
+local sounds = {}
+
 --objects
 local paddle
 local ball = {
@@ -28,6 +30,10 @@ function Init()
 
     settings.paddle.pos = settings.windowSize.y - settings.paddle.y
 
+    --load the sounds into the sound table
+    sounds.hitPaddle = Sound.New("resources/sounds/ping_pong_8bit_beep_paddle.wav")
+    sounds.hitWall = Sound.New("resources/sounds/ping_pong_8bit_beep_wall.wav")
+    sounds.hitLose = Sound.New("resources/sounds/ping_pong_8bit_beep_lose.wav")
 end
 
 function MoveBall(dt)
@@ -70,6 +76,7 @@ function PhysThink(dt)
         end
 
         ball.vel.y = -ball.vel.y
+        sounds.hitWall:Play()
     end
 
     -- horizontal bounce

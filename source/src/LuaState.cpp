@@ -5,6 +5,7 @@
 #include "Lua/L_Window.h"
 #include "Lua/L_Drawable.h"
 #include "Lua/L_Input.h"
+#include "Lua/L_Sound.h"
 
 
 LuaState::LuaState()
@@ -16,6 +17,7 @@ LuaState::LuaState()
     RegisterWindow();
     RegisterDrawable();
     RegisterInput();
+    RegisterSound();
 
     //run the init script
     int err = luaL_dofile(this->state,"init.lua");

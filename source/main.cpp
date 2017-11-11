@@ -28,7 +28,6 @@ LUA
 _________________
 texture
 window
-Sound
 
 Blockly(?) https://developers.google.com/blockly/
 

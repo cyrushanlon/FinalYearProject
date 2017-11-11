@@ -13,7 +13,6 @@ ResourceManager::~ResourceManager()
 
 std::shared_ptr<sf::Texture> ResourceManager::LoadTexture(std::string uri)
 {
-
     auto rsc = this->load<sf::Texture>(uri);
 
     //transparency mask on magenta
@@ -27,8 +26,6 @@ std::shared_ptr<sf::Texture> ResourceManager::LoadTexture(std::string uri)
 std::shared_ptr<sf::SoundBuffer> ResourceManager::LoadSoundBuffer(std::string uri)
 {
     auto rsc = this->load<sf::SoundBuffer>(uri);
-
-    new sf::SoundBuffer();
 
     return rsc;
 }
