@@ -120,6 +120,8 @@
 			SOL is an acronym for Simple Object Language was a specialized data description language used for customising software. The SOL syntax was strongly influenced by the syntax of BiBTeX~\cite{Lamport:1989:LDP:63364}. DEL is an acronym for Data Entry Language, an entity in DEL is essentially an object or record in other languages~\cite{Ierusalimschy01theevolution}. Lua was created as a unique combination of the two more primitive languages, it was designed to avoid unique syntax so that anyone could use it effectively with limited training and for the language to have built in type checking.
 			
 			Lua is written in C and so, is very cross platform~\cite{LuaSource}, it is used in projects ranging from Cheat Engine~\cite{CheatEngine}, an open source memory scanner and hex editor for Windows, to Android and iOS games using something such as Cocos2d~\cite{COCOS2D}, an open source software framework used in the creation of apps or games. Therefore Lua is widely used thanks to its simple learning curve, ease of implementation using the provided minimalistic C API and its fast execution when compared to similar languages. It is also used in many non game settings such as in embedded systems using eLua~\cite{eLua} thanks to its low memory footprint.
+
+			Lua allows for loading modules at run time that were not required at build time, this allows for extremely flexible program extensions. A module is made available through the use of an ordinary table with functions or variables being accessed through the table. Loading, compiling then executing Lua files from within Lua is easily possible and allows for things such as hot reloading code vastly improving the development rate as developers could just save a file and the Lua program would simply start using it.
 				
 		\subsubsection{Running Lua}
 			Lua is not interpreted directly but is instead compiled into bytecode, this is then run on the Lua virtual machine. Because of this Lua is a fast language, considering how high level it is. Lua used a stack based virtual machine initially but with the release of Lua 5.0, Lua began to use a register based machine. It also uses a stack for allocating activation records where the registers live~\cite{IerusalimschyImplementation}.
@@ -215,16 +217,6 @@
 
 			examples 
 
-		\subsubsection{Dynamic Module and Library Loading}
-
-			Intro 
-
-			Lua allows for loading modules at run time that were not required at build time, this allows for extremely flexible program extensions. A module is made available through the use of an ordinary table with functions or variables being accessed through the table.
-
-			Loading, compiling then executing Lua files from within Lua is easily possible and allows for things such as hot reloading code vastly improving the development rate as developers could just save a file and the Lua program would simply start using it.
-
-			example of a simple module being created
-
 		\subsubsection{Garbage Collection}
 
 			Lua automatically manages memory, Lua destroys objects when all references to them are lost. There is no function to delete them manually, a program can only create objects which means that the developer will not need to bother with the majority of memory management~\cite{Ierusalimschy:2013:PLT:2502646}. Lua has no issues dealing with cyclic references unlike simple garbage collectors. Lua allows for manually calling the garbage collector using the \texttt{collectgarbage} function as even the best garbage collector isn't perfect, the Lua garbage collector sometimes needs some help. It is even possible to manually pause, stop and restart the garbage collector to allow for fine tuned adjustments to the use of memory in a Lua program, it is also possible to get the total amount of memory being used.
@@ -233,12 +225,12 @@
 
 		\subsubsection{The Lua C API}
 
-		Lua is an embedded extension library and cannot be used as a stand alone program, a program can use Lua with little input from a programmer using the provided C API. The API puts flexibility and simplicity above all else, this can sometimes make it difficult to implement for an inexperienced C developer as there is no built in type checking and no clean errors, this is down to the developer to handle ~\cite{Ierusalimschy:2013:PLT:2502646}.
+			Lua is an embedded extension library and cannot be used as a stand alone program, a program can use Lua with little input from a programmer using the provided C API. The API puts flexibility and simplicity above all else, this can sometimes make it difficult to implement for an inexperienced C developer as there is no built in type checking and no clean errors, this is down to the developer to handle ~\cite{Ierusalimschy:2013:PLT:2502646}.
 
-		A major component of the Lua C API is that new functions can be registered with the virtual machine allowing for behaviour that would be otherwise impossible to implement in pure Lua. Class like objects using userdata can also be implemented in C and used in Lua allowing for interaction between the program and Lua, in the case of a game engine, objects such as sprites could be accessed in both C and Lua and provide a developer with the ability to create high performance games in a much easier to use package than C.
+			A major component of the Lua C API is that new functions can be registered with the virtual machine allowing for behaviour that would be otherwise impossible to implement in pure Lua. Class like objects using userdata can also be implemented in C and used in Lua allowing for interaction between the program and Lua, in the case of a game engine, objects such as sprites could be accessed in both C and Lua and provide a developer with the ability to create high performance games in a much easier to use package than C.
 
-		An example of registering a function in the Lua vm is shown in listing~\ref{lst:CAPISample1}.
-		\lstinputlisting[style=Lua, label={lst:CAPISample1}, caption={Sample function implementation in C API~\cite{Ierusalimschy:2013:PLT:2502646}}, firstline=1, lastline=12]{codeSamples/1.cpp}
+			An example of registering a function in the Lua vm is shown in listing~\ref{lst:CAPISample1}.
+			\lstinputlisting[style=Lua, label={lst:CAPISample1}, caption={Sample function implementation in C API~\cite{Ierusalimschy:2013:PLT:2502646}}, firstline=1, lastline=12]{codeSamples/1.cpp}
 
 	\newpage
 
