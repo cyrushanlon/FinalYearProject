@@ -88,28 +88,8 @@
 		versus much lighter weight engines such as LÖVE~\cite{LOVE}, there is a very wide range of technologies and techniques at work. There is a definitive gap between large heavy engines and the small and lightweight that I intend to fill. By having many features written into the core engine but keeping a lightweight and easy to use API at the front, it will be possible to quickly learn how to prototype games, as well as, achieve excellent real world performance.
 
 		A very important part of any game engine is the interface between developer and the inner workings. There are many scripting languages that can be chosen from and there are many important factors that come into play when selecting a language to use, the most important factors include: popularity, speed and learning curve. Lua is at the top of the pile when it comes to games. Other languages such as JavaScript and Python are extremely popular in other areas but are not anywhere near as often used in games as they are more difficult to bind.
-
-		Lua
-		Pawn
-		Squirrel
-		Io
-		Javascript
-		GameMonkey
-		AngelScript
-		Scheme
-		TinyScheme
-		Wren
-		Lily
-		Python
-		
-		point out useful techniques and algorithms that will be employed in the solution. 
-			
-		How to bind Lua?
+					
 		What needs to be accessed through the scripting language?
-				
-		%useful?
-		%https://codeplea.com/game-scripting-languages
-		%http://www.academia.edu/5492685/An_Analysis_of_Scripting_Languages_for_Research_in_Applied_Computing
 		
 	\newpage
 
@@ -179,9 +159,7 @@
 			Lua allows for a function to return multiple values, this is quite a strange concept and can have some downsides, it can make it quite difficult to correctly name a function to reflect the return values. It is a very powerful feature and if handled correctly can improve productivity especially when combined with Lua's variable number of arguments. An example is shown in listing~\ref{lst:Functions1}.
 			\lstinputlisting[style=Lua, label={lst:Functions1}, caption={Functions Sample 1}, firstline=97, lastline=105]{codeSamples/1.lua}
 
-			Functions, in Lua, are first class values with proper lexical scoping~\cite{Ierusalimschy:2013:PLT:2502646}. A first class value in Lua means that a function is essentially the same as any other regular variable, this allows a Lua developer to pass functions into other functions as arguments, return functions, use functions of keys and values of tables and can be assigned to a variable. This is a very valuable trait for a high level scripting language to have as it allows for very interesting techniques such as functional programming.
-
-			Closures
+			Functions, in Lua, are first class values with proper lexical scoping~\cite{Ierusalimschy:2013:PLT:2502646}. A first class value in Lua means that a function is essentially the same as any other regular variable, this allows a Lua developer to pass functions into other functions as arguments, return functions, use functions of keys and values of tables and can be assigned to a variable. This is a very valuable trait for a high level scripting language to have as it allows for very interesting techniques such as functional programming, closures are fully supported in Lua as a result of this.
 
 			Lua has proper tail calls which allows for recursion. If the last thing that a function does is call another function, the calling function is no longer required and is no longer required on the stack, this allows for an infinite recursion without overflowing the stack~\cite{Ierusalimschy:2013:PLT:2502646}. An example of a Lua tail call is shown in listing~\ref{lst:Functions2}.
 			\lstinputlisting[style=Lua, label={lst:Functions2}, caption={Functions Sample 2}, firstline=91, lastline=95]{codeSamples/1.lua}
@@ -227,7 +205,7 @@
 
 			Lua is an embedded extension library and cannot be used as a stand alone program, a program can use Lua with little input from a programmer using the provided C API. The API puts flexibility and simplicity above all else, this can sometimes make it difficult to implement for an inexperienced C developer as there is no built in type checking and no clean errors, this is down to the developer to handle ~\cite{Ierusalimschy:2013:PLT:2502646}.
 
-			A major component of the Lua C API is that new functions can be registered with the virtual machine allowing for behaviour that would be otherwise impossible to implement in pure Lua. Class like objects using userdata can also be implemented in C and used in Lua allowing for interaction between the program and Lua, in the case of a game engine, objects such as sprites could be accessed in both C and Lua and provide a developer with the ability to create high performance games in a much easier to use package than C.
+			A major component of the Lua C API is that new functions can be registered with the virtual machine allowing for behaviour that would be otherwise impossible to implement in pure Lua. Class like objects called userdata can also be implemented in C and used in Lua allowing for interaction between the program and Lua, in the case of a game engine, objects such as sprites could be accessed in both C and Lua and provide a developer with the ability to create high performance games in a much easier to use package than C.
 
 			An example of registering a function in the Lua vm is shown in listing~\ref{lst:CAPISample1}.
 			\lstinputlisting[style=Lua, label={lst:CAPISample1}, caption={Sample function implementation in C API~\cite{Ierusalimschy:2013:PLT:2502646}}, firstline=1, lastline=12]{codeSamples/1.cpp}
