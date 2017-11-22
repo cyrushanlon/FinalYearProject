@@ -146,3 +146,20 @@ print("1" & "2")                    -- prints out 0
 print(1.1 & 2)                      -- errors out
 print("1.1" / 2.2)                  -- prints out 0.5
 print(string.format("%f", "5.5"))   -- prints out 5.500000
+
+co = coroutine.create(function (a,b)
+    coroutine.yield(a + b, a - b)
+end)
+print(coroutine.resume(co, 20, 10))  -- prints out true  30  10
+
+collectgarbage("stop") --stops the garbage collector
+print(collectgarbage("collect")) --prints out 0
+mytable={}
+for i=1,10000,1 do mytable[i]=i end --fill the table with 10000 items
+
+print(collectgarbage("count")) --prints out 285
+mytable = nil -- we remove the reference to the table
+print(collectgarbage("count")) --prints out 285
+
+collectgarbage("collect") --runs the garbage collector
+print(collectgarbage("count")) --prints out 28

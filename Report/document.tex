@@ -193,13 +193,17 @@
 		\subsubsection{Couroutines}
 			A coroutine is similar to a thread in that it has its own line of execution, its own stack, its own local variables, and its own instruction pointer but shares global variables and almost anything else with other coroutines. The main difference to a thread is that a program with threads runs things concurrently while a coroutine in Lua is collaborative and at any given time only 1 is running~\cite{Ierusalimschy:2013:PLT:2502646}. While there may not be a performance gain from using coroutines, it allows a developer to easily orchestrate multitasking that would otherwise be difficult to implement.
 
-			examples 
+			To create a coroutine it is as simple as calling the \texttt{coroutine.create} and passing a function as shown in listing~\ref{lst:Couroutine1}.
+			\lstinputlisting[style=Lua, label={lst:Couroutine1}, caption={Couroutine Sample ~\cite{Ierusalimschy:2013:PLT:2502646}}, firstline=150, lastline=153]{codeSamples/1.lua} 
 
 		\subsubsection{Garbage Collection}
 
 			Lua automatically manages memory, Lua destroys objects when all references to them are lost. There is no function to delete them manually, a program can only create objects which means that the developer will not need to bother with the majority of memory management~\cite{Ierusalimschy:2013:PLT:2502646}. Lua has no issues dealing with cyclic references unlike simple garbage collectors. Lua allows for manually calling the garbage collector using the \texttt{collectgarbage} function as even the best garbage collector isn't perfect, the Lua garbage collector sometimes needs some help. It is even possible to manually pause, stop and restart the garbage collector to allow for fine tuned adjustments to the use of memory in a Lua program, it is also possible to get the total amount of memory being used.
 
-			examples of why you would manually do gc stuff
+			In very high performance scenarios a Lua developer may need to assume control of the garbage collector, a simple example is shown in listing~\ref{lst:GC1}.
+			\lstinputlisting[style=Lua, label={lst:GC1}, caption={Manual Garbage Collector Sample}, firstline=155, lastline=165]{codeSamples/1.lua}
+			
+			Although the reference to the table is removed the table still exists in memory until the next pass of the garbage collector.
 
 		\subsubsection{The Lua C API}
 
