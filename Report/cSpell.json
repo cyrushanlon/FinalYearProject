@@ -7,6 +7,7 @@
     // words - list of words to be always considered correct
     "words": [
         "aboveskip",
+        "apps",
         "backgroundcolor",
         "basicstyle",
         "breaklines",
@@ -39,7 +40,8 @@
         "stringstyle",
         "tabsize",
         "Tecgraf",
-        "upquote"
+        "upquote",
+        "workflow"
     ],
     // flagWords - list of words to be always considered incorrect
     // This is useful for offensive words and common spelling errors.
