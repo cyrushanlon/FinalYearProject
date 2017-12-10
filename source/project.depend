@@ -413,12 +413,13 @@
 	<iostream>
 	"ResourceInterface.h"
 
-1506817038 g:\+ 00 + projects\c++\finalyearproject\source\include\global.h
+1512943115 g:\+ 00 + projects\c++\finalyearproject\source\include\global.h
 	<map>
 	<SFML/Window/Keyboard.hpp>
 	<SFML/Window.hpp>
 	"Drawable.h"
 	"Point.h"
+	"Sound.h"
 	"ResourceManager.h"
 	"LuaState.h"
 
@@ -455,7 +456,7 @@
 	"Drawable.h"
 	"Global.h"
 
-1506817147 source:g:\+ 00 + projects\c++\finalyearproject\source\src\global.cpp
+1512943243 source:g:\+ 00 + projects\c++\finalyearproject\source\src\global.cpp
 	"Global.h"
 
 1504466671 source:g:\+ 00 + projects\c++\finalyearproject\source\src\inputmanager.cpp
@@ -472,7 +473,7 @@
 	"Lua/L_Input.h"
 	"Lua/L_Sound.h"
 
-1507656738 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_drawable.h
+1512945640 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_drawable.h
 	<lua.hpp>
 	"Drawable.h"
 	"Global.h"
@@ -489,7 +490,7 @@
 1508262415 source:g:\+ 00 + projects\c++\finalyearproject\source\src\resource.cpp
 	"Resource.h"
 
-1508346024 source:g:\+ 00 + projects\c++\finalyearproject\source\src\resourcemanager.cpp
+1510361982 source:g:\+ 00 + projects\c++\finalyearproject\source\src\resourcemanager.cpp
 	"ResourceManager.h"
 	<iostream>
 
@@ -606,7 +607,15 @@
 	<SFML/Audio/Export.hpp>
 	<string>
 
-1510361895 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_sound.h
+1512945978 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_sound.h
 	"Global.h"
+	"Sound.h"
+
+1512943072 g:\+ 00 + projects\c++\finalyearproject\source\include\entity\sound.h
 	<SFML/Audio.hpp>
+	"Entity/Point.h"
+
+1512945951 source:g:\+ 00 + projects\c++\finalyearproject\source\src\sound.cpp
+	"Sound.h"
+	"Global.h"
 

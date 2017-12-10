@@ -4,6 +4,7 @@ sf::RenderWindow Window;
 
 std::map<std::string, Drawable*> Drawables;
 std::map<std::string, Point*> Points;
+std::map<std::string, Sound*> Sounds;
 
 ResourceManager rscManager;
 

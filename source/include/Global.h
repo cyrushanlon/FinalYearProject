@@ -7,6 +7,8 @@
 
 #include "Drawable.h"
 #include "Point.h"
+#include "Sound.h"
+
 #include "ResourceManager.h"
 #include "LuaState.h"
 
@@ -14,6 +16,8 @@ extern sf::RenderWindow Window;
 
 extern std::map<std::string, Drawable*> Drawables;
 extern std::map<std::string, Point*> Points;
+
+extern std::map<std::string, Sound*> Sounds;
 
 extern ResourceManager rscManager;
 

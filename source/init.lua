@@ -31,9 +31,9 @@ function Init()
     settings.paddle.pos = settings.windowSize.y - settings.paddle.y
 
     --load the sounds into the sound table
-    sounds.hitPaddle = Sound.New("resources/sounds/ping_pong_8bit_beep_paddle.wav")
-    sounds.hitWall = Sound.New("resources/sounds/ping_pong_8bit_beep_wall.wav")
-    sounds.hitLose = Sound.New("resources/sounds/ping_pong_8bit_beep_lose.wav")
+    sounds.hitPaddle = Sound.New("hitPaddle", "resources/sounds/ping_pong_8bit_beep_paddle.wav")
+    sounds.hitWall = Sound.New("hitWall", "resources/sounds/ping_pong_8bit_beep_wall.wav")
+    sounds.hitLose = Sound.New("hitLose", "resources/sounds/ping_pong_8bit_beep_lose.wav")
 end
 
 function MoveBall(dt)
@@ -63,7 +63,7 @@ function PhysThink(dt)
         ballPos.y + ballSize.y > settings.paddle.pos + settings.paddle.depth or 
         ballPos.y < 0 then
 
-        if not (ballPos.y < 0) then -- top of screen bounce
+        if not (ballPos.y < 0) then -- paddle bounce
             --scale x velocity based on distance from center of paddle
             local paddleCenter = paddlePos.x + (paddleSize.x / 2)
             local ballCenter = ballPos.x + (ballSize.x / 2)
@@ -73,10 +73,14 @@ function PhysThink(dt)
 
             ball.vel.x = ball.vel.x + (settings.speedmultval * mult)
             ball.vel.y = ball.vel.y * (1 + math.abs(mult))
+
+            sounds.hitPaddle:Play()
+        else
+            sounds.hitWall:Play()
         end
 
         ball.vel.y = -ball.vel.y
-        sounds.hitWall:Play()
+        
     end
 
     -- horizontal bounce
@@ -84,6 +88,7 @@ function PhysThink(dt)
         ballPos.x + ballSize.x > settings.windowSize.x then
 
         ball.vel.x = -ball.vel.x
+        sounds.hitWall:Play()
     end     
     ---------------
 

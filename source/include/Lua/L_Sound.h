@@ -2,12 +2,12 @@
 #define L_SOUND_H
 
 #include "Global.h"
-#include<SFML/Audio.hpp>
+#include "Sound.h"
 
-static sf::Sound* l_CheckSound(int i)
+static Sound* l_CheckSound(int i)
 {
     // This checks that the argument is a userdata with the metatable "luaL_Sound"
-    return *(sf::Sound **)luaL_checkudata(Lua.L(), i, "luaL_Sound");
+    return *(Sound **)luaL_checkudata(Lua.L(), i, "luaL_Sound");
 }
 
 //we should pass the lua state in here but instead we will use the global object instead
@@ -17,18 +17,20 @@ static int l_Sound_Constructor(lua_State *L)
     int argc = lua_gettop(L);
 
     //there should be 1 argument
-    if (argc != 1)
+    if (argc != 2) // need both id and path
     {
         return luaL_error(L, "incorrect argument count");
     }
 
+    //gets the first argument of the constructor
+    const char * newID = luaL_checkstring(L, 1);
+
     //create userdata
-    sf::Sound ** udata = (sf::Sound **)lua_newuserdata(L, sizeof(sf::Sound *));
+    Sound ** udata = (Sound **)lua_newuserdata(L, sizeof(Sound *));
 
-    const char * soundPath = luaL_checkstring(L, 1);
-    auto buffer = *rscManager.LoadSoundBuffer(soundPath).get();
-
-    *udata = new sf::Sound(buffer);
+    //create an instance using the correct number of arguments as required
+    const char * soundPath = luaL_checkstring(L, 2);
+    *udata = new Sound(newID, soundPath);
 
     //
     luaL_getmetatable(L, "luaL_Sound");
@@ -41,16 +43,16 @@ static int l_Sound_Constructor(lua_State *L)
 
 static int l_Sound_Play(lua_State *L)
 {
-    sf::Sound* sound = l_CheckSound(1);
+    Sound* sound = l_CheckSound(1);
 
-    sound->play();
+    sound->Play();
 
     return 0;
 }
 
 static int l_Sound_Destructor(lua_State * l)
 {
-    sf::Sound* sound = l_CheckSound(1);
+    Sound* sound = l_CheckSound(1);
     delete sound;
 
     return 0;

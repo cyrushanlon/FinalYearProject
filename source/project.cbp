@@ -68,6 +68,7 @@
 		<Unit filename="include/LuaState.h" />
 		<Unit filename="include/Lua/L_Drawable.h" />
 		<Unit filename="include/Lua/L_Input.h" />
+		<Unit filename="include/Lua/L_Sound.h" />
 		<Unit filename="include/Resource.h" />
 		<Unit filename="include/ResourceInterface.h" />
 		<Unit filename="include/ResourceManager.h" />
