@@ -1,8 +1,8 @@
 *.exe
-*
-/bin/
-*
-/obj/
+
+*/bin/*
+
+*/obj/*
 
 /lib/sfml
 
@@ -19,3 +19,4 @@ Report/document.bcf
 Report/document.bbl
 Report/document-blx.bib
 Report/document.toc
+
