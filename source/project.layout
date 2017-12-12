@@ -2,24 +2,64 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
+	<File name="include\ResourceManager.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="311" topLine="13" />
+		</Cursor>
+	</File>
+	<File name="include\Entity\Point.h" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="353" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\Lua\L_Drawable.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="948" topLine="120" />
+		</Cursor>
+	</File>
+	<File name="include\Entity\Sound.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="215" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\Lua\L_Input.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="966" topLine="3" />
+		</Cursor>
+	</File>
+	<File name="src\Drawable.cpp" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="121" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="src\Resource.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="25" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="include\Lua\L_Input.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\LuaState.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="966" topLine="3" />
+			<Cursor1 position="154" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\Resource.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="345" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="include\Global.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="372" topLine="0" />
+			<Cursor1 position="437" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="include\Resource.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\ResourceManager.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="345" topLine="0" />
+			<Cursor1 position="242" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1506" topLine="54" />
 		</Cursor>
 	</File>
 	<File name="include\LuaState.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -32,54 +72,29 @@
 			<Cursor1 position="198" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="include\ResourceManager.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\Sound.cpp" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="311" topLine="13" />
+			<Cursor1 position="112" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include\Lua\L_Sound.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1034" topLine="29" />
+			<Cursor1 position="661" topLine="24" />
 		</Cursor>
 	</File>
-	<File name="include\Lua\L_Drawable.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include\Entity\Drawable.h" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3608" topLine="12" />
-		</Cursor>
-		<Folding>
-			<Collapse line="12" />
-			<Collapse line="56" />
-			<Collapse line="68" />
-			<Collapse line="79" />
-			<Collapse line="91" />
-			<Collapse line="101" />
-			<Collapse line="113" />
-			<Collapse line="124" />
-			<Collapse line="138" />
-			<Collapse line="144" />
-		</Folding>
-	</File>
-	<File name="src\ResourceManager.cpp" open="1" top="1" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="242" topLine="3" />
+			<Cursor1 position="42" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="include\Lua\L_Sound.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\Point.cpp" open="1" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="288" topLine="6" />
-		</Cursor>
-		<Folding>
-			<Collapse line="51" />
-		</Folding>
-	</File>
-	<File name="src\Drawable.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="642" topLine="0" />
+			<Cursor1 position="356" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src\LuaState.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\Global.cpp" open="1" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="154" topLine="0" />
+			<Cursor1 position="174" topLine="5" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

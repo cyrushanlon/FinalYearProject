@@ -63,6 +63,7 @@
 		</Linker>
 		<Unit filename="include/Entity/Drawable.h" />
 		<Unit filename="include/Entity/Point.h" />
+		<Unit filename="include/Entity/Sound.h" />
 		<Unit filename="include/Global.h" />
 		<Unit filename="include/InputManager.h" />
 		<Unit filename="include/LuaState.h" />
@@ -81,6 +82,7 @@
 		<Unit filename="src/Resource.cpp" />
 		<Unit filename="src/ResourceInterface.cpp" />
 		<Unit filename="src/ResourceManager.cpp" />
+		<Unit filename="src/Sound.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

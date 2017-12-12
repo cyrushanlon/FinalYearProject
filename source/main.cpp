@@ -13,13 +13,13 @@ virtual sizes rather than pixels so different resolutions look the same
 
 BOTH
 _________________
+Anims
 level loading/saving
 Box2D
 Settings
 camera
 screen shake
 draw order (things that might need to be on top of other things etc) (convert map to vector?)
-Anims
 treat userdata as a table so we can add custom fields whenever in Lua
 UI
 networking
@@ -30,6 +30,7 @@ texture
 window
 
 Blockly(?) https://developers.google.com/blockly/
+open source level editor(?)
 
 Docs
 */
