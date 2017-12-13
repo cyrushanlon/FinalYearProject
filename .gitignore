@@ -1,22 +1,29 @@
 *.exe
-
 */bin/*
-
 */obj/*
 
 /lib/sfml
 
-Report/document.aux
+Report/Literature Review.aux
+Report/Literature Review.log
+Report/Literature Review.synctex.gz
+Report/Literature Review.fls
+Report/Literature Review.fdb_latexmk
+Report/Literature Review.blg
+Report/Literature Review.run.xml
+Report/Literature Review.bcf
+Report/Literature Review.bbl
+Report/Literature_Review-blx.bib
+Report/Literature Review.toc
 
-Report/document.log
-
-Report/document.synctex.gz
-Report/document.fls
-Report/document.fdb_latexmk
-Report/document.blg
-Report/document.run.xml
-Report/document.bcf
-Report/document.bbl
-Report/document-blx.bib
-Report/document.toc
-
+Report/Design Statement.aux
+Report/Design Statement.log
+Report/Design Statement.synctex.gz
+Report/Design Statement.fls
+Report/Design Statement.fdb_latexmk
+Report/Design Statement.blg
+Report/Design Statement.run.xml
+Report/Design Statement.bcf
+Report/Design Statement.bbl
+Report/Design_Statement-blx.bib
+Report/Design Statement.toc
