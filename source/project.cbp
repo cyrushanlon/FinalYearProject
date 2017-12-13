@@ -61,6 +61,8 @@
 			<Add library="../lib/lua/liblua53.a" />
 			<Add directory="G:/+ 00 + Projects/C++/FinalYearProject/lib/sfml/lib" />
 		</Linker>
+		<Unit filename="include/Animation.h" />
+		<Unit filename="include/Entity/Animatable.h" />
 		<Unit filename="include/Entity/Drawable.h" />
 		<Unit filename="include/Entity/Point.h" />
 		<Unit filename="include/Entity/Sound.h" />
@@ -74,6 +76,8 @@
 		<Unit filename="include/ResourceInterface.h" />
 		<Unit filename="include/ResourceManager.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Animatable.cpp" />
+		<Unit filename="src/Animation.cpp" />
 		<Unit filename="src/Drawable.cpp" />
 		<Unit filename="src/Global.cpp" />
 		<Unit filename="src/InputManager.cpp" />

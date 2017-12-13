@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1512949643 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
+1513133969 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Entity/Drawable.h"
@@ -394,7 +394,7 @@
 	<string>
 	<vector>
 
-1507656215 g:\+ 00 + projects\c++\finalyearproject\source\include\entity\drawable.h
+1513132606 g:\+ 00 + projects\c++\finalyearproject\source\include\entity\drawable.h
 	<SFML/Graphics.hpp>
 	"Entity/Point.h"
 
@@ -423,7 +423,7 @@
 	"ResourceManager.h"
 	"LuaState.h"
 
-1507658085 g:\+ 00 + projects\c++\finalyearproject\source\include\luastate.h
+1513134098 g:\+ 00 + projects\c++\finalyearproject\source\include\luastate.h
 	<lua.hpp>
 	<SFML/System/Vector2.hpp>
 	<SFML/System/Time.hpp>
@@ -465,7 +465,7 @@
 1504466668 g:\+ 00 + projects\c++\finalyearproject\source\include\inputmanager.h
 	<SFML/Window.hpp>
 
-1510359868 source:g:\+ 00 + projects\c++\finalyearproject\source\src\luastate.cpp
+1513134105 source:g:\+ 00 + projects\c++\finalyearproject\source\src\luastate.cpp
 	<iostream>
 	"LuaState.h"
 	"Lua/L_Window.h"
@@ -622,6 +622,14 @@
 1513051179 source:g:\+ 00 + projects\c++\finalyearproject\source\src\animatable.cpp
 	"Animatable.h"
 
-1513051159 g:\+ 00 + projects\c++\finalyearproject\source\include\entity\animatable.h
+1513054168 g:\+ 00 + projects\c++\finalyearproject\source\include\entity\animatable.h
+	<map>
 	"Drawable.h"
+	"Animation.h"
+
+1513132619 g:\+ 00 + projects\c++\finalyearproject\source\include\animation.h
+	<SFML/Graphics.hpp>
+
+1513132804 source:g:\+ 00 + projects\c++\finalyearproject\source\src\animation.cpp
+	"Animation.h"
 

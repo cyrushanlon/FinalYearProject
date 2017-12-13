@@ -29,7 +29,7 @@ protected:
 private:
     sf::Vector2f virtualPos;
     sf::Sprite sprite;
-    sf::Texture texture;
+    sf::Texture texture; //should be a ref/pointer(?)
     std::string textureUri; //used in the dtor to free the resource
 };
 

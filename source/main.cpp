@@ -42,7 +42,7 @@ int main()
     Window.setVerticalSyncEnabled(false);
 
     //calls the lua function Init()
-    Lua.Initialise();
+    Lua.Initialise("spriteEditor.lua");
 
     //used to get dt during the main loop
     sf::Clock deltaClock;

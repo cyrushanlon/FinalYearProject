@@ -19,7 +19,7 @@ class Animatable : public Drawable
     protected:
 
     private:
-        std::map<std::string, Animation>
+        std::map<std::string, Animation> animations;
         std::string currentFrame;
 };
 

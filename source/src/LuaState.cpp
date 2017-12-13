@@ -19,12 +19,7 @@ LuaState::LuaState()
     RegisterInput();
     RegisterSound();
 
-    //run the init script
-    int err = luaL_dofile(this->state,"init.lua");
-    if(err)
-    {
-        std::cout << "lua error: " << luaL_checkstring(this->state, -1) << std::endl;
-    }
+    //run any engine related files
 }
 
 LuaState::~LuaState()
@@ -115,8 +110,15 @@ void LuaState::Think(sf::Time dt)
     }
 }
 
-void LuaState::Initialise()
+void LuaState::Initialise(const char* initPath)
 {
+    //run the init script
+    int err = luaL_dofile(this->state, initPath);
+    if(err)
+    {
+        std::cout << "lua error: " << luaL_checkstring(this->state, -1) << std::endl;
+    }
+
     //load the function from global
     lua_getglobal(this->L(),"Init");
     if(lua_isfunction(this->L(), -1) )
