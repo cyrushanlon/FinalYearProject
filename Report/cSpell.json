@@ -33,6 +33,7 @@
         "prebreak",
         "printf",
         "rulecolor",
+        "SFML",
         "showspaces",
         "showstringspaces",
         "showtabs",

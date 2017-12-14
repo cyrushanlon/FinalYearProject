@@ -10,9 +10,6 @@
 \usepackage{textcomp}
 \usepackage{parskip}
 
-\author{Cyrus Hanlon} 
-\title{A Scriptable 2D Game Engine}
-
 %Library
 \usepackage[backend=bibtex,style=numeric]{biblatex}
 \addbibresource{document.bib}
@@ -20,9 +17,32 @@
 \setlength{\parskip}{1em}
 
 \begin{document}
-	\maketitle
 
-	\tableofcontents{}
+As the name suggests, it is a progress report and, as such, not expected to be a complete, comprehensive report
+that later becomes the design chapter of your final statement (it is assumed, naturally, that it will inform the
+writing of the report).  
+
+The main goal is that students use this progress report to schedule their work and allow supervisors an opportunity to comment on the approach taken by students and the level of progress made.
+
+Write about requirements
+
+	For a game engine to be a complete engine a wide variety of features are required especially when a high level scripting language is the only input for the majority of developers.
+
+	Documentation is a requirement for people to be able to use the engine to create games.
+
+Write about lib choices for each part
+
+	Parts of the engine will be handled by external libraries, an important property of these libraries is performance and modernness as well as cross platform capability. Ideally the libraries will be open source.
+
+	Rendering, physics, scripting and sound will be handled by external libraries and implemented in the game engine. For rendering and sound there are several choices: SDL, SFML, DirectX and OpenGL with a sound library. SDL is widely used and has very good performance but it is written in pure C so has no object oriented code and is therefore quite dated when compared to SFML. DirectX is only available on the windows and Xbox platforms and is therefore not ideal for this project as cross platform is a requirement. OpenGL with a sound library has the best performance of all of the options but is also the most difficult to use and both SDL and SFML wrap OpenGL and provide access to the context so would be better options.
+
+	SFML or Simple and Fast Multimedia Library is written in C++ and is available on Linux, Mac, Windows and FreeBSD and is fully open source with its code available on github. SFML handles everything from window management and input to sound and networking, the performance is very similar to that of SDL but provides a modern object oriented API unlike SDL. These reasons make SFML the perfect choice for the projects requirements.
+
+Write what needs to be done and in what order
+
+	The first step to creating a game engine is to get each of the libraries working correctly in a single project.
+
+	Entity component system(?) 
 
 	\printbibliography{}
 \end{document}
