@@ -10,6 +10,9 @@
 \usepackage{textcomp}
 \usepackage{parskip}
 
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
 %Library
 \usepackage[backend=bibtex,style=numeric]{biblatex}
 \addbibresource{document.bib}
@@ -20,7 +23,7 @@
 
 The main goal is that students use this progress report to schedule their work and allow supervisors an opportunity to comment on the approach taken by students and the level of progress made.
 
-	Using an agile methodology will be an important part of the development of this project as it provides a far superior workflow as opposed to far more static methodologies such as the waterfall method.
+	Using an agile methodology will be an important part of the development of this project as it provides a far superior workflow as opposed to far more static methodologies such as the waterfall method. This will result in an improved rate of work and the addition of currently unthought of ideas.
 
 Write about requirements
 
@@ -36,11 +39,30 @@ Write about lib choices for each part
 
 	SFML or Simple and Fast Multimedia Library is written in C++ and is available on Linux, Mac, Windows and FreeBSD and is fully open source with its code available on github. SFML handles everything from window management and input to sound and networking, the performance is very similar to that of SDL but provides a modern object oriented API unlike SDL. These reasons make SFML the perfect choice for the projects requirements.
 
-Write what needs to be done and in what order
+Write what needs to be done and in what order 
 
 	The first step to creating a game engine is to get each of the libraries working correctly in a single project.
 
-	The engine will require a variety of features including an entity management system such as the entity component system, this will allow for dynamic game objects that are easily pieced together by a developer. This system will need to manage a wide variety of entities in various forms including drawing, animating, playing sounds and others.
+	The engine will require a variety of features including an entity management system such as the entity component system, this will allow for dynamic game objects that are easily pieced together by a developer. This system will need to manage a wide variety of entities in various forms including drawing, animating, playing sounds and others. An example entity that will behave as a player controlled car would have the following class diagram, the entity component system example is shown in \ref{fig:ClassDiagram1}.
+
+	\begin{figure}[h] 
+		\centering
+		\includegraphics[scale=0.75]{ECS1}
+		\caption{ECS Class Diagram Example}
+		\label{fig:ClassDiagram1}
+	\end{figure}
+
+	For a car to be functional in a game it will need to be drawn and animated, have a physical presence in the world and receive player input. Behaviour can be easily placed into new components when repeated code ius required, in the static inheritance system this is not as simple.
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.75]{ECS2}
+		\caption{ECS Class Diagram Example}
+		\label{fig:ClassDiagram2}
+	\end{figure}
+
+
+	Another example of the same in game behaviour in the more traditional class hierarchy system is much simpler to implement but doesn't allow for the dynamism of the entity component system as is shown in \ref{fig:ClassDiagram2} and the diagram is clearly more complicated and may result in repeated code. 
 
 	Lua script management will be entirely handled within the core of the game engine allowing for creating and removing objects, managing object behaviour, physics interactions, UI, the camera and much more. The engine will be a completely open source and will be expandable and improvable by the community as a result.
 
