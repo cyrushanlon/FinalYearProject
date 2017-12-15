@@ -18,15 +18,13 @@
 
 \begin{document}
 
-As the name suggests, it is a progress report and, as such, not expected to be a complete, comprehensive report
-that later becomes the design chapter of your final statement (it is assumed, naturally, that it will inform the
-writing of the report).  
-
 The main goal is that students use this progress report to schedule their work and allow supervisors an opportunity to comment on the approach taken by students and the level of progress made.
+
+	Using an agile methodology will be an important part of the development of this project as it provides a far superior workflow as opposed to far more static methodologies such as the waterfall method.
 
 Write about requirements
 
-	For a game engine to be a complete engine a wide variety of features are required especially when a high level scripting language is the only input for the majority of developers.
+	For a game engine to be a complete engine a wide variety of features are required especially when a high level scripting language is the only input for developers to use when creating a game.
 
 	Documentation is a requirement for people to be able to use the engine to create games.
 
@@ -42,7 +40,15 @@ Write what needs to be done and in what order
 
 	The first step to creating a game engine is to get each of the libraries working correctly in a single project.
 
-	Entity component system(?) 
+	The engine will require a variety of features including an entity management system such as the entity component system, this will allow for dynamic game objects that are easily pieced together by a developer. This system will need to manage a wide variety of entities in various forms including drawing, animating, playing sounds and others.
 
+	Lua script management will be entirely handled within the core of the game engine allowing for creating and removing objects, managing object behaviour, physics interactions, UI, the camera and much more. The engine will be a completely open source and will be expandable and improvable by the community as a result.
+
+	For the UI an external library created to provide UI capabilities to SFML could be used such as SFGUI or TGUI. This will need binding for use in Lua which could prove to be challenging, however getting the minimum working example would not be too difficult.
+
+	Loading and saving of the game state should be integrated into the game engine to speed up development time for the game developer. Level loading should also be integrated, an external open source level editor application could be used for the creation of the levels, a json or other data file could then be loaded into the game engine reducing the development time even further. Settings should also be managed by the game allowing the Lua developer to load and save any required key value pairs using a provided API, by implementing these features in the game engine the game developer can focus more on the actual game rather than semantics.
+
+	Documentation should be completed after the completion of every Lua accessible feature to ensure that it is kept on top of. Some kind of automatic documentation tool could be used similar to that of Golang's GoDoc or Java's javadoc, this would allow for the the documentation to stay up to date given any changes to the underlying code.
+		
 	\printbibliography{}
 \end{document}
