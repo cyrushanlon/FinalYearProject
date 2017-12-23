@@ -401,7 +401,7 @@
 1504631059 g:\+ 00 + projects\c++\finalyearproject\source\include\entity\point.h
 	<SFML/System.hpp>
 
-1514041920 g:\+ 00 + projects\c++\finalyearproject\source\include\resourcemanager.h
+1514055814 g:\+ 00 + projects\c++\finalyearproject\source\include\resourcemanager.h
 	"Resource.h"
 	<map>
 	<SFML/Graphics.hpp>
@@ -490,7 +490,7 @@
 1508262415 source:g:\+ 00 + projects\c++\finalyearproject\source\src\resource.cpp
 	"Resource.h"
 
-1510361982 source:g:\+ 00 + projects\c++\finalyearproject\source\src\resourcemanager.cpp
+1514054724 source:g:\+ 00 + projects\c++\finalyearproject\source\src\resourcemanager.cpp
 	"ResourceManager.h"
 	<iostream>
 
@@ -627,10 +627,11 @@
 	"Drawable.h"
 	"Animation.h"
 
-1514045718 g:\+ 00 + projects\c++\finalyearproject\source\include\animation.h
+1514055680 g:\+ 00 + projects\c++\finalyearproject\source\include\animation.h
 	<SFML/Graphics.hpp>
 	"Global.h"
 
-1514046020 source:g:\+ 00 + projects\c++\finalyearproject\source\src\animation.cpp
+1514055975 source:g:\+ 00 + projects\c++\finalyearproject\source\src\animation.cpp
 	"Animation.h"
+	<sstream>
 

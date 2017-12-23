@@ -20,6 +20,26 @@ public:
     std::shared_ptr<sf::Texture> LoadTexture(std::string);
     std::shared_ptr<sf::SoundBuffer> LoadSoundBuffer(std::string);
 
+    //generic add to map function
+    //add texture not from file but from a variable
+    template<class T>
+    void Add(T resource, std::string uri)
+    {
+        if (this->resources.count(uri) != 1)
+        {
+            std::shared_ptr<T> rsc = std::make_shared<T>(resource);
+            Resource<T>* newResource = new Resource<T>(rsc, 0);
+
+            resources.insert({uri, newResource});
+            std::cout << "[ResourceManager] Added  |\"" << uri <<"\"" <<std::endl;
+        }
+        else //already exists so we overwrite it(?)
+        {
+            //std::cout << "[ResourceManager] Overwritten  |\"" << uri <<"\"" <<std::endl;
+        }
+
+    }
+
 protected:
 
 private:
@@ -46,7 +66,6 @@ private:
 
         return dynamic_cast<Resource<T>*>(rsc)->resource;
     }
-
 };
 
 #endif // RESOURCEMANAGER_H

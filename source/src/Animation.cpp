@@ -1,7 +1,10 @@
 #include "Animation.h"
 
-Animation::Animation(std::string pathToSheet, sf::Vector2i frameSize, int framerate, int framecount)
+#include <sstream>
+
+Animation::Animation(std::string name, std::string pathToSheet, sf::Vector2i frameSize, int framerate, int framecount)
 {
+    this->name = name;
     this->spritesheetPath = pathToSheet;
     this->frameSize = frameSize;
     this->frameRate = framerate;
@@ -73,6 +76,33 @@ void Animation::SetSpritesheetPath(std::string path)
     //this->regenerate();
 }
 
+bool Animation::isForwards()
+{
+    return forwards;
+}
+void Animation::SetForwards(bool newIsForwards)
+{
+    this->forwards = newIsForwards;
+}
+
+bool Animation::isReversing()
+{
+    return reversing;
+}
+void Animation::SetReversing(bool newIsReversing)
+{
+    this->reversing = newIsReversing;
+}
+
+bool Animation::isLooping()
+{
+    return looping;
+}
+void Animation::SetLooping(bool newIsLooping)
+{
+    this->looping = newIsLooping;
+}
+
 void Animation::regenerate()
 {
     //get the spritesheet as a texture with a no background
@@ -88,8 +118,18 @@ void Animation::regenerate()
         sf::Texture newFrame;
 
         //get tex from image at rect of framesize
-        newFrame.loadFromImage(this->spritesheet, sf::IntRect(x, y, this->frameSize.x, this->frameSize.y));
-        this->frames.push_back(newFrame);
+        const sf::IntRect rect = sf::IntRect(x, y, this->frameSize.x, this->frameSize.y);
+        newFrame.loadFromImage(*this->spritesheet.get(), rect);
+
+        //put frame in resource manager
+        std::stringstream ss;
+        ss << noOfFrames;
+
+        std::string uri = this->spritesheetPath + this->name + ss.str();
+        rscManager.Add(newFrame, uri); //unique URI
+
+        //get frame from resource manager
+        this->frames.push_back(rscManager.LoadTexture(uri));
 
         //increment counters
         x += this->getFrameSize().x;
@@ -97,8 +137,8 @@ void Animation::regenerate()
         noOfFrames++;
 
         //check if we have enough frames or if the next frame will be out of bounds
-        //what should happen if we go out of bounds?
-        if (noOfFrames >= this->frameCount || x + this->frameSize.x > this->spritesheet.getSize().x || y + this->frameSize.y > this->spritesheet.getSize().y)
+        //what should happen if we go out of bounds? (go to next line?)
+        if (noOfFrames >= this->frameCount || x + this->frameSize.x > this->spritesheet->getSize().x || y + this->frameSize.y > this->spritesheet->getSize().y)
             done = true;
     }
 }
@@ -108,8 +148,8 @@ void Animation::loadSpritesheet(std::string path)
     this->spritesheetPath = path;
 
     //load from resource manager and remove the background
-    sf::Image image = *rscManager.LoadImage(path).get();
-    image.createMaskFromColor(this->getBackgroundColor());
+    std::shared_ptr<sf::Image> image = rscManager.LoadImage(path);
+    image->createMaskFromColor(this->getBackgroundColor());
     this->spritesheet = image;
 
     //this->regenerate();
