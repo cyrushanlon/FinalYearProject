@@ -11,6 +11,13 @@ ResourceManager::~ResourceManager()
     //dtor
 }
 
+std::shared_ptr<sf::Image> ResourceManager::LoadImage(std::string uri)
+{
+    auto rsc = this->load<sf::Image>(uri);
+
+    return rsc;
+}
+
 std::shared_ptr<sf::Texture> ResourceManager::LoadTexture(std::string uri)
 {
     auto rsc = this->load<sf::Texture>(uri);

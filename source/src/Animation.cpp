@@ -1,8 +1,11 @@
 #include "Animation.h"
 
-Animation::Animation(std::string pathToSheet, int framerate, sf::Vector2f frameSize)
+Animation::Animation(std::string pathToSheet, sf::Vector2i frameSize, int framerate, int framecount)
 {
-    //ctor
+    this->spritesheetPath = pathToSheet;
+    this->frameSize = frameSize;
+    this->frameRate = framerate;
+    this->frameCount = framecount;
 }
 
 Animation::~Animation()
@@ -17,7 +20,7 @@ int Animation::GetFrameRate()
 void Animation::SetFrameRate(int newFrameRate)
 {
     this->frameRate = newFrameRate;
-    this->regenerate();
+    //this->regenerate();
 }
 
 int Animation::GetFrameCount()
@@ -27,7 +30,7 @@ int Animation::GetFrameCount()
 void Animation::SetFrameCount(int newFrameCount)
 {
     this->frameCount = newFrameCount;
-    this->regenerate();
+    //this->regenerate();
 }
 
 sf::Color Animation::getBackgroundColor()
@@ -37,7 +40,7 @@ sf::Color Animation::getBackgroundColor()
 void Animation::SetBackgroundColor(sf::Color newBackgroundColor)
 {
     this->backgroundColor = newBackgroundColor;
-    this->regenerate();
+    //this->regenerate();
 }
 
 sf::Vector2i Animation::getFrameSize()
@@ -47,7 +50,7 @@ sf::Vector2i Animation::getFrameSize()
 void Animation::SetFrameSize(sf::Vector2i newFrameSize)
 {
     this->frameSize = newFrameSize;
-    this->regenerate();
+    //this->regenerate();
 }
 
 sf::Vector2i Animation::getFirstFrameTopLeft()
@@ -57,7 +60,7 @@ sf::Vector2i Animation::getFirstFrameTopLeft()
 void Animation::SetFirstFrameTopLeft(sf::Vector2i newFirstFrameTopLeft)
 {
     this->firstFrameTopLeft = newFirstFrameTopLeft;
-    this->regenerate();
+    //this->regenerate();
 }
 
 std::string Animation::getSpritesheetPath()
@@ -67,16 +70,47 @@ std::string Animation::getSpritesheetPath()
 void Animation::SetSpritesheetPath(std::string path)
 {
     this->spritesheetPath = path;
-    this->regenerate();
+    //this->regenerate();
 }
 
 void Animation::regenerate()
 {
+    //get the spritesheet as a texture with a no background
+    this->loadSpritesheet(this->getSpritesheetPath());
 
+    //get as many rectangles in a row starting from firstFrameTopLeft of size frameSize until we have frameCount
+    int x = firstFrameTopLeft.x;
+    int y = firstFrameTopLeft.y;
+    int noOfFrames = 0;
+
+    bool done = false;
+    while(!done) {
+        sf::Texture newFrame;
+
+        //get tex from image at rect of framesize
+        newFrame.loadFromImage(this->spritesheet, sf::IntRect(x, y, this->frameSize.x, this->frameSize.y));
+        this->frames.push_back(newFrame);
+
+        //increment counters
+        x += this->getFrameSize().x;
+        y += this->getFrameSize().y;
+        noOfFrames++;
+
+        //check if we have enough frames or if the next frame will be out of bounds
+        //what should happen if we go out of bounds?
+        if (noOfFrames >= this->frameCount || x + this->frameSize.x > this->spritesheet.getSize().x || y + this->frameSize.y > this->spritesheet.getSize().y)
+            done = true;
+    }
 }
 
 void Animation::loadSpritesheet(std::string path)
 {
+    this->spritesheetPath = path;
 
-    this->regenerate();
+    //load from resource manager and remove the background
+    sf::Image image = *rscManager.LoadImage(path).get();
+    image.createMaskFromColor(this->getBackgroundColor());
+    this->spritesheet = image;
+
+    //this->regenerate();
 }

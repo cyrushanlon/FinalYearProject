@@ -3,14 +3,16 @@
 
 //handle multiline animations
 //handle animations that dont go in order left to right(?)
-//allow multiple sprites to use the same animation using resource manager(?)
+//allow multiple animatables to use the same animation using resource manager(?)
 
 #include <SFML/Graphics.hpp>
+
+#include "Global.h"
 
 class Animation
 {
 public:
-    Animation(std::string pathToSheet, int framerate, sf::Vector2f frameSize);
+    Animation(std::string pathToSheet, sf::Vector2i frameSize, int framerate, int framecount);
     virtual ~Animation();
 
     //void LoadFromFile(); //load anim from json file (?)
@@ -43,7 +45,9 @@ private:
     sf::Vector2i firstFrameTopLeft; //top left of the first frame, multiple animations could use the same spritesheet
     std::string spritesheetPath; //holds the URI to the spritesheet
 
-    sf::Texture spritesheet; //should be ref/pointer(?)
+    sf::Image spritesheet; //should be ref/pointer(?)
+
+    std::vector<sf::Texture> frames;
 
     //could make this public so developers could reload the spritesheet when saving an image(?)
     void regenerate(); //this reacquires the frames from the sprite sheet

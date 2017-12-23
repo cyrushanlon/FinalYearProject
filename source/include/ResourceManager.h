@@ -16,6 +16,7 @@ public:
     virtual ~ResourceManager();
     void Unload(std::string);
 
+    std::shared_ptr<sf::Image> LoadImage(std::string);
     std::shared_ptr<sf::Texture> LoadTexture(std::string);
     std::shared_ptr<sf::SoundBuffer> LoadSoundBuffer(std::string);
 
