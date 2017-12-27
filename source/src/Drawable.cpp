@@ -24,14 +24,13 @@ void Drawable::Draw(sf::RenderWindow *window)
 
 void Drawable::SetTexture(std::string uri)
 {
-    //dont really want a local version of the texture but sometimes we may want to have some special texture specific behaviour
-    this->texture = *rscManager.LoadTexture(uri).get();
+    this->texture = rscManager.LoadTexture(uri);
     this->textureUri = uri;
 
-    this->sprite.setTexture(this->texture);
+    this->sprite.setTexture(*this->texture.get());
 }
 
-sf::Texture Drawable::GetTexture()
+std::shared_ptr<sf::Texture> Drawable::GetTexture()
 {
     return this->texture;
 }

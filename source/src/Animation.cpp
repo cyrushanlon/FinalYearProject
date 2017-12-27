@@ -2,6 +2,11 @@
 
 #include <sstream>
 
+Animation::Animation()
+{
+
+}
+
 Animation::Animation(std::string name, std::string pathToSheet, sf::Vector2i frameSize, int framerate, int framecount)
 {
     this->name = name;
@@ -9,6 +14,12 @@ Animation::Animation(std::string name, std::string pathToSheet, sf::Vector2i fra
     this->frameSize = frameSize;
     this->frameRate = framerate;
     this->frameCount = framecount;
+
+    this->SetLooping(false);
+    this->SetForwards(true);
+    this->SetReversing(false);
+
+    this->currentFrame = 0;
 }
 
 Animation::~Animation()
@@ -16,11 +27,11 @@ Animation::~Animation()
     //dtor
 }
 
-int Animation::GetFrameRate()
+float Animation::GetFrameRate()
 {
     return this->frameRate;
 }
-void Animation::SetFrameRate(int newFrameRate)
+void Animation::SetFrameRate(float newFrameRate)
 {
     this->frameRate = newFrameRate;
     //this->regenerate();
@@ -103,37 +114,68 @@ void Animation::SetLooping(bool newIsLooping)
     this->looping = newIsLooping;
 }
 
-void Animation::regenerate()
+std::string Animation::GetNextFrame()
+{
+    int iteration = 1;
+    if (!this->isForwards())
+        iteration = -1;
+
+    int oldFrame = this->currentFrame;
+    this->currentFrame += iteration;
+
+
+    if (this->currentFrame >= this->frameCount)
+    {
+        this->currentFrame = this->frameCount - 1;
+        if (this->isLooping())
+        {
+            this->currentFrame = 0;
+            //oldFrame = 0;
+        }
+    }
+
+    //std::cout << oldFrame << " " << this->frameCount << std::endl;
+    return frames.at(oldFrame);
+}
+
+std::string Animation::GetFrame(int i)
+{
+    return this->frames.at(i);
+}
+
+void Animation::Regenerate()
 {
     //get the spritesheet as a texture with a no background
     this->loadSpritesheet(this->getSpritesheetPath());
 
     //get as many rectangles in a row starting from firstFrameTopLeft of size frameSize until we have frameCount
-    int x = firstFrameTopLeft.x;
-    int y = firstFrameTopLeft.y;
+    int x = this->firstFrameTopLeft.x;
+    int y = this->firstFrameTopLeft.y;
     int noOfFrames = 0;
 
     bool done = false;
-    while(!done) {
+    while(!done)
+    {
         sf::Texture newFrame;
 
         //get tex from image at rect of framesize
         const sf::IntRect rect = sf::IntRect(x, y, this->frameSize.x, this->frameSize.y);
         newFrame.loadFromImage(*this->spritesheet.get(), rect);
 
-        //put frame in resource manager
+        //put frame in resource manager with coordinates and size as ID
         std::stringstream ss;
-        ss << noOfFrames;
+        ss << x << y << this->frameSize.x << this->frameSize.y;
 
-        std::string uri = this->spritesheetPath + this->name + ss.str();
+        std::string uri = this->spritesheetPath + ss.str();
         rscManager.Add(newFrame, uri); //unique URI
 
         //get frame from resource manager
-        this->frames.push_back(rscManager.LoadTexture(uri));
+        //this->frames.push_back(rscManager.LoadTexture(uri));
+        this->frames.push_back(uri);
 
         //increment counters
         x += this->getFrameSize().x;
-        y += this->getFrameSize().y;
+        //y += this->getFrameSize().y;
         noOfFrames++;
 
         //check if we have enough frames or if the next frame will be out of bounds

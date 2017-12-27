@@ -1,6 +1,7 @@
 #ifndef DRAWABLE_H
 #define DRAWABLE_H
 
+#include <memory>
 #include <SFML/Graphics.hpp>
 #include "Entity/Point.h"
 
@@ -22,14 +23,14 @@ public:
 
     //Drawable only, we dont want these to be virtual
     void SetTexture(std::string);
-    sf::Texture GetTexture();
+    std::shared_ptr<sf::Texture> GetTexture();
     sf::Sprite GetSprite();
 protected:
 
 private:
     sf::Vector2f virtualPos;
     sf::Sprite sprite;
-    sf::Texture texture; //should be a ref/pointer(?)
+    std::shared_ptr<sf::Texture> texture;
     std::string textureUri; //used in the dtor to free the resource
 };
 

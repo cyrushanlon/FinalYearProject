@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "Entity/Drawable.h"
+#include "Entity/Animatable.h"
 #include "ResourceManager.h"
 #include "Global.h"
 
@@ -44,6 +44,25 @@ int main()
     //calls the lua function Init()
     Lua.Initialise("spriteEditor.lua");
 
+    //Test code
+    Animatable test("test1");
+
+    Animation walkAnim("walk", "resources/textures/character_sheet.png", sf::Vector2i(400, 600), 10, 4);
+    walkAnim.SetFirstFrameTopLeft(sf::Vector2i(0, 0));
+    walkAnim.SetLooping(true);
+    walkAnim.Regenerate();
+
+    Animation idleAnim("idle", "resources/textures/character_sheet.png", sf::Vector2i(400, 600), 10, 1);
+    idleAnim.SetFirstFrameTopLeft(sf::Vector2i(0, 0));
+    idleAnim.SetLooping(true);
+    idleAnim.Regenerate();
+
+    test.AddAnimation("walk", walkAnim);
+    test.AddAnimation("idle", idleAnim);
+    test.SetAnimation("idle");
+
+    //
+
     //used to get dt during the main loop
     sf::Clock deltaClock;
 
@@ -80,7 +99,7 @@ int main()
 
         //Draw
         //
-        Window.clear(sf::Color::White);
+        Window.clear(sf::Color::Black);
         for( auto const& x : Drawables)
         {
             x.second->Draw(&Window);

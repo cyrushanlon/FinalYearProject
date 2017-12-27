@@ -12,13 +12,14 @@
 class Animation
 {
 public:
+    Animation();
     Animation(std::string name, std::string pathToSheet, sf::Vector2i frameSize, int framerate, int framecount);
     virtual ~Animation();
 
     //void LoadFromFile(); //load anim from json file (?)
 
-    int GetFrameRate();
-    void SetFrameRate(int newFrameRate);
+    float GetFrameRate();
+    void SetFrameRate(float newFrameRate);
 
     int GetFrameCount();
     void SetFrameCount(int newFrameCount);
@@ -42,12 +43,19 @@ public:
     bool isLooping();
     void SetLooping(bool);
 
+    //returns the URI of the next frame in sequence
+    std::string GetNextFrame();
+    //returns the nth frame URI
+    std::string GetFrame(int);
+
+    //this reacquires the frames from the sprite sheet
+    void Regenerate();
 protected:
 
 private:
     std::string name;
 
-    int frameRate; //the target playback speed
+    float frameRate; //the target playback speed
     int frameCount; //number of frames in the animation
     sf::Color backgroundColor; //the color of the background of the spritesheet for transparency
     sf::Vector2i frameSize; //the size of the sprite
@@ -56,14 +64,14 @@ private:
 
     std::shared_ptr<sf::Image> spritesheet;
 
-    std::vector<std::shared_ptr<sf::Texture>> frames; //holds all frames
+    int currentFrame;
+    std::vector<std::string> frames; //holds all frame uris
 
     bool forwards; //starts at end and goes backwards if false
     bool reversing; //1 2 3 4 5 4 3 2 1 2 3 4 5
     bool looping; // repeats forever
 
     //could make this public so developers could reload the spritesheet when saving an image(?)
-    void regenerate(); //this reacquires the frames from the sprite sheet
     void loadSpritesheet(std::string path);
 };
 

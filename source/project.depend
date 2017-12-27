@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1513133969 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
+1514346166 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
-	"Entity/Drawable.h"
+	"Entity/Animatable.h"
 	"ResourceManager.h"
 	"Global.h"
 
@@ -394,14 +394,15 @@
 	<string>
 	<vector>
 
-1513132606 g:\+ 00 + projects\c++\finalyearproject\source\include\entity\drawable.h
+1514307866 g:\+ 00 + projects\c++\finalyearproject\source\include\entity\drawable.h
+	<memory>
 	<SFML/Graphics.hpp>
 	"Entity/Point.h"
 
 1504631059 g:\+ 00 + projects\c++\finalyearproject\source\include\entity\point.h
 	<SFML/System.hpp>
 
-1514055814 g:\+ 00 + projects\c++\finalyearproject\source\include\resourcemanager.h
+1514056100 g:\+ 00 + projects\c++\finalyearproject\source\include\resourcemanager.h
 	"Resource.h"
 	<map>
 	<SFML/Graphics.hpp>
@@ -452,7 +453,7 @@
 	<stdio.h>
 	"lua.h"
 
-1512948652 source:g:\+ 00 + projects\c++\finalyearproject\source\src\drawable.cpp
+1514308017 source:g:\+ 00 + projects\c++\finalyearproject\source\src\drawable.cpp
 	"Drawable.h"
 	"Global.h"
 
@@ -490,7 +491,7 @@
 1508262415 source:g:\+ 00 + projects\c++\finalyearproject\source\src\resource.cpp
 	"Resource.h"
 
-1514054724 source:g:\+ 00 + projects\c++\finalyearproject\source\src\resourcemanager.cpp
+1514056087 source:g:\+ 00 + projects\c++\finalyearproject\source\src\resourcemanager.cpp
 	"ResourceManager.h"
 	<iostream>
 
@@ -619,19 +620,19 @@
 	"Sound.h"
 	"Global.h"
 
-1513051179 source:g:\+ 00 + projects\c++\finalyearproject\source\src\animatable.cpp
+1514346071 source:g:\+ 00 + projects\c++\finalyearproject\source\src\animatable.cpp
 	"Animatable.h"
 
-1513054168 g:\+ 00 + projects\c++\finalyearproject\source\include\entity\animatable.h
+1514309926 g:\+ 00 + projects\c++\finalyearproject\source\include\entity\animatable.h
 	<map>
 	"Drawable.h"
 	"Animation.h"
 
-1514055680 g:\+ 00 + projects\c++\finalyearproject\source\include\animation.h
+1514345956 g:\+ 00 + projects\c++\finalyearproject\source\include\animation.h
 	<SFML/Graphics.hpp>
 	"Global.h"
 
-1514055975 source:g:\+ 00 + projects\c++\finalyearproject\source\src\animation.cpp
+1514346316 source:g:\+ 00 + projects\c++\finalyearproject\source\src\animation.cpp
 	"Animation.h"
 	<sstream>
 
