@@ -129,12 +129,23 @@ std::string Animation::GetNextFrame()
         this->currentFrame = this->frameCount - 1;
         if (this->isLooping())
         {
-            this->currentFrame = 0;
-            //oldFrame = 0;
+            if (this->isReversing())
+            {
+                this->SetForwards(false);
+                this->currentFrame--;
+            }
+            else
+            {
+                this->currentFrame = 0;
+            }
         }
     }
+    else if (this->currentFrame == 0)
+    {
+        this->SetForwards(true);
+    }
 
-    //std::cout << oldFrame << " " << this->frameCount << std::endl;
+    std::cout << oldFrame << " " << std::endl;
     return frames.at(oldFrame);
 }
 
