@@ -20,6 +20,8 @@ public:
     std::shared_ptr<sf::Texture> LoadTexture(std::string);
     std::shared_ptr<sf::SoundBuffer> LoadSoundBuffer(std::string);
 
+    bool Exists(std::string);
+
     //generic add to map function
     //add texture not from file but from a variable
     template<class T>

@@ -37,6 +37,10 @@ std::shared_ptr<sf::SoundBuffer> ResourceManager::LoadSoundBuffer(std::string ur
     return rsc;
 }
 
+bool ResourceManager::Exists(std::string uri)
+{
+    return this->resources.count(uri);
+}
 
 void ResourceManager::Unload(std::string uri)
 {

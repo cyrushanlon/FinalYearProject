@@ -59,7 +59,7 @@ int main()
 
     test.AddAnimation("walk", walkAnim);
     test.AddAnimation("idle", idleAnim);
-    test.SetAnimation("idle");
+    test.SetAnimation("walk");
 
     //
 

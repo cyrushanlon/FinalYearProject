@@ -149,28 +149,30 @@ void Animation::Regenerate()
     this->loadSpritesheet(this->getSpritesheetPath());
 
     //get as many rectangles in a row starting from firstFrameTopLeft of size frameSize until we have frameCount
-    int x = this->firstFrameTopLeft.x;
-    int y = this->firstFrameTopLeft.y;
-    int noOfFrames = 0;
+    unsigned int x = this->firstFrameTopLeft.x;
+    unsigned int y = this->firstFrameTopLeft.y;
+    unsigned int noOfFrames = 0;
 
     bool done = false;
     while(!done)
     {
-        sf::Texture newFrame;
-
-        //get tex from image at rect of framesize
-        const sf::IntRect rect = sf::IntRect(x, y, this->frameSize.x, this->frameSize.y);
-        newFrame.loadFromImage(*this->spritesheet.get(), rect);
-
-        //put frame in resource manager with coordinates and size as ID
+        //create the URI first so we can check if the frame has already been created
         std::stringstream ss;
         ss << x << y << this->frameSize.x << this->frameSize.y;
-
         std::string uri = this->spritesheetPath + ss.str();
-        rscManager.Add(newFrame, uri); //unique URI
 
-        //get frame from resource manager
-        //this->frames.push_back(rscManager.LoadTexture(uri));
+        //if frame already exists
+        if (!rscManager.Exists(uri))
+        {
+            //get tex from image at rect of framesize
+            sf::Texture newFrame;
+            const sf::IntRect rect = sf::IntRect(x, y, this->frameSize.x, this->frameSize.y);
+            newFrame.loadFromImage(*this->spritesheet.get(), rect);
+
+            //add new frame to resource manager
+            rscManager.Add(newFrame, uri);
+        }
+        //add frame to animation
         this->frames.push_back(uri);
 
         //increment counters
