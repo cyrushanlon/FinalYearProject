@@ -13,7 +13,6 @@ virtual sizes rather than pixels so different resolutions look the same
 
 BOTH
 _________________
-Anims
 level loading/saving
 Box2D
 Settings
@@ -26,6 +25,7 @@ networking
 
 LUA
 _________________
+Anims
 texture
 window
 
@@ -50,17 +50,18 @@ int main()
     Animation walkAnim("walk", "resources/textures/character_sheet.png", sf::Vector2i(400, 600), 10, 4);
     walkAnim.SetFirstFrameTopLeft(sf::Vector2i(0, 0));
     walkAnim.SetLooping(true);
+    walkAnim.SetBackgroundColor(sf::Color::White);
     walkAnim.Regenerate();
 
     Animation idleAnim("idle", "resources/textures/character_sheet.png", sf::Vector2i(400, 600), 10, 1);
     idleAnim.SetFirstFrameTopLeft(sf::Vector2i(0, 0));
     idleAnim.SetLooping(true);
+    idleAnim.SetBackgroundColor(sf::Color::White);
     idleAnim.Regenerate();
 
     test.AddAnimation("walk", walkAnim);
     test.AddAnimation("idle", idleAnim);
     test.SetAnimation("walk");
-
     //
 
     //used to get dt during the main loop
@@ -99,7 +100,7 @@ int main()
 
         //Draw
         //
-        Window.clear(sf::Color::Black);
+        Window.clear(sf::Color::Magenta);
         for( auto const& x : Drawables)
         {
             x.second->Draw(&Window);
