@@ -188,12 +188,16 @@ void Animation::Regenerate()
 
         //increment counters
         x += this->getFrameSize().x;
-        //y += this->getFrameSize().y;
         noOfFrames++;
+        if (x + this->frameSize.x > this->spritesheet->getSize().x)
+        {
+            y += this->getFrameSize().y;
+            x = 0;
+        }
 
         //check if we have enough frames or if the next frame will be out of bounds
         //what should happen if we go out of bounds? (go to next line?)
-        if (noOfFrames >= this->frameCount || x + this->frameSize.x > this->spritesheet->getSize().x || y + this->frameSize.y > this->spritesheet->getSize().y)
+        if (noOfFrames >= this->frameCount || y + this->frameSize.y > this->spritesheet->getSize().y)
             done = true;
     }
 }
