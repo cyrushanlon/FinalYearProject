@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1515029262 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
+1515094973 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Entity/Animatable.h"
@@ -466,7 +466,7 @@
 1504466668 g:\+ 00 + projects\c++\finalyearproject\source\include\inputmanager.h
 	<SFML/Window.hpp>
 
-1515028157 source:g:\+ 00 + projects\c++\finalyearproject\source\src\luastate.cpp
+1515094931 source:g:\+ 00 + projects\c++\finalyearproject\source\src\luastate.cpp
 	<iostream>
 	"LuaState.h"
 	"Lua/L_Window.h"
@@ -474,6 +474,7 @@
 	"Lua/L_Input.h"
 	"Lua/L_Sound.h"
 	"Lua/L_Animation.h"
+	"Lua/L_Animatable.h"
 
 1512945640 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_drawable.h
 	<lua.hpp>
@@ -621,7 +622,7 @@
 	"Sound.h"
 	"Global.h"
 
-1514346071 source:g:\+ 00 + projects\c++\finalyearproject\source\src\animatable.cpp
+1515098683 source:g:\+ 00 + projects\c++\finalyearproject\source\src\animatable.cpp
 	"Animatable.h"
 
 1514309926 g:\+ 00 + projects\c++\finalyearproject\source\include\entity\animatable.h
@@ -629,17 +630,23 @@
 	"Drawable.h"
 	"Animation.h"
 
-1514345956 g:\+ 00 + projects\c++\finalyearproject\source\include\animation.h
+1515098611 g:\+ 00 + projects\c++\finalyearproject\source\include\animation.h
 	<SFML/Graphics.hpp>
 	"Global.h"
 
-1514485003 source:g:\+ 00 + projects\c++\finalyearproject\source\src\animation.cpp
+1515096215 source:g:\+ 00 + projects\c++\finalyearproject\source\src\animation.cpp
 	"Animation.h"
 	<sstream>
 
 1515029177 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_animation.h
 	<lua.hpp>
 	"Animation.h"
+	"Global.h"
+	<iostream>
+
+1515094962 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_animatable.h
+	<lua.hpp>
+	"Animatable.h"
 	"Global.h"
 	<iostream>
 

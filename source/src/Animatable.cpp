@@ -32,9 +32,12 @@ void Animatable::SetAnimation(std::string name)
     //check that the animation exists
     if (this->animations.find(name) != this->animations.end())
     {
+        this->animations[this->currentAnim].Reset();
+
         this->currentAnim = name;
         this->currentFrame = 0;
         this->frameClock.restart();
+        //reset old animation to frame 0
     }
 }
 

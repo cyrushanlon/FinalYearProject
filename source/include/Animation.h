@@ -50,6 +50,9 @@ public:
 
     //this reacquires the frames from the sprite sheet
     void Regenerate();
+
+    //resets important variables
+    void Reset();
 protected:
 
 private:

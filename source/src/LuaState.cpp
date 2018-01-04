@@ -7,6 +7,7 @@
 #include "Lua/L_Input.h"
 #include "Lua/L_Sound.h"
 #include "Lua/L_Animation.h"
+#include "Lua/L_Animatable.h"
 
 
 LuaState::LuaState()
@@ -20,6 +21,7 @@ LuaState::LuaState()
     RegisterInput();
     RegisterSound();
     RegisterAnimation();
+    RegisterAnimatable();
 
     //run any engine related files
 }

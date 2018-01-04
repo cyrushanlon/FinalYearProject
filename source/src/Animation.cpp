@@ -14,6 +14,7 @@ Animation::Animation(std::string name, std::string pathToSheet, sf::Vector2i fra
     this->frameSize = frameSize;
     this->frameRate = framerate;
     this->frameCount = framecount;
+    this->backgroundColor = sf::Color::White;
 
     this->SetLooping(false);
     this->SetForwards(true);
@@ -195,6 +196,11 @@ void Animation::Regenerate()
         if (noOfFrames >= this->frameCount || x + this->frameSize.x > this->spritesheet->getSize().x || y + this->frameSize.y > this->spritesheet->getSize().y)
             done = true;
     }
+}
+
+void Animation::Reset()
+{
+    this->currentFrame = 0;
 }
 
 void Animation::loadSpritesheet(std::string path)
