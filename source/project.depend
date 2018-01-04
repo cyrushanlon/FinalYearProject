@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1514484979 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
+1515029262 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Entity/Animatable.h"
@@ -466,13 +466,14 @@
 1504466668 g:\+ 00 + projects\c++\finalyearproject\source\include\inputmanager.h
 	<SFML/Window.hpp>
 
-1513134105 source:g:\+ 00 + projects\c++\finalyearproject\source\src\luastate.cpp
+1515028157 source:g:\+ 00 + projects\c++\finalyearproject\source\src\luastate.cpp
 	<iostream>
 	"LuaState.h"
 	"Lua/L_Window.h"
 	"Lua/L_Drawable.h"
 	"Lua/L_Input.h"
 	"Lua/L_Sound.h"
+	"Lua/L_Animation.h"
 
 1512945640 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_drawable.h
 	<lua.hpp>
@@ -635,4 +636,10 @@
 1514485003 source:g:\+ 00 + projects\c++\finalyearproject\source\src\animation.cpp
 	"Animation.h"
 	<sstream>
+
+1515029177 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_animation.h
+	<lua.hpp>
+	"Animation.h"
+	"Global.h"
+	<iostream>
 

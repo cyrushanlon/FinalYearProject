@@ -145,7 +145,6 @@ std::string Animation::GetNextFrame()
         this->SetForwards(true);
     }
 
-    std::cout << oldFrame << " " << std::endl;
     return frames.at(oldFrame);
 }
 

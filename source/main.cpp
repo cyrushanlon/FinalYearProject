@@ -45,11 +45,13 @@ int main()
     Lua.Initialise("spriteEditor.lua");
 
     //Test code
+
     Animatable test("test1");
 
     Animation walkAnim("walk", "resources/textures/character_sheet.png", sf::Vector2i(400, 600), 10, 4);
     walkAnim.SetFirstFrameTopLeft(sf::Vector2i(0, 0));
     walkAnim.SetLooping(true);
+    //walkAnim.SetReversing(true);
     walkAnim.SetBackgroundColor(sf::Color::White);
     walkAnim.Regenerate();
 
@@ -62,6 +64,7 @@ int main()
     test.AddAnimation("walk", walkAnim);
     test.AddAnimation("idle", idleAnim);
     test.SetAnimation("walk");
+
     //
 
     //used to get dt during the main loop
