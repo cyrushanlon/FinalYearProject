@@ -4,7 +4,7 @@
 
 Drawable::Drawable(std::string ID) : Point(ID) //call base constructor
 {
-    Drawables[this->ID] = this;
+    gsManager.CurrentState()->drawables[this->ID] = this;
 }
 
 Drawable::Drawable(std::string ID, std::string texturePath) : Drawable(ID)//call other constructor

@@ -1,5 +1,10 @@
 #include "Gamestate.h"
 
+Gamestate::Gamestate()
+{
+    this->paused = false;
+}
+
 bool Gamestate::GetPaused()
 {
     return this->paused;

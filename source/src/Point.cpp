@@ -5,7 +5,7 @@
 //set the ID in the initializer list as it is a const val
 Point::Point(std::string inID) : ID(inID)
 {
-    Points[ID] = this;
+    gsManager.CurrentState()->points[ID] = this;
 }
 
 void Point::Think(sf::Time dt)

@@ -4,7 +4,7 @@
 
 Sound::Sound(std::string ID) : Point(ID) //call base constructor
 {
-    Sounds[this->ID] = this;
+    gsManager.CurrentState()->sounds[this->ID] = this;
 }
 
 Sound::Sound(std::string ID, std::string soundPath) : Sound(ID)//call other constructor

@@ -1,11 +1,10 @@
 # depslib dependency file v1.0
-1515116816 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
+1516283433 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Entity/Animatable.h"
 	"ResourceManager.h"
 	"Global.h"
-	<sstream>
 
 1486736397 g:\+ 00 + projects\c++\finalyearproject\lib\sfml\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -415,13 +414,11 @@
 	<iostream>
 	"ResourceInterface.h"
 
-1512943115 g:\+ 00 + projects\c++\finalyearproject\source\include\global.h
+1516283269 g:\+ 00 + projects\c++\finalyearproject\source\include\global.h
 	<map>
 	<SFML/Window/Keyboard.hpp>
 	<SFML/Window.hpp>
-	"Drawable.h"
-	"Point.h"
-	"Sound.h"
+	"GamestateManager.h"
 	"ResourceManager.h"
 	"LuaState.h"
 
@@ -454,11 +451,11 @@
 	<stdio.h>
 	"lua.h"
 
-1515120061 source:g:\+ 00 + projects\c++\finalyearproject\source\src\drawable.cpp
+1516283508 source:g:\+ 00 + projects\c++\finalyearproject\source\src\drawable.cpp
 	"Drawable.h"
 	"Global.h"
 
-1512943243 source:g:\+ 00 + projects\c++\finalyearproject\source\src\global.cpp
+1516283223 source:g:\+ 00 + projects\c++\finalyearproject\source\src\global.cpp
 	"Global.h"
 
 1504466671 source:g:\+ 00 + projects\c++\finalyearproject\source\src\inputmanager.cpp
@@ -487,7 +484,7 @@
 	"Global.h"
 	<iostream>
 
-1515120018 source:g:\+ 00 + projects\c++\finalyearproject\source\src\point.cpp
+1516283521 source:g:\+ 00 + projects\c++\finalyearproject\source\src\point.cpp
 	"Entity/Point.h"
 	"Global.h"
 
@@ -619,11 +616,11 @@
 	<SFML/Audio.hpp>
 	"Entity/Point.h"
 
-1512945951 source:g:\+ 00 + projects\c++\finalyearproject\source\src\sound.cpp
+1516283541 source:g:\+ 00 + projects\c++\finalyearproject\source\src\sound.cpp
 	"Sound.h"
 	"Global.h"
 
-1515119977 source:g:\+ 00 + projects\c++\finalyearproject\source\src\animatable.cpp
+1515120151 source:g:\+ 00 + projects\c++\finalyearproject\source\src\animatable.cpp
 	"Animatable.h"
 
 1514309926 g:\+ 00 + projects\c++\finalyearproject\source\include\entity\animatable.h
@@ -650,4 +647,18 @@
 	"Animatable.h"
 	"Global.h"
 	<iostream>
+
+1516283905 g:\+ 00 + projects\c++\finalyearproject\source\include\gamestatemanager.h
+	"Gamestate.h"
+
+1516283300 g:\+ 00 + projects\c++\finalyearproject\source\include\gamestate.h
+	"Drawable.h"
+	"Point.h"
+	"Sound.h"
+
+1516201204 source:g:\+ 00 + projects\c++\finalyearproject\source\src\gamestate.cpp
+	"Gamestate.h"
+
+1516283938 source:g:\+ 00 + projects\c++\finalyearproject\source\src\gamestatemanager.cpp
+	"GamestateManager.h"
 

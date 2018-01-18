@@ -5,19 +5,21 @@
 #include <SFML/Window/Keyboard.hpp>
 #include <SFML/Window.hpp>
 
-#include "Drawable.h"
-#include "Point.h"
-#include "Sound.h"
+//#include "Drawable.h"
+//#include "Point.h"
+//#include "Sound.h"
+#include "GamestateManager.h"
 
 #include "ResourceManager.h"
 #include "LuaState.h"
 
 extern sf::RenderWindow Window;
 
-extern std::map<std::string, Drawable*> Drawables;
-extern std::map<std::string, Point*> Points;
+//extern std::map<std::string, Drawable*> Drawables;
+//extern std::map<std::string, Point*> Points;
+//extern std::map<std::string, Sound*> Sounds;
 
-extern std::map<std::string, Sound*> Sounds;
+extern GamestateManager gsManager;
 
 extern ResourceManager rscManager;
 

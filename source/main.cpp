@@ -42,6 +42,9 @@ int main()
     Window.setFramerateLimit(500);
     Window.setVerticalSyncEnabled(false);
 
+    gsManager.CreateState("game");
+    gsManager.SetState("game");
+
     //calls the lua function Init()
     Lua.Initialise("spriteEditor.lua");
 
@@ -102,19 +105,24 @@ int main()
         //
         sf::Time dt = deltaClock.restart();
 
+        auto state = gsManager.CurrentState().get();
+
         //first we do the C++ think
         //we might want to move this into lua so its all together, performance shouldnt be an issue
-        for( auto const& x : Points)
+        if (state->GetPaused()) //we dont want to think if the current state is paused
         {
-            x.second->Think(dt);
+            for( auto const& x : state->points)
+            {
+                x.second->Think(dt);
+            }
+            //this calls the lua think function
+            Lua.Think(dt);
         }
-        //this calls the lua think function
-        Lua.Think(dt);
 
         //Draw
         //
         Window.clear(sf::Color::Magenta);
-        for( auto const& x : Drawables)
+        for( auto const& x : state->drawables)
         {
             x.second->Draw(&Window);
         }
