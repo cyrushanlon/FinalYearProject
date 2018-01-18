@@ -1,10 +1,11 @@
 # depslib dependency file v1.0
-1515094973 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
+1515116816 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Entity/Animatable.h"
 	"ResourceManager.h"
 	"Global.h"
+	<sstream>
 
 1486736397 g:\+ 00 + projects\c++\finalyearproject\lib\sfml\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -399,7 +400,7 @@
 	<SFML/Graphics.hpp>
 	"Entity/Point.h"
 
-1504631059 g:\+ 00 + projects\c++\finalyearproject\source\include\entity\point.h
+1515120040 g:\+ 00 + projects\c++\finalyearproject\source\include\entity\point.h
 	<SFML/System.hpp>
 
 1514407116 g:\+ 00 + projects\c++\finalyearproject\source\include\resourcemanager.h
@@ -453,7 +454,7 @@
 	<stdio.h>
 	"lua.h"
 
-1514308017 source:g:\+ 00 + projects\c++\finalyearproject\source\src\drawable.cpp
+1515120061 source:g:\+ 00 + projects\c++\finalyearproject\source\src\drawable.cpp
 	"Drawable.h"
 	"Global.h"
 
@@ -476,7 +477,7 @@
 	"Lua/L_Animation.h"
 	"Lua/L_Animatable.h"
 
-1512945640 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_drawable.h
+1515119909 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_drawable.h
 	<lua.hpp>
 	"Drawable.h"
 	"Global.h"
@@ -486,7 +487,7 @@
 	"Global.h"
 	<iostream>
 
-1512948744 source:g:\+ 00 + projects\c++\finalyearproject\source\src\point.cpp
+1515120018 source:g:\+ 00 + projects\c++\finalyearproject\source\src\point.cpp
 	"Entity/Point.h"
 	"Global.h"
 
@@ -622,7 +623,7 @@
 	"Sound.h"
 	"Global.h"
 
-1515098683 source:g:\+ 00 + projects\c++\finalyearproject\source\src\animatable.cpp
+1515119977 source:g:\+ 00 + projects\c++\finalyearproject\source\src\animatable.cpp
 	"Animatable.h"
 
 1514309926 g:\+ 00 + projects\c++\finalyearproject\source\include\entity\animatable.h
@@ -634,7 +635,7 @@
 	<SFML/Graphics.hpp>
 	"Global.h"
 
-1515096215 source:g:\+ 00 + projects\c++\finalyearproject\source\src\animation.cpp
+1515099358 source:g:\+ 00 + projects\c++\finalyearproject\source\src\animation.cpp
 	"Animation.h"
 	<sstream>
 

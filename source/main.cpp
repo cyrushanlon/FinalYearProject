@@ -13,6 +13,7 @@ virtual sizes rather than pixels so different resolutions look the same
 
 BOTH
 _________________
+Gamestate
 level loading/saving
 Box2D
 Settings
@@ -45,26 +46,35 @@ int main()
     Lua.Initialise("spriteEditor.lua");
 
     //Test code
-/*
-    Animatable test("test1");
-
-    Animation walkAnim("walk", "resources/textures/character_sheet.png", sf::Vector2i(400, 600), 10, 4);
+    /*
+    Animation walkAnim("walk", "resources/textures/metalslug_mummy37x45.png", sf::Vector2i(37, 45), 50, 18);
     walkAnim.SetFirstFrameTopLeft(sf::Vector2i(0, 0));
     walkAnim.SetLooping(true);
     //walkAnim.SetReversing(true);
     walkAnim.SetBackgroundColor(sf::Color::White);
     walkAnim.Regenerate();
 
-    Animation idleAnim("idle", "resources/textures/character_sheet.png", sf::Vector2i(400, 600), 10, 1);
-    idleAnim.SetFirstFrameTopLeft(sf::Vector2i(0, 0));
-    idleAnim.SetLooping(true);
-    idleAnim.SetBackgroundColor(sf::Color::White);
-    idleAnim.Regenerate();
+    for (int x = 0; x < 1; x++)
+    {
+        for (int y = 0; y < 1; y++)
+        {
+            std::ostringstream ss;
+            ss << x << " " << y;
 
-    test.AddAnimation("walk", walkAnim);
-    test.AddAnimation("idle", idleAnim);
-    test.SetAnimation("walk");
-*/
+            //Drawable* a = new Drawable("test" + ss.str(), "resources/textures/ball.png");
+            //std::cout << i * 32 << " " << 0 << std::endl;
+            //a->SetPos(sf::Vector2f(i * 32, 0));
+
+            Animatable* test = new Animatable("test" + ss.str());
+            test->AddAnimation("walk", walkAnim);
+            test->SetAnimation("walk");
+            test->SetPos(sf::Vector2f(x * 32, y * 32));
+
+            std::cout << "test" + ss.str() << std::endl;
+        }
+    }
+    std::cout << Drawables.size() <<std::endl;
+    */
     //
 
     //used to get dt during the main loop

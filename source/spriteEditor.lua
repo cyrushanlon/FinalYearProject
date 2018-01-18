@@ -10,28 +10,40 @@ function Init()
 
 end
 
-local testAnimatable = Animatable.New("test1")
+local objects = {}
 
-local idleAnim = Animation.New("walk", "resources/textures/character_sheet.png", 400, 600, 10, 1)
-idleAnim:SetFirstFrameTopLeft(0, 0);
-idleAnim:SetLooping(true);
---idleAnim:SetBackgroundColor(sf::Color::White);
-idleAnim:Regenerate();
-
-local walkAnim = Animation.New("walk", "resources/textures/character_sheet.png", 400, 600, 10, 4)
+--[[
+local walkAnim = Animation.New("walk", "resources/textures/metalslug_mummy37x45.png", 37, 45, 50, 18)
 walkAnim:SetFirstFrameTopLeft(0, 0);
 walkAnim:SetLooping(true);
 --idleAnim:SetBackgroundColor(sf::Color::White);
 walkAnim:Regenerate();
 
-testAnimatable:AddAnimation("idle", idleAnim)
-testAnimatable:AddAnimation("walk", walkAnim)
-testAnimatable:SetAnimation("idle")
+for i=1, 10000 do 
+    local testAnimatable = Animatable.New("test"..i)
+
+    testAnimatable:AddAnimation("walk", walkAnim)
+    testAnimatable:SetAnimation("walk")
+
+    objects[i] = testAnimatable
+    print(i)
+end
+]]
+
+for x=0, 100 do 
+    for y=0, 100 do 
+        local a = Drawable.New("test".. x .. " " .. y, "resources/textures/ball.png")
+        a:SetPos(x * 32, y * 32)
+        objects[x.." "..y] = a
+    end
+end
 
 local pressed = false
 local lastPressed = false
 
 function Think(dt)
+
+    --print(1/dt)
 
     lastPressed = pressed
 

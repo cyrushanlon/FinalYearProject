@@ -66,9 +66,12 @@
 		<Unit filename="include/Entity/Drawable.h" />
 		<Unit filename="include/Entity/Point.h" />
 		<Unit filename="include/Entity/Sound.h" />
+		<Unit filename="include/Gamestate.h" />
+		<Unit filename="include/GamestateManager.h" />
 		<Unit filename="include/Global.h" />
 		<Unit filename="include/InputManager.h" />
 		<Unit filename="include/LuaState.h" />
+		<Unit filename="include/Lua/L_Animatable.h" />
 		<Unit filename="include/Lua/L_Animation.h" />
 		<Unit filename="include/Lua/L_Drawable.h" />
 		<Unit filename="include/Lua/L_Input.h" />
@@ -80,6 +83,8 @@
 		<Unit filename="src/Animatable.cpp" />
 		<Unit filename="src/Animation.cpp" />
 		<Unit filename="src/Drawable.cpp" />
+		<Unit filename="src/Gamestate.cpp" />
+		<Unit filename="src/GamestateManager.cpp" />
 		<Unit filename="src/Global.cpp" />
 		<Unit filename="src/InputManager.cpp" />
 		<Unit filename="src/LuaState.cpp" />
