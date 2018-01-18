@@ -109,7 +109,7 @@ int main()
 
         //first we do the C++ think
         //we might want to move this into lua so its all together, performance shouldnt be an issue
-        if (state->GetPaused()) //we dont want to think if the current state is paused
+        if (!state->GetPaused()) //we dont want to think if the current state is paused
         {
             for( auto const& x : state->points)
             {

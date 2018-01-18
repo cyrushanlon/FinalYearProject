@@ -198,6 +198,8 @@ static int l_Animation_Regenerate(lua_State * l)
     Animation* anim = l_CheckAnimation(1);
 
     anim->Regenerate();
+
+    return 0;
 }
 
 static int l_Animation_Destructor(lua_State * l)
