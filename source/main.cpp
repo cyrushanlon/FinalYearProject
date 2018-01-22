@@ -13,11 +13,10 @@ virtual sizes rather than pixels so different resolutions look the same
 
 BOTH
 _________________
-Gamestate
+cameras / multiple views so things like minimaps/ui can be created
 level loading/saving
 Box2D
 Settings
-camera
 screen shake
 draw order (things that might need to be on top of other things etc) (convert map to vector?)
 treat userdata as a table so we can add custom fields whenever in Lua
@@ -26,7 +25,8 @@ networking
 
 LUA
 _________________
-Anims
+Anims //need to inherit animatable metatable from drawable metatable
+keypress and release hooks
 texture
 window
 
@@ -42,7 +42,7 @@ int main()
     Window.setFramerateLimit(500);
     Window.setVerticalSyncEnabled(false);
 
-    gsManager.CreateState("game");
+    gsManager.CreateState("game").get()->AddView("main", sf::FloatRect(0,0, 1280, 720));
     gsManager.SetState("game");
 
     //calls the lua function Init()
@@ -99,6 +99,12 @@ int main()
                 Lua.HookLostFocus();
             if (event.type == sf::Event::GainedFocus)
                 Lua.HookGainedFocus();
+            if (event.type == sf::Event::Resized)
+            {
+                // update the view to the new size of the window, stops stretching
+                sf::FloatRect visibleArea(0, 0, event.size.width, event.size.height);
+                Window.setView(sf::View(visibleArea));
+            }
         }
 
         //Think
@@ -122,9 +128,18 @@ int main()
         //Draw
         //
         Window.clear(sf::Color::Magenta);
-        for( auto const& x : state->drawables)
+        Window.setView(Window.getDefaultView());
+
+        //for each view we want to go through and see if we want to draw anything
+        //this may end up expensive and should be improved
+        for( auto const& view : state->views)
         {
-            x.second->Draw(&Window);
+            Window.setView(view.second);
+            for( auto const& x : state->drawables)
+            {
+                if (x.second->GetViewTarget() == view.first)
+                    x.second->Draw(&Window);
+            }
         }
         Window.display();
     }

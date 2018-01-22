@@ -21,19 +21,29 @@ static int l_Animatable_Constructor(lua_State *L)
     //first we check how many arguments we are dealing with
     int argc = lua_gettop(L);
 
+    //create userdata
+    Animatable ** udata = (Animatable **)lua_newuserdata(L, sizeof(Animatable *));
     //there should be 1 arguments
-    //std::string id
-    if (argc != 1)
+    //std::string id and viewtarget
+    if (argc == 1)
+    {
+        //gets the 1 argument
+        const char * id = luaL_checkstring(L, 1);
+
+        *udata = new Animatable(id);
+    }
+    else if (argc == 2)
+    {
+        //gets the 1 argument
+        const char * id = luaL_checkstring(L, 1);
+        const char * view = luaL_checkstring(L, 2);
+
+        *udata = new Animatable(id, view);
+    }
+    else
     {
         return luaL_error(L, "incorrect argument count");
     }
-
-    //gets the 1 argument
-    const char * id = luaL_checkstring(L, 1);
-
-    //create userdata
-    Animatable ** udata = (Animatable **)lua_newuserdata(L, sizeof(Animatable *));
-    *udata = new Animatable(id);
 
     //
     luaL_getmetatable(L, "luaL_Animatable");

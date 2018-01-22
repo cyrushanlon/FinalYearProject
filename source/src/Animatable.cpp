@@ -6,6 +6,11 @@ Animatable::Animatable(std::string id) : Drawable(id)
     //ctor
 }
 
+Animatable::Animatable(std::string id, std::string viewTarget) : Drawable(id)
+{
+    this->SetViewTarget(viewTarget);
+}
+
 Animatable::~Animatable()
 {
     //dtor

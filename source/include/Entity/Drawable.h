@@ -10,6 +10,7 @@ class Drawable : public Point
 public:
     Drawable(std::string);
     Drawable(std::string, std::string);
+    Drawable(std::string, std::string, std::string);
 
     virtual ~Drawable();
     virtual void Draw(sf::RenderWindow*);
@@ -25,6 +26,9 @@ public:
     void SetTexture(std::string);
     std::shared_ptr<sf::Texture> GetTexture();
     sf::Sprite GetSprite();
+    //view
+    std::string GetViewTarget();
+    void SetViewTarget(std::string);
 protected:
 
 private:
@@ -32,6 +36,8 @@ private:
     sf::Sprite sprite;
     std::shared_ptr<sf::Texture> texture;
     std::string textureUri; //used in the dtor to free the resource
+
+    std::string viewTarget; //holds the id of the view that the drawable should be drawn onto
 };
 
 #endif // DRAWABLE_H

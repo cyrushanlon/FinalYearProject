@@ -10,6 +10,7 @@ class Animatable : public Drawable
 {
     public:
         Animatable(std::string id);
+        Animatable(std::string id, std::string viewTarget);
         virtual ~Animatable();
 
         //change the frame based on dt

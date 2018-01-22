@@ -34,7 +34,13 @@ static int l_Drawable_Constructor(lua_State *L)
     Drawable ** udata = (Drawable **)lua_newuserdata(L, sizeof(Drawable *));
 
     //create an instance using the correct number of arguments as required
-    if(argc == 2) // id and path
+    if(argc == 3) // id and path and viewtarget
+    {
+        const char * texturePath = luaL_checkstring(L, 2);
+        const char * viewtarget = luaL_checkstring(L, 3);
+        *udata = new Drawable(newID, texturePath, viewtarget);
+    }
+    else if(argc == 2) // id and path
     {
         const char * texturePath = luaL_checkstring(L, 2);
         *udata = new Drawable(newID, texturePath);

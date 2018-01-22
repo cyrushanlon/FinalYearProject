@@ -20,3 +20,8 @@ std::shared_ptr<Gamestate> GamestateManager::CurrentState()
 {
     return this->states[this->currentState];
 }
+
+void GamestateManager::RemoveState(std::string ID)
+{
+    this->states.erase(ID);
+}

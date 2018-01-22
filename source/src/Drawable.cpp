@@ -5,11 +5,17 @@
 Drawable::Drawable(std::string ID) : Point(ID) //call base constructor
 {
     gsManager.CurrentState()->drawables[this->ID] = this;
+    this->SetViewTarget("main");
 }
 
 Drawable::Drawable(std::string ID, std::string texturePath) : Drawable(ID)//call other constructor
 {
     this->SetTexture(texturePath);
+}
+
+Drawable::Drawable(std::string ID, std::string texturePath, std::string viewTarget) : Drawable(ID, texturePath)//call other constructor
+{
+    this->viewTarget = viewTarget;
 }
 
 Drawable::~Drawable()
@@ -69,4 +75,14 @@ sf::Vector2f Drawable::GetOrigin()
 void Drawable::SetOrigin(sf::Vector2f origin)
 {
     this->sprite.setOrigin(origin);
+}
+
+std::string Drawable::GetViewTarget()
+{
+    return this->viewTarget;
+}
+
+void Drawable::SetViewTarget(std::string id)
+{
+    this->viewTarget = id;
 }

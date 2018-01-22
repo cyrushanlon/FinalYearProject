@@ -12,30 +12,20 @@ end
 
 local objects = {}
 
---[[
 local walkAnim = Animation.New("walk", "resources/textures/metalslug_mummy37x45.png", 37, 45, 50, 18)
 walkAnim:SetFirstFrameTopLeft(0, 0);
 walkAnim:SetLooping(true);
 --idleAnim:SetBackgroundColor(sf::Color::White);
 walkAnim:Regenerate();
 
-for i=1, 10000 do 
-    local testAnimatable = Animatable.New("test"..i)
+for i=1, 1 do 
+    local testAnimatable = Animatable.New("test"..i, "2")
+    --testAnimatable:SetPos(i*37, 0)
 
     testAnimatable:AddAnimation("walk", walkAnim)
     testAnimatable:SetAnimation("walk")
 
-    objects[i] = testAnimatable
-    print(i)
-end
-]]
-
-for x=0, 100 do 
-    for y=0, 100 do 
-        local a = Drawable.New("test".. x .. " " .. y, "resources/textures/ball.png")
-        a:SetPos(x * 32, y * 32)
-        objects[x.." "..y] = a
-    end
+    objects[1] = testAnimatable
 end
 
 local pressed = false
