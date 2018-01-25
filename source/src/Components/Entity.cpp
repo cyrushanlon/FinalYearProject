@@ -8,6 +8,7 @@ Entity::Entity()
 
 bool Entity::AddComponent(std::shared_ptr<Component> comp)
 {
+    comp.get()->SetParent(this);
     //make this more generic rather than a bunch of if else
     std::string name = comp.get()->Name();
 

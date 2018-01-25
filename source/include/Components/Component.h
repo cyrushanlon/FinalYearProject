@@ -8,13 +8,13 @@ class Entity;
 class Component
 {
 public:
-    Component(std::string ID);
+    Component(std::string);
 
     std::string Name();
-    void SetParent(std::shared_ptr<Entity> parent);
+    void SetParent(Entity* parent);
 private:
     std::string name;
-    std::shared_ptr<Entity> parent;
+    Entity* parent;
 };
 
 #endif //COMPONENT_H
