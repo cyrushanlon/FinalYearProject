@@ -9,12 +9,13 @@
 class DrawableComponent : public Component
 {
 public:
-    //virtual ~DrawableComponent();
-    DrawableComponent();
+    DrawableComponent(std::string);
+    ~DrawableComponent();
 
     sf::Sprite sprite;
     std::shared_ptr<sf::Texture> texture;
     std::string textureUri; //used in the dtor to free the resource
+    std::string viewTarget;
 };
 
 #endif // DRAWABLECOMPONENT_H

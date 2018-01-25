@@ -20,9 +20,14 @@ public:
 
     }
     //std::shared_ptr<Component> GetComponent(std::string);
-    bool AddComponent()
+    bool AddComponent(std::shared_ptr<Component> comp)
     {
-        gsManager.CurrentState().get()->drawableComponents.push_back(std::make_shared<DrawableComponent>());
+        //make this more generic rather than a bunch of if else
+        std::string name = comp.get()->Name();
+        if (name == "drawable")
+            gsManager.CurrentState().get()->drawableComponents.push_back(std::static_pointer_cast<DrawableComponent>(comp));
+        else
+            std::cout << "unhandled " << name;
     }
 private:
     //std::vector<std::shared_ptr<Component> > components;

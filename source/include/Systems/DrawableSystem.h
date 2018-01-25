@@ -10,8 +10,9 @@ public:
     void Draw(sf::RenderWindow& window)
     {
         auto drawables = gsManager.CurrentState().get()->drawableComponents;
+        window.draw(drawables[0].get()->sprite);
 
-        std::cout << "draw" << drawables[0].get()->textureUri;
+        //std::cout << "draw" << drawables[0].get()->textureUri;
     }
 };
 

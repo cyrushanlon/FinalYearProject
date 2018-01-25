@@ -9,7 +9,10 @@ public:
         this->name = ID;
     }
 
-    std::string Name();
+    std::string Name()
+    {
+        return this->name;
+    }
 private:
     std::string name;
 };

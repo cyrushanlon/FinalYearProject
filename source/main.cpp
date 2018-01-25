@@ -56,7 +56,7 @@ int main()
 
     //Test code
     Entity ent;
-    ent.AddComponent();//std::make_shared<DrawableComponent>());
+    ent.AddComponent(std::make_shared<DrawableComponent>("resources/textures/smile.png"));
     //
 
     //used to get dt during the main loop
