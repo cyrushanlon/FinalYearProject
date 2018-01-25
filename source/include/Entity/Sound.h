@@ -1,6 +1,6 @@
 #ifndef SOUND_H
 #define SOUND_H
-
+/*
 #include<SFML/Audio.hpp>
 #include "Entity/Point.h"
 
@@ -25,5 +25,5 @@ private:
     sf::Sound sound;
     std::string soundUri; //used in the dtor to free the resource
 };
-
+*/
 #endif // SOUND_H

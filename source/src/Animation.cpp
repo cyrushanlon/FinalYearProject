@@ -27,7 +27,13 @@ Animation::Animation(std::string name, std::string pathToSheet, sf::Vector2i fra
 
 Animation::~Animation()
 {
-    //dtor
+    std::cout << "DESRTOY";
+    //unload each frame
+    for (int i = 0; i < this->frames.size(); i++)
+    {
+        std::cout << "a";
+        rscManager.Unload(this->frames.at(i));
+    }
 }
 
 std::string Animation::GetName()

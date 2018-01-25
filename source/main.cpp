@@ -57,20 +57,15 @@ int main()
     //Test code
     Entity ent = Entity("test1");
     ent.AddComponent(std::make_shared<AnimatableComponent>());
-    Animation anim("walk", "resources/textures/metalslug_mummy37x45.png", sf::Vector2i(37, 45), 50, 18);
-    anim.SetLooping(true);
-    anim.Regenerate();
+    std::shared_ptr<Animation> anim = std::make_shared<Animation>("walk", "resources/textures/metalslug_mummy37x45.png", sf::Vector2i(37, 45), 50, 18);
+    anim.get()->SetLooping(true);
+    anim.get()->Regenerate();
     //get game state
     auto gs = gsManager.CurrentState().get();
     //get component
     AnimatableComponent* comp = gs->animatableComponents[ent.GetID()].get();
-    //add animation
-    comp->animations.emplace(anim.GetName(), anim);
-    //set animation
-    comp->animations[comp->currentAnim].Reset();
-    comp->currentAnim = "walk";
-    comp->currentFrame = 0;
-    comp->frameClock.restart();
+    comp->AddAnimation(anim);
+    comp->SetAnimation("walk");
     //
 
     //used to get dt during the main loop
@@ -104,18 +99,13 @@ int main()
         //
         sf::Time dt = deltaClock.restart();
 
-        ecsManager.Think(dt);
-
         auto state = gsManager.CurrentState().get();
 
         //first we do the C++ think
         //we might want to move this into lua so its all together, performance shouldnt be an issue
         if (!state->GetPaused()) //we dont want to think if the current state is paused
         {
-            for( auto const& x : state->points)
-            {
-                x.second->Think(dt);
-            }
+            ecsManager.Think(dt);
             //this calls the lua think function
             Lua.Think(dt);
         }
@@ -126,18 +116,20 @@ int main()
         Window.clear(sf::Color::Magenta);
         Window.setView(Window.getDefaultView());
 
-        ecsManager.Draw(Window);
 
         //for each view we want to go through and see if we want to draw anything
         //this may end up expensive and should be improved
         for( auto const& view : state->views)
         {
+            ecsManager.Draw(Window);
+            /*
             Window.setView(view.second);
             for( auto const& x : state->drawables)
             {
                 if (x.second->GetViewTarget() == view.first)
                     x.second->Draw(&Window);
             }
+            */
         }
         Window.display();
     }

@@ -19,10 +19,10 @@ public:
             {
                 //check if there has been enough time since the last frame
                 auto time = x->frameClock.getElapsedTime();
-                if (time >= sf::seconds(1 / x->animations[x->currentAnim].GetFrameRate()))
+                if (time >= sf::seconds(1 / x->animations.at(x->currentAnim).get()->GetFrameRate()))
                 {
                     x->frameClock.restart();
-                    std::string texURI = x->animations[x->currentAnim].GetNextFrame();
+                    std::string texURI = x->animations.at(x->currentAnim).get()->GetNextFrame();
 
                     //set texture
                     x->texture = rscManager.LoadTexture(texURI);

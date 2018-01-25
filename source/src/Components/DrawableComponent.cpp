@@ -26,3 +26,33 @@ DrawableComponent::~DrawableComponent()
 {
     rscManager.Unload(this->textureUri);
 }
+
+sf::Vector2f DrawableComponent::GetPos()
+{
+    return this->vPos;
+}
+void DrawableComponent::SetPos(sf::Vector2f pos)
+{
+    this->vPos = pos;
+    this->sprite.setPosition(pos);
+}
+
+float DrawableComponent::GetAng()
+{
+    return this->sprite.getRotation();
+}
+
+void DrawableComponent::SetAng(float in)
+{
+    this->sprite.setRotation(in);
+}
+
+sf::Vector2f DrawableComponent::GetOrigin()
+{
+    return this->sprite.getOrigin();
+}
+
+void DrawableComponent::SetOrigin(sf::Vector2f in)
+{
+    this->sprite.setOrigin(in);
+}

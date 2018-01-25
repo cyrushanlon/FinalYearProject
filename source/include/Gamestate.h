@@ -3,9 +3,7 @@
 
 #include <memory>
 
-#include "Drawable.h"
-#include "Point.h"
-#include "Sound.h"
+//#include "Sound.h"
 
 #include "Components/DrawableComponent.h"
 #include "Components/AnimatableComponent.h"
@@ -14,16 +12,8 @@ class Gamestate
 {
 public:
     Gamestate();
-    //std::map<std::string, Drawable*> GetDrawables();
-    //std::map<std::string, Point*> GetPoints();
     //std::map<std::string, Sound*> GetSounds();
-
-    //hold everything that we want to process
-    //convert to vectors of shared pointers
-    //should probably be private
-    std::map<std::string, Drawable*> drawables;
-    std::map<std::string, Point*> points;
-    std::map<std::string, Sound*> sounds;
+    //std::map<std::string, Sound*> sounds;
 
     //we need a map of each type of component, with a vector for drawables so we can have a draw order
     std::vector<std::shared_ptr<DrawableComponent>> drawableComponents;

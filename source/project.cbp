@@ -62,6 +62,7 @@
 			<Add directory="G:/+ 00 + Projects/C++/FinalYearProject/lib/sfml/lib" />
 		</Linker>
 		<Unit filename="include/Animation.h" />
+		<Unit filename="include/Components/AnimatableComponent.h" />
 		<Unit filename="include/Components/Component.h" />
 		<Unit filename="include/Components/DrawableComponent.h" />
 		<Unit filename="include/Components/Entity.h" />
@@ -89,11 +90,15 @@
 		<Unit filename="include/ResourceInterface.h" />
 		<Unit filename="include/ResourceManager.h" />
 		<Unit filename="include/StringsToKeys.h" />
+		<Unit filename="include/Systems/AnimatableSystem.h" />
 		<Unit filename="include/Systems/DrawableSystem.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Animatable.cpp" />
 		<Unit filename="src/Animation.cpp" />
+		<Unit filename="src/Components/AnimatableComponent.cpp" />
+		<Unit filename="src/Components/Component.cpp" />
 		<Unit filename="src/Components/DrawableComponent.cpp" />
+		<Unit filename="src/Components/Entity.cpp" />
 		<Unit filename="src/Drawable.cpp" />
 		<Unit filename="src/ECSManager.cpp" />
 		<Unit filename="src/Gamestate.cpp" />

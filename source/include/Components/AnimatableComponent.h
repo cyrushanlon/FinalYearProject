@@ -11,10 +11,13 @@ public:
     AnimatableComponent();
     ~AnimatableComponent();
 
-    std::map<std::string, Animation> animations;
+    std::map<std::string, std::shared_ptr<Animation>> animations;
     std::string currentAnim;
     int currentFrame;
     sf::Clock frameClock;//convert to 1 centralised timer?
+
+    void AddAnimation(std::shared_ptr<Animation> anim);
+    void SetAnimation(std::string name);
 };
 
 #endif // ANIMATABLECOMPONENT_H

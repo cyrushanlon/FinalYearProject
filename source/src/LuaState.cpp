@@ -2,12 +2,14 @@
 
 #include "LuaState.h"
 
-#include "Lua/L_Window.h"
+/*
 #include "Lua/L_Drawable.h"
-#include "Lua/L_Input.h"
-#include "Lua/L_Sound.h"
-#include "Lua/L_Animation.h"
 #include "Lua/L_Animatable.h"
+#include "Lua/L_Sound.h"
+*/
+#include "Lua/L_Input.h"
+#include "Lua/L_Window.h"
+#include "Lua/L_Animation.h"
 #include "Lua/L_Gamestate.h"
 
 LuaState::LuaState()
@@ -16,12 +18,14 @@ LuaState::LuaState()
     luaL_openlibs(this->state);
 
     //register everything from C++ into lua
+
+    //RegisterDrawable();
+    //RegisterSound();
+    //RegisterAnimatable();
+
     RegisterWindow();
-    RegisterDrawable();
     RegisterInput();
-    RegisterSound();
     RegisterAnimation();
-    RegisterAnimatable();
     RegisterGamestate();
 
     //run any engine related files
