@@ -74,7 +74,9 @@
 		<Unit filename="include/Lua/L_Animatable.h" />
 		<Unit filename="include/Lua/L_Animation.h" />
 		<Unit filename="include/Lua/L_Drawable.h" />
+		<Unit filename="include/Lua/L_Gamestate.h" />
 		<Unit filename="include/Lua/L_Input.h" />
+		<Unit filename="include/Lua/L_SF_View.h" />
 		<Unit filename="include/Lua/L_Sound.h" />
 		<Unit filename="include/Resource.h" />
 		<Unit filename="include/ResourceInterface.h" />

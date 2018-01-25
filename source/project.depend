@@ -1,10 +1,12 @@
 # depslib dependency file v1.0
-1516659141 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
+1516851850 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
-	"Entity/Animatable.h"
 	"ResourceManager.h"
+	"ECSManager.h"
 	"Global.h"
+	"Components/Entity.h"
+	"Components/Component.h"
 
 1486736397 g:\+ 00 + projects\c++\finalyearproject\lib\sfml\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -652,10 +654,14 @@
 1516637823 g:\+ 00 + projects\c++\finalyearproject\source\include\gamestatemanager.h
 	"Gamestate.h"
 
-1516658224 g:\+ 00 + projects\c++\finalyearproject\source\include\gamestate.h
+1516850988 g:\+ 00 + projects\c++\finalyearproject\source\include\gamestate.h
+	<memory>
 	"Drawable.h"
 	"Point.h"
 	"Sound.h"
+	"Components/DrawableComponent.h"
+	"Components/PositionComponent.h"
+	"Components/VelocityComponent.h"
 
 1516658206 source:g:\+ 00 + projects\c++\finalyearproject\source\src\gamestate.cpp
 	"Gamestate.h"
@@ -666,4 +672,49 @@
 1516637936 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_gamestate.h
 	"Global.h"
 	<iostream>
+
+1516824305 source:g:\+ 00 + projects\c++\finalyearproject\source\src\components\gameobject.cpp
+	"Components/GameObject.h"
+
+1516824349 g:\+ 00 + projects\c++\finalyearproject\source\include\components\gameobject.h
+	"Components/GraphicsComponent.h"
+	"Components/PhysicsComponent.h"
+	"Components/InputComponent.h"
+
+1516826616 g:\+ 00 + projects\c++\finalyearproject\source\include\components\graphicscomponent.h
+	<memory>
+	<SFML/Graphics.hpp>
+	"Global.h"
+
+1516822472 g:\+ 00 + projects\c++\finalyearproject\source\include\components\physicscomponent.h
+
+1516823051 g:\+ 00 + projects\c++\finalyearproject\source\include\components\inputcomponent.h
+
+1516838061 source:g:\+ 00 + projects\c++\finalyearproject\source\src\ecsmanager.cpp
+	"ECSManager.h"
+
+1516838051 g:\+ 00 + projects\c++\finalyearproject\source\include\ecsmanager.h
+	<SFML/Graphics.hpp>
+	"Systems/DrawableSystem.h"
+
+1516851992 g:\+ 00 + projects\c++\finalyearproject\source\include\systems\drawablesystem.h
+	<SFML/Graphics.hpp>
+	"Global.h"
+
+1516852068 g:\+ 00 + projects\c++\finalyearproject\source\include\components\drawablecomponent.h
+	<memory>
+	<SFML/Graphics.hpp>
+	"Components/Component.h"
+
+1516848346 g:\+ 00 + projects\c++\finalyearproject\source\include\components\positioncomponent.h
+
+1516848350 g:\+ 00 + projects\c++\finalyearproject\source\include\components\velocitycomponent.h
+
+1516851463 g:\+ 00 + projects\c++\finalyearproject\source\include\components\component.h
+
+1516850122 source:g:\+ 00 + projects\c++\finalyearproject\source\src\components\drawablecomponent.cpp
+	"Components/DrawableComponent.h"
+
+1516851842 g:\+ 00 + projects\c++\finalyearproject\source\include\components\entity.h
+	<vector>
 

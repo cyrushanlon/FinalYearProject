@@ -2,9 +2,12 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "Entity/Animatable.h"
 #include "ResourceManager.h"
+#include "ECSManager.h"
 #include "Global.h"
+
+#include "Components/Entity.h"
+#include "Components/Component.h"
 
 //TODO
 /*
@@ -45,39 +48,15 @@ int main()
     gsManager.CreateState("game").get()->AddView("main", sf::FloatRect(0,0, 1280, 720));
     gsManager.SetState("game");
 
+    ECSManager ecsManager;
+
+
     //calls the lua function Init()
     Lua.Initialise("spriteEditor.lua");
 
     //Test code
-    /*
-    Animation walkAnim("walk", "resources/textures/metalslug_mummy37x45.png", sf::Vector2i(37, 45), 50, 18);
-    walkAnim.SetFirstFrameTopLeft(sf::Vector2i(0, 0));
-    walkAnim.SetLooping(true);
-    //walkAnim.SetReversing(true);
-    walkAnim.SetBackgroundColor(sf::Color::White);
-    walkAnim.Regenerate();
-
-    for (int x = 0; x < 1; x++)
-    {
-        for (int y = 0; y < 1; y++)
-        {
-            std::ostringstream ss;
-            ss << x << " " << y;
-
-            //Drawable* a = new Drawable("test" + ss.str(), "resources/textures/ball.png");
-            //std::cout << i * 32 << " " << 0 << std::endl;
-            //a->SetPos(sf::Vector2f(i * 32, 0));
-
-            Animatable* test = new Animatable("test" + ss.str());
-            test->AddAnimation("walk", walkAnim);
-            test->SetAnimation("walk");
-            test->SetPos(sf::Vector2f(x * 32, y * 32));
-
-            std::cout << "test" + ss.str() << std::endl;
-        }
-    }
-    std::cout << Drawables.size() <<std::endl;
-    */
+    Entity ent;
+    ent.AddComponent();//std::make_shared<DrawableComponent>());
     //
 
     //used to get dt during the main loop
@@ -111,6 +90,8 @@ int main()
         //
         sf::Time dt = deltaClock.restart();
 
+        ecsManager.Think(dt);
+
         auto state = gsManager.CurrentState().get();
 
         //first we do the C++ think
@@ -125,10 +106,13 @@ int main()
             Lua.Think(dt);
         }
 
+
         //Draw
         //
         Window.clear(sf::Color::Magenta);
         Window.setView(Window.getDefaultView());
+
+        ecsManager.Draw(Window);
 
         //for each view we want to go through and see if we want to draw anything
         //this may end up expensive and should be improved

@@ -1,9 +1,15 @@
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
+#include <memory>
+
 #include "Drawable.h"
 #include "Point.h"
 #include "Sound.h"
+
+#include "Components/DrawableComponent.h"
+#include "Components/PositionComponent.h"
+#include "Components/VelocityComponent.h"
 
 class Gamestate
 {
@@ -19,6 +25,12 @@ public:
     std::map<std::string, Drawable*> drawables;
     std::map<std::string, Point*> points;
     std::map<std::string, Sound*> sounds;
+
+    //we need a vector of each type of component
+    std::vector<std::shared_ptr<DrawableComponent>> drawableComponents;
+    std::vector<std::shared_ptr<PositionComponent>> positionComponents;
+    std::vector<std::shared_ptr<VelocityComponent>> velocityComponents;
+
     //each gamestate will have its own set of views so rather than using another manager etc we hold them here
     std::vector<std::pair<std::string,sf::View>> views;
 
