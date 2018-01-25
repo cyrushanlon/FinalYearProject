@@ -1,15 +1,15 @@
 #include "Components/Component.h"
 
-Component::Component(std::string ID)
+Component::Component(std::string name)
 {
-    this->name = ID;
+    this->name = name;
 }
 
 std::string Component::Name()
 {
     return this->name;
 }
-void Component::SetParent(std::shared_ptr<Entity> parent)
+void Component::SetParent(Entity* parent)
 {
     this->parent = parent;
 }
