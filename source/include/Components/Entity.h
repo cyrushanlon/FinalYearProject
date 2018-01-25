@@ -10,7 +10,7 @@ class Component;
 class Entity
 {
 public:
-    Entity();
+    Entity(std::string);
 
     std::string GetID();
     bool HasComponent(std::string);

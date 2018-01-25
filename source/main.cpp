@@ -2,12 +2,12 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "ResourceManager.h"
-#include "ECSManager.h"
-#include "Global.h"
-
 #include "Components/Entity.h"
-#include "Components/Component.h"
+#include "Components/AnimatableComponent.h"
+#include "ECSManager.h"
+#include "ResourceManager.h"
+
+#include "Global.h"
 
 //TODO
 /*
@@ -55,8 +55,22 @@ int main()
     Lua.Initialise("spriteEditor.lua");
 
     //Test code
-    Entity ent;
-    ent.AddComponent(std::make_shared<DrawableComponent>("resources/textures/smile.png"));
+    Entity ent = Entity("test1");
+    ent.AddComponent(std::make_shared<AnimatableComponent>());
+    Animation anim("walk", "resources/textures/metalslug_mummy37x45.png", sf::Vector2i(37, 45), 50, 18);
+    anim.SetLooping(true);
+    anim.Regenerate();
+    //get game state
+    auto gs = gsManager.CurrentState().get();
+    //get component
+    AnimatableComponent* comp = gs->animatableComponents[ent.GetID()].get();
+    //add animation
+    comp->animations.emplace(anim.GetName(), anim);
+    //set animation
+    comp->animations[comp->currentAnim].Reset();
+    comp->currentAnim = "walk";
+    comp->currentFrame = 0;
+    comp->frameClock.restart();
     //
 
     //used to get dt during the main loop

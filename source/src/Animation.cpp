@@ -2,6 +2,8 @@
 
 #include <sstream>
 
+#include "Global.h"
+
 Animation::Animation()
 {
 
@@ -26,6 +28,11 @@ Animation::Animation(std::string name, std::string pathToSheet, sf::Vector2i fra
 Animation::~Animation()
 {
     //dtor
+}
+
+std::string Animation::GetName()
+{
+    return this->name;
 }
 
 float Animation::GetFrameRate()

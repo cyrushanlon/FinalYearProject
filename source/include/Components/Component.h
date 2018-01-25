@@ -11,10 +11,10 @@ public:
     Component(std::string);
 
     std::string Name();
-    void SetParent(Entity* parent);
+    void SetParent(std::string parentID);
 private:
     std::string name;
-    Entity* parent;
+    std::string parentID;
 };
 
 #endif //COMPONENT_H

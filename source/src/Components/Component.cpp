@@ -9,7 +9,7 @@ std::string Component::Name()
 {
     return this->name;
 }
-void Component::SetParent(Entity* parent)
+void Component::SetParent(std::string parentID)
 {
-    this->parent = parent;
+    this->parentID = parentID;
 }

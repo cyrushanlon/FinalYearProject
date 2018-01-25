@@ -6,8 +6,7 @@
 //allow multiple animatables to use the same animation using resource manager(?)
 
 #include <SFML/Graphics.hpp>
-
-#include "Global.h"
+#include <memory>
 
 class Animation
 {
@@ -17,6 +16,8 @@ public:
     virtual ~Animation();
 
     //void LoadFromFile(); //load anim from json file (?)
+
+    std::string GetName();
 
     float GetFrameRate();
     void SetFrameRate(float newFrameRate);
