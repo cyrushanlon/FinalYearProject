@@ -2,35 +2,20 @@
 #define ENTITY_H
 
 #include <vector>
+#include <memory>
+#include "Components/Component.h"
+
+class Component;
 
 class Entity
 {
 public:
-    Entity()
-    {
+    Entity();
 
-    }
-
-    std::string GetID()
-    {
-
-    }
-    bool HasComponent(std::string)
-    {
-
-    }
-    //std::shared_ptr<Component> GetComponent(std::string);
-    bool AddComponent(std::shared_ptr<Component> comp)
-    {
-        //make this more generic rather than a bunch of if else
-        std::string name = comp.get()->Name();
-        if (name == "drawable")
-            gsManager.CurrentState().get()->drawableComponents.push_back(std::static_pointer_cast<DrawableComponent>(comp));
-        else
-            std::cout << "unhandled " << name;
-    }
+    std::string GetID();
+    bool HasComponent(std::string);
+    bool AddComponent(std::shared_ptr<Component> comp);
 private:
-    //std::vector<std::shared_ptr<Component> > components;
     std::string ID;
 };
 

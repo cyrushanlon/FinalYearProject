@@ -710,12 +710,22 @@
 
 1516848350 g:\+ 00 + projects\c++\finalyearproject\source\include\components\velocitycomponent.h
 
-1516891317 g:\+ 00 + projects\c++\finalyearproject\source\include\components\component.h
+1516892439 g:\+ 00 + projects\c++\finalyearproject\source\include\components\component.h
+	"Components/Entity.h"
 
 1516890327 source:g:\+ 00 + projects\c++\finalyearproject\source\src\components\drawablecomponent.cpp
 	"Components/DrawableComponent.h"
 	"Global.h"
 
-1516891296 g:\+ 00 + projects\c++\finalyearproject\source\include\components\entity.h
+1516892569 g:\+ 00 + projects\c++\finalyearproject\source\include\components\entity.h
 	<vector>
+	<memory>
+	"Components/Component.h"
+
+1516892380 source:g:\+ 00 + projects\c++\finalyearproject\source\src\components\component.cpp
+	"Components/Component.h"
+
+1516892551 source:g:\+ 00 + projects\c++\finalyearproject\source\src\components\entity.cpp
+	"Components/Entity.h"
+	"Global.h"
 
