@@ -19,11 +19,12 @@ DrawableComponent::DrawableComponent(std::string uri) : Component("drawable")
 
 DrawableComponent::DrawableComponent(std::string name) : Component(name)
 {
-    DrawableComponent();
+    this->viewTarget = "main";
 }
 
 DrawableComponent::~DrawableComponent()
 {
+    this->texture.reset();
     rscManager.Unload(this->textureUri);
 }
 

@@ -55,17 +55,26 @@ int main()
     Lua.Initialise("spriteEditor.lua");
 
     //Test code
+    auto gs = gsManager.CurrentState().get();
     Entity ent = Entity("test1");
     ent.AddComponent(std::make_shared<AnimatableComponent>());
     std::shared_ptr<Animation> anim = std::make_shared<Animation>("walk", "resources/textures/metalslug_mummy37x45.png", sf::Vector2i(37, 45), 50, 18);
-    anim.get()->SetLooping(true);
+    //anim.get()->SetLooping(true);
     anim.get()->Regenerate();
     //get game state
-    auto gs = gsManager.CurrentState().get();
     //get component
     AnimatableComponent* comp = gs->animatableComponents[ent.GetID()].get();
     comp->AddAnimation(anim);
     comp->SetAnimation("walk");
+
+    /*
+    Entity ent2 = Entity("test2");
+    ent2.AddComponent(std::make_shared<DrawableComponent>());
+    DrawableComponent* comp = gs->drawableComponents[ent2.GetID()].get();
+    comp->texture = rscManager.LoadTexture("resources/textures/metalslug_mummy37x45.png");
+    comp->textureUri = "resources/textures/metalslug_mummy37x45.png";
+    comp->sprite.setTexture(*(comp->texture.get()));
+    */
     //
 
     //used to get dt during the main loop
@@ -82,7 +91,9 @@ int main()
                 Window.close();
             if (event.type == sf::Event::KeyPressed)
                 if (event.key.code == sf::Keyboard::Escape)
+                {
                     Window.close();
+                }
             if (event.type == sf::Event::LostFocus)
                 Lua.HookLostFocus();
             if (event.type == sf::Event::GainedFocus)

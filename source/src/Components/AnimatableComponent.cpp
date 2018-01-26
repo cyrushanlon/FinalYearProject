@@ -1,5 +1,5 @@
 #include "Components/AnimatableComponent.h"
-#include <iostream>
+#include "Global.h"
 
 AnimatableComponent::AnimatableComponent() : DrawableComponent("animatable")
 {
@@ -8,7 +8,9 @@ AnimatableComponent::AnimatableComponent() : DrawableComponent("animatable")
 
 AnimatableComponent::~AnimatableComponent()
 {
-
+    std::cout << "DEASTASDY";
+    this->texture.reset();
+    rscManager.Unload(this->textureUri);
 }
 
 void AnimatableComponent::AddAnimation(std::shared_ptr<Animation> anim)
@@ -19,7 +21,6 @@ void AnimatableComponent::AddAnimation(std::shared_ptr<Animation> anim)
 void AnimatableComponent::SetAnimation(std::string name)
 {
     //this->animations.at(this->currentAnim).get()->Reset();
-    std::cout << this->animations.size();
     this->currentAnim = name;
     this->currentFrame = 0;
     this->frameClock.restart();

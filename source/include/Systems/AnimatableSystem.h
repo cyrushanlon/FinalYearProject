@@ -22,11 +22,13 @@ public:
                 if (time >= sf::seconds(1 / x->animations.at(x->currentAnim).get()->GetFrameRate()))
                 {
                     x->frameClock.restart();
-                    std::string texURI = x->animations.at(x->currentAnim).get()->GetNextFrame();
+                    auto anim = x->animations.at(x->currentAnim);
+                    int nextFrameInt = x->animations.at(x->currentAnim).get()->GetNextFrame();
+                    std::shared_ptr<sf::Texture> frame = anim->GetFrame(nextFrameInt);
 
                     //set texture
-                    x->texture = rscManager.LoadTexture(texURI);
-                    x->textureUri = texURI;
+                    x->texture = frame;
+                    x->textureUri = anim->GetFrameURI(nextFrameInt);
                     x->sprite.setTexture(*x->texture.get());
                 }
             }

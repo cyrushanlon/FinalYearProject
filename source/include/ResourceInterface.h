@@ -7,11 +7,9 @@ class ResourceInterface
     public:
         ResourceInterface();
         virtual ~ResourceInterface();
-
-        unsigned Useage;
-
+        virtual long Usage() = 0;
     protected:
-
+        //unsigned Useage;
     private:
 };
 

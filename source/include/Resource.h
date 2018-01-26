@@ -2,7 +2,6 @@
 #define RESOURCE_H
 
 #include<memory>
-#include <iostream>
 
 #include "ResourceInterface.h"
 
@@ -17,15 +16,18 @@ class Resource : public ResourceInterface
         {
             //ctor
         }
-        Resource(std::shared_ptr<T> rsc, unsigned usage)
+        Resource(std::shared_ptr<T> rsc)//, unsigned usage)
         {
             this->resource = rsc;
-            this->Useage = usage;
+            //this->Useage = usage;
         }
         virtual ~Resource()
         {
-            std::cout << "oh no!!" << std::endl;
             //dtor
+        }
+        long Usage()
+        {
+            return this->resource.use_count();
         }
 
         std::shared_ptr<T> resource;

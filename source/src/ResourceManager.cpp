@@ -47,9 +47,11 @@ void ResourceManager::Unload(std::string uri)
     //if the resource actually exists
     if (this->resources.count(uri) == 1)
     {
-        int curCount = resources[uri]->Useage--;
+        //std::cout << "UNLOADING: " << uri << "USES: " << resources[uri]->Usage() << std::endl;
+        int curCount = resources[uri]->Usage();
 
-        if (curCount <= 1) //use 1 here as the decrement happens after the assignment so when val is 1 actual val is 0
+        std::cout << curCount << " " << uri << std::endl;
+        if (curCount == 1) //the single use should be the one in the manager
         {
             this->resources.erase(uri);
             std::cout << "[ResourceManager] Removed |\"" << uri <<"\""<<std::endl;

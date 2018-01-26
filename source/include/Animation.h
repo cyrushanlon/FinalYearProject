@@ -44,10 +44,11 @@ public:
     bool isLooping();
     void SetLooping(bool);
 
-    //returns the URI of the next frame in sequence
-    std::string GetNextFrame();
+    //returns the number of the next frame in sequence
+    int GetNextFrame();
     //returns the nth frame URI
-    std::string GetFrame(int);
+    std::shared_ptr<sf::Texture> GetFrame(int);
+    std::string GetFrameURI(int i);
 
     //this reacquires the frames from the sprite sheet
     void Regenerate();
@@ -69,7 +70,8 @@ private:
     std::shared_ptr<sf::Image> spritesheet;
 
     int currentFrame;
-    std::vector<std::string> frames; //holds all frame uris
+    std::vector<std::string> frameUris;
+    std::vector<std::shared_ptr<sf::Texture>> frames;//holds all frame pointers
 
     bool forwards; //starts at end and goes backwards if false
     bool reversing; //1 2 3 4 5 4 3 2 1 2 3 4 5

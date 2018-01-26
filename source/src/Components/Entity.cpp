@@ -30,4 +30,6 @@ bool Entity::AddComponent(std::shared_ptr<Component> comp)
     }
     else
         std::cout << "unhandled " << name;
+
+    return true;
 }

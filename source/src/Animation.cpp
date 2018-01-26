@@ -27,12 +27,12 @@ Animation::Animation(std::string name, std::string pathToSheet, sf::Vector2i fra
 
 Animation::~Animation()
 {
-    std::cout << "DESRTOY";
+    rscManager.Unload(this->spritesheetPath);
     //unload each frame
-    for (int i = 0; i < this->frames.size(); i++)
+    this->frames.clear();
+    for (int i = 0; i < this->frameUris.size(); i++)
     {
-        std::cout << "a";
-        rscManager.Unload(this->frames.at(i));
+        rscManager.Unload(this->frameUris.at(i));
     }
 }
 
@@ -128,7 +128,7 @@ void Animation::SetLooping(bool newIsLooping)
     this->looping = newIsLooping;
 }
 
-std::string Animation::GetNextFrame()
+int Animation::GetNextFrame()
 {
     int iteration = 1;
     if (!this->isForwards())
@@ -159,16 +159,24 @@ std::string Animation::GetNextFrame()
         this->SetForwards(true);
     }
 
-    return frames.at(oldFrame);
+    return oldFrame;
 }
 
-std::string Animation::GetFrame(int i)
+std::shared_ptr<sf::Texture> Animation::GetFrame(int i)
 {
     return this->frames.at(i);
 }
 
+std::string Animation::GetFrameURI(int i)
+{
+    return this->frameUris.at(i);
+}
+
 void Animation::Regenerate()
 {
+    //clear all frames
+    this->frames.clear();
+
     //get the spritesheet as a texture with a no background
     this->loadSpritesheet(this->getSpritesheetPath());
 
@@ -197,7 +205,8 @@ void Animation::Regenerate()
             rscManager.Add(newFrame, uri);
         }
         //add frame to animation
-        this->frames.push_back(uri);
+        this->frames.push_back(rscManager.LoadTexture(uri));
+        this->frameUris.push_back(uri);
 
         //increment counters
         x += this->getFrameSize().x;
