@@ -1,0 +1,74 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "debug build",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-std=c++11",
+                "-g",
+                "-Wall",
+                "-c",
+                "-I", "./include/",
+                "-I", "./include/Components",
+                "-I", "./include/Lua",
+                "-I", "./include/Systems",
+                "main.cpp",
+                "src/*.cpp",
+                "src/Components/*.cpp"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "debug move o",
+            "type": "shell",
+            "command": "mv",
+            "args": [
+                "*.o",
+                "./build/debug"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "debug link",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g",
+                "./build/debug/*.o",
+                "-o", "game",
+                "-lsfml-graphics",
+                "-lsfml-window",
+                "-lsfml-system",
+                "-lsfml-audio",
+                "-llua"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "debug clean o",
+            "type": "shell",
+            "command": "rm",
+            "args": [
+                "-rf",
+                "build/debug/*.o",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },     
+    ]
+}
