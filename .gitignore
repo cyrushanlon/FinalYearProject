@@ -28,3 +28,5 @@ Report/Design Statement.bbl
 Report/Design_Statement-blx.bib
 Report/Design Statement.toc
 *.~vsdx
+*.o
+source/game
