@@ -50,7 +50,6 @@ int main()
 
     ECSManager ecsManager;
 
-
     //calls the lua function Init()
     Lua.Initialise("spriteEditor.lua");
 
@@ -59,7 +58,7 @@ int main()
     Entity ent = Entity("test1");
     ent.AddComponent(std::make_shared<AnimatableComponent>());
     std::shared_ptr<Animation> anim = std::make_shared<Animation>("walk", "resources/textures/metalslug_mummy37x45.png", sf::Vector2i(37, 45), 50, 18);
-    //anim.get()->SetLooping(true);
+    anim.get()->SetLooping(true);
     anim.get()->Regenerate();
     //get game state
     //get component
@@ -67,14 +66,10 @@ int main()
     comp->AddAnimation(anim);
     comp->SetAnimation("walk");
 
-    /*
     Entity ent2 = Entity("test2");
     ent2.AddComponent(std::make_shared<DrawableComponent>());
     DrawableComponent* comp = gs->drawableComponents[ent2.GetID()].get();
-    comp->texture = rscManager.LoadTexture("resources/textures/metalslug_mummy37x45.png");
-    comp->textureUri = "resources/textures/metalslug_mummy37x45.png";
-    comp->sprite.setTexture(*(comp->texture.get()));
-    */
+    comp->SetTexture("resources/textures/metalslug_mummy37x45.png");
     //
 
     //used to get dt during the main loop

@@ -25,6 +25,8 @@ public:
     virtual void SetAng(float);
     virtual sf::Vector2f GetOrigin();
     virtual void SetOrigin(sf::Vector2f);
+
+    virtual void SetTexture (std::string); 
 protected:
     //used for classes that inherit from this one, such as AnimatableComponent
     DrawableComponent(std::string name);

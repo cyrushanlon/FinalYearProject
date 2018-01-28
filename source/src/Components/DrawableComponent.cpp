@@ -57,3 +57,10 @@ void DrawableComponent::SetOrigin(sf::Vector2f in)
 {
     this->sprite.setOrigin(in);
 }
+
+void DrawableComponent::SetTexture (std::string uri)
+{
+    this->texture = rscManager.LoadTexture(uri);
+    this->textureUri = uri;
+    this->sprite.setTexture(*(this->texture.get()));
+}
