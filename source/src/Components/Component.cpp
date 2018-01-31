@@ -13,3 +13,8 @@ void Component::SetParent(std::string parentID)
 {
     this->parentID = parentID;
 }
+
+std::string Component::GetParent()
+{
+    return this->parentID;
+}

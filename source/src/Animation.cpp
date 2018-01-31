@@ -27,6 +27,8 @@ Animation::Animation(std::string name, std::string pathToSheet, sf::Vector2i fra
 
 Animation::~Animation()
 {
+    /*
+    this->spritesheet.reset();
     rscManager.Unload(this->spritesheetPath);
     //unload each frame
     this->frames.clear();
@@ -34,6 +36,7 @@ Animation::~Animation()
     {
         rscManager.Unload(this->frameUris.at(i));
     }
+    */
 }
 
 std::string Animation::GetName()

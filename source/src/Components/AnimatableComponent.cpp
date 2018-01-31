@@ -8,7 +8,6 @@ AnimatableComponent::AnimatableComponent() : DrawableComponent("animatable")
 
 AnimatableComponent::~AnimatableComponent()
 {
-    std::cout << "DEASTASDY";
     this->texture.reset();
     rscManager.Unload(this->textureUri);
 }

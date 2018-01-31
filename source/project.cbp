@@ -14,16 +14,16 @@
 				<Compiler>
 					<Add option="-g" />
 					<Add option="-static-libgcc" />
-					<Add directory="../lib/sfml/include" />
+					<Add directory="lib/windows/sfml/include" />
 					<Add directory="include" />
-					<Add directory="include/Entity" />
+					<Add directory="lib/windows/lua/include" />
 				</Compiler>
 				<Linker>
 					<Add library="sfml-graphics-d" />
 					<Add library="sfml-window-d" />
 					<Add library="sfml-system-d" />
 					<Add library="sfml-audio-d" />
-					<Add directory="../lib/sfml/lib" />
+					<Add directory="lib/windows/sfml/lib" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -49,8 +49,8 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add directory="G:/+ 00 + Projects/C++/FinalYearProject/lib/sfml/include" />
-			<Add directory="../lib/lua/include" />
+			<Add directory="lib/windows/lua/include" />
+			<Add directory="lib/windows/sfml/include" />
 		</Compiler>
 		<Linker>
 			<Add library="mingw32" />
@@ -58,7 +58,7 @@
 			<Add library="gdi32" />
 			<Add library="winmm" />
 			<Add library="dxguid" />
-			<Add library="../lib/lua/liblua53.a" />
+			<Add library="lib/windows/lua/liblua53.a" />
 			<Add directory="G:/+ 00 + Projects/C++/FinalYearProject/lib/sfml/lib" />
 		</Linker>
 		<Unit filename="include/Animation.h" />
@@ -66,13 +66,7 @@
 		<Unit filename="include/Components/Component.h" />
 		<Unit filename="include/Components/DrawableComponent.h" />
 		<Unit filename="include/Components/Entity.h" />
-		<Unit filename="include/Components/PositionComponent.h" />
-		<Unit filename="include/Components/VelocityComponent.h" />
 		<Unit filename="include/ECSManager.h" />
-		<Unit filename="include/Entity/Animatable.h" />
-		<Unit filename="include/Entity/Drawable.h" />
-		<Unit filename="include/Entity/Point.h" />
-		<Unit filename="include/Entity/Sound.h" />
 		<Unit filename="include/Gamestate.h" />
 		<Unit filename="include/GamestateManager.h" />
 		<Unit filename="include/Global.h" />
@@ -81,6 +75,7 @@
 		<Unit filename="include/Lua/L_Animatable.h" />
 		<Unit filename="include/Lua/L_Animation.h" />
 		<Unit filename="include/Lua/L_Drawable.h" />
+		<Unit filename="include/Lua/L_Entity.h" />
 		<Unit filename="include/Lua/L_Gamestate.h" />
 		<Unit filename="include/Lua/L_Input.h" />
 		<Unit filename="include/Lua/L_SF_View.h" />
@@ -93,24 +88,20 @@
 		<Unit filename="include/Systems/AnimatableSystem.h" />
 		<Unit filename="include/Systems/DrawableSystem.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="src/Animatable.cpp" />
 		<Unit filename="src/Animation.cpp" />
 		<Unit filename="src/Components/AnimatableComponent.cpp" />
 		<Unit filename="src/Components/Component.cpp" />
 		<Unit filename="src/Components/DrawableComponent.cpp" />
 		<Unit filename="src/Components/Entity.cpp" />
-		<Unit filename="src/Drawable.cpp" />
 		<Unit filename="src/ECSManager.cpp" />
 		<Unit filename="src/Gamestate.cpp" />
 		<Unit filename="src/GamestateManager.cpp" />
 		<Unit filename="src/Global.cpp" />
 		<Unit filename="src/InputManager.cpp" />
 		<Unit filename="src/LuaState.cpp" />
-		<Unit filename="src/Point.cpp" />
 		<Unit filename="src/Resource.cpp" />
 		<Unit filename="src/ResourceInterface.cpp" />
 		<Unit filename="src/ResourceManager.cpp" />
-		<Unit filename="src/Sound.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

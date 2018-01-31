@@ -5,6 +5,17 @@ Gamestate::Gamestate()
     this->paused = false;
 }
 
+std::shared_ptr<DrawableComponent> Gamestate::GetDrawable(std::string parent)
+{
+    for (int i = 0; i < this->drawableComponents.size(); i++)
+    {
+        auto cur = this->drawableComponents.at(i);
+        if (cur.get()->GetParent() == parent)
+            return cur;
+    }
+    return nullptr;
+}
+
 bool Gamestate::GetPaused()
 {
     return this->paused;

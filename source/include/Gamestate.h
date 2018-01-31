@@ -15,6 +15,7 @@ public:
     //std::map<std::string, Sound*> GetSounds();
     //std::map<std::string, Sound*> sounds;
 
+    std::shared_ptr<DrawableComponent> GetDrawable(std::string);
     //we need a map of each type of component, with a vector for drawables so we can have a draw order
     std::vector<std::shared_ptr<DrawableComponent>> drawableComponents;
     std::map<std::string, int> drawableComponentsLocations;

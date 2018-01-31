@@ -12,6 +12,7 @@ public:
 
     std::string Name();
     void SetParent(std::string parentID);
+    std::string GetParent();
 private:
     std::string name;
     std::string parentID;

@@ -13,6 +13,9 @@
 /*
 
 virtual sizes rather than pixels so different resolutions look the same
+CPP
+_________________
+stop sound inheriting from old point class
 
 BOTH
 _________________
@@ -55,6 +58,7 @@ int main()
 
     //Test code
     auto gs = gsManager.CurrentState().get();
+/*
     Entity ent = Entity("test1");
     ent.AddComponent(std::make_shared<AnimatableComponent>());
     std::shared_ptr<Animation> anim = std::make_shared<Animation>("walk", "resources/textures/metalslug_mummy37x45.png", sf::Vector2i(37, 45), 50, 18);
@@ -65,11 +69,11 @@ int main()
     AnimatableComponent* comp = gs->animatableComponents[ent.GetID()].get();
     comp->AddAnimation(anim);
     comp->SetAnimation("walk");
-
+*/
     Entity ent2 = Entity("test2");
     ent2.AddComponent(std::make_shared<DrawableComponent>());
-    DrawableComponent* comp = gs->drawableComponents[ent2.GetID()].get();
-    comp->SetTexture("resources/textures/metalslug_mummy37x45.png");
+    DrawableComponent* comp2 = gs->GetDrawable(ent2.GetID()).get();
+    comp2->SetTexture("resources/textures/metalslug_mummy37x45.png");
     //
 
     //used to get dt during the main loop

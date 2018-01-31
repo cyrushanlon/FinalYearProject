@@ -24,8 +24,8 @@ DrawableComponent::DrawableComponent(std::string name) : Component(name)
 
 DrawableComponent::~DrawableComponent()
 {
-    this->texture.reset();
-    rscManager.Unload(this->textureUri);
+    //this->texture.reset();
+    //rscManager.Unload(this->textureUri);
 }
 
 sf::Vector2f DrawableComponent::GetPos()
