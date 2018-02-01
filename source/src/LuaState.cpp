@@ -12,6 +12,9 @@
 #include "Lua/L_Animation.h"
 #include "Lua/L_Gamestate.h"
 
+#include "Lua/L_Entity.h"
+#include "Lua/L_DrawableComponent.h"
+
 LuaState::LuaState()
 {
     this->state = luaL_newstate();
@@ -27,6 +30,9 @@ LuaState::LuaState()
     RegisterInput();
     RegisterAnimation();
     RegisterGamestate();
+
+    RegisterEntity();
+    RegisterDrawableComponent();
 
     //run any engine related files
 }

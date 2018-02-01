@@ -3,10 +3,13 @@
 
 #include <lua.hpp>
 #include "Components/Entity.h"
+#include "Components/DrawableComponent.h"
 #include "Global.h"
 #include <iostream>
 
-static Entity* l_CheckDrawable(int i)
+static DrawableComponent* l_CheckDrawableComponent(int i);
+
+static Entity* l_CheckEntity(int i)
 {
     return *(Entity **)luaL_checkudata(Lua.L(), i, "luaL_Entity");
 }
@@ -42,9 +45,13 @@ static int l_Entity_AddComponent(lua_State * l)
 {
     Entity* entity = l_CheckEntity(1);
 
+    //get component from argument
+    DrawableComponent* dc = l_CheckDrawableComponent(2);
+    auto dcPointer = std::shared_ptr<DrawableComponent>(dc);
 
+    bool succ = entity->AddComponent(dcPointer);
 
-    bool succ = entity->AddComponent();
+    lua_pushboolean(l, succ);
 
     return 1;
 }
@@ -55,7 +62,7 @@ static int l_Entity_GetID(lua_State * l)
 
     std::string id = entity->GetID();
     //use the LuaState helper to push the angle onto the stack
-    lua_pushstring(l, id);
+    lua_pushstring(l, id.c_str());
 
     //we return a single variable to Lua
     return 1;

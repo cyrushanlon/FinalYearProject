@@ -69,11 +69,12 @@ int main()
     AnimatableComponent* comp = gs->animatableComponents[ent.GetID()].get();
     comp->AddAnimation(anim);
     comp->SetAnimation("walk");
-*/
+
     Entity ent2 = Entity("test2");
     ent2.AddComponent(std::make_shared<DrawableComponent>());
     DrawableComponent* comp2 = gs->GetDrawable(ent2.GetID()).get();
     comp2->SetTexture("resources/textures/metalslug_mummy37x45.png");
+*/
     //
 
     //used to get dt during the main loop
