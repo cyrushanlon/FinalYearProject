@@ -465,7 +465,7 @@
 1504466668 g:\+ 00 + projects\c++\finalyearproject\source\include\inputmanager.h
 	<SFML/Window.hpp>
 
-1517451254 source:g:\+ 00 + projects\c++\finalyearproject\source\src\luastate.cpp
+1517604062 source:g:\+ 00 + projects\c++\finalyearproject\source\src\luastate.cpp
 	<iostream>
 	"LuaState.h"
 	"Lua/L_Drawable.h"
@@ -476,6 +476,7 @@
 	"Lua/L_Animation.h"
 	"Lua/L_Gamestate.h"
 	"Lua/L_Entity.h"
+	"Lua/L_Component.h"
 	"Lua/L_DrawableComponent.h"
 
 1516658633 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_drawable.h
@@ -712,7 +713,7 @@
 1517184838 g:\+ 00 + projects\c++\finalyearproject\source\include\components\component.h
 	"Components/Entity.h"
 
-1517330681 source:g:\+ 00 + projects\c++\finalyearproject\source\src\components\drawablecomponent.cpp
+1517605251 source:g:\+ 00 + projects\c++\finalyearproject\source\src\components\drawablecomponent.cpp
 	"Components/DrawableComponent.h"
 	"Global.h"
 
@@ -728,7 +729,7 @@
 	"Components/Entity.h"
 	"Global.h"
 
-1516939945 source:g:\+ 00 + projects\c++\finalyearproject\source\src\components\animatablecomponent.cpp
+1517605240 source:g:\+ 00 + projects\c++\finalyearproject\source\src\components\animatablecomponent.cpp
 	"Components/AnimatableComponent.h"
 	"Global.h"
 
@@ -1256,7 +1257,7 @@
 	<stdio.h>
 	"lua.h"
 
-1517452100 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_entity.h
+1517604175 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_entity.h
 	<lua.hpp>
 	"Components/Entity.h"
 	"Components/DrawableComponent.h"
@@ -1266,6 +1267,12 @@
 1517452222 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_drawablecomponent.h
 	<lua.hpp>
 	"Components/Entity.h"
+	"Global.h"
+	<iostream>
+
+1517603701 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_component.h
+	<lua.hpp>
+	"Components/Component.h"
 	"Global.h"
 	<iostream>
 

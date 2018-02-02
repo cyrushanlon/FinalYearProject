@@ -13,6 +13,7 @@
 #include "Lua/L_Gamestate.h"
 
 #include "Lua/L_Entity.h"
+#include "Lua/L_Component.h"
 #include "Lua/L_DrawableComponent.h"
 
 LuaState::LuaState()
@@ -32,9 +33,18 @@ LuaState::LuaState()
     RegisterGamestate();
 
     RegisterEntity();
+    RegisterComponent();
     RegisterDrawableComponent();
 
     //run any engine related files
+    /* component funcs arent required and this didnt work anyway
+    std::string luaCode =
+    "DrawableComponent.__index = function(table,key)"
+    "print(\"trying to get component function\")"
+    "  return Component[key]"
+    "end";
+    luaL_dostring(this->state, luaCode.c_str());
+    */
 }
 
 LuaState::~LuaState()

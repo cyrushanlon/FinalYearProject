@@ -83,6 +83,7 @@ static void RegisterEntity()
     {
         { "New", l_Entity_Constructor },
         { "AddComponent", l_Entity_AddComponent },
+        //{ "GetComponent", l_Entity_GetComponent },
         { "GetID", l_Entity_GetID },
         { "__gc", l_Entity_Destructor },
         { NULL, NULL }

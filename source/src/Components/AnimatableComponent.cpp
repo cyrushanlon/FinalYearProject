@@ -8,8 +8,8 @@ AnimatableComponent::AnimatableComponent() : DrawableComponent("animatable")
 
 AnimatableComponent::~AnimatableComponent()
 {
-    this->texture.reset();
-    rscManager.Unload(this->textureUri);
+    //this->texture.reset();
+    //rscManager.Unload(this->textureUri);
 }
 
 void AnimatableComponent::AddAnimation(std::shared_ptr<Animation> anim)
