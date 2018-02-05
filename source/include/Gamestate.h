@@ -6,7 +6,6 @@
 //#include "Sound.h"
 
 #include "Components/DrawableComponent.h"
-#include "Components/AnimatableComponent.h"
 
 class Gamestate
 {
@@ -19,7 +18,7 @@ public:
     //we need a map of each type of component, with a vector for drawables so we can have a draw order
     std::vector<std::shared_ptr<DrawableComponent>> drawableComponents;
     std::map<std::string, int> drawableComponentsLocations;
-    std::map<std::string, std::shared_ptr<AnimatableComponent>> animatableComponents;
+//    std::map<std::string, std::shared_ptr<AnimatableComponent>> animatableComponents;
 
     //each gamestate will have its own set of views so rather than using another manager etc we hold them here
     std::vector<std::pair<std::string,sf::View>> views;

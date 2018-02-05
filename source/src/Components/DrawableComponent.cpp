@@ -4,6 +4,7 @@
 DrawableComponent::DrawableComponent() : Component("drawable")
 {
     this->viewTarget = "main";
+    this->animates = false;
 }
 
 /*
@@ -24,8 +25,8 @@ DrawableComponent::DrawableComponent(std::string name) : Component(name)
 
 DrawableComponent::~DrawableComponent()
 {
-    //this->texture.reset();
-    //rscManager.Unload(this->textureUri);
+    this->texture.reset();
+    rscManager.Unload(this->textureUri);
 }
 
 sf::Vector2f DrawableComponent::GetPos()
@@ -63,4 +64,27 @@ void DrawableComponent::SetTexture (std::string uri)
     this->texture = rscManager.LoadTexture(uri);
     this->textureUri = uri;
     this->sprite.setTexture(*(this->texture.get()));
+}
+
+//Animatable
+bool DrawableComponent::Animates()
+{
+    return this->animates;
+}
+void DrawableComponent::Animates(bool n)
+{
+    this->animates = n;
+}
+
+void DrawableComponent::AddAnimation(std::shared_ptr<Animation> anim)
+{
+    this->animations.emplace(anim.get()->GetName(), anim);
+}
+
+void DrawableComponent::SetAnimation(std::string name)
+{
+    //this->animations.at(this->currentAnim).get()->Reset();
+    this->currentAnim = name;
+    this->currentFrame = 0;
+    this->frameClock.restart();
 }

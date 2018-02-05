@@ -38,7 +38,7 @@ static int l_DrawableComponent_Constructor(lua_State *L)
 static int l_DrawableComponent_Destructor(lua_State * l)
 {
     DrawableComponent * dc = l_CheckDrawableComponent(1);
-    delete dc;
+    //delete dc;
 
     return 0;
 }

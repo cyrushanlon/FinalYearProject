@@ -165,16 +165,16 @@ int Animation::GetNextFrame()
     return oldFrame;
 }
 
-std::shared_ptr<sf::Texture> Animation::GetFrame(int i)
+sf::IntRect Animation::GetFrame(int i)
 {
     return this->frames.at(i);
 }
-
+/*
 std::string Animation::GetFrameURI(int i)
 {
     return this->frameUris.at(i);
 }
-
+*/
 void Animation::Regenerate()
 {
     //clear all frames
@@ -202,14 +202,14 @@ void Animation::Regenerate()
             //get tex from image at rect of framesize
             sf::Texture newFrame;
             const sf::IntRect rect = sf::IntRect(x, y, this->frameSize.x, this->frameSize.y);
-            newFrame.loadFromImage(*this->spritesheet.get(), rect);
-
+            //newFrame.loadFromImage(*this->spritesheet.get(), rect);
+            this->frames.push_back(rect);
             //add new frame to resource manager
-            rscManager.Add(newFrame, uri);
+            //rscManager.Add(newFrame, uri);
         }
         //add frame to animation
-        this->frames.push_back(rscManager.LoadTexture(uri));
-        this->frameUris.push_back(uri);
+        //this->frames.push_back(rscManager.LoadTexture(uri));
+        //this->frameUris.push_back(uri);
 
         //increment counters
         x += this->getFrameSize().x;
@@ -237,9 +237,9 @@ void Animation::loadSpritesheet(std::string path)
     this->spritesheetPath = path;
 
     //load from resource manager and remove the background
-    std::shared_ptr<sf::Image> image = rscManager.LoadImage(path);
-    image->createMaskFromColor(this->getBackgroundColor());
-    this->spritesheet = image;
+    std::shared_ptr<sf::Texture> tex = rscManager.LoadTexture(path);
+    //image->createMaskFromColor(this->getBackgroundColor());
+    this->spritesheet = tex;
 
     //this->regenerate();
 }

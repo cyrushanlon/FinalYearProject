@@ -3,7 +3,6 @@
 #include <SFML/Graphics.hpp>
 
 #include "Components/Entity.h"
-#include "Components/AnimatableComponent.h"
 #include "ECSManager.h"
 #include "ResourceManager.h"
 
@@ -58,15 +57,17 @@ int main()
 
     //Test code
     auto gs = gsManager.CurrentState().get();
-/*
+
     Entity ent = Entity("test1");
-    ent.AddComponent(std::make_shared<AnimatableComponent>());
+    ent.AddComponent(std::make_shared<DrawableComponent>());
     std::shared_ptr<Animation> anim = std::make_shared<Animation>("walk", "resources/textures/metalslug_mummy37x45.png", sf::Vector2i(37, 45), 50, 18);
     anim.get()->SetLooping(true);
     anim.get()->Regenerate();
     //get game state
     //get component
-    AnimatableComponent* comp = gs->animatableComponents[ent.GetID()].get();
+    DrawableComponent* comp = gs->GetDrawable(ent.GetID()).get();
+    comp->SetTexture("resources/textures/metalslug_mummy37x45.png");
+    comp->Animates(true);
     comp->AddAnimation(anim);
     comp->SetAnimation("walk");
 
@@ -74,7 +75,6 @@ int main()
     ent2.AddComponent(std::make_shared<DrawableComponent>());
     DrawableComponent* comp2 = gs->GetDrawable(ent2.GetID()).get();
     comp2->SetTexture("resources/textures/metalslug_mummy37x45.png");
-*/
     //
 
     //used to get dt during the main loop

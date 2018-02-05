@@ -17,5 +17,6 @@ void ECSManager::Draw(sf::RenderWindow& window)
 
 void ECSManager::Think(sf::Time dt)
 {
-    this->animatables.Think(dt);
+    //this->animatables.Think(dt);
+    this->drawables.Think(dt);
 }

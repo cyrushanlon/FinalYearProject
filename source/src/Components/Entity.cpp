@@ -22,12 +22,12 @@ bool Entity::AddComponent(std::shared_ptr<Component> comp)
     if (name == "drawable")
     {
         gs->drawableComponents.push_back(std::static_pointer_cast<DrawableComponent>(comp));
-    }
+    }/*
     else if (name == "animatable")
     {
         gs->animatableComponents[this->ID] = (std::static_pointer_cast<AnimatableComponent>(comp));
         gs->drawableComponents.push_back(std::static_pointer_cast<DrawableComponent>(comp));
-    }
+    }*/
     else
         std::cout << "unhandled " << name;
 
