@@ -33,12 +33,12 @@ public:
     bool Animates();
     void Animates(bool);
 
-    std::map<std::string, std::shared_ptr<Animation>> animations;
+    std::map<std::string, Animation> animations;
     std::string currentAnim;
     int currentFrame;
     sf::Clock frameClock;//convert to 1 centralised timer?
 
-    void AddAnimation(std::shared_ptr<Animation> anim);
+    void AddAnimation(Animation anim);
     void SetAnimation(std::string name);
 protected:
     //used for classes that inherit from this one, such as AnimatableComponent

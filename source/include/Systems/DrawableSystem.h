@@ -34,12 +34,12 @@ public:
             {
                 //check if there has been enough time since the last frame
                 auto time = x->frameClock.getElapsedTime();
-                if (time >= sf::seconds(1 / x->animations.at(x->currentAnim).get()->GetFrameRate()))
+                if (time >= sf::seconds(1 / x->animations.at(x->currentAnim).GetFrameRate()))
                 {
                     x->frameClock.restart();
                     auto anim = x->animations.at(x->currentAnim);
-                    int nextFrameInt = x->animations.at(x->currentAnim).get()->GetNextFrame();
-                    sf::IntRect frame = anim->GetFrame(nextFrameInt);
+                    int nextFrameInt = x->animations.at(x->currentAnim).GetNextFrame();
+                    sf::IntRect frame = anim.GetFrame(nextFrameInt);
 
                     //set texture
                     //x->texture = frame;

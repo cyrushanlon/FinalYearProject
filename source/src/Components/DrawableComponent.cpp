@@ -76,9 +76,9 @@ void DrawableComponent::Animates(bool n)
     this->animates = n;
 }
 
-void DrawableComponent::AddAnimation(std::shared_ptr<Animation> anim)
+void DrawableComponent::AddAnimation(Animation anim)
 {
-    this->animations.emplace(anim.get()->GetName(), anim);
+    this->animations.emplace(anim.GetName(), anim);
 }
 
 void DrawableComponent::SetAnimation(std::string name)
