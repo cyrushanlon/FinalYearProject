@@ -150,6 +150,50 @@ static int l_DrawableComponent_SetTexture(lua_State * l)
     return 0;
 }
 
+static int l_Animatable_SetAnimates(lua_State * l)
+{
+    DrawableComponent* anim = l_CheckDrawableComponent(1);
+
+    bool n = lua_toboolean(l, 2);
+
+    anim->Animates(n);
+
+    return 0;
+}
+
+static int l_Animatable_GetAnimates(lua_State * l)
+{
+    DrawableComponent* dc = l_CheckDrawableComponent(1);
+
+    bool n = dc->Animates();
+    //use the LuaState helper to push the angle onto the stack
+    lua_pushboolean(l, n);
+
+    //we return a single variable to Lua
+    return 1;
+}
+
+static int l_Animatable_SetAnimation(lua_State * l)
+{
+    DrawableComponent* anim = l_CheckDrawableComponent(1);
+
+    const char * name = luaL_checkstring(l, 2);
+
+    anim->SetAnimation(name);
+
+    return 0;
+}
+static int l_Animatable_AddAnimation(lua_State * l)
+{
+    DrawableComponent* anim = l_CheckDrawableComponent(1);
+
+    Animation* newAnim = l_CheckAnimation(2);
+
+    anim->AddAnimation(*newAnim);
+
+    return 0;
+}
+
 static void RegisterDrawableComponent()
 {
     //defines the functions and their C counterparts
@@ -165,6 +209,10 @@ static void RegisterDrawableComponent()
         { "GetOrigin", l_DrawableComponent_GetOrigin },
         { "SetOrigin", l_DrawableComponent_SetOrigin },
         { "SetTexture", l_DrawableComponent_SetTexture },
+        { "SetAnimates", l_Animatable_SetAnimates},
+        { "GetAnimates", l_Animatable_GetAnimates},
+        { "SetAnimation", l_Animatable_SetAnimation },
+        { "AddAnimation", l_Animatable_AddAnimation },
         { "__gc", l_DrawableComponent_Destructor },
         { NULL, NULL }
     };
