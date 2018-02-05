@@ -52,7 +52,7 @@ void ResourceManager::Unload(std::string uri)
 
         if (curCount == 1) //the single use should be the one in the manager
         {
-            //this->resources.erase(uri);
+            this->resources.erase(uri);
             std::cout << "[ResourceManager] Removed |\"" << uri <<"\""<<std::endl;
         }
     }

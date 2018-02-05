@@ -25,7 +25,7 @@ DrawableComponent::DrawableComponent(std::string name) : Component(name)
 
 DrawableComponent::~DrawableComponent()
 {
-    this->texture.reset();
+    //this->texture.reset();
     rscManager.Unload(this->textureUri);
 }
 
