@@ -87,4 +87,5 @@ void DrawableComponent::SetAnimation(std::string name)
     this->currentAnim = name;
     this->currentFrame = 0;
     this->frameClock.restart();
+    this->SetTexture(this->animations[name].getSpritesheetPath());
 }

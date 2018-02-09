@@ -75,6 +75,48 @@ static int l_Entity_Destructor(lua_State * l)
 
     return 0;
 }
+/*
+static int l_Entity_Index( lua_State* L )
+{
+    std::cout << "a";
+    //object, key
+    //first check the environment
+    lua_getuservalue( L, -2 );
+    lua_pushvalue( L, -2 );
+    lua_rawget( L, -2 );
+    if( lua_isnoneornil( L, -1 ) == 0 )
+    {
+        return 1;
+    }
+
+    lua_pop( L, 2 );
+
+    //second check the metatable
+    lua_getmetatable( L, -2 );
+    lua_pushvalue( L, -2 );
+    lua_rawget( L, -2 );
+
+    //nil or otherwise, we return here
+    return 1;
+}
+
+static int l_Entity_NewIndex( lua_State* L )
+{
+std::cout << "b";
+    //object, key, value
+std::cout << 1;
+    lua_getuservalue( L, -3 );
+std::cout << 2;
+    lua_pushvalue( L, -3 );
+std::cout << 3;
+    lua_pushvalue( L, -3 );
+std::cout << 4;
+    lua_rawset( L, -3 );
+std::cout << 5;
+
+    return 0;
+}
+*/
 
 static void RegisterEntity()
 {
@@ -86,6 +128,8 @@ static void RegisterEntity()
         //{ "GetComponent", l_Entity_GetComponent },
         { "GetID", l_Entity_GetID },
         { "__gc", l_Entity_Destructor },
+        //{"__index",l_Entity_Index},
+        //{"__newindex",l_Entity_NewIndex},
         { NULL, NULL }
     };
 

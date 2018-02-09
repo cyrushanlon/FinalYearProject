@@ -11,9 +11,9 @@
 //TODO
 /*
 
-virtual sizes rather than pixels so different resolutions look the same
 CPP
 _________________
+virtual sizes rather than pixels so different resolutions look the same
 stop sound inheriting from old point class
 
 BOTH
@@ -23,14 +23,13 @@ level loading/saving
 Box2D
 Settings
 screen shake
-draw order (things that might need to be on top of other things etc) (convert map to vector?)
+draw order (things that might need to be on top of other things etc)
 treat userdata as a table so we can add custom fields whenever in Lua
 UI
 networking
 
 LUA
 _________________
-Anims //need to inherit animatable metatable from drawable metatable
 keypress and release hooks
 texture
 window
@@ -96,6 +95,10 @@ int main()
                 {
                     Window.close();
                 }
+                //else
+                //    Lua.HookKeyPressed();
+            //if (event.type == sf::Event::KeyReleased)
+            //    Lua.HookKeyReleased();
             if (event.type == sf::Event::LostFocus)
                 Lua.HookLostFocus();
             if (event.type == sf::Event::GainedFocus)

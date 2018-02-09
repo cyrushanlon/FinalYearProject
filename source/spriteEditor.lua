@@ -15,11 +15,10 @@ function Init()
     anim:SetLooping(true)
     anim:Regenerate()
 
-    testDrc1:SetPos(100,100)
-    testDrc1:SetTexture("resources/textures/metalslug_mummy37x45.png")
     testDrc1:AddAnimation(anim)
     testDrc1:SetAnimation("walk")
     testDrc1:SetAnimates(true)
+    testDrc1:SetOrigin(18, 22)
 
     testEnt1:AddComponent(testDrc1)
 
