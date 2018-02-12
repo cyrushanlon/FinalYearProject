@@ -63,10 +63,10 @@
 			<Add directory="G:/+ 00 + Projects/C++/FinalYearProject/lib/sfml/lib" />
 		</Linker>
 		<Unit filename="include/Animation.h" />
-		<Unit filename="include/Components/AnimatableComponent.h" />
 		<Unit filename="include/Components/Component.h" />
 		<Unit filename="include/Components/DrawableComponent.h" />
 		<Unit filename="include/Components/Entity.h" />
+		<Unit filename="include/Components/PhysicsComponent.h" />
 		<Unit filename="include/ECSManager.h" />
 		<Unit filename="include/Gamestate.h" />
 		<Unit filename="include/GamestateManager.h" />
@@ -186,6 +186,7 @@
 		<Unit filename="src/Components/Component.cpp" />
 		<Unit filename="src/Components/DrawableComponent.cpp" />
 		<Unit filename="src/Components/Entity.cpp" />
+		<Unit filename="src/Components/PhysicsComponent.cpp" />
 		<Unit filename="src/ECSManager.cpp" />
 		<Unit filename="src/Gamestate.cpp" />
 		<Unit filename="src/GamestateManager.cpp" />

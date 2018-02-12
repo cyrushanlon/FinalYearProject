@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "Systems/DrawableSystem.h"
+#include "Systems/PhysicsSystem.h"
 
 class ECSManager
 {
@@ -17,7 +18,7 @@ class ECSManager
 
     private:
         DrawableSystem drawables;
-        //AnimatableSystem animatables;
+        PhysicsSystem physics;
 };
 
 #endif // ECSMANAGER_H

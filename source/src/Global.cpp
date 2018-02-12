@@ -2,10 +2,6 @@
 
 sf::RenderWindow Window;
 
-//std::map<std::string, Drawable*> Drawables;
-//std::map<std::string, Point*> Points;
-//std::map<std::string, Sound*> Sounds;
-
 GamestateManager gsManager;
 
 ResourceManager rscManager;
@@ -118,3 +114,5 @@ const std::map<std::string, sf::Keyboard::Key> KeyMap =
     {"Pause", sf::Keyboard::Pause},
     {"KeyCount", sf::Keyboard::KeyCount}
 };
+
+b2World world(b2Vec2(0.0f, -10.0f));

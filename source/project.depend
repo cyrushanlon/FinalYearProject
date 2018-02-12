@@ -1,10 +1,11 @@
 # depslib dependency file v1.0
-1517858035 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
+1518470593 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Components/Entity.h"
 	"ECSManager.h"
 	"ResourceManager.h"
+	"Box2D/Box2D.h"
 	"Global.h"
 
 1486736397 g:\+ 00 + projects\c++\finalyearproject\lib\sfml\include\sfml\graphics.hpp
@@ -414,13 +415,14 @@
 	<memory>
 	"ResourceInterface.h"
 
-1516283269 g:\+ 00 + projects\c++\finalyearproject\source\include\global.h
+1518448607 g:\+ 00 + projects\c++\finalyearproject\source\include\global.h
 	<map>
 	<SFML/Window/Keyboard.hpp>
 	<SFML/Window.hpp>
 	"GamestateManager.h"
 	"ResourceManager.h"
 	"LuaState.h"
+	"Box2D/Box2D.h"
 
 1513134098 g:\+ 00 + projects\c++\finalyearproject\source\include\luastate.h
 	<lua.hpp>
@@ -455,7 +457,7 @@
 	"Drawable.h"
 	"Global.h"
 
-1516283223 source:g:\+ 00 + projects\c++\finalyearproject\source\src\global.cpp
+1518450174 source:g:\+ 00 + projects\c++\finalyearproject\source\src\global.cpp
 	"Global.h"
 
 1504466671 source:g:\+ 00 + projects\c++\finalyearproject\source\src\inputmanager.cpp
@@ -656,11 +658,12 @@
 1516637823 g:\+ 00 + projects\c++\finalyearproject\source\include\gamestatemanager.h
 	"Gamestate.h"
 
-1517856724 g:\+ 00 + projects\c++\finalyearproject\source\include\gamestate.h
+1518466894 g:\+ 00 + projects\c++\finalyearproject\source\include\gamestate.h
 	<memory>
 	"Components/DrawableComponent.h"
+	"Components/PhysicsComponent.h"
 
-1517184982 source:g:\+ 00 + projects\c++\finalyearproject\source\src\gamestate.cpp
+1518197648 source:g:\+ 00 + projects\c++\finalyearproject\source\src\gamestate.cpp
 	"Gamestate.h"
 
 1516637895 source:g:\+ 00 + projects\c++\finalyearproject\source\src\gamestatemanager.cpp
@@ -683,16 +686,19 @@
 	<SFML/Graphics.hpp>
 	"Global.h"
 
-1516822472 g:\+ 00 + projects\c++\finalyearproject\source\include\components\physicscomponent.h
+1518466411 g:\+ 00 + projects\c++\finalyearproject\source\include\components\physicscomponent.h
+	"Components/Component.h"
+	"Box2D/Box2D.h"
 
 1516823051 g:\+ 00 + projects\c++\finalyearproject\source\include\components\inputcomponent.h
 
-1517855572 source:g:\+ 00 + projects\c++\finalyearproject\source\src\ecsmanager.cpp
+1518466840 source:g:\+ 00 + projects\c++\finalyearproject\source\src\ecsmanager.cpp
 	"ECSManager.h"
 
-1517856729 g:\+ 00 + projects\c++\finalyearproject\source\include\ecsmanager.h
+1518466700 g:\+ 00 + projects\c++\finalyearproject\source\include\ecsmanager.h
 	<SFML/Graphics.hpp>
 	"Systems/DrawableSystem.h"
+	"Systems/PhysicsSystem.h"
 
 1517857808 g:\+ 00 + projects\c++\finalyearproject\source\include\systems\drawablesystem.h
 	<SFML/Graphics.hpp>
@@ -723,7 +729,7 @@
 1517184856 source:g:\+ 00 + projects\c++\finalyearproject\source\src\components\component.cpp
 	"Components/Component.h"
 
-1517855556 source:g:\+ 00 + projects\c++\finalyearproject\source\src\components\entity.cpp
+1518470644 source:g:\+ 00 + projects\c++\finalyearproject\source\src\components\entity.cpp
 	"Components/Entity.h"
 	"Global.h"
 
@@ -1262,7 +1268,7 @@
 	"Global.h"
 	<iostream>
 
-1517858405 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_drawablecomponent.h
+1518451138 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_drawablecomponent.h
 	<lua.hpp>
 	"Components/Entity.h"
 	"Global.h"
@@ -1744,4 +1750,45 @@
 
 1515307653 g:\+ 00 + projects\c++\finalyearproject\source\lib\windows\box2d\box2d\box2d\rope\b2rope.h
 	"Box2D/Common/b2Math.h"
+
+1518466414 source:g:\+ 00 + projects\c++\finalyearproject\source\src\components\physicscomponent.cpp
+	"Components/PhysicsComponent.h"
+	"Global.h"
+
+1515307653 g:\+ 00 + projects\c++\finalyearproject\source\lib\windows\box2d\box2d\box2d\box2d.h
+	"Box2D/Common/b2Settings.h"
+	"Box2D/Common/b2Draw.h"
+	"Box2D/Common/b2Timer.h"
+	"Box2D/Collision/Shapes/b2CircleShape.h"
+	"Box2D/Collision/Shapes/b2EdgeShape.h"
+	"Box2D/Collision/Shapes/b2ChainShape.h"
+	"Box2D/Collision/Shapes/b2PolygonShape.h"
+	"Box2D/Collision/b2BroadPhase.h"
+	"Box2D/Collision/b2Distance.h"
+	"Box2D/Collision/b2DynamicTree.h"
+	"Box2D/Collision/b2TimeOfImpact.h"
+	"Box2D/Dynamics/b2Body.h"
+	"Box2D/Dynamics/b2Fixture.h"
+	"Box2D/Dynamics/b2WorldCallbacks.h"
+	"Box2D/Dynamics/b2TimeStep.h"
+	"Box2D/Dynamics/b2World.h"
+	"Box2D/Dynamics/Contacts/b2Contact.h"
+	"Box2D/Dynamics/Joints/b2DistanceJoint.h"
+	"Box2D/Dynamics/Joints/b2FrictionJoint.h"
+	"Box2D/Dynamics/Joints/b2GearJoint.h"
+	"Box2D/Dynamics/Joints/b2MotorJoint.h"
+	"Box2D/Dynamics/Joints/b2MouseJoint.h"
+	"Box2D/Dynamics/Joints/b2PrismaticJoint.h"
+	"Box2D/Dynamics/Joints/b2PulleyJoint.h"
+	"Box2D/Dynamics/Joints/b2RevoluteJoint.h"
+	"Box2D/Dynamics/Joints/b2RopeJoint.h"
+	"Box2D/Dynamics/Joints/b2WeldJoint.h"
+	"Box2D/Dynamics/Joints/b2WheelJoint.h"
+
+1518470697 g:\+ 00 + projects\c++\finalyearproject\source\include\systems\physicssystem.h
+	"Box2D/Box2D.h"
+	<SFML/Graphics.hpp>
+	"Global.h"
+	"Components/DrawableComponent.h"
+	"Components/PhysicsComponent.h"
 

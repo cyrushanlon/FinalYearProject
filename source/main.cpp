@@ -5,6 +5,7 @@
 #include "Components/Entity.h"
 #include "ECSManager.h"
 #include "ResourceManager.h"
+#include "Box2D/Box2D.h"
 
 #include "Global.h"
 
@@ -27,6 +28,7 @@ draw order (things that might need to be on top of other things etc)
 treat userdata as a table so we can add custom fields whenever in Lua
 UI
 networking
+Joints
 
 LUA
 _________________
@@ -55,9 +57,43 @@ int main()
     Lua.Initialise("spriteEditor.lua");
 
     //Test code
-/*
+
+    b2BodyDef groundBodyDef;
+    groundBodyDef.position.Set(0.0f, -10.f);
+
+    b2Body* groundBody = world.CreateBody(&groundBodyDef);
+
+    b2PolygonShape groundBox;
+    groundBox.SetAsBox(50.0f, 10.0f);
+
+    groundBody->CreateFixture(&groundBox, 0.0f);
+    ///////////////////////////
     auto gs = gsManager.CurrentState().get();
 
+    Entity ent2 = Entity("test2");
+    ent2.AddComponent(std::make_shared<DrawableComponent>());
+    DrawableComponent* comp2 = gs->GetDrawable(ent2.GetID()).get();
+    comp2->SetTexture("resources/textures/metalslug_mummy37x45.png");
+
+    b2BodyDef bodyDef;
+    bodyDef.type = b2_dynamicBody;
+    bodyDef.position.Set(0.0f, 4.0f);
+
+    b2PolygonShape dynamicBox;
+    dynamicBox.SetAsBox(1.0f, 1.0f);
+
+    b2FixtureDef fixtureDef;
+    fixtureDef.shape = &dynamicBox;
+    fixtureDef.density = 1.0f;
+    fixtureDef.friction = 0.3f;
+
+    ent2.AddComponent(std::make_shared<PhysicsComponent>(bodyDef, fixtureDef, 1, 1));
+    ///////////////////////////
+
+    int32 velocityIterations = 6;
+    int32 positionIterations = 2;
+
+/*
     Entity ent = Entity("test1");
     ent.AddComponent(std::make_shared<DrawableComponent>());
     Animation anim("walk", "resources/textures/metalslug_mummy37x45.png", sf::Vector2i(37, 45), 50, 18);
@@ -70,11 +106,6 @@ int main()
     comp->Animates(true);
     comp->AddAnimation(anim);
     comp->SetAnimation("walk");
-
-    Entity ent2 = Entity("test2");
-    ent2.AddComponent(std::make_shared<DrawableComponent>());
-    DrawableComponent* comp2 = gs->GetDrawable(ent2.GetID()).get();
-    comp2->SetTexture("resources/textures/metalslug_mummy37x45.png");
 */
     //
 
@@ -126,6 +157,8 @@ int main()
             Lua.Think(dt);
         }
 
+        //physics world
+        world.Step(dt.asSeconds(), velocityIterations, positionIterations);
 
         //Draw
         //
