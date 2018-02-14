@@ -64,6 +64,8 @@ void DrawableComponent::SetTexture (std::string uri)
     this->texture = rscManager.LoadTexture(uri);
     this->textureUri = uri;
     this->sprite.setTexture(*(this->texture.get()));
+    sf::FloatRect bounds = this->sprite.getGlobalBounds();
+    this->sprite.setOrigin(bounds.width/2, bounds.height/2);
 }
 
 //Animatable

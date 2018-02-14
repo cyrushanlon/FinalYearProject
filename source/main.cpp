@@ -58,7 +58,6 @@ int main()
 
     //Test code
     b2BodyDef groundBodyDef;
-    groundBodyDef.position.Set(0.0f, -10.0f);
 
     b2FixtureDef floorfixture;
     floorfixture.density = 0;
@@ -68,6 +67,7 @@ int main()
     floorDraw.get()->SetTexture("resources/textures/floor.png");
 
     std::shared_ptr<PhysicsComponent> floorPhys = std::static_pointer_cast<PhysicsComponent>(floor.AddComponent(std::make_shared<PhysicsComponent>(groundBodyDef, floorfixture, 50, 10)));
+    floorPhys.get()->SetBodyTransform(b2Vec2(0, -10));
     ///////////////////////////
     auto gs = gsManager.CurrentState().get();
 
@@ -78,13 +78,12 @@ int main()
 
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
-    bodyDef.position.Set(0.0f, 10.0f);
 
     b2FixtureDef fixtureDef;
     fixtureDef.density = 1.0f;
     fixtureDef.friction = 0.3f;
 
-    std::shared_ptr<PhysicsComponent> otherPhys = std::static_pointer_cast<PhysicsComponent>(ent2.AddComponent(std::make_shared<PhysicsComponent>(bodyDef, fixtureDef, 1, 1)));
+    std::shared_ptr<PhysicsComponent> otherPhys = std::static_pointer_cast<PhysicsComponent>(ent2.AddComponent(std::make_shared<PhysicsComponent>(bodyDef, fixtureDef, 4, 4)));
     otherPhys.get()->SetBodyTransform(b2Vec2(0, 10));
     ///////////////////////////
 
@@ -157,7 +156,7 @@ int main()
 
         //physics world
         world.Step(dt.asSeconds(), velocityIterations, positionIterations);
-        std::cout << otherPhys.get()->GetPosition().y <<std::endl;
+        //std::cout << otherPhys.get()->GetPosition().y <<std::endl;
 
         //Draw
         //

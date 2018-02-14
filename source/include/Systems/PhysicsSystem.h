@@ -25,8 +25,8 @@ public:
 
             b2Vec2 pos = comp->GetPosition();
             //scale the m positions into pixels for drawing
-            drawable.get()->SetOrigin(sf::Vector2f(pos.x * 32, pos.y * -32))
             drawable.get()->SetPos(sf::Vector2f(pos.x * 32, pos.y * -32));
+            drawable.get()->SetAng(comp->GetAngle() * (180/3.14159265358979));
         }
     }
 };
