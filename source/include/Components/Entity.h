@@ -14,7 +14,7 @@ public:
 
     std::string GetID();
     bool HasComponent(std::string);
-    bool AddComponent(std::shared_ptr<Component> comp);
+    std::shared_ptr<Component> AddComponent(std::shared_ptr<Component> comp);
 private:
     std::string ID;
 };

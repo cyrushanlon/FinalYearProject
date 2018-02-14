@@ -57,37 +57,35 @@ int main()
     Lua.Initialise("spriteEditor.lua");
 
     //Test code
-
     b2BodyDef groundBodyDef;
-    groundBodyDef.position.Set(0.0f, -10.f);
+    groundBodyDef.position.Set(0.0f, -10.0f);
 
-    b2Body* groundBody = world.CreateBody(&groundBodyDef);
+    b2FixtureDef floorfixture;
+    floorfixture.density = 0;
 
-    b2PolygonShape groundBox;
-    groundBox.SetAsBox(50.0f, 10.0f);
+    Entity floor = Entity("floor");
+    std::shared_ptr<DrawableComponent> floorDraw = std::static_pointer_cast<DrawableComponent>(floor.AddComponent(std::make_shared<DrawableComponent>()));
+    floorDraw.get()->SetTexture("resources/textures/floor.png");
 
-    groundBody->CreateFixture(&groundBox, 0.0f);
+    std::shared_ptr<PhysicsComponent> floorPhys = std::static_pointer_cast<PhysicsComponent>(floor.AddComponent(std::make_shared<PhysicsComponent>(groundBodyDef, floorfixture, 50, 10)));
     ///////////////////////////
     auto gs = gsManager.CurrentState().get();
 
     Entity ent2 = Entity("test2");
     ent2.AddComponent(std::make_shared<DrawableComponent>());
     DrawableComponent* comp2 = gs->GetDrawable(ent2.GetID()).get();
-    comp2->SetTexture("resources/textures/metalslug_mummy37x45.png");
+    comp2->SetTexture("resources/textures/box.png");
 
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
-    bodyDef.position.Set(0.0f, 4.0f);
-
-    b2PolygonShape dynamicBox;
-    dynamicBox.SetAsBox(1.0f, 1.0f);
+    bodyDef.position.Set(0.0f, 10.0f);
 
     b2FixtureDef fixtureDef;
-    fixtureDef.shape = &dynamicBox;
     fixtureDef.density = 1.0f;
     fixtureDef.friction = 0.3f;
 
-    ent2.AddComponent(std::make_shared<PhysicsComponent>(bodyDef, fixtureDef, 1, 1));
+    std::shared_ptr<PhysicsComponent> otherPhys = std::static_pointer_cast<PhysicsComponent>(ent2.AddComponent(std::make_shared<PhysicsComponent>(bodyDef, fixtureDef, 1, 1)));
+    otherPhys.get()->SetBodyTransform(b2Vec2(0, 10));
     ///////////////////////////
 
     int32 velocityIterations = 6;
@@ -159,12 +157,12 @@ int main()
 
         //physics world
         world.Step(dt.asSeconds(), velocityIterations, positionIterations);
+        std::cout << otherPhys.get()->GetPosition().y <<std::endl;
 
         //Draw
         //
         Window.clear(sf::Color::Magenta);
         Window.setView(Window.getDefaultView());
-
 
         //for each view we want to go through and see if we want to draw anything
         //this may end up expensive and should be improved

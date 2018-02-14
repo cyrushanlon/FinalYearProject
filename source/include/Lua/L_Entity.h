@@ -49,7 +49,7 @@ static int l_Entity_AddComponent(lua_State * l)
     DrawableComponent* dc = l_CheckDrawableComponent(2);
     auto dcPointer = std::shared_ptr<DrawableComponent>(dc);
 
-    bool succ = entity->AddComponent(dcPointer);
+    bool succ = !entity->AddComponent(dcPointer);
 
     lua_pushboolean(l, succ);
 

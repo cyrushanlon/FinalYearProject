@@ -11,7 +11,7 @@ std::string Entity::GetID()
     return this->ID;
 }
 
-bool Entity::AddComponent(std::shared_ptr<Component> comp)
+std::shared_ptr<Component> Entity::AddComponent(std::shared_ptr<Component> comp)
 {
     comp.get()->SetParent(this->ID);
     //make this more generic rather than a bunch of if else
@@ -35,5 +35,5 @@ bool Entity::AddComponent(std::shared_ptr<Component> comp)
     else
         std::cout << "unhandled " << name;
 
-    return true;
+    return comp;
 }

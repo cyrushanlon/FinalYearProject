@@ -8,6 +8,7 @@ PhysicsComponent::PhysicsComponent(b2BodyDef bodyDef, b2FixtureDef fixDef, float
 {
     body = world.CreateBody(&bodyDef);
     shape.SetAsBox(width, height);
+    fixDef.shape = &shape;
     fixture = body->CreateFixture(&fixDef);
 }
 
