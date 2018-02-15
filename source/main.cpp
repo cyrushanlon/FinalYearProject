@@ -60,7 +60,6 @@ int main()
     b2BodyDef groundBodyDef;
 
     b2FixtureDef floorfixture;
-    floorfixture.density = 0;
 
     Entity floor = Entity("floor");
     std::shared_ptr<DrawableComponent> floorDraw = std::static_pointer_cast<DrawableComponent>(floor.AddComponent(std::make_shared<DrawableComponent>()));
@@ -71,11 +70,7 @@ int main()
     ///////////////////////////
     auto gs = gsManager.CurrentState().get();
 
-    Entity ent2 = Entity("test2");
-    ent2.AddComponent(std::make_shared<DrawableComponent>());
-    DrawableComponent* comp2 = gs->GetDrawable(ent2.GetID()).get();
-    comp2->SetTexture("resources/textures/box.png");
-
+    //
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
 
@@ -83,13 +78,27 @@ int main()
     fixtureDef.density = 1.0f;
     fixtureDef.friction = 0.3f;
 
-    std::shared_ptr<PhysicsComponent> otherPhys = std::static_pointer_cast<PhysicsComponent>(ent2.AddComponent(std::make_shared<PhysicsComponent>(bodyDef, fixtureDef, 4, 4)));
-    otherPhys.get()->SetBodyTransform(b2Vec2(0, 10));
+    Entity ent1 = Entity("test1");
+    ent1.AddComponent(std::make_shared<DrawableComponent>());
+    DrawableComponent* comp1 = gs->GetDrawable(ent1.GetID()).get();
+    comp1->SetTexture("resources/textures/box.png");
+
+    std::shared_ptr<PhysicsComponent> otherPhys = std::static_pointer_cast<PhysicsComponent>(ent1.AddComponent(std::make_shared<PhysicsComponent>(bodyDef, fixtureDef, 4, 4)));
+    otherPhys.get()->SetBodyTransform(b2Vec2(2, 15));
+    //
+
+    Entity ent2 = Entity("test2");
+    ent2.AddComponent(std::make_shared<DrawableComponent>());
+    DrawableComponent* comp2 = gs->GetDrawable(ent2.GetID()).get();
+    comp2->SetTexture("resources/textures/box.png");
+
+    std::shared_ptr<PhysicsComponent> otherPhys2 = std::static_pointer_cast<PhysicsComponent>(ent2.AddComponent(std::make_shared<PhysicsComponent>(bodyDef, fixtureDef, 4, 4)));
+    otherPhys2.get()->SetBodyTransform(b2Vec2(0, 10));
+
     ///////////////////////////
 
     int32 velocityIterations = 6;
     int32 positionIterations = 2;
-
 /*
     Entity ent = Entity("test1");
     ent.AddComponent(std::make_shared<DrawableComponent>());

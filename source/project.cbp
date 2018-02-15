@@ -76,13 +76,17 @@
 		<Unit filename="include/Lua/L_Animatable.h" />
 		<Unit filename="include/Lua/L_Animation.h" />
 		<Unit filename="include/Lua/L_Component.h" />
+		<Unit filename="include/Lua/L_Drawable.h" />
 		<Unit filename="include/Lua/L_DrawableComponent.h" />
 		<Unit filename="include/Lua/L_Entity.h" />
 		<Unit filename="include/Lua/L_Gamestate.h" />
 		<Unit filename="include/Lua/L_Input.h" />
+		<Unit filename="include/Lua/L_PhysicsComponent.h" />
 		<Unit filename="include/Lua/L_SF_View.h" />
 		<Unit filename="include/Lua/L_Sound.h" />
 		<Unit filename="include/Lua/L_Window.h" />
+		<Unit filename="include/Lua/box2d/L_b2BodyDef.h" />
+		<Unit filename="include/Lua/box2d/L_b2FixtureDef.h" />
 		<Unit filename="include/Resource.h" />
 		<Unit filename="include/ResourceInterface.h" />
 		<Unit filename="include/ResourceManager.h" />

@@ -23,6 +23,10 @@ function Init()
     testEnt1:AddComponent(testDrc1)
 
     comps["testEnt1"] = testDrc1
+    
+    local bodydef = b2BodyDef.New({
+        active=true,
+    })
 end
 
 

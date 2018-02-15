@@ -3,18 +3,22 @@
 #include "LuaState.h"
 
 /*
-#include "Lua/L_Drawable.h"
-#include "Lua/L_Animatable.h"
 #include "Lua/L_Sound.h"
 */
+
 #include "Lua/L_Input.h"
 #include "Lua/L_Window.h"
 #include "Lua/L_Animation.h"
 #include "Lua/L_Gamestate.h"
 
+#include "Lua/box2d/L_b2BodyDef.h"
+#include "Lua/box2d/L_b2FixtureDef.h"
+
 #include "Lua/L_Entity.h"
 #include "Lua/L_Component.h"
 #include "Lua/L_DrawableComponent.h"
+#include "Lua/L_PhysicsComponent.h"
+
 
 LuaState::LuaState()
 {
@@ -23,14 +27,13 @@ LuaState::LuaState()
 
     //register everything from C++ into lua
 
-    //RegisterDrawable();
-    //RegisterSound();
-    //RegisterAnimatable();
-
     RegisterWindow();
     RegisterInput();
     RegisterAnimation();
     RegisterGamestate();
+
+    Registerb2BodyDef();
+    Registerb2FixtureDef();
 
     RegisterEntity();
     RegisterComponent();

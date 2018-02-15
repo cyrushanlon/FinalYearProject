@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1518630811 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
+1518655211 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Components/Entity.h"
@@ -466,19 +466,20 @@
 1504466668 g:\+ 00 + projects\c++\finalyearproject\source\include\inputmanager.h
 	<SFML/Window.hpp>
 
-1517604062 source:g:\+ 00 + projects\c++\finalyearproject\source\src\luastate.cpp
+1518658902 source:g:\+ 00 + projects\c++\finalyearproject\source\src\luastate.cpp
 	<iostream>
 	"LuaState.h"
-	"Lua/L_Drawable.h"
-	"Lua/L_Animatable.h"
 	"Lua/L_Sound.h"
 	"Lua/L_Input.h"
 	"Lua/L_Window.h"
 	"Lua/L_Animation.h"
 	"Lua/L_Gamestate.h"
+	"Lua/box2d/L_b2BodyDef.h"
+	"Lua/box2d/L_b2FixtureDef.h"
 	"Lua/L_Entity.h"
 	"Lua/L_Component.h"
 	"Lua/L_DrawableComponent.h"
+	"Lua/L_PhysicsComponent.h"
 
 1517853770 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_drawable.h
 	<lua.hpp>
@@ -1785,10 +1786,20 @@
 	"Box2D/Dynamics/Joints/b2WeldJoint.h"
 	"Box2D/Dynamics/Joints/b2WheelJoint.h"
 
-1518630974 g:\+ 00 + projects\c++\finalyearproject\source\include\systems\physicssystem.h
+1518632581 g:\+ 00 + projects\c++\finalyearproject\source\include\systems\physicssystem.h
 	"Box2D/Box2D.h"
 	<SFML/Graphics.hpp>
 	"Global.h"
 	"Components/DrawableComponent.h"
 	"Components/PhysicsComponent.h"
+
+1518660757 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\box2d\l_b2bodydef.h
+	<lua.hpp>
+	"Global.h"
+	"Box2D/Box2D.h"
+	<iostream>
+
+1518657238 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\box2d\l_b2fixturedef.h
+
+1518657228 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_physicscomponent.h
 

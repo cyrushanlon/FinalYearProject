@@ -20,13 +20,13 @@ public:
         {
             std::string id = comp->GetParent();
             std::shared_ptr<DrawableComponent> drawable = gsManager.CurrentState().get()->GetDrawable(id);
-            if (!drawable) //if the drawable component doesnt exist
+            if (!drawable) //if the current ent doesnt have a drawable component
                 continue;
 
             b2Vec2 pos = comp->GetPosition();
             //scale the m positions into pixels for drawing
             drawable.get()->SetPos(sf::Vector2f(pos.x * 32, pos.y * -32));
-            drawable.get()->SetAng(comp->GetAngle() * (180/3.14159265358979));
+            drawable.get()->SetAng(comp->GetAngle() * (-180/3.14159265358979));
         }
     }
 };
