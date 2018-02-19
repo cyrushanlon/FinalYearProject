@@ -35,7 +35,7 @@ static int l_b2BodyDef_Constructor(lua_State *L)
         lua_pushvalue(L, -2);
         std::string key = luaL_checkstring(L, -1);
 
-        std::cout << key;
+        //std::cout << key;
         if (key == "active")
             (*udata)->active = lua_toboolean(L, -2);
         else if (key == "allowSleep")

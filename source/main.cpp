@@ -66,7 +66,7 @@ int main()
     floorDraw.get()->SetTexture("resources/textures/floor.png");
 
     std::shared_ptr<PhysicsComponent> floorPhys = std::static_pointer_cast<PhysicsComponent>(floor.AddComponent(std::make_shared<PhysicsComponent>(groundBodyDef, floorfixture, 50, 10)));
-    floorPhys.get()->SetBodyTransform(b2Vec2(0, -10));
+    floorPhys.get()->SetBodyTransform(b2Vec2(0, -20));
     ///////////////////////////
     auto gs = gsManager.CurrentState().get();
 
@@ -97,8 +97,7 @@ int main()
 
     ///////////////////////////
 
-    int32 velocityIterations = 6;
-    int32 positionIterations = 2;
+
 /*
     Entity ent = Entity("test1");
     ent.AddComponent(std::make_shared<DrawableComponent>());
@@ -114,6 +113,8 @@ int main()
     comp->SetAnimation("walk");
 */
     //
+    int32 velocityIterations = 6;
+    int32 positionIterations = 2;
 
     //used to get dt during the main loop
     sf::Clock deltaClock;

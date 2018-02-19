@@ -38,6 +38,7 @@ LuaState::LuaState()
     RegisterEntity();
     RegisterComponent();
     RegisterDrawableComponent();
+    RegisterPhysicsComponent();
 
     //run any engine related files
     /* component funcs arent required and this didnt work anyway

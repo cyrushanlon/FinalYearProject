@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1518655211 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
+1519081128 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Components/Entity.h"
@@ -466,7 +466,7 @@
 1504466668 g:\+ 00 + projects\c++\finalyearproject\source\include\inputmanager.h
 	<SFML/Window.hpp>
 
-1518658902 source:g:\+ 00 + projects\c++\finalyearproject\source\src\luastate.cpp
+1519080549 source:g:\+ 00 + projects\c++\finalyearproject\source\src\luastate.cpp
 	<iostream>
 	"LuaState.h"
 	"Lua/L_Sound.h"
@@ -1262,10 +1262,11 @@
 	<stdio.h>
 	"lua.h"
 
-1518561232 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_entity.h
+1519080836 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_entity.h
 	<lua.hpp>
 	"Components/Entity.h"
 	"Components/DrawableComponent.h"
+	"Components/PhysicsComponent.h"
 	"Global.h"
 	<iostream>
 
@@ -1793,13 +1794,22 @@
 	"Components/DrawableComponent.h"
 	"Components/PhysicsComponent.h"
 
-1518660757 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\box2d\l_b2bodydef.h
+1519069918 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\box2d\l_b2bodydef.h
 	<lua.hpp>
 	"Global.h"
 	"Box2D/Box2D.h"
 	<iostream>
 
-1518657238 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\box2d\l_b2fixturedef.h
+1519069928 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\box2d\l_b2fixturedef.h
+	<lua.hpp>
+	"Global.h"
+	"Box2D/Box2D.h"
+	<iostream>
 
-1518657228 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_physicscomponent.h
+1519080907 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_physicscomponent.h
+	<lua.hpp>
+	"Box2D/Box2D.h"
+	"Components/PhysicsComponent.h"
+	"Global.h"
+	<iostream>
 

@@ -4,10 +4,12 @@
 #include <lua.hpp>
 #include "Components/Entity.h"
 #include "Components/DrawableComponent.h"
+#include "Components/PhysicsComponent.h"
 #include "Global.h"
 #include <iostream>
 
 static DrawableComponent* l_CheckDrawableComponent(int i);
+static PhysicsComponent* l_CheckPhysicsComponent(int i);
 
 static Entity* l_CheckEntity(int i)
 {
@@ -41,7 +43,7 @@ static int l_Entity_Constructor(lua_State *L)
     return 1;
 }
 
-static int l_Entity_AddComponent(lua_State * l)
+static int l_Entity_AddDrawableComponent(lua_State * l)
 {
     Entity* entity = l_CheckEntity(1);
 
@@ -50,6 +52,21 @@ static int l_Entity_AddComponent(lua_State * l)
     auto dcPointer = std::shared_ptr<DrawableComponent>(dc);
 
     bool succ = !entity->AddComponent(dcPointer);
+
+    lua_pushboolean(l, succ);
+
+    return 1;
+}
+
+static int l_Entity_AddPhysicsComponent(lua_State * l)
+{
+    Entity* entity = l_CheckEntity(1);
+
+    //get component from argument
+    PhysicsComponent* pc = l_CheckPhysicsComponent(2);
+    auto pcPointer = std::shared_ptr<PhysicsComponent>(pc);
+
+    bool succ = !entity->AddComponent(pcPointer);
 
     lua_pushboolean(l, succ);
 
@@ -124,7 +141,8 @@ static void RegisterEntity()
     luaL_Reg sEntityRegs[] =
     {
         { "New", l_Entity_Constructor },
-        { "AddComponent", l_Entity_AddComponent },
+        { "AddDrawable", l_Entity_AddDrawableComponent },
+        { "AddPhysics", l_Entity_AddPhysicsComponent },
         //{ "GetComponent", l_Entity_GetComponent },
         { "GetID", l_Entity_GetID },
         { "__gc", l_Entity_Destructor },

@@ -35,7 +35,7 @@ static int l_b2FixtureDef_Constructor(lua_State *L)
         lua_pushvalue(L, -2);
         std::string key = luaL_checkstring(L, -1);
 
-        std::cout << key;
+        //std::cout << key;
         if (key == "density")
             (*udata)->density = lua_tonumber(L, -2);
         //else if (key == "filter")
@@ -85,7 +85,7 @@ static void Registerb2FixtureDef()
     luaL_newmetatable(Lua.L(), "luaL_b2FixtureDef");
 
     //register the functions
-    luaL_setfuncs(Lua.L(), sb2BodyDefRegs, 0);
+    luaL_setfuncs(Lua.L(), sb2FixtureDefRegs, 0);
     lua_pushvalue(Lua.L(), -1);
 
     // Set the "__index" field of the metatable to point to itself
