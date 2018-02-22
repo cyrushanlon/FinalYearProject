@@ -38,3 +38,26 @@ float PhysicsComponent::GetAngle()
 {
     return this->body->GetAngle();
 }
+
+void PhysicsComponent::ApplyForce(b2Vec2 force, b2Vec2 point, bool wake)
+{
+    this->body->ApplyForce(force, point, wake);
+}
+void PhysicsComponent::ApplyForceToCenter(b2Vec2 force, bool wake)
+{
+    this->body->ApplyForceToCenter(force, wake);
+}
+
+void PhysicsComponent::ApplyImpulse(b2Vec2 force, b2Vec2 point, bool wake)
+{
+    this->body->ApplyLinearImpulse(force, point, wake);
+}
+void PhysicsComponent::ApplyImpulseToCenter(b2Vec2 force, bool wake)
+{
+    this->body->ApplyLinearImpulseToCenter(force, wake);
+}
+
+b2Vec2 PhysicsComponent::GetLinearVelocity()
+{
+    return this->body->GetLinearVelocity();
+}

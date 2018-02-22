@@ -27,14 +27,16 @@ static int l_PhysicsComponent_Constructor(lua_State *L)
         return luaL_error(L, "incorrect argument count");
     }
 
-    auto bodyDef = l_Checkb2BodyDef(1);
-    auto fixtureDef =  l_Checkb2FixtureDef(2);
+    b2BodyDef* bodyDef = l_Checkb2BodyDef(1);
+    b2FixtureDef* fixtureDef =  l_Checkb2FixtureDef(2);
     float x = luaL_checknumber(L, 3);
     float y = luaL_checknumber(L, 4);
 
     //create userdata
     PhysicsComponent ** udata = (PhysicsComponent **)lua_newuserdata(L, sizeof(PhysicsComponent *));
     *udata = new PhysicsComponent(*bodyDef, *fixtureDef, x, y);
+
+    std::cout << bodyDef->type << std::endl;
 
     //
     luaL_getmetatable(L, "luaL_PhysicsComponent");
@@ -53,19 +55,41 @@ static int l_PhysicsComponent_Destructor(lua_State * l)
     return 0;
 }
 
-/*
-static int l_DrawableComponent_GetAng(lua_State * l)
+static int l_PhysicsComponent_GetAng(lua_State * l)
 {
-    DrawableComponent* dc = l_CheckDrawableComponent(1);
+    PhysicsComponent * pc = l_CheckPhysicsComponent(1);
 
-    float ang = dc->GetAng();
+    float ang = pc->GetAngle();
     //use the LuaState helper to push the angle onto the stack
     lua_pushnumber(l, ang);
 
     //we return a single variable to Lua
     return 1;
 }
-*/
+
+static int l_PhysicsComponent_GetPos(lua_State * l)
+{
+    PhysicsComponent * pc = l_CheckPhysicsComponent(1);
+
+    b2Vec2 pos = pc->GetPosition();
+    //use the LuaState helper to push the angle onto the stack
+    Lua.Pushb2Vec2(pos);
+
+    //we return a single variable to Lua
+    return 1;
+}
+
+static int l_PhysicsComponent_GetVel(lua_State * l)
+{
+    PhysicsComponent * pc = l_CheckPhysicsComponent(1);
+
+    b2Vec2 pos = pc->GetLinearVelocity();
+    //use the LuaState helper to push the angle onto the stack
+    Lua.Pushb2Vec2(pos);
+
+    //we return a single variable to Lua
+    return 1;
+}
 
 static int l_PhysicsComponent_SetPos(lua_State * l)
 {
@@ -74,6 +98,90 @@ static int l_PhysicsComponent_SetPos(lua_State * l)
     float y = luaL_checknumber(l, 3);
 
     pc->SetBodyTransform(b2Vec2(x,y));
+
+    return 0;
+}
+
+static int l_PhysicsComponent_SetAng(lua_State * l)
+{
+    PhysicsComponent* pc = l_CheckPhysicsComponent(1);
+    float ang = luaL_checknumber(l, 2);
+
+    pc->SetBodyTransform(ang);
+
+    return 0;
+}
+
+static int l_PhysicsComponent_ApplyForce(lua_State * l)
+{
+    PhysicsComponent* pc = l_CheckPhysicsComponent(1);
+
+    //first we check how many arguments we are dealing with
+    int argc = lua_gettop(l) - 1;
+
+    if (argc != 3 && argc != 5)
+    {
+        std:: cout << argc << std::endl;
+        return luaL_error(l, "incorrect argument count");
+    }
+
+    float x = luaL_checknumber(l, 2);
+    float y = luaL_checknumber(l, 3);
+    b2Vec2 force = b2Vec2(x, y);
+
+    if (argc == 5)
+    {
+        float x2 = luaL_checknumber(l, 4);
+        float y2 = luaL_checknumber(l, 5);
+        b2Vec2 pos = b2Vec2(x2, y2);
+
+        bool wake = lua_toboolean(l, 6);
+
+        pc->ApplyForce(force, pos, wake);
+    }
+    else
+    {
+        bool wake = lua_toboolean(l, 4);
+
+        pc->ApplyForceToCenter(force, wake);
+    }
+
+    return 0;
+}
+
+static int l_PhysicsComponent_ApplyImpulse(lua_State * l)
+{
+    PhysicsComponent* pc = l_CheckPhysicsComponent(1);
+
+    //first we check how many arguments we are dealing with
+    int argc = lua_gettop(l) - 1;
+
+    if (argc != 3 && argc != 5)
+    {
+        std:: cout << argc << std::endl;
+        return luaL_error(l, "incorrect argument count");
+    }
+
+    float x = luaL_checknumber(l, 2);
+    float y = luaL_checknumber(l, 3);
+    b2Vec2 force = b2Vec2(x, y);
+
+    if (argc == 5)
+    {
+        float x2 = luaL_checknumber(l, 4);
+        float y2 = luaL_checknumber(l, 5);
+        b2Vec2 pos = b2Vec2(x2, y2);
+
+        bool wake = lua_toboolean(l, 6);
+
+        pc->ApplyImpulse(force, pos, wake);
+    }
+    else
+    {
+        bool wake = lua_toboolean(l, 4);
+
+        pc->ApplyImpulseToCenter(force, wake);
+    }
 
     return 0;
 }
@@ -110,6 +218,12 @@ static void RegisterPhysicsComponent()
     {
         { "New", l_PhysicsComponent_Constructor },
         { "SetPos", l_PhysicsComponent_SetPos },
+        { "SetAng", l_PhysicsComponent_SetAng },
+        { "GetPos", l_PhysicsComponent_GetPos },
+        { "GetAng", l_PhysicsComponent_GetAng },
+        { "GetVel", l_PhysicsComponent_GetVel },
+        { "ApplyForce", l_PhysicsComponent_ApplyForce},
+        { "ApplyImpulse" ,l_PhysicsComponent_ApplyImpulse},
         { "__gc", l_PhysicsComponent_Destructor },
         { NULL, NULL }
     };

@@ -14,8 +14,16 @@ public:
     void SetBodyTransform(b2Vec2 pos);
     void SetBodyTransform(float angle);
 
+    void ApplyForce(b2Vec2, b2Vec2, bool);
+    void ApplyForceToCenter(b2Vec2 force, bool);
+
+    void ApplyImpulse(b2Vec2, b2Vec2, bool);
+    void ApplyImpulseToCenter(b2Vec2 force, bool);
+
     b2Vec2 GetPosition();
     float GetAngle();
+
+    b2Vec2 GetLinearVelocity();
 private:
     b2Body* body;
     b2Fixture* fixture;

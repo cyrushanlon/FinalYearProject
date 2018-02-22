@@ -24,13 +24,15 @@ function Init()
     local testPhy1 = PhysicsComponent.New(
     b2BodyDef.New({
         active=true,
-        type = "b2_dynamicBody"
+        type = "dynamic"
     }),
     b2FixtureDef.New({
         density = 1,
         friction= 0.3,
     }),
     4, 4)
+
+    testPhy1:SetPos(5,-2)
 
     testEnt1:AddDrawable(testDrc1)
     testEnt1:AddPhysics(testPhy1)
@@ -41,8 +43,30 @@ function Init()
 
 end
 
-function Think(dt)
-    local pos = GetMousePos()
+local ang = 0
 
-    comps["testEnt1ph"]:SetPos(pos.x / 32, -pos.y / 32)
+function getMag(x, y)
+    return math.sqrt(math.pow(x, 2) + math.pow(y, 2))
+end
+
+function Think(dt)
+    local mpos = GetMousePos()
+    --transform mouse pos to box2d pos
+    mpos.x = mpos.x / 32
+    mpos.y = mpos.y / -32
+
+    local comp = comps["testEnt1ph"]
+    
+    --find vector from box to mouse 
+    local bpos = comp:GetPos()
+    local x = mpos.x - bpos.x
+    local y = mpos.y - bpos.y
+    local magnitude = getMag(x, y)
+    x = x / magnitude
+    y = y / magnitude
+
+    local vel = comp:GetVel()
+    local speed = getMag(vel.x, vel.y)
+
+    comp:ApplyImpulse(x, y, true)
 end
