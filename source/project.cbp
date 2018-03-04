@@ -13,18 +13,12 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
-					<Add option="-static-libgcc" />
-					<Add directory="lib/windows/sfml/include" />
-					<Add directory="include" />
-					<Add directory="lib/windows/lua/include" />
-					<Add directory="lib/windows/box2d/Box2D" />
 				</Compiler>
 				<Linker>
 					<Add library="sfml-graphics-d" />
 					<Add library="sfml-window-d" />
 					<Add library="sfml-system-d" />
 					<Add library="sfml-audio-d" />
-					<Add directory="lib/windows/sfml/lib" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -34,9 +28,6 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
-					<Add directory="../lib/sfml/include" />
-					<Add directory="include" />
-					<Add directory="include/Entity" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -44,14 +35,16 @@
 					<Add library="sfml-window" />
 					<Add library="sfml-system" />
 					<Add library="sfml-audio" />
-					<Add directory="../lib/sfml/lib" />
 				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add option="-static-libgcc" />
 			<Add directory="lib/windows/lua/include" />
 			<Add directory="lib/windows/sfml/include" />
+			<Add directory="include" />
+			<Add directory="lib/windows/box2d/Box2D" />
 		</Compiler>
 		<Linker>
 			<Add library="mingw32" />
@@ -60,7 +53,7 @@
 			<Add library="winmm" />
 			<Add library="dxguid" />
 			<Add library="lib/windows/lua/liblua53.a" />
-			<Add directory="G:/+ 00 + Projects/C++/FinalYearProject/lib/sfml/lib" />
+			<Add directory="lib/windows/sfml/lib" />
 		</Linker>
 		<Unit filename="include/Animation.h" />
 		<Unit filename="include/Components/Component.h" />

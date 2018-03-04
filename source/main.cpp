@@ -42,8 +42,19 @@ open source level editor(?)
 Docs
 */
 
-int main()
+int main(int argc, char* argv[])
 {
+    char* path = "spriteEditor.lua";
+    if (argc == 2)
+    {
+        path = argv[1];
+    }
+    else
+    {
+        std::cout << "Usage:" << argv[0] << " path to lua file";
+        //return 1;
+    }
+
     Window.create(sf::VideoMode(1280, 720), "SFML works!");
     Window.setFramerateLimit(500);
     Window.setVerticalSyncEnabled(false);
@@ -54,9 +65,9 @@ int main()
     ECSManager ecsManager;
 
     //calls the lua function Init()
-    Lua.Initialise("spriteEditor.lua");
+    Lua.Initialise(path);
 
-    //Test code
+    /*/Test code
     b2BodyDef groundBodyDef;
 
     b2FixtureDef floorfixture;
@@ -95,7 +106,7 @@ int main()
     std::shared_ptr<PhysicsComponent> otherPhys2 = std::static_pointer_cast<PhysicsComponent>(ent2.AddComponent(std::make_shared<PhysicsComponent>(bodyDef, fixtureDef, 4, 4)));
     otherPhys2.get()->SetBodyTransform(b2Vec2(0, 10));
 
-    ///////////////////////////
+    *///////////////////////////
 
 
 /*
