@@ -8,6 +8,14 @@ end
 function HookGainedFocus()
 end
 
+function HookKeyReleased(x)
+    print(x .. " release")
+end
+
+function HookKeyPressed(x)
+    print(x .. " pressed")
+end
+
 function Init()
     local testEnt1 = Entity.New("testEnt1")
 

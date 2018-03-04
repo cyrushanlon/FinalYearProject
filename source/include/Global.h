@@ -20,6 +20,7 @@ extern ResourceManager rscManager;
 extern LuaState Lua;
 
 extern const std::map<std::string, sf::Keyboard::Key> KeyMap;
+extern const std::map<sf::Keyboard::Key, std::string> MapKey;
 
 extern b2World world;
 

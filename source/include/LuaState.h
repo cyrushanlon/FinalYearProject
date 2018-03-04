@@ -4,6 +4,7 @@
 #include <lua.hpp>
 #include <SFML/System/Vector2.hpp>
 #include <SFML/System/Time.hpp>
+#include <SFML/Window/Keyboard.hpp>
 #include "Box2D/Box2D.h"
 
 class LuaState
@@ -22,6 +23,8 @@ class LuaState
         void Initialise(const char*);
         void HookLostFocus();
         void HookGainedFocus();
+        void HookKeyPressed(sf::Keyboard::Key&);
+        void HookKeyReleased(sf::Keyboard::Key&);
 
     protected:
 

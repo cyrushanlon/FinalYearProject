@@ -44,14 +44,14 @@ Docs
 
 int main(int argc, char* argv[])
 {
-    char* path = "spriteEditor.lua";
+    std::string path = "spriteEditor.lua";
     if (argc == 2)
     {
         path = argv[1];
     }
     else
     {
-        std::cout << "Usage:" << argv[0] << " path to lua file";
+        std::cout << "Usage:" << argv[0] << " path to lua file" << std::endl;
         //return 1;
     }
 
@@ -65,7 +65,7 @@ int main(int argc, char* argv[])
     ECSManager ecsManager;
 
     //calls the lua function Init()
-    Lua.Initialise(path);
+    Lua.Initialise(path.c_str());
 
     /*/Test code
     b2BodyDef groundBodyDef;
@@ -106,10 +106,8 @@ int main(int argc, char* argv[])
     std::shared_ptr<PhysicsComponent> otherPhys2 = std::static_pointer_cast<PhysicsComponent>(ent2.AddComponent(std::make_shared<PhysicsComponent>(bodyDef, fixtureDef, 4, 4)));
     otherPhys2.get()->SetBodyTransform(b2Vec2(0, 10));
 
-    *///////////////////////////
+    ///////////////////////////
 
-
-/*
     Entity ent = Entity("test1");
     ent.AddComponent(std::make_shared<DrawableComponent>());
     Animation anim("walk", "resources/textures/metalslug_mummy37x45.png", sf::Vector2i(37, 45), 50, 18);
@@ -123,7 +121,7 @@ int main(int argc, char* argv[])
     comp->AddAnimation(anim);
     comp->SetAnimation("walk");
 */
-    //
+    //update rates for box2d
     int32 velocityIterations = 6;
     int32 positionIterations = 2;
 
@@ -144,10 +142,10 @@ int main(int argc, char* argv[])
                 {
                     Window.close();
                 }
-                //else
-                //    Lua.HookKeyPressed();
-            //if (event.type == sf::Event::KeyReleased)
-            //    Lua.HookKeyReleased();
+                else
+                    Lua.HookKeyPressed(event.key.code);
+            if (event.type == sf::Event::KeyReleased)
+                Lua.HookKeyReleased(event.key.code);
             if (event.type == sf::Event::LostFocus)
                 Lua.HookLostFocus();
             if (event.type == sf::Event::GainedFocus)
@@ -177,7 +175,6 @@ int main(int argc, char* argv[])
 
         //physics world
         world.Step(dt.asSeconds(), velocityIterations, positionIterations);
-        //std::cout << otherPhys.get()->GetPosition().y <<std::endl;
 
         //Draw
         //
@@ -186,18 +183,18 @@ int main(int argc, char* argv[])
 
         //for each view we want to go through and see if we want to draw anything
         //this may end up expensive and should be improved
+        ecsManager.Draw(Window);
+        /*
         for( auto const& view : state->views)
         {
-            ecsManager.Draw(Window);
-            /*
             Window.setView(view.second);
             for( auto const& x : state->drawables)
             {
                 if (x.second->GetViewTarget() == view.first)
                     x.second->Draw(&Window);
             }
-            */
         }
+        */
         Window.display();
     }
 

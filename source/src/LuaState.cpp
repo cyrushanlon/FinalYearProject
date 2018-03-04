@@ -19,6 +19,8 @@
 #include "Lua/L_DrawableComponent.h"
 #include "Lua/L_PhysicsComponent.h"
 
+#include "Global.h"
+
 
 LuaState::LuaState()
 {
@@ -201,6 +203,36 @@ void LuaState::HookLostFocus()
     if(lua_isfunction(this->L(), -1) )
     {
         int err = lua_pcall(this->L(),0,0,0); // 0 args, 0 returns
+        if(err)
+        {
+            std::cout << "lua error: " << luaL_checkstring(this->state, -1) << std::endl;
+        }
+    }
+}
+
+void LuaState::HookKeyPressed(sf::Keyboard::Key& key)
+{
+    //load the function from global
+    lua_getglobal(this->L(),"HookKeyPressed");
+    if(lua_isfunction(this->L(), -1))
+    {
+        lua_pushstring(this->L(), MapKey.at(key).c_str());
+        int err = lua_pcall(this->L(),1,0,0); // 0 args, 0 returns
+        if(err)
+        {
+            std::cout << "lua error: " << luaL_checkstring(this->state, -1) << std::endl;
+        }
+    }
+}
+
+void LuaState::HookKeyReleased(sf::Keyboard::Key& key)
+{
+    //load the function from global
+    lua_getglobal(this->L(),"HookKeyReleased");
+    if(lua_isfunction(this->L(), -1) )
+    {
+        lua_pushstring(this->L(), MapKey.at(key).c_str());
+        int err = lua_pcall(this->L(),1,0,0); // 0 args, 0 returns
         if(err)
         {
             std::cout << "lua error: " << luaL_checkstring(this->state, -1) << std::endl;
