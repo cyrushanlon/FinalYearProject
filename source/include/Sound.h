@@ -1,12 +1,13 @@
 #ifndef SOUND_H
 #define SOUND_H
-/*
-#include<SFML/Audio.hpp>
-#include "Entity/Point.h"
 
-class Sound : public Point
+#include<SFML/Audio.hpp>
+
+class Sound
 {
 public:
+    const std::string ID;
+
     Sound(std::string); //call base constructor
     Sound(std::string, std::string);//call other constructor
 
@@ -25,5 +26,5 @@ private:
     sf::Sound sound;
     std::string soundUri; //used in the dtor to free the resource
 };
-*/
+
 #endif // SOUND_H

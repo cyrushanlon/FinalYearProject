@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1520178889 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
+1520291191 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Components/Entity.h"
@@ -468,14 +468,14 @@
 1504466668 g:\+ 00 + projects\c++\finalyearproject\source\include\inputmanager.h
 	<SFML/Window.hpp>
 
-1520180119 source:g:\+ 00 + projects\c++\finalyearproject\source\src\luastate.cpp
+1520293410 source:g:\+ 00 + projects\c++\finalyearproject\source\src\luastate.cpp
 	<iostream>
 	"LuaState.h"
-	"Lua/L_Sound.h"
 	"Lua/L_Input.h"
 	"Lua/L_Window.h"
 	"Lua/L_Animation.h"
 	"Lua/L_Gamestate.h"
+	"Lua/L_Sound.h"
 	"Lua/box2d/L_b2BodyDef.h"
 	"Lua/box2d/L_b2FixtureDef.h"
 	"Lua/L_Entity.h"
@@ -626,7 +626,7 @@
 	<SFML/Audio.hpp>
 	"Entity/Point.h"
 
-1516283541 source:g:\+ 00 + projects\c++\finalyearproject\source\src\sound.cpp
+1520293375 source:g:\+ 00 + projects\c++\finalyearproject\source\src\sound.cpp
 	"Sound.h"
 	"Global.h"
 
@@ -662,8 +662,9 @@
 1516637823 g:\+ 00 + projects\c++\finalyearproject\source\include\gamestatemanager.h
 	"Gamestate.h"
 
-1518466894 g:\+ 00 + projects\c++\finalyearproject\source\include\gamestate.h
+1520293228 g:\+ 00 + projects\c++\finalyearproject\source\include\gamestate.h
 	<memory>
+	"Sound.h"
 	"Components/DrawableComponent.h"
 	"Components/PhysicsComponent.h"
 
@@ -1756,7 +1757,7 @@
 1515307653 g:\+ 00 + projects\c++\finalyearproject\source\lib\windows\box2d\box2d\box2d\rope\b2rope.h
 	"Box2D/Common/b2Math.h"
 
-1519319488 source:g:\+ 00 + projects\c++\finalyearproject\source\src\components\physicscomponent.cpp
+1520258027 source:g:\+ 00 + projects\c++\finalyearproject\source\src\components\physicscomponent.cpp
 	"Components/PhysicsComponent.h"
 	"Global.h"
 
@@ -1815,4 +1816,7 @@
 	"Components/PhysicsComponent.h"
 	"Global.h"
 	<iostream>
+
+1520293278 g:\+ 00 + projects\c++\finalyearproject\source\include\sound.h
+	<SFML/Audio.hpp>
 

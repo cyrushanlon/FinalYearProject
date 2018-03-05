@@ -2,7 +2,7 @@
 
 #include "Global.h"
 
-Sound::Sound(std::string ID) : Point(ID) //call base constructor
+Sound::Sound(std::string ID) : ID(ID) //call base constructor
 {
     gsManager.CurrentState()->sounds[this->ID] = this;
 }

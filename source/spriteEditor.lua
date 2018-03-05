@@ -49,6 +49,8 @@ function Init()
     comps["testEnt1ph"] = testPhy1
     objects["testEnt"] = testEnt1
 
+    local s = Sound.New("a", "resources/sounds/ping_pong_8bit_beep_lose.wav")
+    s:Play()
 end
 
 local ang = 0

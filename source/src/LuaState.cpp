@@ -2,14 +2,12 @@
 
 #include "LuaState.h"
 
-/*
-#include "Lua/L_Sound.h"
-*/
 
 #include "Lua/L_Input.h"
 #include "Lua/L_Window.h"
 #include "Lua/L_Animation.h"
 #include "Lua/L_Gamestate.h"
+#include "Lua/L_Sound.h"
 
 #include "Lua/box2d/L_b2BodyDef.h"
 #include "Lua/box2d/L_b2FixtureDef.h"
@@ -33,6 +31,7 @@ LuaState::LuaState()
     RegisterInput();
     RegisterAnimation();
     RegisterGamestate();
+    RegisterSound();
 
     Registerb2BodyDef();
     Registerb2FixtureDef();

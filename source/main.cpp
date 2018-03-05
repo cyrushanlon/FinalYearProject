@@ -11,18 +11,18 @@
 
 //TODO
 /*
+SOUND
+PHYSICS
+PHYSICS INIT
+CAMERA
+EXAMPLES
 
-CPP
-_________________
-virtual sizes rather than pixels so different resolutions look the same
-stop sound inheriting from old point class
+EXTRAS
+LEVEL LOADING
+SETTINGS
+VIRTUAL SIZES
+WINDOW + INIT
 
-BOTH
-_________________
-cameras / multiple views so things like minimaps/ui can be created
-level loading/saving
-Box2D
-Settings
 screen shake
 draw order (things that might need to be on top of other things etc)
 treat userdata as a table so we can add custom fields whenever in Lua
@@ -32,7 +32,6 @@ Joints
 
 LUA
 _________________
-keypress and release hooks
 texture
 window
 
@@ -143,7 +142,9 @@ int main(int argc, char* argv[])
                     Window.close();
                 }
                 else
+                {
                     Lua.HookKeyPressed(event.key.code);
+                }
             if (event.type == sf::Event::KeyReleased)
                 Lua.HookKeyReleased(event.key.code);
             if (event.type == sf::Event::LostFocus)
