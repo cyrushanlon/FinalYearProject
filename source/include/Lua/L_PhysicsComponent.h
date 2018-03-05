@@ -186,6 +186,48 @@ static int l_PhysicsComponent_ApplyImpulse(lua_State * l)
     return 0;
 }
 
+static int l_PhysicsComponent_ApplyTorque(lua_State * l)
+{
+    PhysicsComponent* pc = l_CheckPhysicsComponent(1);
+
+    //first we check how many arguments we are dealing with
+    int argc = lua_gettop(l) - 1;
+
+    if (argc != 3 && argc != 5)
+    {
+        std:: cout << argc << std::endl;
+        return luaL_error(l, "incorrect argument count");
+    }
+
+    float torque = luaL_checknumber(l, 2);
+    bool wake = lua_toboolean(l, 4);
+
+    pc->ApplyTorque(torque, wake);
+
+    return 0;
+}
+
+static int l_PhysicsComponent_ApplyAngularImpulse(lua_State * l)
+{
+    PhysicsComponent* pc = l_CheckPhysicsComponent(1);
+
+    //first we check how many arguments we are dealing with
+    int argc = lua_gettop(l) - 1;
+
+    if (argc != 3 && argc != 5)
+    {
+        std:: cout << argc << std::endl;
+        return luaL_error(l, "incorrect argument count");
+    }
+
+    float torque = luaL_checknumber(l, 2);
+    bool wake = lua_toboolean(l, 4);
+
+    pc->ApplyAngularImpulse(torque, wake);
+
+    return 0;
+}
+
 /*
 static int l_DrawableComponent_GetOrigin(lua_State * l)
 {
@@ -224,6 +266,8 @@ static void RegisterPhysicsComponent()
         { "GetVel", l_PhysicsComponent_GetVel },
         { "ApplyForce", l_PhysicsComponent_ApplyForce},
         { "ApplyImpulse" ,l_PhysicsComponent_ApplyImpulse},
+        { "ApplyTorque", l_PhysicsComponent_ApplyTorque},
+        { "ApplyAngularImpulse" ,l_PhysicsComponent_ApplyAngularImpulse},
         { "__gc", l_PhysicsComponent_Destructor },
         { NULL, NULL }
     };

@@ -20,6 +20,9 @@ public:
     void ApplyImpulse(b2Vec2, b2Vec2, bool);
     void ApplyImpulseToCenter(b2Vec2 force, bool);
 
+    void ApplyTorque(float32 torque, bool wake);
+    void ApplyAngularImpulse(float32 torque, bool wake);
+
     b2Vec2 GetPosition();
     float GetAngle();
 

@@ -61,3 +61,12 @@ b2Vec2 PhysicsComponent::GetLinearVelocity()
 {
     return this->body->GetLinearVelocity();
 }
+
+void PhysicsComponent::ApplyTorque(float32 torque, bool wake)
+{
+    this->body->ApplyTorque(torque, wake);
+}
+void PhysicsComponent::ApplyAngularImpulse(float32 torque, bool wake)
+{
+    this->body->ApplyAngularImpulse(torque, wake);
+}
