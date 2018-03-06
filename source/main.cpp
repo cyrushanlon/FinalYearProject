@@ -41,7 +41,7 @@ Docs
 
 int main(int argc, char* argv[])
 {
-    std::string path = "spriteEditor.lua";
+    std::string path = "pong.lua";
     if (argc == 2)
     {
         path = argv[1];

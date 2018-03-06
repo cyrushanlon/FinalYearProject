@@ -1,39 +1,98 @@
-local settings = {}
+settings = {
+    gravityY = -10
+}
 
-settings.paddle = {}
-settings.paddle.y = 100
-settings.paddle.depth = 0
 settings.maxspeed = 1500
 settings.speedmultval = 300
 
 local sounds = {}
 
 --objects
-local paddle
-local ball = {
-    vel = {x = -50, y = 500}
-}
+local paddle = {}
+local ball = {}
+
+local leftwall = {}
+local rightwall = {}
 
 function HookLostFocus()
-    print("lost")
 end
 
 function HookGainedFocus()
-    print("gained")
 end
 
 function Init()
     settings.windowSize = Window.GetSize()
 
-    paddle = Drawable.New("paddle1", "resources/textures/paddle.png");
-    ball.obj = Drawable.New("ball1", "resources/textures/ball.png") -- we put this in .obj so we can have other lua vars in the overarching table
+    ball.drawable = DrawableComponent.New()
+    ball.drawable:SetTexture("resources/textures/ball.png")
+    ball.entity = Entity.New("ball1")
+    ball.physics = PhysicsComponent.New(
+        b2BodyDef.New({
+            active = true,
+            allowSleep = false,
+            type = "dynamic"
+        }),
+        b2FixtureDef.New({
+            density = 1,
+            friction= 0.3,
+            restitution = 1.2
+        }),
+        1, 1)
+    ball.entity:AddDrawable(ball.drawable)
+    ball.entity:AddPhysics(ball.physics)
+    
+    paddle.drawable = DrawableComponent.New()
+    paddle.drawable:SetTexture("resources/textures/paddle.png")
+    paddle.entity = Entity.New("paddle1")
+    paddle.physics = PhysicsComponent.New(
+        b2BodyDef.New({
+            active=true,
+            type = "kinematic"
+        }),
+        b2FixtureDef.New({
+            density = 1,
+            friction= 0.3,
+        }),
+        2, 0.1)
+    paddle.entity:AddDrawable(paddle.drawable)
+    paddle.entity:AddPhysics(paddle.physics)
 
-    settings.paddle.pos = settings.windowSize.y - settings.paddle.y
+    paddle.y = (settings.windowSize.y /-32) + 1
+    ball.physics:SetPos(5, 0)
+
+    --left wall
+    leftwall.physics = PhysicsComponent.New(
+        b2BodyDef.New({
+            active=true,
+            type = "kinematic"
+        }),
+        b2FixtureDef.New({
+            density = 1,
+            friction= 0.3,
+        }),
+        1, 100)
+    leftwall.entity = Entity.New("leftwall")
+    leftwall.entity:AddPhysics(leftwall.physics)
+
+    --right wall
+    rightwall.physics = PhysicsComponent.New(
+        b2BodyDef.New({
+            active=true,
+            type = "kinematic"
+        }),
+        b2FixtureDef.New({
+            density = 1,
+            friction= 0.3,
+        }),
+        1, 100)
+        rightwall.entity = Entity.New("rightwall")
+        rightwall.entity:AddPhysics(rightwall.physics)
+        rightwall.physics:SetPos(settings.windowSize.x / 32,0)
 
     --load the sounds into the sound table
-    sounds.hitPaddle = Sound.New("hitPaddle", "resources/sounds/ping_pong_8bit_beep_paddle.wav")
-    sounds.hitWall = Sound.New("hitWall", "resources/sounds/ping_pong_8bit_beep_wall.wav")
-    sounds.hitLose = Sound.New("hitLose", "resources/sounds/ping_pong_8bit_beep_lose.wav")
+    --sounds.hitPaddle = Sound.New("hitPaddle", "resources/sounds/ping_pong_8bit_beep_paddle.wav")
+    --sounds.hitWall = Sound.New("hitWall", "resources/sounds/ping_pong_8bit_beep_wall.wav")
+    --sounds.hitLose = Sound.New("hitLose", "resources/sounds/ping_pong_8bit_beep_lose.wav")
 end
 
 function MoveBall(dt)
@@ -46,78 +105,18 @@ function MoveBall(dt)
 
 end
 
-function PhysThink(dt)
-
-    local ballPos = ball.obj:GetPos()
-    local paddlePos = paddle:GetPos()
-    local ballSize = ball.obj:GetSize()
-    local paddleSize = paddle:GetSize()
-
-    --------------
-    --AABB check on ball and paddle, this could be replaced with box2d but that might be considered overkill in this case
-    --the ball bounces off the sides and top too
-
-    --vertical bounce
-    if  ballPos.x < paddlePos.x + paddleSize.x and
-        ballPos.x + ballSize.x > paddlePos.x and
-        ballPos.y + ballSize.y > settings.paddle.pos + settings.paddle.depth or 
-        ballPos.y < 0 then
-
-        if not (ballPos.y < 0) then -- paddle bounce
-            --scale x velocity based on distance from center of paddle
-            local paddleCenter = paddlePos.x + (paddleSize.x / 2)
-            local ballCenter = ballPos.x + (ballSize.x / 2)
-            local maxDistance = paddleSize.x / 2
-
-            local mult = ((paddleCenter - ballCenter) / -maxDistance)
-
-            ball.vel.x = ball.vel.x + (settings.speedmultval * mult)
-            ball.vel.y = ball.vel.y * (1 + math.abs(mult))
-
-            sounds.hitPaddle:Play()
-        else
-            sounds.hitWall:Play()
-        end
-
-        ball.vel.y = -ball.vel.y
-        
-    end
-
-    -- horizontal bounce
-    if  ballPos.x < 0 or 
-        ballPos.x + ballSize.x > settings.windowSize.x then
-
-        ball.vel.x = -ball.vel.x
-        sounds.hitWall:Play()
-    end     
-    ---------------
-
-    --speed clipping
-    if ball.vel.x > settings.maxspeed then
-        ball.vel.x = settings.maxspeed
-    elseif ball.vel.y > settings.maxspeed then
-        ball.vel.y = settings.maxspeed
-    elseif ball.vel.x < -settings.maxspeed then
-        ball.vel.x = -settings.maxspeed
-    elseif ball.vel.y < -settings.maxspeed then
-        ball.vel.y = -settings.maxspeed
-    end
-
-    MoveBall(dt)
-
-end
-
 function Think(dt)
 
-    PhysThink(dt)
-
     local mousepos = GetMousePos()
-    if mousepos.x < 0 then
-        mousepos.x = 0
-    elseif mousepos.x > settings.windowSize.x - paddle:GetSize().x then
-        mousepos.x = settings.windowSize.x - paddle:GetSize().x
+
+    local paddlesize = paddle.drawable:GetSize()
+
+    if mousepos.x - paddlesize.x/2 < 0 then
+        mousepos.x = paddlesize.x/2
+    elseif mousepos.x > settings.windowSize.x - paddlesize.x/2 then
+        mousepos.x = settings.windowSize.x - paddlesize.x/2
     end
 
-    paddle:SetPos(mousepos.x, settings.paddle.pos)
+    paddle.physics:SetPos(mousepos.x / 32, paddle.y)
 
 end
