@@ -169,6 +169,41 @@ void LuaState::Initialise(const char* initPath)
         std::cout << "lua error: " << luaL_checkstring(this->state, -1) << std::endl;
     }
 
+    //setup the world variables from the settings table
+    lua_getglobal(this->L(), "settings");
+    if (lua_istable(this->L(), -1))
+    {
+        lua_pushvalue(this->L(), 1);
+        lua_pushnil(this->L());
+
+        float x = 0;
+        float y = 0;
+
+        while (lua_next(this->L(), -2))
+        {
+            lua_pushvalue(this->L(), -2);
+            std::string key = luaL_checkstring(this->L(), -1);
+
+            //std::cout << key;
+            if (key == "gravityX")
+            {
+                x = lua_tonumber(this->L(), -2);
+            }
+            else if (key == "gravityY")
+            {
+                y = lua_tonumber(this->L(), -2);
+            }
+            else
+                luaL_checkstring(this->L(), -2);
+
+            // removes 'value'; keeps 'key' for next iteration
+            lua_pop(this->L(), 2);
+        }
+        lua_pop(this->L(), 1);
+
+        world.SetGravity(b2Vec2(x, y));
+    }
+
     //load the function from global
     lua_getglobal(this->L(),"Init");
     if(lua_isfunction(this->L(), -1) )

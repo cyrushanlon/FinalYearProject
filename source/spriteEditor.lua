@@ -1,4 +1,7 @@
-local settings = {}
+settings = {
+    gravityX = 0,
+    gravityY = -9.8
+}
 local objects = {}
 local comps = {}
 
