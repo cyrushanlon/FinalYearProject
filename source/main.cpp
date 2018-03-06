@@ -41,7 +41,7 @@ Docs
 
 int main(int argc, char* argv[])
 {
-    std::string path = "pong.lua";
+    std::string path = "fall.lua";
     if (argc == 2)
     {
         path = argv[1];
