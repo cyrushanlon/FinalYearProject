@@ -113,10 +113,9 @@ static int l_DrawableComponent_SetOrigin(lua_State * l)
 
 static int l_DrawableComponent_GetSize(lua_State * l)
 {
-    /*
     DrawableComponent* dc = l_CheckDrawableComponent(1);
 
-    auto bounds = dc->GetSprite().getGlobalBounds();
+    auto bounds = dc->sprite.getGlobalBounds();
 
     sf::Vector2f size = sf::Vector2f(bounds.width, bounds.height);
     //use the LuaState helper to push the vector onto the stack
@@ -124,8 +123,6 @@ static int l_DrawableComponent_GetSize(lua_State * l)
 
     //we return a single variable to Lua
     return 1;
-    */
-    return 0;
 }
 
 static int l_DrawableComponent_SetSize(lua_State * l)
