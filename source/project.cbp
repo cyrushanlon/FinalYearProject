@@ -66,10 +66,8 @@
 		<Unit filename="include/Global.h" />
 		<Unit filename="include/InputManager.h" />
 		<Unit filename="include/LuaState.h" />
-		<Unit filename="include/Lua/L_Animatable.h" />
 		<Unit filename="include/Lua/L_Animation.h" />
 		<Unit filename="include/Lua/L_Component.h" />
-		<Unit filename="include/Lua/L_Drawable.h" />
 		<Unit filename="include/Lua/L_DrawableComponent.h" />
 		<Unit filename="include/Lua/L_Entity.h" />
 		<Unit filename="include/Lua/L_Gamestate.h" />
@@ -83,6 +81,7 @@
 		<Unit filename="include/Resource.h" />
 		<Unit filename="include/ResourceInterface.h" />
 		<Unit filename="include/ResourceManager.h" />
+		<Unit filename="include/Sound.h" />
 		<Unit filename="include/StringsToKeys.h" />
 		<Unit filename="include/Systems/DrawableSystem.h" />
 		<Unit filename="include/Systems/PhysicsSystem.h" />
@@ -194,6 +193,7 @@
 		<Unit filename="src/Resource.cpp" />
 		<Unit filename="src/ResourceInterface.cpp" />
 		<Unit filename="src/ResourceManager.cpp" />
+		<Unit filename="src/Sound.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
