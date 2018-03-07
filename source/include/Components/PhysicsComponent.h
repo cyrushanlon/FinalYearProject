@@ -27,6 +27,7 @@ public:
     float GetAngle();
 
     b2Vec2 GetLinearVelocity();
+    void SetLinearVelocity(b2Vec2);
 private:
     b2Body* body;
     b2Fixture* fixture;

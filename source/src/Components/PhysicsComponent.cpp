@@ -61,6 +61,10 @@ b2Vec2 PhysicsComponent::GetLinearVelocity()
 {
     return this->body->GetLinearVelocity();
 }
+void PhysicsComponent::SetLinearVelocity(b2Vec2 newVel)
+{
+    this->body->SetLinearVelocity(newVel);
+}
 
 void PhysicsComponent::ApplyTorque(float32 torque, bool wake)
 {

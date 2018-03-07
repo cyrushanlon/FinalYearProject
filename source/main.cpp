@@ -12,7 +12,6 @@
 //TODO
 /*
 physics shapes
-CAMERA
 EXAMPLES
 physics callback
 text

@@ -89,6 +89,17 @@ static int l_PhysicsComponent_GetVel(lua_State * l)
     return 1;
 }
 
+static int l_PhysicsComponent_SetVel(lua_State * l)
+{
+    PhysicsComponent* pc = l_CheckPhysicsComponent(1);
+    float x = luaL_checknumber(l, 2);
+    float y = luaL_checknumber(l, 3);
+
+    pc->SetLinearVelocity(b2Vec2(x,y));
+
+    return 0;
+}
+
 static int l_PhysicsComponent_SetPos(lua_State * l)
 {
     PhysicsComponent* pc = l_CheckPhysicsComponent(1);
@@ -262,6 +273,7 @@ static void RegisterPhysicsComponent()
         { "GetPos", l_PhysicsComponent_GetPos },
         { "GetAng", l_PhysicsComponent_GetAng },
         { "GetVel", l_PhysicsComponent_GetVel },
+        { "SetVel", l_PhysicsComponent_SetVel },
         { "ApplyForce", l_PhysicsComponent_ApplyForce},
         { "ApplyImpulse" ,l_PhysicsComponent_ApplyImpulse},
         { "ApplyTorque", l_PhysicsComponent_ApplyTorque},
