@@ -8,7 +8,31 @@ local boxes = {}
 local mainView = Window.GetDefaultView()
 local otherView = View.New(0, 0, 1280, 720, "otherView")
 
-function createBox(x, y)
+function HookKeyPressed(key)
+    if (key == "Space") then
+        reset()
+    end
+end
+
+local count = 0
+function reset()
+
+    count = 1
+    for y = 1, 15 do
+        for x = 1, y do
+            local box = boxes[count].physics
+            box:SetPos(x, y)
+            box:SetVel(0,0)
+            box:SetAng(0)
+
+            count = count + 1
+        end
+    end
+
+    print(count-1)
+end
+
+function createBox()
 
     local box = {}
     box.drawable = DrawableComponent.New()
@@ -17,31 +41,24 @@ function createBox(x, y)
     box.physics = PhysicsComponent.New(
         b2BodyDef.New({
             active = true,
-            allowSleep = false,
+            --allowSleep = false,
             type = "dynamic"
         }),
         b2FixtureDef.New({
             density = 1,
             friction= 1,
-            restitution = 0.2--math.random( 50 ) / 100
+            restitution = 0.3--math.random( 50 ) / 100
         }),
         1, 1)
     box.entity:AddDrawable(box.drawable)
     box.entity:AddPhysics(box.physics)
 
-    box.physics:SetPos(x, y)
-
-    table.insert(boxes, box)
+    count = count + 1
+    boxes[count] = box
 end
 
 function Init()
     settings.windowSize = Window.GetSize()
-
-    for y = 1, 15 do
-        for x = 1, y do
-            createBox(x , y)
-        end
-    end
 
     --downwall wall
     downwall.physics = PhysicsComponent.New(
@@ -72,8 +89,14 @@ function Init()
     box.drawable:SetViewTarget("otherView")
     box.drawable:SetPos(50,50)
 
+    --set view position and zoom level
     mainView:Move(-300, 0)
     mainView:Zoom(2)
+
+    for y = 1, 120 do
+        createBox()
+    end
+    reset()
 end
 
 
@@ -84,16 +107,16 @@ function Think(dt)
 
     local zoom = 1
 
-    if (IsKeyPressed("Right")) then
+    if (IsKeyPressed("D")) then
         xMove = xMove + 1000
     end
-    if (IsKeyPressed("Left")) then
+    if (IsKeyPressed("A")) then
         xMove = xMove - 1000
     end
-    if (IsKeyPressed("Up")) then
+    if (IsKeyPressed("W")) then
         yMove = yMove - 1000
     end
-    if (IsKeyPressed("Down")) then
+    if (IsKeyPressed("S")) then
         yMove = yMove + 1000
     end
 
