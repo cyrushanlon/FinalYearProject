@@ -5,6 +5,9 @@ settings = {
 local downwall = {}
 local boxes = {}
 
+local mainView = Window.GetDefaultView()
+local otherView = View.New(0, 0, 1280, 720, "otherView")
+
 function createBox(x, y)
 
     local box = {}
@@ -36,7 +39,7 @@ function Init()
 
     for y = 1, 15 do
         for x = 1, y do
-            createBox(x+8 , y)
+            createBox(x , y)
         end
     end
 
@@ -60,9 +63,47 @@ function Init()
     downwall.entity:AddDrawable(downwall.drawable)
 
     downwall.physics:SetPos(15, settings.windowSize.y / -32)
+
+    local box = {}
+    box.drawable = DrawableComponent.New()
+    box.drawable:SetTexture("resources/textures/box.png")
+    box.entity = Entity.New("testBox")
+    box.entity:AddDrawable(box.drawable)
+    box.drawable:SetViewTarget("otherView")
+    box.drawable:SetPos(50,50)
+
+    mainView:Move(-300, 0)
+    mainView:Zoom(2)
 end
 
 
 function Think(dt)
 
+    local xMove = 0
+    local yMove = 0
+
+    local zoom = 1
+
+    if (IsKeyPressed("Right")) then
+        xMove = xMove + 1000
+    end
+    if (IsKeyPressed("Left")) then
+        xMove = xMove - 1000
+    end
+    if (IsKeyPressed("Up")) then
+        yMove = yMove - 1000
+    end
+    if (IsKeyPressed("Down")) then
+        yMove = yMove + 1000
+    end
+
+    if (IsKeyPressed("LControl")) then
+        zoom = zoom - (0.5 * dt)
+    end
+    if (IsKeyPressed("LShift")) then
+        zoom = zoom + (0.5 * dt)
+    end
+
+    mainView:Move(xMove * dt, yMove * dt)
+    mainView:Zoom(zoom)
 end

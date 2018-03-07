@@ -5,6 +5,7 @@
 
 #include "Lua/L_Input.h"
 #include "Lua/L_Window.h"
+#include "Lua/L_SF_View.h"
 #include "Lua/L_Animation.h"
 #include "Lua/L_Gamestate.h"
 #include "Lua/L_Sound.h"
@@ -28,6 +29,7 @@ LuaState::LuaState()
     //register everything from C++ into lua
 
     RegisterWindow();
+    RegisterView();
     RegisterInput();
     RegisterAnimation();
     RegisterGamestate();

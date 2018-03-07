@@ -36,8 +36,6 @@ static int l_PhysicsComponent_Constructor(lua_State *L)
     PhysicsComponent ** udata = (PhysicsComponent **)lua_newuserdata(L, sizeof(PhysicsComponent *));
     *udata = new PhysicsComponent(*bodyDef, *fixtureDef, x, y);
 
-    std::cout << bodyDef->type << std::endl;
-
     //
     luaL_getmetatable(L, "luaL_PhysicsComponent");
     //we have to set userdata metatable in C as it is not allowed in Lua

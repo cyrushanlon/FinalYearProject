@@ -11,13 +11,18 @@ public:
         this->view = sf::View(rect);
         this->id = id;
 
-        gsManager.CurrentState().get()->SetView(id, this->view);
+        gsManager.CurrentState().get()->AddView(id, this->view);
+    }
+    ViewForLua(sf::View main)
+    {
+        this->view = main;
+        this->id = "main";
     }
     sf::View view;
     std::string id;
 };
 
-static sf::View* l_CheckView(int i)
+static ViewForLua* l_CheckView(int i)
 {
     // This checks that the argument is a userdata with the metatable "luaL_SF_View"
     return *(ViewForLua **)luaL_checkudata(Lua.L(), i, "luaL_SF_View");
@@ -67,7 +72,18 @@ static int l_View_Move(lua_State * l)
     double y = luaL_checknumber(l, 3);
 
     viewForLua->view.move(x, y);
-    gsManager.CurrentState().get()->SetView(viewForLua.id, viewForLua.view);
+    gsManager.CurrentState().get()->SetView(viewForLua->id, viewForLua->view);
+
+    return 0;
+}
+static int l_View_Zoom(lua_State * l)
+{
+    ViewForLua* viewForLua = l_CheckView(1);
+
+    double zoom = luaL_checknumber(l, 2);
+
+    viewForLua->view.zoom(zoom);
+    gsManager.CurrentState().get()->SetView(viewForLua->id, viewForLua->view);
 
     return 0;
 }
@@ -76,7 +92,7 @@ static int l_View_Destructor(lua_State * l)
 {
     ViewForLua * view = l_CheckView(1);
 
-    gsManager.RemoveState(view.id);
+    gsManager.RemoveState(view->id);
 
     delete view;
     return 0;
@@ -89,6 +105,7 @@ static void RegisterView()
     {
         { "New", l_View_Constructor },
         { "Move", l_View_Move },
+        { "Zoom", l_View_Zoom },
         { "__gc", l_View_Destructor },
         { NULL, NULL }
     };

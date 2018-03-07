@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1520303806 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
+1520392398 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Components/Entity.h"
@@ -468,11 +468,12 @@
 1504466668 g:\+ 00 + projects\c++\finalyearproject\source\include\inputmanager.h
 	<SFML/Window.hpp>
 
-1520299796 source:g:\+ 00 + projects\c++\finalyearproject\source\src\luastate.cpp
+1520391632 source:g:\+ 00 + projects\c++\finalyearproject\source\src\luastate.cpp
 	<iostream>
 	"LuaState.h"
 	"Lua/L_Input.h"
 	"Lua/L_Window.h"
+	"Lua/L_SF_View.h"
 	"Lua/L_Animation.h"
 	"Lua/L_Gamestate.h"
 	"Lua/L_Sound.h"
@@ -490,7 +491,7 @@
 	"Global.h"
 	<iostream>
 
-1506817384 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_input.h
+1520393846 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_input.h
 	"Global.h"
 	<iostream>
 
@@ -505,10 +506,11 @@
 	"ResourceManager.h"
 	<iostream>
 
-1507654179 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_window.h
+1520393245 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_window.h
 	<lua.hpp>
 	"Global.h"
 	<SFML/Graphics.hpp>
+	"Lua/L_SF_View.h"
 
 1516935952 g:\+ 00 + projects\c++\finalyearproject\source\include\resourceinterface.h
 
@@ -662,13 +664,13 @@
 1516637823 g:\+ 00 + projects\c++\finalyearproject\source\include\gamestatemanager.h
 	"Gamestate.h"
 
-1520293228 g:\+ 00 + projects\c++\finalyearproject\source\include\gamestate.h
+1520392385 g:\+ 00 + projects\c++\finalyearproject\source\include\gamestate.h
 	<memory>
 	"Sound.h"
 	"Components/DrawableComponent.h"
 	"Components/PhysicsComponent.h"
 
-1518197648 source:g:\+ 00 + projects\c++\finalyearproject\source\src\gamestate.cpp
+1520392370 source:g:\+ 00 + projects\c++\finalyearproject\source\src\gamestate.cpp
 	"Gamestate.h"
 
 1516637895 source:g:\+ 00 + projects\c++\finalyearproject\source\src\gamestatemanager.cpp
@@ -705,11 +707,11 @@
 	"Systems/DrawableSystem.h"
 	"Systems/PhysicsSystem.h"
 
-1517857808 g:\+ 00 + projects\c++\finalyearproject\source\include\systems\drawablesystem.h
+1520393259 g:\+ 00 + projects\c++\finalyearproject\source\include\systems\drawablesystem.h
 	<SFML/Graphics.hpp>
 	"Global.h"
 
-1517857790 g:\+ 00 + projects\c++\finalyearproject\source\include\components\drawablecomponent.h
+1520386900 g:\+ 00 + projects\c++\finalyearproject\source\include\components\drawablecomponent.h
 	<memory>
 	<SFML/Graphics.hpp>
 	"Components/Component.h"
@@ -722,7 +724,7 @@
 1517184838 g:\+ 00 + projects\c++\finalyearproject\source\include\components\component.h
 	"Components/Entity.h"
 
-1518630586 source:g:\+ 00 + projects\c++\finalyearproject\source\src\components\drawablecomponent.cpp
+1520386934 source:g:\+ 00 + projects\c++\finalyearproject\source\src\components\drawablecomponent.cpp
 	"Components/DrawableComponent.h"
 	"Global.h"
 
@@ -1274,7 +1276,7 @@
 	"Global.h"
 	<iostream>
 
-1520301670 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_drawablecomponent.h
+1520389257 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_drawablecomponent.h
 	<lua.hpp>
 	"Components/Entity.h"
 	"Global.h"
@@ -1810,7 +1812,7 @@
 	"Box2D/Box2D.h"
 	<iostream>
 
-1520257998 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_physicscomponent.h
+1520384415 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_physicscomponent.h
 	<lua.hpp>
 	"Box2D/Box2D.h"
 	"Components/PhysicsComponent.h"
@@ -1819,4 +1821,8 @@
 
 1520293278 g:\+ 00 + projects\c++\finalyearproject\source\include\sound.h
 	<SFML/Audio.hpp>
+
+1520393805 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_sf_view.h
+	<lua.hpp>
+	"Global.h"
 

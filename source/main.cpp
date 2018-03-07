@@ -11,9 +11,11 @@
 
 //TODO
 /*
-PHYSICS
+physics shapes
 CAMERA
 EXAMPLES
+physics callback
+text
 
 EXTRAS
 LEVEL LOADING
@@ -56,7 +58,7 @@ int main(int argc, char* argv[])
     Window.setFramerateLimit(500);
     Window.setVerticalSyncEnabled(false);
 
-    gsManager.CreateState("game").get()->AddView("main", sf::FloatRect(0,0, 1280, 720));
+    gsManager.CreateState("game").get()->AddView("main", sf::View(sf::FloatRect(0,0, 1280, 720)));
     gsManager.SetState("game");
 
     ECSManager ecsManager;
@@ -178,22 +180,8 @@ int main(int argc, char* argv[])
         //Draw
         //
         Window.clear(sf::Color::Magenta);
-        Window.setView(Window.getDefaultView());
-
-        //for each view we want to go through and see if we want to draw anything
-        //this may end up expensive and should be improved
+        //Window.setView(Window.getDefaultView());
         ecsManager.Draw(Window);
-        /*
-        for( auto const& view : state->views)
-        {
-            Window.setView(view.second);
-            for( auto const& x : state->drawables)
-            {
-                if (x.second->GetViewTarget() == view.first)
-                    x.second->Draw(&Window);
-            }
-        }
-        */
         Window.display();
     }
 

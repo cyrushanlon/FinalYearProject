@@ -38,9 +38,9 @@ sf::View Gamestate::GetView(std::string ID)
     }
 }
 
-void Gamestate::AddView(std::string ID, sf::FloatRect rect)
+void Gamestate::AddView(std::string ID, sf::View view)
 {
-    sf::View view(rect);
+    //sf::View view(rect);
     this->views.push_back({ID, view});
 }
 

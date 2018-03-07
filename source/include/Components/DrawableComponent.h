@@ -18,7 +18,6 @@ public:
     sf::Sprite sprite;
     std::shared_ptr<sf::Texture> texture; //used when drawing
     std::string textureUri; //used in the dtor to free the resource
-    std::string viewTarget;
 
     virtual sf::Vector2f GetPos();
     virtual void SetPos(sf::Vector2f);
@@ -40,11 +39,15 @@ public:
 
     void AddAnimation(Animation anim);
     void SetAnimation(std::string name);
+
+    std::string GetViewTarget();
+    void SetViewTarget(std::string);
 protected:
     //used for classes that inherit from this one, such as AnimatableComponent
     DrawableComponent(std::string name);
 private:
     bool animates;
+    std::string viewTarget;
 };
 
 #endif // DRAWABLECOMPONENT_H

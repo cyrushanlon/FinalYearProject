@@ -91,3 +91,13 @@ void DrawableComponent::SetAnimation(std::string name)
     this->frameClock.restart();
     this->SetTexture(this->animations[name].getSpritesheetPath());
 }
+
+std::string DrawableComponent::GetViewTarget()
+{
+    return this->viewTarget;
+}
+
+void DrawableComponent::SetViewTarget(std::string newTarget)
+{
+    this->viewTarget = newTarget;
+}

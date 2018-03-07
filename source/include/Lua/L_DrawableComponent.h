@@ -191,6 +191,29 @@ static int l_Animatable_AddAnimation(lua_State * l)
     return 0;
 }
 
+static int l_DrawableComponent_GetViewTarget(lua_State * l)
+{
+    DrawableComponent* dc = l_CheckDrawableComponent(1);
+
+    std::string n = dc->GetViewTarget();
+    //use the LuaState helper to push the angle onto the stack
+    lua_pushstring(l, n.c_str());
+
+    //we return a single variable to Lua
+    return 1;
+}
+
+static int l_DrawableComponent_SetViewTarget(lua_State * l)
+{
+    DrawableComponent* anim = l_CheckDrawableComponent(1);
+
+    std::string name = luaL_checkstring(l, 2);
+
+    anim->SetViewTarget(name);
+
+    return 0;
+}
+
 static void RegisterDrawableComponent()
 {
     //defines the functions and their C counterparts
@@ -210,6 +233,8 @@ static void RegisterDrawableComponent()
         { "GetAnimates", l_Animatable_GetAnimates},
         { "SetAnimation", l_Animatable_SetAnimation },
         { "AddAnimation", l_Animatable_AddAnimation },
+        { "GetViewTarget", l_DrawableComponent_GetViewTarget },
+        { "SetViewTarget", l_DrawableComponent_SetViewTarget },
         { "__gc", l_DrawableComponent_Destructor },
         { NULL, NULL }
     };

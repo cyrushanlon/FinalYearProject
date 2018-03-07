@@ -9,13 +9,21 @@ class DrawableSystem
 public:
     void Draw(sf::RenderWindow& window)
     {
-        auto drawables = gsManager.CurrentState().get()->drawableComponents;
-        //std::cout << drawables.size();
-        for( auto const& x : drawables)
+        auto state = gsManager.CurrentState().get();
+
+        //for each view we want to go through and see if we want to draw anything
+        //this may end up expensive and should be improved
+        for( auto const& view : state->views)
         {
-            window.draw(x.get()->sprite);
+            Window.setView(view.second);
+            for( auto const& x : state->drawableComponents)
+            {
+                if (view.first == x.get()->GetViewTarget())
+                {
+                    window.draw(x.get()->sprite);
+                }
+            }
         }
-        //std::cout << "draw" << drawables[0].get()->textureUri;
     }
     //animating drawables need to think
     void Think(sf::Time dt)

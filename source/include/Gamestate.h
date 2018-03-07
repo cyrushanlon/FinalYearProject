@@ -29,7 +29,7 @@ public:
 
     //views
     sf::View GetView(std::string ID);
-    void AddView(std::string ID, sf::FloatRect);
+    void AddView(std::string ID, sf::View);
     void RemoveView(std::string ID);
     void SetView(std::string ID, sf::View view);
 
