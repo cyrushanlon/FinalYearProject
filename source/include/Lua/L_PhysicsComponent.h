@@ -202,14 +202,14 @@ static int l_PhysicsComponent_ApplyTorque(lua_State * l)
     //first we check how many arguments we are dealing with
     int argc = lua_gettop(l) - 1;
 
-    if (argc != 3 && argc != 5)
+    if (argc != 2)
     {
         std:: cout << argc << std::endl;
         return luaL_error(l, "incorrect argument count");
     }
 
     float torque = luaL_checknumber(l, 2);
-    bool wake = lua_toboolean(l, 4);
+    bool wake = lua_toboolean(l, 3);
 
     pc->ApplyTorque(torque, wake);
 
@@ -223,14 +223,14 @@ static int l_PhysicsComponent_ApplyAngularImpulse(lua_State * l)
     //first we check how many arguments we are dealing with
     int argc = lua_gettop(l) - 1;
 
-    if (argc != 3 && argc != 5)
+    if (argc != 2)
     {
         std:: cout << argc << std::endl;
         return luaL_error(l, "incorrect argument count");
     }
 
     float torque = luaL_checknumber(l, 2);
-    bool wake = lua_toboolean(l, 4);
+    bool wake = lua_toboolean(l, 3);
 
     pc->ApplyAngularImpulse(torque, wake);
 
