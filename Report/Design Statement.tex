@@ -35,7 +35,7 @@
 
 	Physics will also need to be provided by the engine to allow for much improved performance over having physics implemented in Lua.
 
-	Both the engines physics and rendering capabilities will need to be fully accessed through a Lua API.
+	Both the physics and rendering capabilities of the game engine will need to be fully accessed through the provided Lua API. The Lua API should be consistent and easy to use, matching, where possible, the Lua style completely.
 
 %Write about lib choices for each part
 
@@ -76,41 +76,8 @@
 	Loading and saving of the game state should be integrated into the game engine to speed up development time for the game developer. Level loading should also be integrated, an external open source level editor application could be used for the creation of the levels, a json or other data file could then be loaded into the game engine reducing the development time even further. Settings should also be managed by the game allowing the Lua developer to load and save any required key value pairs using a provided API, by implementing these features in the game engine the game developer can focus more on the actual game rather than semantics.
 
 	Documentation is a requirement for people to be able to use the engine to create games effectively and helps to reduce the learning curve. Each part of the documentation should be completed after the completion of every Lua accessible feature to ensure that it is kept on top of. Some kind of automatic documentation tool could be used similar to that of Golang's GoDoc or Java's javadoc, this would allow for the the documentation to stay up to date given any changes to the underlying code.
-		
-%what was done and in what order
 
 	Design stuff
-
-	An important first step when developing the game engine was to get Lua, SFML and Box2D building 
-
-	Got project building with Lua and SFML
-	Created example class in C++ that works in SFML
-	Created drawable and point classes
-	Designed and created first classes of the entity system
-	Designed and created resource manager
-	Expanded Lua integration with the use of the init and think(dt) functions as well as  keyboard and mouse input/setting and getting some information from the window
-	Converted the resource manager to be generic and to use smart pointers
-	Added sound to C++ then to Lua
-	Created animation system design and began implementation
-	Created Animation class and created animatable
-	Got animation and animatable working in Lua
-	Did some work on the gamestate system
-	Created ECS design and started conversion to ECS	
-	Designed and created the camera system
-	Created animation component
-	Built on Linux
-	Finished conversion to ECS and fixed in Lua
-	Combined the drawable and animatable components into a single drawable component
-	Added b2d
-	Created physics component and added it to Lua
-	Command line args added
-	created pong and realised circle physbox was a requirement
-	created snake
-	View system now works in Lua
-	created fall
-	Documentation
-	Other people use the engine
-	see what they say
 
 	\printbibliography{}
 \end{document}
