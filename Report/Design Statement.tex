@@ -23,11 +23,19 @@
 
 %The main goal is that students use this progress report to schedule their work and allow supervisors an opportunity to comment on the approach taken by students and the level of progress made.
 
-	Using an agile methodology will be an important part of the development of this project as it provides a far superior workflow as opposed to far more static methodologies such as the waterfall method. This will result in an improved rate of work and the addition of currently unthought of ideas.
+	Using an agile methodology will be an important part of the development of this project as it provides a far superior work flow as opposed to far more static methodologies such as the waterfall method. This will result in an improved rate of work and the addition of currently undiscovered ideas.
 
 %Write about requirements
 
 	For a game engine to be a complete engine a wide variety of features are required especially when a high level scripting language is the only input for developers to use when creating a game.
+
+	The engine will provide a Lua interface using the standard Lua C API.
+
+	The engine will need the ability to render, reposition, angle and animate sprites provided from a spritesheet.
+
+	Physics will also need to be provided by the engine to allow for much improved performance over having physics implemented in Lua.
+
+	Both the engines physics and rendering capabilities will need to be fully accessed through a Lua API.
 
 %Write about lib choices for each part
 
@@ -71,6 +79,10 @@
 		
 %what was done and in what order
 
+	Design stuff
+
+	An important first step when developing the game engine was to get Lua, SFML and Box2D building 
+
 	Got project building with Lua and SFML
 	Created example class in C++ that works in SFML
 	Created drawable and point classes
@@ -96,6 +108,9 @@
 	created snake
 	View system now works in Lua
 	created fall
+	Documentation
+	Other people use the engine
+	see what they say
 
 	\printbibliography{}
 \end{document}
