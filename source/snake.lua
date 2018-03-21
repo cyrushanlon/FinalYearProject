@@ -86,10 +86,38 @@ function HookKeyPressed(key)
     end
 end
 
+function moveFood()
+    local x = math.random(1, settings.gridSize)
+    local y = math.random(1, settings.gridSize) 
+
+    local done = false    
+
+    while not done do
+        local fine = true
+        for i=1, #snake do
+            if  x == snake[i].gridpos.x and y == snake[i].gridpos.y then
+                    x = math.random(1, settings.gridSize)
+                    y = math.random(1, settings.gridSize)
+                    fine = false
+                    break
+            end
+        end
+        done = fine
+    end
+
+    moveObject(food, 1, x, y)
+end
+
 function checkFood()
     if snake[1].gridpos.x == food[1].gridpos.x and snake[1].gridpos.y == food[1].gridpos.y then
         createObject(snake, "resources/textures/box.png")
-        moveObject(food, 1, math.random(1, settings.gridSize), math.random(1, settings.gridSize))
+        moveFood()
+    end
+end
+
+function checkWin()
+    if #snake == settings.gridSize * settings.gridSize then
+        print("WIN")
     end
 end
 
@@ -132,8 +160,8 @@ function Think(dt)
             moveObject(snake, i, oldpiece.oldgridpos.x, oldpiece.oldgridpos.y)
         end
 
+        checkWin()
         checkFood()
         checkDeath()
     end
-
 end
