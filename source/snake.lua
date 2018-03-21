@@ -8,39 +8,24 @@ local snake = {}
 local food = {}
 local border = {}
 
-function createPiece()
+function createObject(tab, tex)
     local piece = {}
 
     piece.drawable = DrawableComponent.New()
-    piece.drawable:SetTexture("resources/textures/box.png")
+    piece.drawable:SetTexture(tex)
 
-    piece.entity = Entity.New("piece" .. #snake)
+    piece.entity = Entity.New("piece" .. #tab)
     piece.entity:AddDrawable(piece.drawable)
 
     piece.gridpos = {x = -1, y = -1}
     piece.oldgridpos = {x = -1, y = -1}
 
-    table.insert(snake, piece)
+    table.insert(tab, piece)
     
-    return #snake --return the location of the piece
+    return #tab --return the location of the piece
 end
 
-function createFood()
-    local nfood = {}
-
-    nfood.drawable = DrawableComponent.New()
-    nfood.drawable:SetTexture("resources/textures/box.png")
-
-    nfood.entity = Entity.New("piece" .. #nfood)
-    nfood.entity:AddDrawable(nfood.drawable)
-
-    nfood.gridpos = {x= -1, y =-1}
-
-    table.insert(food, nfood)
-
-end
-
-function movePiece(tab, index, x, y)
+function moveObject(tab, index, x, y)
     local piece = tab[index]
     piece.drawable:SetPos(x * settings.scale, y * settings.scale)
     
@@ -51,19 +36,6 @@ function movePiece(tab, index, x, y)
     piece.gridpos.y = y
 end
 
-function createBorder(x, y)
-    local piece = {}
-
-    piece.drawable = DrawableComponent.New()
-    piece.drawable:SetTexture("resources/textures/snakeborder.png")
-    piece.drawable:SetPos(x, y)
-
-    piece.entity = Entity.New("piece" .. #piece)
-    piece.entity:AddDrawable(piece.drawable)
-
-    table.insert(border, piece)
-end
-
 local direction = 3
 local moveTime = 0
 local updateTime = 0.5
@@ -71,17 +43,21 @@ local updateTime = 0.5
 function Init()
     --create border
     for i = 0, (settings.gridSize + 1) do --top and bottom
-        createBorder(i * settings.scale, 0)
-        createBorder(i * settings.scale, (settings.gridSize + 1) * settings.scale)
+        createObject(border, "resources/textures/snakeborder.png")
+        moveObject(border, #border, i, 0)
+        createObject(border, "resources/textures/snakeborder.png")
+        moveObject(border, #border, i, (settings.gridSize + 1))
     end
     for i = 0, (settings.gridSize) do --left and right
-        createBorder(0, i * settings.scale)
-        createBorder((settings.gridSize + 1) * settings.scale, i * settings.scale)
+        createObject(border, "resources/textures/snakeborder.png")
+        moveObject(border, #border, 0, i)
+        createObject(border, "resources/textures/snakeborder.png")
+        moveObject(border, #border, (settings.gridSize + 1), i)
     end
 
     for i = 1, settings.startlen do
-        createPiece()
-        movePiece(snake, i, (settings.startlen + 1) - i, 1)
+        createObject(snake, "resources/textures/box.png")
+        moveObject(snake, i, (settings.startlen + 1) - i, 1)
     end
     snake[1].drawable:SetTexture("resources/textures/head.png")
 end
@@ -128,13 +104,12 @@ function Think(dt)
         if newY < 1 then newY = settings.gridSize 
         elseif newY > settings.gridSize then newY = 1 end
 
-        movePiece(snake, 1, newX, newY)
+        moveObject(snake, 1, newX, newY)
 
         for i=2, #snake do
             --local piece = snake[i]
             local oldpiece = snake[i-1]
-
-            movePiece(snake, i, oldpiece.oldgridpos.x, oldpiece.oldgridpos.y)
+            moveObject(snake, i, oldpiece.oldgridpos.x, oldpiece.oldgridpos.y)
         end
 
         checkFood()
