@@ -1,7 +1,7 @@
 local settings = {
-    gridSize = 10,
+    gridSize = 5,
     scale = 32,
-    startlen = 9,
+    startlen = 4,
 }
 
 --containers
@@ -19,6 +19,7 @@ function createObject(tab, tex)
 
     piece.drawable = DrawableComponent.New()
     piece.drawable:SetTexture(tex)
+    piece.drawable:SetPos(-settings.scale, -settings.scale)
 
     piece.entity = Entity.New("piece" .. #tab)
     piece.entity:AddDrawable(piece.drawable)
@@ -92,6 +93,15 @@ function checkFood()
     end
 end
 
+function checkDeath()
+    for i=2, #snake do
+        if  snake[1].gridpos.x == snake[i].gridpos.x and 
+            snake[1].gridpos.y == snake[i].gridpos.y then
+                print("DEATH!!!")
+        end
+    end
+end
+
 function Think(dt)
     moveTime = moveTime + dt
 
@@ -123,6 +133,7 @@ function Think(dt)
         end
 
         checkFood()
+        checkDeath()
     end
 
 end
