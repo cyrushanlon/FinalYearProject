@@ -6,6 +6,7 @@ local settings = {
 
 local snake = {}
 local food = {}
+local border = {}
 
 function createPiece()
     local piece = {}
@@ -30,7 +31,7 @@ function createFood()
     nfood.drawable = DrawableComponent.New()
     nfood.drawable:SetTexture("resources/textures/box.png")
 
-    nfood.entity = Entity.New("piece" + #nfood)
+    nfood.entity = Entity.New("piece" .. #nfood)
     nfood.entity:AddDrawable(nfood.drawable)
 
     nfood.gridpos = {x= -1, y =-1}
@@ -39,8 +40,8 @@ function createFood()
 
 end
 
-function movePiece(index, x, y)
-    local piece = snake[index]
+function movePiece(tab, index, x, y)
+    local piece = tab[index]
     piece.drawable:SetPos(x * settings.scale, y * settings.scale)
     
     piece.oldgridpos.x = piece.gridpos.x
@@ -50,14 +51,37 @@ function movePiece(index, x, y)
     piece.gridpos.y = y
 end
 
+function createBorder(x, y)
+    local piece = {}
+
+    piece.drawable = DrawableComponent.New()
+    piece.drawable:SetTexture("resources/textures/snakeborder.png")
+    piece.drawable:SetPos(x, y)
+
+    piece.entity = Entity.New("piece" .. #piece)
+    piece.entity:AddDrawable(piece.drawable)
+
+    table.insert(border, piece)
+end
+
 local direction = 3
 local moveTime = 0
 local updateTime = 0.5
 
 function Init()
+    --create border
+    for i = 0, (settings.gridSize + 1) do --top and bottom
+        createBorder(i * settings.scale, 0)
+        createBorder(i * settings.scale, (settings.gridSize + 1) * settings.scale)
+    end
+    for i = 0, (settings.gridSize) do --left and right
+        createBorder(0, i * settings.scale)
+        createBorder((settings.gridSize + 1) * settings.scale, i * settings.scale)
+    end
+
     for i = 1, settings.startlen do
         createPiece()
-        movePiece(i, (settings.startlen + 1) - i, 1)
+        movePiece(snake, i, (settings.startlen + 1) - i, 1)
     end
     snake[1].drawable:SetTexture("resources/textures/head.png")
 end
@@ -76,6 +100,10 @@ function HookKeyPressed(key)
         direction = 3
         moveTime = updateTime
     end
+end
+
+function checkFood()
+
 end
 
 function Think(dt)
@@ -100,14 +128,16 @@ function Think(dt)
         if newY < 1 then newY = settings.gridSize 
         elseif newY > settings.gridSize then newY = 1 end
 
-        movePiece(1, newX, newY)
+        movePiece(snake, 1, newX, newY)
 
         for i=2, #snake do
             --local piece = snake[i]
             local oldpiece = snake[i-1]
 
-            movePiece(i, oldpiece.oldgridpos.x, oldpiece.oldgridpos.y)
+            movePiece(snake, i, oldpiece.oldgridpos.x, oldpiece.oldgridpos.y)
         end
+
+        checkFood()
     end
 
 end
