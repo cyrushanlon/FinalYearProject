@@ -42,7 +42,7 @@ Docs
 
 int main(int argc, char* argv[])
 {
-    std::string path = "snake.lua";
+    std::string path = "";
     if (argc == 2)
     {
         path = argv[1];
@@ -50,7 +50,7 @@ int main(int argc, char* argv[])
     else
     {
         std::cout << "Usage:" << argv[0] << " path to lua file" << std::endl;
-        //return 1;
+        return 1;
     }
 
     Window.create(sf::VideoMode(1280, 720), "SFML works!");
