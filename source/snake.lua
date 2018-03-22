@@ -1,7 +1,8 @@
 local settings = {
-    gridSize = 5,
+    gridSize = 15,
     scale = 32,
-    startlen = 4,
+    startlen = 6,
+    updateTime = 0.1
 }
 
 --containers
@@ -12,7 +13,6 @@ local border = {}
 --globals
 local direction = 3
 local moveTime = 0
-local updateTime = 0.5
 
 function createObject(tab, tex)
     local piece = {}
@@ -73,16 +73,16 @@ end
 function HookKeyPressed(key)
     if (key == "W" and direction ~= 2 and direction ~= 0) then -- 0 is up
         direction = 0
-        moveTime = updateTime
+        moveTime = settings.updateTime
     elseif (key == "S" and direction ~= 0 and direction ~= 2) then -- 2 is down
         direction = 2
-        moveTime = updateTime
+        moveTime = settings.updateTime
     elseif (key == "A" and direction ~= 3 and direction ~= 1) then -- 1 is left
         direction = 1
-        moveTime = updateTime
+        moveTime = settings.updateTime
     elseif (key == "D" and direction ~= 1 and direction ~= 3) then -- 3 is right
         direction = 3
-        moveTime = updateTime
+        moveTime = settings.updateTime
     end
 end
 
@@ -136,7 +136,7 @@ function Think(dt)
     --snake[1] is the head cos arrays start at 1
     local head = snake[1]
 
-    if (moveTime >= updateTime) then --in seconds
+    if (moveTime >= settings.updateTime) then --in seconds
         moveTime = 0
 
         local newY = head.gridpos.y
