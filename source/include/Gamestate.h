@@ -4,6 +4,7 @@
 #include <memory>
 
 #include "Sound.h"
+#include "Text.h"
 
 #include "Components/DrawableComponent.h"
 #include "Components/PhysicsComponent.h"
@@ -14,6 +15,8 @@ public:
     Gamestate();
     //holds the sounds
     std::map<std::string, Sound*> sounds;
+    //holds the text instances
+    std::vector<std::shared_ptr<Text>> texts;
 
     std::shared_ptr<DrawableComponent> GetDrawable(std::string);
     //we need a map of each type of component, with a vector for drawables so we can have a draw order

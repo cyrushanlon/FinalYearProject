@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "Systems/DrawableSystem.h"
 #include "Systems/PhysicsSystem.h"
+#include "Systems/TextSystem.h"
 
 class ECSManager
 {
@@ -19,6 +20,7 @@ class ECSManager
     private:
         DrawableSystem drawables;
         PhysicsSystem physics;
+        TextSystem text;
 };
 
 #endif // ECSMANAGER_H

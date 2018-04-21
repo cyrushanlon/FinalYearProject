@@ -13,6 +13,7 @@ ECSManager::~ECSManager()
 void ECSManager::Draw(sf::RenderWindow& window)
 {
     this->drawables.Draw(window);
+    this->text.Draw(window);
 }
 
 void ECSManager::Think(sf::Time dt)
