@@ -30,6 +30,9 @@ class LuaState
         void HookMousePressed(bool);
         void HookMouseReleased(bool);
 
+        void HookBeginContact(std::string ID1, std::string ID2);
+        void HookEndContact(std::string ID1, std::string ID2);
+
     protected:
 
     private:

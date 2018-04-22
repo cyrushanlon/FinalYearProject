@@ -1,10 +1,11 @@
 # depslib dependency file v1.0
-1524407796 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
+1524409209 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Components/Entity.h"
 	"ECSManager.h"
 	"ResourceManager.h"
+	"ContactListener.h"
 	"Box2D/Box2D.h"
 	"Global.h"
 
@@ -425,7 +426,7 @@
 	"LuaState.h"
 	"Box2D/Box2D.h"
 
-1524360217 g:\+ 00 + projects\c++\finalyearproject\source\include\luastate.h
+1524410042 g:\+ 00 + projects\c++\finalyearproject\source\include\luastate.h
 	<lua.hpp>
 	<SFML/System/Vector2.hpp>
 	<SFML/System/Time.hpp>
@@ -470,7 +471,7 @@
 1504470268 g:\+ 00 + projects\c++\finalyearproject\source\include\inputmanager.h
 	<SFML/Window.hpp>
 
-1524406042 source:g:\+ 00 + projects\c++\finalyearproject\source\src\luastate.cpp
+1524410157 source:g:\+ 00 + projects\c++\finalyearproject\source\src\luastate.cpp
 	<iostream>
 	"LuaState.h"
 	"Lua/L_Input.h"
@@ -667,7 +668,7 @@
 1516641423 g:\+ 00 + projects\c++\finalyearproject\source\include\gamestatemanager.h
 	"Gamestate.h"
 
-1524351139 g:\+ 00 + projects\c++\finalyearproject\source\include\gamestate.h
+1524408818 g:\+ 00 + projects\c++\finalyearproject\source\include\gamestate.h
 	<memory>
 	"Sound.h"
 	"Text.h"
@@ -1764,7 +1765,7 @@
 1515311253 g:\+ 00 + projects\c++\finalyearproject\source\lib\windows\box2d\box2d\box2d\rope\b2rope.h
 	"Box2D/Common/b2Math.h"
 
-1524407630 source:g:\+ 00 + projects\c++\finalyearproject\source\src\components\physicscomponent.cpp
+1524409473 source:g:\+ 00 + projects\c++\finalyearproject\source\src\components\physicscomponent.cpp
 	"Components/PhysicsComponent.h"
 	"Global.h"
 
@@ -1844,4 +1845,13 @@
 1524405427 g:\+ 00 + projects\c++\finalyearproject\source\include\systems\textsystem.h
 	<SFML/Graphics.hpp>
 	"Global.h"
+
+1524410221 source:g:\+ 00 + projects\c++\finalyearproject\source\src\contactlistener.cpp
+	"ContactListener.h"
+	<iostream>
+	"Components/PhysicsComponent.h"
+	"Global.h"
+
+1524409175 g:\+ 00 + projects\c++\finalyearproject\source\include\contactlistener.h
+	"Box2D/Box2D.h"
 

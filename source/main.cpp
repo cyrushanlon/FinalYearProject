@@ -5,6 +5,7 @@
 #include "Components/Entity.h"
 #include "ECSManager.h"
 #include "ResourceManager.h"
+#include "ContactListener.h"
 #include "Box2D/Box2D.h"
 
 #include "Global.h"
@@ -42,7 +43,7 @@ Docs
 
 int main(int argc, char* argv[])
 {
-    std::string path = "";
+    std::string path = "fall.lua";
     if (argc == 2)
     {
         path = argv[1];
@@ -50,7 +51,7 @@ int main(int argc, char* argv[])
     else
     {
         std::cout << "Usage:" << argv[0] << " path to lua file" << std::endl;
-        return 1;
+        //return 1;
     }
 
     Window.create(sf::VideoMode(1280, 720), "SFML works!");
@@ -122,6 +123,10 @@ int main(int argc, char* argv[])
     //update rates for box2d
     int32 velocityIterations = 6;
     int32 positionIterations = 2;
+
+    //box2d callback handler
+    ContactListener contactListener;
+    world.SetContactListener(&contactListener);
 
     //used to get dt during the main loop
     sf::Clock deltaClock;

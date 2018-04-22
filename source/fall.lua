@@ -17,6 +17,14 @@ function HookKeyPressed(key)
     end
 end
 
+function HookBeginContact(a, b)
+    print("begin " .. a .. " " .. b)
+end
+
+function HookEndContact(a, b)
+    print("end " .. a .. " " .. b)
+end
+
 function reset()
 
     count = 1

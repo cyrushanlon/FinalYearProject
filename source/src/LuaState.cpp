@@ -314,3 +314,35 @@ void LuaState::HookMouseReleased(bool isLeft)
         }
     }
 }
+
+void LuaState::HookBeginContact(std::string ID1, std::string ID2)
+{
+    //load the function from global
+    lua_getglobal(this->L(),"HookBeginContact");
+    if(lua_isfunction(this->L(), -1) )
+    {
+        lua_pushstring(this->L(), ID1.c_str());
+        lua_pushstring(this->L(), ID2.c_str());
+        int err = lua_pcall(this->L(),2,0,0);
+        if(err)
+        {
+            std::cout << "lua error: " << luaL_checkstring(this->state, -1) << std::endl;
+        }
+    }
+}
+
+void LuaState::HookEndContact(std::string ID1, std::string ID2)
+{
+    //load the function from global
+    lua_getglobal(this->L(),"HookEndContact");
+    if(lua_isfunction(this->L(), -1) )
+    {
+        lua_pushstring(this->L(), ID1.c_str());
+        lua_pushstring(this->L(), ID2.c_str());
+        int err = lua_pcall(this->L(),2,0,0);
+        if(err)
+        {
+            std::cout << "lua error: " << luaL_checkstring(this->state, -1) << std::endl;
+        }
+    }
+}

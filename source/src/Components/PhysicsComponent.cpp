@@ -7,6 +7,7 @@
 PhysicsComponent::PhysicsComponent(b2BodyDef bodyDef, b2FixtureDef fixDef, float width, float height) : Component("physics")
 {
     body = world.CreateBody(&bodyDef);
+    body->SetUserData(this);
     shape.SetAsBox(width/2, height/2); //box2d uses half width and height
     fixDef.shape = &shape;
     fixture = body->CreateFixture(&fixDef);
