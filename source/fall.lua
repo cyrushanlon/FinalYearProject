@@ -34,6 +34,7 @@ function reset()
             box:SetPos(x, y)
             box:SetVel(0,0)
             box:SetAng(0)
+            box:SetAngVel(0)
 
             count = count + 1
         end

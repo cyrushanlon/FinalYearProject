@@ -30,6 +30,9 @@ public:
 
     b2Vec2 GetLinearVelocity();
     void SetLinearVelocity(b2Vec2);
+
+    float GetAngularVelocity();
+    void SetAngularVelocity(float);
 private:
     b2Body* body;
     b2Fixture* fixture;

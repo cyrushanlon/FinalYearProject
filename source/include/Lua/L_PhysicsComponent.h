@@ -100,6 +100,28 @@ static int l_PhysicsComponent_SetVel(lua_State * l)
     return 0;
 }
 
+static int l_PhysicsComponent_GetAngVel(lua_State * l)
+{
+    PhysicsComponent * pc = l_CheckPhysicsComponent(1);
+
+    float ang = pc->GetAngularVelocity();
+    //use the LuaState helper to push the angle onto the stack
+    lua_pushnumber(l, ang);
+
+    //we return a single variable to Lua
+    return 1;
+}
+
+static int l_PhysicsComponent_SetAngVel(lua_State * l)
+{
+    PhysicsComponent* pc = l_CheckPhysicsComponent(1);
+    float x = luaL_checknumber(l, 2);
+
+    pc->SetAngularVelocity(x);
+
+    return 0;
+}
+
 static int l_PhysicsComponent_SetPos(lua_State * l)
 {
     PhysicsComponent* pc = l_CheckPhysicsComponent(1);
@@ -284,6 +306,8 @@ static void RegisterPhysicsComponent()
         { "GetAng", l_PhysicsComponent_GetAng },
         { "GetVel", l_PhysicsComponent_GetVel },
         { "SetVel", l_PhysicsComponent_SetVel },
+        { "GetAngVel", l_PhysicsComponent_GetAngVel },
+        { "SetAngVel", l_PhysicsComponent_SetAngVel },
         { "SetActive", l_PhysicsComponent_SetActive },
         { "ApplyForce", l_PhysicsComponent_ApplyForce},
         { "ApplyImpulse" ,l_PhysicsComponent_ApplyImpulse},

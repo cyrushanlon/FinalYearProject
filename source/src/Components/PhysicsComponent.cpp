@@ -72,6 +72,15 @@ void PhysicsComponent::SetLinearVelocity(b2Vec2 newVel)
     this->body->SetLinearVelocity(newVel);
 }
 
+float PhysicsComponent::GetAngularVelocity()
+{
+    return this->body->GetAngularVelocity();
+}
+void PhysicsComponent::SetAngularVelocity(float newVel)
+{
+    this->body->SetAngularVelocity(newVel);
+}
+
 void PhysicsComponent::ApplyTorque(float32 torque, bool wake)
 {
     this->body->ApplyTorque(torque, wake);
