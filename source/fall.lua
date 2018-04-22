@@ -1,5 +1,6 @@
 settings = {
-    gravityY = -10
+    gravityY = -10,
+    bgColor = 0xb541f4ff
 }
 
 local downwall = {}
@@ -8,13 +9,14 @@ local boxes = {}
 local mainView = Window.GetDefaultView()
 local otherView = View.New(0, 0, 1280, 720, "otherView")
 
+local count = 0
+
 function HookKeyPressed(key)
     if (key == "Space") then
         reset()
     end
 end
 
-local count = 0
 function reset()
 
     count = 1
@@ -28,8 +30,6 @@ function reset()
             count = count + 1
         end
     end
-
-    print(count-1)
 end
 
 function createBox()
@@ -99,7 +99,6 @@ function Init()
     reset()
 end
 
-
 function Think(dt)
 
     local xMove = 0
@@ -120,13 +119,26 @@ function Think(dt)
         yMove = yMove + 1000
     end
 
-    if (IsKeyPressed("LControl")) then
-        zoom = zoom - (0.5 * dt)
+    
+
+    if (IsKeyPressed("Y")) then
+        for y = 1, 120 do
+            boxes[y].physics:ApplyAngularImpulse(0.1, true)
+        end
     end
-    if (IsKeyPressed("LShift")) then
+        
+
+    if (IsKeyPressed("LControl")) then
         zoom = zoom + (0.5 * dt)
     end
+    if (IsKeyPressed("LShift")) then
+        zoom = zoom - (0.5 * dt)
+    end
 
-    mainView:Move(xMove * dt, yMove * dt)
-    mainView:Zoom(zoom)
+    if (xMove ~= 0 or yMove ~= 0) then
+        mainView:Move(xMove * dt, yMove * dt)
+    end
+    if (zoom ~= 1) then
+        mainView:Zoom(zoom)
+    end
 end

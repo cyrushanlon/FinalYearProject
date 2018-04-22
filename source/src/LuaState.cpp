@@ -182,6 +182,7 @@ void LuaState::Initialise(const char* initPath)
 
         float x = 0;
         float y = 0;
+        sf::Color newbgColor = sf::Color::Magenta;
 
         while (lua_next(this->L(), -2))
         {
@@ -197,6 +198,11 @@ void LuaState::Initialise(const char* initPath)
             {
                 y = lua_tonumber(this->L(), -2);
             }
+            else if (key == "bgColor")
+            {
+                uint32 color = lua_tonumber(this->L(), -2);
+                newbgColor = sf::Color(color);
+            }
             else
                 luaL_checkstring(this->L(), -2);
 
@@ -206,6 +212,7 @@ void LuaState::Initialise(const char* initPath)
         lua_pop(this->L(), 1);
 
         world.SetGravity(b2Vec2(x, y));
+        bgColor = newbgColor;
     }
 
     //load the function from global

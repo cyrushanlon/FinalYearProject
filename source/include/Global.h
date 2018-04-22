@@ -4,6 +4,7 @@
 #include <map>
 #include <SFML/Window/Keyboard.hpp>
 #include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
 
 #include "GamestateManager.h"
 
@@ -23,5 +24,7 @@ extern const std::map<std::string, sf::Keyboard::Key> KeyMap;
 extern const std::map<sf::Keyboard::Key, std::string> MapKey;
 
 extern b2World world;
+
+extern sf::Color bgColor;
 
 #endif // GLOBAL_H_INCLUDED

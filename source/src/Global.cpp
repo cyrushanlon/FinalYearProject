@@ -8,6 +8,8 @@ ResourceManager rscManager;
 
 LuaState Lua;
 
+sf::Color bgColor;
+
 const std::map<std::string, sf::Keyboard::Key> KeyMap =
 {
     {"Unknown", sf::Keyboard::Unknown},

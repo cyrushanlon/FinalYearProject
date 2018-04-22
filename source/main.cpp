@@ -185,7 +185,7 @@ int main(int argc, char* argv[])
 
         //Draw
         //
-        Window.clear(sf::Color::Magenta);
+        Window.clear(bgColor);
         //Window.setView(Window.getDefaultView());
         ecsManager.Draw(Window);
         Window.display();

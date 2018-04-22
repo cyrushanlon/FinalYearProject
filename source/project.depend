@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1524360839 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
+1524406122 source:g:\+ 00 + projects\c++\finalyearproject\source\main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Components/Entity.h"
@@ -415,10 +415,11 @@
 	<memory>
 	"ResourceInterface.h"
 
-1520183057 g:\+ 00 + projects\c++\finalyearproject\source\include\global.h
+1524405987 g:\+ 00 + projects\c++\finalyearproject\source\include\global.h
 	<map>
 	<SFML/Window/Keyboard.hpp>
 	<SFML/Window.hpp>
+	<SFML/Graphics.hpp>
 	"GamestateManager.h"
 	"ResourceManager.h"
 	"LuaState.h"
@@ -460,7 +461,7 @@
 	"Drawable.h"
 	"Global.h"
 
-1520182881 source:g:\+ 00 + projects\c++\finalyearproject\source\src\global.cpp
+1524405963 source:g:\+ 00 + projects\c++\finalyearproject\source\src\global.cpp
 	"Global.h"
 
 1504470271 source:g:\+ 00 + projects\c++\finalyearproject\source\src\inputmanager.cpp
@@ -469,7 +470,7 @@
 1504470268 g:\+ 00 + projects\c++\finalyearproject\source\include\inputmanager.h
 	<SFML/Window.hpp>
 
-1524360821 source:g:\+ 00 + projects\c++\finalyearproject\source\src\luastate.cpp
+1524406042 source:g:\+ 00 + projects\c++\finalyearproject\source\src\luastate.cpp
 	<iostream>
 	"LuaState.h"
 	"Lua/L_Input.h"
@@ -1840,7 +1841,7 @@
 1524354622 g:\+ 00 + projects\c++\finalyearproject\source\include\lua\l_text.h
 	"Text.h"
 
-1524354063 g:\+ 00 + projects\c++\finalyearproject\source\include\systems\textsystem.h
+1524405427 g:\+ 00 + projects\c++\finalyearproject\source\include\systems\textsystem.h
 	<SFML/Graphics.hpp>
 	"Global.h"
 

@@ -85,6 +85,7 @@
 		<Unit filename="include/StringsToKeys.h" />
 		<Unit filename="include/Systems/DrawableSystem.h" />
 		<Unit filename="include/Systems/PhysicsSystem.h" />
+		<Unit filename="include/Text.h" />
 		<Unit filename="lib/windows/box2d/Box2D/Box2D/Box2D.h" />
 		<Unit filename="lib/windows/box2d/Box2D/Box2D/Collision/Shapes/b2ChainShape.cpp" />
 		<Unit filename="lib/windows/box2d/Box2D/Box2D/Collision/Shapes/b2ChainShape.h" />
@@ -194,6 +195,7 @@
 		<Unit filename="src/ResourceInterface.cpp" />
 		<Unit filename="src/ResourceManager.cpp" />
 		<Unit filename="src/Sound.cpp" />
+		<Unit filename="src/Text.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
