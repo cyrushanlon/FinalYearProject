@@ -135,6 +135,7 @@ int main(int argc, char* argv[])
         {
             if (event.type == sf::Event::Closed)
                 Window.close();
+
             if (event.type == sf::Event::KeyPressed)
                 if (event.key.code == sf::Keyboard::Escape)
                 {
@@ -146,6 +147,12 @@ int main(int argc, char* argv[])
                 }
             if (event.type == sf::Event::KeyReleased)
                 Lua.HookKeyReleased(event.key.code);
+
+            if (event.type == sf::Event::MouseButtonPressed)
+                Lua.HookMousePressed(event.mouseButton.button == sf::Mouse::Left);
+            if (event.type == sf::Event::MouseButtonReleased)
+                Lua.HookMouseReleased(event.mouseButton.button == sf::Mouse::Left);
+
             if (event.type == sf::Event::LostFocus)
                 Lua.HookLostFocus();
             if (event.type == sf::Event::GainedFocus)

@@ -5,6 +5,7 @@
 #include <SFML/System/Vector2.hpp>
 #include <SFML/System/Time.hpp>
 #include <SFML/Window/Keyboard.hpp>
+#include <SFML/Window/Mouse.hpp>
 #include "Box2D/Box2D.h"
 
 class LuaState
@@ -25,6 +26,9 @@ class LuaState
         void HookGainedFocus();
         void HookKeyPressed(sf::Keyboard::Key&);
         void HookKeyReleased(sf::Keyboard::Key&);
+
+        void HookMousePressed(bool);
+        void HookMouseReleased(bool);
 
     protected:
 

@@ -277,3 +277,33 @@ void LuaState::HookKeyReleased(sf::Keyboard::Key& key)
         }
     }
 }
+
+void LuaState::HookMousePressed(bool isLeft)
+{
+    //load the function from global
+    lua_getglobal(this->L(),"HookMousePressed");
+    if(lua_isfunction(this->L(), -1))
+    {
+        lua_pushboolean (this->L(), isLeft);
+        int err = lua_pcall(this->L(),1,0,0);
+        if(err)
+        {
+            std::cout << "lua error: " << luaL_checkstring(this->state, -1) << std::endl;
+        }
+    }
+}
+
+void LuaState::HookMouseReleased(bool isLeft)
+{
+    //load the function from global
+    lua_getglobal(this->L(),"HookMouseReleased");
+    if(lua_isfunction(this->L(), -1) )
+    {
+        lua_pushboolean (this->L(), isLeft);
+        int err = lua_pcall(this->L(),1,0,0);
+        if(err)
+        {
+            std::cout << "lua error: " << luaL_checkstring(this->state, -1) << std::endl;
+        }
+    }
+}
