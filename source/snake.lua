@@ -44,6 +44,12 @@ function moveObject(tab, index, x, y)
 end
 
 function Init()
+    --score
+    local text = Text.New()
+    text:SetPos(100,100)
+    text:SetColor(0,0,0,255)
+    text:SetString("cool 69")
+
     --create border
     for i = 0, (settings.gridSize + 1) do --top and bottom
         createObject(border, "resources/textures/snakeborder.png")
@@ -84,6 +90,12 @@ function HookKeyPressed(key)
         direction = 3
         moveTime = settings.updateTime
     end
+end
+
+function HookMousePressed(isLeft)
+
+    print(isLeft)
+
 end
 
 function moveFood()
