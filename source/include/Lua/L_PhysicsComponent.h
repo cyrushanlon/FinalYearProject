@@ -48,6 +48,9 @@ static int l_PhysicsComponent_Constructor(lua_State *L)
 static int l_PhysicsComponent_Destructor(lua_State * l)
 {
     PhysicsComponent * pc = l_CheckPhysicsComponent(1);
+
+    Entity* ent = gsManager.CurrentState().get()->entities[pc->GetParent()].get();
+    ent->RemovePhysicsComponent();
     //delete pc;
 
     return 0;

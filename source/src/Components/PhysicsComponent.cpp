@@ -15,7 +15,7 @@ PhysicsComponent::PhysicsComponent(b2BodyDef bodyDef, b2FixtureDef fixDef, float
 
 PhysicsComponent::~PhysicsComponent()
 {
-
+    world.DestroyBody(this->body);
 }
 
 void PhysicsComponent::SetBodyTransform(b2Vec2 pos, float angle)

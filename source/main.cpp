@@ -43,7 +43,7 @@ Docs
 
 int main(int argc, char* argv[])
 {
-    std::string path = "";
+    std::string path = "fall.lua";
     if (argc == 2)
     {
         path = argv[1];
@@ -51,10 +51,10 @@ int main(int argc, char* argv[])
     else
     {
         std::cout << "Usage:" << argv[0] << " path to lua file" << std::endl;
-        return 1;
+        //return 1;
     }
 
-    Window.create(sf::VideoMode(1280, 720), "SFML works!");
+    Window.create(sf::VideoMode(1280, 720), path);
     Window.setFramerateLimit(500);
     Window.setVerticalSyncEnabled(false);
 
@@ -62,6 +62,14 @@ int main(int argc, char* argv[])
     gsManager.SetState("game");
 
     ECSManager ecsManager;
+
+    //update rates for box2d
+    int32 velocityIterations = 6;
+    int32 positionIterations = 2;
+
+    //box2d callback handler
+    ContactListener contactListener;
+    world.SetContactListener(&contactListener);
 
     //calls the lua function Init()
     Lua.Initialise(path.c_str());
@@ -120,13 +128,6 @@ int main(int argc, char* argv[])
     comp->AddAnimation(anim);
     comp->SetAnimation("walk");
 */
-    //update rates for box2d
-    int32 velocityIterations = 6;
-    int32 positionIterations = 2;
-
-    //box2d callback handler
-    ContactListener contactListener;
-    world.SetContactListener(&contactListener);
 
     //used to get dt during the main loop
     sf::Clock deltaClock;

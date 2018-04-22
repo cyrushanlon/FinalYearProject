@@ -11,10 +11,13 @@ class Entity
 {
 public:
     Entity(std::string);
+    ~Entity();
 
     std::string GetID();
     bool HasComponent(std::string);
     std::shared_ptr<Component> AddComponent(std::shared_ptr<Component> comp);
+    void RemoveDrawableComponent();
+    void RemovePhysicsComponent();
 private:
     std::string ID;
 };
