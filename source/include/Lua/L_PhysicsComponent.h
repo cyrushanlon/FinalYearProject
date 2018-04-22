@@ -121,6 +121,16 @@ static int l_PhysicsComponent_SetAng(lua_State * l)
     return 0;
 }
 
+static int l_PhysicsComponent_SetActive(lua_State * l)
+{
+    PhysicsComponent* pc = l_CheckPhysicsComponent(1);
+    bool active = lua_toboolean(l, 2);
+
+    pc->SetActive(active);
+
+    return 0;
+}
+
 static int l_PhysicsComponent_ApplyForce(lua_State * l)
 {
     PhysicsComponent* pc = l_CheckPhysicsComponent(1);
@@ -274,6 +284,7 @@ static void RegisterPhysicsComponent()
         { "GetAng", l_PhysicsComponent_GetAng },
         { "GetVel", l_PhysicsComponent_GetVel },
         { "SetVel", l_PhysicsComponent_SetVel },
+        { "SetActive", l_PhysicsComponent_SetActive },
         { "ApplyForce", l_PhysicsComponent_ApplyForce},
         { "ApplyImpulse" ,l_PhysicsComponent_ApplyImpulse},
         { "ApplyTorque", l_PhysicsComponent_ApplyTorque},

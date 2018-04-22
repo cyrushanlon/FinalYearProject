@@ -14,6 +14,8 @@ public:
     void SetBodyTransform(b2Vec2 pos);
     void SetBodyTransform(float angle);
 
+    void SetActive(bool active);
+
     void ApplyForce(b2Vec2, b2Vec2, bool);
     void ApplyForceToCenter(b2Vec2 force, bool);
 

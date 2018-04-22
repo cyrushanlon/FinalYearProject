@@ -30,6 +30,11 @@ void PhysicsComponent::SetBodyTransform(float angle)
     this->body->SetTransform(body->GetPosition(), angle);
 }
 
+void PhysicsComponent::SetActive(bool active)
+{
+    this->body->SetActive(active);
+}
+
 b2Vec2 PhysicsComponent::GetPosition()
 {
     return this->body->GetPosition();
