@@ -29,7 +29,7 @@
 
 	For a game engine to be a complete engine a wide variety of features are required especially when a high level scripting language is the only input for developers to use when creating a game.
 
-	The engine will provide a Lua interface using the standard Lua C API.
+	The engine will provide a Lua interface to all required core engine features using the Lua C API.
 
 	The engine will need the ability to render, reposition, angle and animate sprites provided from a spritesheet.
 
@@ -71,7 +71,7 @@
 
 	Lua script management will be entirely handled within the core of the game engine allowing for creating and removing objects, managing object behaviour, physics interactions, UI, the camera and much more. The engine will be a completely open source and will be expandable and improvable by the community as a result.
 
-	For the UI an external library created to provide UI capabilities to SFML could be used such as SFGUI or TGUI. This will need binding for use in Lua which could prove to be challenging, however getting the minimum working example would not be too difficult.
+	For the UI an external library created to provide UI capabilities to SFML could be used such as SFGUI or TGUI. This will need binding for use in Lua which could prove to be challenging, however getting the minimum working example would not be too difficult. It may be better for the development time if only text rendering is implemented as other UI elements can be achieved using sprites.
 
 	Loading and saving of the game state should be integrated into the game engine to speed up development time for the game developer. Level loading should also be integrated, an external open source level editor application could be used for the creation of the levels, a json or other data file could then be loaded into the game engine reducing the development time even further. Settings should also be managed by the game allowing the Lua developer to load and save any required key value pairs using a provided API, by implementing these features in the game engine the game developer can focus more on the actual game rather than semantics.
 
