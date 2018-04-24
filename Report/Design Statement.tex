@@ -45,6 +45,10 @@
 
 	SFML or Simple and Fast Multimedia Library is written in C++ and is available on Linux, Mac, Windows and FreeBSD and is fully open source with its code available on github. SFML handles everything from window management and input to sound and networking, the performance is very similar to that of SDL but provides a modern object oriented API unlike SDL. These reasons make SFML the perfect choice for the projects requirements.
 
+	For the physics library there is only one real option when it comes to games. Box2d is an open source C++ physics engine for simulating rigid bodies in 2D~\cite{Box2D}. It has excellent performance and is well proven for it's suitability for this project as many games and game engines on all platforms use it to great effect.
+
+	As for scripting the game engine there are several options such as C\#, Javascript and Lua. For the purposes of this project, Lua is the best option due to it's simple binding process and powerful syntax. Many games use Lua as their embedded scripting language such as Garry's Mod, World of Warcraft, Angry Birds and many many more.
+
 %Write what needs to be done and in what order 
 
 	The first step to creating a game engine is to get each of the libraries working correctly in a single project.
@@ -69,7 +73,7 @@
 
 	Another example of the same in game behaviour in the more traditional class hierarchy system is much simpler to implement but doesn't allow for the dynamism of the entity component system as is shown in \ref{fig:ClassDiagram2} and the diagram is clearly more complicated and may result in repeated code. 
 
-	Lua script management will be entirely handled within the core of the game engine allowing for creating and removing objects, managing object behaviour, physics interactions, UI, the camera and much more. The engine will be a completely open source and will be expandable and improvable by the community as a result.
+	Lua script management will be entirely handled within the core of the game engine allowing for creating and removing objects, managing object behaviour, physics interactions, UI, the camera and more. The engine will be a completely open source and will be easily expandable and improvable by the community as a result.
 
 	For the UI an external library created to provide UI capabilities to SFML could be used such as SFGUI or TGUI. This will need binding for use in Lua which could prove to be challenging, however getting the minimum working example would not be too difficult. It may be better for the development time if only text rendering is implemented as other UI elements can be achieved using sprites.
 
@@ -77,7 +81,15 @@
 
 	Documentation is a requirement for people to be able to use the engine to create games effectively and helps to reduce the learning curve. Each part of the documentation should be completed after the completion of every Lua accessible feature to ensure that it is kept on top of. Some kind of automatic documentation tool could be used similar to that of Golang's GoDoc or Java's javadoc, this would allow for the the documentation to stay up to date given any changes to the underlying code.
 
-	Design stuff
+	%Design stuff
+	
+	Required systems
+
+	SFML Window
+	Box2d world
+	Resource Manager
+	Gamestate Manager
+	Lua State
 
 	\printbibliography{}
 \end{document}
