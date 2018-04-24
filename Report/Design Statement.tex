@@ -47,11 +47,11 @@
 
 	For the physics library there is only one real option when it comes to games. Box2d is an open source C++ physics engine for simulating rigid bodies in 2D~\cite{Box2D}. It has excellent performance and is well proven for it's suitability for this project as many games and game engines on all platforms use it to great effect.
 
-	As for scripting the game engine there are several options such as C\#, Javascript and Lua. For the purposes of this project, Lua is the best option due to it's simple binding process and powerful syntax. Many games use Lua as their embedded scripting language such as Garry's Mod, World of Warcraft, Angry Birds and many many more.
+	As for scripting the game engine there are several options such as C\#, Javascript and Lua. For the purposes of this project, Lua is the best option due to it's simple binding process and powerful syntax. Many games use Lua as their embedded scripting language such as Garry's Mod, World of Warcraft, Angry Birds and many, many more.
 
 %Write what needs to be done and in what order 
 
-	The first step to creating a game engine is to get each of the libraries working correctly in a single project.
+	The first step to creating a game engine is to get each of the libraries working correctly in a single project. As the project will be completed in an agile fashion it may be difficult to know exactly what will be created and in what order, however, that does not mean that designs can be drawn up outlining potential solutions.
 
 	The engine will require a variety of features including an entity management system such as the entity component system, this will allow for dynamic game objects that are easily pieced together by a developer. This system will need to manage a wide variety of entities in various forms including drawing, animating, playing sounds and others. An example entity that will behave as a player controlled car would have the following class diagram, the entity component system example is shown in \ref{fig:ClassDiagram1}.
 
@@ -79,17 +79,20 @@
 
 	Loading and saving of the game state should be integrated into the game engine to speed up development time for the game developer. Level loading should also be integrated, an external open source level editor application could be used for the creation of the levels, a json or other data file could then be loaded into the game engine reducing the development time even further. Settings should also be managed by the game allowing the Lua developer to load and save any required key value pairs using a provided API, by implementing these features in the game engine the game developer can focus more on the actual game rather than semantics.
 
-	Documentation is a requirement for people to be able to use the engine to create games effectively and helps to reduce the learning curve. Each part of the documentation should be completed after the completion of every Lua accessible feature to ensure that it is kept on top of. Some kind of automatic documentation tool could be used similar to that of Golang's GoDoc or Java's javadoc, this would allow for the the documentation to stay up to date given any changes to the underlying code.
+	Documentation is a requirement for people to be able to use the engine to create games effectively and helps to reduce the learning curve. Each part of the documentation should be completed after the completion of every Lua accessible feature to ensure that it is kept on top of. Some kind of automatic documentation tool could be used similar to that of Golang's GoDoc or Java's javadoc, this would allow for the the documentation to stay up to date given any changes to the underlying code. Well documented examples could mitigate the requirement for extensive documentation, however, both would be ideal.
 
-	%Design stuff
+	%Design stuff 
 	
-	Required systems
+	For the game engine to function well there are a number of required systems that must be incorporated into the core of the engine. There are 5 main elements, the window, the physics world, the resource manager, the gamestate manager and the Lua state.
 
-	SFML Window
-	Box2d world
-	Resource Manager
-	Gamestate Manager
-	Lua State
+	\begin{figure}[h] 
+		\centering
+		\includegraphics[scale=0.75]{core1}
+		\caption{Core Systems Diagram}
+		\label{fig:CoreDiagram1}
+	\end{figure}
+
+	In figure \ref{fig:CoreDiagram1} the design of the core is outlined, any lateral connections will be available to each system through the core, drawable components and sound objects will have access to the resource manager.
 
 	\printbibliography{}
 \end{document}
