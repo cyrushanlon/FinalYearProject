@@ -5,10 +5,12 @@
 \usepackage{csquotes}
 
 \usepackage{listings}
+
 \usepackage{xcolor}
 \usepackage[none]{hyphenat}
 \usepackage{textcomp}
 \usepackage{parskip}
+\setlength{\parskip}{1em}
 
 \usepackage{graphicx}
 \graphicspath{ {images/} }
@@ -16,11 +18,8 @@
 \author{Cyrus Hanlon}
 \title{A Scriptable 2D Game Engine}
 
-%Library
 \usepackage[backend=bibtex,style=numeric]{biblatex}
 \addbibresource{document.bib}
-
-\setlength{\parskip}{1em}
 
 \begin{document}
 	\maketitle
@@ -33,20 +32,18 @@
 		captionpos=b,
 		tabsize=4,    
 		%   rulecolor=,
-		basicstyle=\footnotesize,
+		basicstyle=\ttfamily,
 		upquote=true,
-		aboveskip={1.5\baselineskip},
-		columns=fixed,
+		%aboveskip={1.5\baselineskip},
+		columns=fullflexible,
 		showstringspaces=false,
 		extendedchars=false,
 		breaklines=true,
 		numbersep=5pt,
-		prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
-		frame=lines,
 		numbers=left,
+		frame=single,
 		showtabs=false,
 		showspaces=false,
-		showstringspaces=false,
 		identifierstyle=\ttfamily,
 		keywordstyle=\color[rgb]{0,0,1},
 		commentstyle=\color[rgb]{0,0.392,0},
@@ -59,20 +56,18 @@
 		captionpos=b,
 		tabsize=4,    
 		%   rulecolor=,
-		basicstyle=\footnotesize,
+		basicstyle=\ttfamily,
 		upquote=true,
-		aboveskip={1.5\baselineskip},
-		columns=fixed,
+		%aboveskip={1.5\baselineskip},
+		columns=fullflexible,
 		showstringspaces=false,
 		extendedchars=false,
 		breaklines=true,
 		numbersep=5pt,
-		prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
-		frame=lines,
 		numbers=left,
+		frame=single,
 		showtabs=false,
 		showspaces=false,
-		showstringspaces=false,
 		identifierstyle=\ttfamily,
 		keywordstyle=\color[rgb]{0,0,1},
 		commentstyle=\color[rgb]{0,0.392,0},
@@ -245,7 +240,7 @@
 \subsection{LÖVE}
 	LÖVE~\cite{LOVE} provides a limited set of features and leaves the majority of the work on the internals of the engine to the game developer. This allows for very fast prototyping of small example games but when creating a larger game things can get difficult. The engine does include some things at a lower level such as physics, GLSL shaders, image loading, TCP and UDP networking. Because LÖVE doesn't manage entities there is quite a low performance ceiling especially with the addition of lighting and particles, other engines address this at the cost of development time. LÖVE is completely open source and completely free.
 \subsection{Unity and Unreal Engine}
-	Unity~\cite{Unity} and Unreal Engine~\cite{UE} both manage every aspect of the game while still allowing massive extensibility. Both have unique development flows and both take a very long time to master, because of just have massive they are, development can be very slow when compared to lightweight prototyping engines. The Unity engine is not fully open source but allows source access for certain modules of the engine while the latest versions of Unreal Engine are fully open source, both adopt similar payment patterns making the developer pay based on the number of sales rather than a fixed fee, this allows for smaller studios and individuals to create very professional games.
+	Unity~\cite{Unity} and Unreal Engine~\cite{UE} both manage every aspect of the game while still allowing massive extensibility. Both have unique development flows and both take a very long time to master, because of just have massive they are, development can be very slow when compared to lightweight prototyping engines. The Unity engine is not fully open source but allows source access for certain modules of the engine while the latest versions of Unreal Engine are fully open source, both adopt similar payment patterns making the developer pay based on the number of sales rather than a fixed fee, this allows for smaller studios and individuals to create very professional products.
 \subsection{Cocos2d}
 	Cocos2d is an open source framework designed for creating cross platform games, apps and other GUI based programs~\cite{COCOS2D}, it has support for scripting in both Lua and JavaScript but requires C++ code to initialize any scripts. There is an IDE created for cocos2D that provides similar workflow to the full engines while having the flexibility of text only engines such as LÖVE.
 
@@ -264,7 +259,7 @@
 
 %The main goal is that students use this progress report to schedule their work and allow supervisors an opportunity to comment on the approach taken by students and the level of progress made.
 
-	Using an agile methodology will be an important part of the development of this project as it provides a far superior work flow as opposed to far more static methodologies such as the waterfall method. This will result in an improved rate of work and the addition of currently undiscovered ideas.
+	Using an agile methodology will be an important part of the development of this project as it provides a far superior work flow as opposed to far more static methodologies such as the waterfall method. This will result in an improved rate of work and the addition of currently undiscovered ideas. Although an agile methodology will be in use, the requirements of the project are still be fixed and all efforts will be devoted to ensuring that they are fulfilled.
 
 %Write about requirements
 
@@ -324,7 +319,7 @@
 
 	%Design stuff 
 	
-	For the game engine to function well there are a number of required systems that must be incorporated into the core of the engine. There are 5 main elements, the window, the physics world, the resource manager, the gamestate manager and the Lua state.
+	For the game engine to function well there are a number of required systems that must be incorporated into the core of the engine. There are 5 main elements, the window, the physics world, the resource manager, the gamestate manager and the Lua state. Designing the core of the engine to be robust and lightweight is important as anything that the game engine is used for will rely heavily upon it, the better the design the better the implementation.
 
 	\begin{figure}[h] 
 		\centering
@@ -335,14 +330,22 @@
 
 	In figure \ref{fig:CoreDiagram1} the design of the core is outlined, any lateral connections will be available to each system through the core, drawable components and sound objects will have access to the resource manager.
 
+	The storage of all game objects within the engine will be handled by the gamestate, allowing for the use of mulitple game states will allow for the use of main menus, loading screens, pausing and resuming and much more. For this reason a strong design is very important
+
 	%pseudo code of gamestate
-	\lstinputlisting[style=Lua, label={lst:pseudo1}, caption={Gamestate Pseudo Code}, firstline=0, lastline=18]{codeSamples/pseudocode.code}
+	\lstinputlisting[style=Lua, label={lst:pseudo1}, caption={Gamestate Pseudo Code}, firstline=0, lastline=15]{codeSamples/pseudocode.code}
+
+	An example definition of the gamestate class written in pseudo code is shown in listing~\ref{lst:pseudo1}. Using polymorphism all objects that need to think or be drawn can be stored in the points map and then every think all objects will think and every draw every object will draw. By overriding the think and draw functions different behaviour can be achieved for each sub class of point.
 
 	%pseudo code/diagrams of ECS
 
 
 	%resource manager pseudo
+	Reusing resources will ensure that the memory footprint of a game is kept as low as possible and will reduce the number of file operations thus improving the performance for the end user.
 
+	\lstinputlisting[style=Lua, label={lst:pseudo2}, caption={Resource Manager Pseudo Code}, firstline=17, lastline=30]{codeSamples/pseudocode.code}
+
+	An example of a highly generic resource manager is shown in listing~\ref{lst:pseudo2} alongside an example of a resource wrapper class. It is highly generic as within the resources map there will be all types of resource. The exists function will return if a given resource is currently in the resources map. The load function will check that the map has the resource already and return it if so, otherwise, it will load from file and add to the map before returning the resource. The unload function reduces the use count of the resource by one and then checks if there are 0 uses, if there are the resource is removed from the map.
 
 	%components
 
@@ -361,7 +364,7 @@
 
 	%Got project building with Lua and SFML
     
-    An important first step was to get Lua, SFML and Box2D building together within a single cpp project. Once the project was building correctly, the next step was to create some example classes and a simple main program loop to create a test bed for future work.
+    An important first step was to get Lua, SFML and Box2D building together within a single cpp project. Once the project was building correctly, the next step was to create some example classes and a simple main program loop to create a test bed for future work. Setting up a github repository as another important step, this is a big project, change control is extremely useful especially when the project is spread over many source files.
 
     At each major stage in the development cycle testing the game engine on other platforms was ensured as a cross platform game engine is far more useful to a developer than one that is locked down to a specific platform.
 
@@ -374,10 +377,15 @@
     The point class is purely virtual and cannot be instantiated, it provides a think function that will be overridden by all sub classes that are required to do work every cycle of the main loop. This style of programming reduces the amount of duplicated code in the core of the engine.
 
     The drawable class provides the ability to draw a sprite at a set position and inherits from the point class so that it can be stored in the same vector as other entities and can then be casted as is required. This is a standard example of using the type theory of polymorphism~\cite{PolymorphismDef} and allows for all subtypes to be handled by the same functions while having, potentially, fully unique behaviour.
-
+	
 %Designed and created resource manager
+%Converted the resource manager to be generic and to use smart pointers
 
-    Creating the resource manager proved to be challenging but ultimately very satisfying when it worked correctly. It allows for the end user of the game engine to not have to bother with resource management as the core engine will handle it, all resources are loaded from file for the first time but are otherwise reused by passing a smart pointer to the resource, when the resource is no longer in use anywhere it is unloaded from the resource manager.
+	Creating the resource manager proved to be challenging but ultimately very satisfying when it worked correctly. It allows for the end user of the game engine to not have to bother with resource management as the core engine will handle it, all resources are loaded from file for the first time but are otherwise reused by passing a smart pointer to the resource, when the resource is no longer in use anywhere it is unloaded from the resource manager.
+	
+	\lstinputlisting[style=C++, label={lst:implementation1}, caption={Resource Manager generic load function}, firstline=1, lastline=19]{codeSamples/implementation.cpp}
+
+	As shown in listing~\ref{lst:implementation1} C++ templating is used to ensure that the load function of the resource manager is capable of handling all types of resource. The first thing that the function does is check if the resource is already in the map, if it isn't, it then creates a smart pointer and loads the resource from file and inserts it into the resource map. The resource is then pulled from the map using the uri and returned to the caller. The usage is not incremented as the resource manager simply uses the count functionality of smart pointers instead of manually handling them.
 
 %Expanded Lua integration with the use of the init and think(dt) functions as well as keyboard and mouse 
 
@@ -389,12 +397,9 @@
 
    Interaction with the window through SFML allows for the user of the game engine to ensure that their game works on all resolutions.
 
-%Converted the resource manager to be generic and to use smart pointers
 %Added sound to C++ then to Lua
 
-    The resource manager is at the core of all file based operations in the game engine, allowing for its expansion to hold other resources has meant that the implementation of sound within the engine was trivial, using only systems that already existed. 
-    
-    Support for sound in Lua was then also added to allow for use of sound effects by the game developer.
+    The resource manager is at the core of all file based operations in the game engine, allowing for its expansion to hold other resources has meant that the implementation of sound within the engine was trivial, using only systems that already existed. Support for sound in Lua was then also added to allow for use of sound effects by the game developer.
 
 %Created animation system design and began implementation
 %Created Animation class and created animatable
@@ -490,7 +495,7 @@
 
 	%Briefly restate the work undertaken, summarise any findings or recommendations, acknowledge limitations and make suggestions for further work.
 
-    i have learned a lot
+    %i have learned a lot
 
 	\newpage
 

@@ -2,17 +2,29 @@ class Gamestate
 {
     Map of Sounds
     Map of UI
-    Map of Drawables
-    Map of Physics Components
+    Map of Points
     Map of Views
 
     SetPaused
     GetPaused
 
     Think
-        Drawables Think
-        Physics Think
+        Points Think
     Draw
-        UI Draw
-        Drawables Draw
+        Points Draw
+}
+
+class ResourceManager
+{
+    Map of ResourceInterface
+
+    Exists
+    Load
+    UnLoad
+}
+
+class ResourceInterface
+{
+    UseCount
+    Resource
 }
