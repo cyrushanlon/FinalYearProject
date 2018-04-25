@@ -43,12 +43,12 @@ function moveObject(tab, index, x, y)
     piece.gridpos.y = y
 end
 
+local text = Text.New()
 function Init()
     --score
-    local text = Text.New()
-    text:SetPos(100,100)
-    text:SetColor(0,0,0,255)
-    text:SetString("cool 69")
+    text:SetPos(550,50)
+    text:SetColor(255,0,0,255)
+    text:SetString("ALIVE!")
 
     --create border
     for i = 0, (settings.gridSize + 1) do --top and bottom
@@ -129,7 +129,7 @@ end
 
 function checkWin()
     if #snake == settings.gridSize * settings.gridSize then
-        print("WIN")
+        text:SetString("WIN!")
     end
 end
 
@@ -137,7 +137,7 @@ function checkDeath()
     for i=2, #snake do
         if  snake[1].gridpos.x == snake[i].gridpos.x and 
             snake[1].gridpos.y == snake[i].gridpos.y then
-                print("DEATH!!!")
+                text:SetString("DEAD!")
         end
     end
 end
