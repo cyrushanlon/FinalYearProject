@@ -14,14 +14,14 @@ local border = {}
 local direction = 3
 local moveTime = 0
 
-function createObject(tab, tex)
+function createObject(name, tab, tex)
     local piece = {}
 
     piece.drawable = DrawableComponent.New()
     piece.drawable:SetTexture(tex)
     piece.drawable:SetPos(-settings.scale, -settings.scale)
 
-    piece.entity = Entity.New("piece" .. #tab)
+    piece.entity = Entity.New(name .. #tab)
     piece.entity:AddDrawable(piece.drawable)
 
     piece.gridpos = {x = -1, y = -1}
@@ -52,27 +52,27 @@ function Init()
 
     --create border
     for i = 0, (settings.gridSize + 1) do --top and bottom
-        createObject(border, "resources/textures/snakeborder.png")
+        createObject("wall", border, "resources/textures/snakeborder.png")
         moveObject(border, #border, i, 0)
-        createObject(border, "resources/textures/snakeborder.png")
+        createObject("wall", border, "resources/textures/snakeborder.png")
         moveObject(border, #border, i, (settings.gridSize + 1))
     end
     for i = 0, (settings.gridSize) do --left and right
-        createObject(border, "resources/textures/snakeborder.png")
+        createObject("wall", border, "resources/textures/snakeborder.png")
         moveObject(border, #border, 0, i)
-        createObject(border, "resources/textures/snakeborder.png")
+        createObject("wall", border, "resources/textures/snakeborder.png")
         moveObject(border, #border, (settings.gridSize + 1), i)
     end
 
     --create snake
     for i = 1, settings.startlen do
-        createObject(snake, "resources/textures/box.png")
+        createObject("snek", snake, "resources/textures/box.png")
         moveObject(snake, i, (settings.startlen + 1) - i, 1)
     end
     snake[1].drawable:SetTexture("resources/textures/head.png")
     
     --create food
-    createObject(food, "resources/textures/cherry.png")
+    createObject("fud", food, "resources/textures/cherry.png")
     moveObject(food, 1, math.random(1, settings.gridSize), math.random(1, settings.gridSize))
 end
 
@@ -122,7 +122,7 @@ end
 
 function checkFood()
     if snake[1].gridpos.x == food[1].gridpos.x and snake[1].gridpos.y == food[1].gridpos.y then
-        createObject(snake, "resources/textures/box.png")
+        createObject("snek", snake, "resources/textures/box.png")
         moveFood()
     end
 end
