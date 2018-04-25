@@ -10,8 +10,11 @@
 \usepackage{textcomp}
 \usepackage{parskip}
 
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
 \author{Cyrus Hanlon}
-\title{A Scriptable 2D Game Engine} 
+\title{A Scriptable 2D Game Engine}
 
 %Library
 \usepackage[backend=bibtex,style=numeric]{biblatex}
@@ -92,6 +95,18 @@
 		Embedded scripting languages need to have access to core elements of the game engine to allow for developers to create fully fledged games without having to touch the lower level. Having the core engine open source also allows game developers to extend the Lua interface as required and push the changes to the repository.
 		
 	\newpage
+
+
+
+
+
+
+
+
+
+
+	
+	\section{Literature Review}
 
 	\section{Lua}
 		\subsection{About Lua}
@@ -227,6 +242,240 @@
 		Cocos2d is an open source framework designed for creating cross platform games, apps and other GUI based programs~\cite{COCOS2D}, it has support for scripting in both Lua and JavaScript but requires C++ code to initialize any scripts. There is an IDE created for cocos2D that provides similar workflow to the full engines while having the flexibility of text only engines such as LÖVE.
 
 		Open source allows for the collaborative development of any project and would therefore be ideal for a game engine, by allowing people to fork and extend a game engine a very wide variety of features can be implemented, enabled and disabled based on the individuals needs.
+
+
+
+
+
+
+
+
+
+\section{Design}
+
+%The main goal is that students use this progress report to schedule their work and allow supervisors an opportunity to comment on the approach taken by students and the level of progress made.
+
+	Using an agile methodology will be an important part of the development of this project as it provides a far superior work flow as opposed to far more static methodologies such as the waterfall method. This will result in an improved rate of work and the addition of currently undiscovered ideas.
+
+%Write about requirements
+
+	For a game engine to be a complete engine a wide variety of features are required especially when a high level scripting language is the only input for developers to use when creating a game.
+
+	The engine will provide a Lua interface to all required core engine features using the Lua C API.
+
+	The engine will need the ability to render, reposition, angle and animate sprites provided from a spritesheet.
+
+	Physics will also need to be provided by the engine to allow for much improved performance over having physics implemented in Lua.
+
+	Both the physics and rendering capabilities of the game engine will need to be fully accessed through the provided Lua API. The Lua API should be consistent and easy to use, matching, where possible, the Lua style completely.
+
+%Write about lib choices for each part
+
+	Parts of the engine will be handled by external libraries, an important property of these libraries is performance and modernness as well as cross platform capability. Ideally the libraries will be open source.
+
+	Rendering, physics, scripting and sound will be handled by external libraries and implemented in the game engine. For rendering and sound there are several choices: SDL, SFML, DirectX and OpenGL with a sound library. SDL is widely used and has very good performance but it is written in pure C so has no object oriented code and is therefore quite dated when compared to SFML. DirectX is only available on the windows and Xbox platforms and is therefore not ideal for this project as cross platform is a requirement. OpenGL with a sound library has the best performance of all of the options but is also the most difficult to use and both SDL and SFML wrap OpenGL and provide access to the context so would be better options.
+
+	SFML or Simple and Fast Multimedia Library is written in C++ and is available on Linux, Mac, Windows and FreeBSD and is fully open source with its code available on github. SFML handles everything from window management and input to sound and networking, the performance is very similar to that of SDL but provides a modern object oriented API unlike SDL. These reasons make SFML the perfect choice for the projects requirements.
+
+	For the physics library there is only one real option when it comes to games. Box2d is an open source C++ physics engine for simulating rigid bodies in 2D~\cite{Box2D}. It has excellent performance and is well proven for it's suitability for this project as many games and game engines on all platforms use it to great effect.
+
+	As for scripting the game engine there are several options such as C\#, Javascript and Lua. For the purposes of this project, Lua is the best option due to it's simple binding process and powerful syntax. Many games use Lua as their embedded scripting language such as Garry's Mod, World of Warcraft, Angry Birds and many, many more.
+
+%Write what needs to be done and in what order 
+
+	The first step to creating a game engine is to get each of the libraries working correctly in a single project. As the project will be completed in an agile fashion it may be difficult to know exactly what will be created and in what order, however, that does not mean that designs can be drawn up outlining potential solutions.
+
+	The engine will require a variety of features including an entity management system, such as the entity component system, this will allow for dynamic game objects that are easily pieced together by a developer. This system will need to manage a wide variety of entities in various forms including drawing, animating, playing sounds and others. An example entity that will behave as a player controlled car would have the following class diagram, the entity component system example is shown in \ref{fig:ClassDiagram1}.
+
+	\begin{figure}[h] 
+		\centering
+		\includegraphics[scale=0.75]{ECS1}
+		\caption{ECS Class Diagram Example}
+		\label{fig:ClassDiagram1}
+	\end{figure}
+
+	For a car to be functional in a game it will need to be drawn and animated, have a physical presence in the world and receive player input. Behaviour can be easily placed into new components when repeated code is required, in the static inheritance system this is not as simple.
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.75]{ECS2}
+		\caption{ECS Class Diagram Example}
+		\label{fig:ClassDiagram2}
+	\end{figure}
+
+	Another example of the same in game behaviour in the more traditional class hierarchy system is much simpler to implement but doesn't allow for the dynamism of the entity component system as is shown in \ref{fig:ClassDiagram2} and the diagram is clearly more complicated and may result in repeated code. For the sake of development it may be better to first implement the more traditional system and then convert over to the ECS style.
+
+	Lua script management will be entirely handled within the core of the game engine allowing for creating and removing objects, managing object behaviour, physics interactions, UI, the camera and more. The engine will be a completely open source and will be easily expandable and improvable by the community as a result.
+
+	For the UI an external library created to provide UI capabilities to SFML could be used such as SFGUI or TGUI. This will need binding for use in Lua which could prove to be challenging, however getting the minimum working example would not be too difficult. It may be better for the development time if only text rendering is implemented as other UI elements can be achieved using sprites.
+
+	Loading and saving of the game state should be integrated into the game engine to speed up development time for the game developer. Level loading should also be integrated, an external open source level editor application could be used for the creation of the levels, a json or other data file could then be loaded into the game engine reducing the development time even further. Settings should also be managed by the game allowing the Lua developer to load and save any required key value pairs using a provided API, by implementing these features in the game engine the game developer can focus more on the actual game rather than semantics.
+
+	Documentation is a requirement for people to be able to use the engine to create games effectively and helps to reduce the learning curve. Each part of the documentation should be completed after the completion of every Lua accessible feature to ensure that it is kept on top of. Some kind of automatic documentation tool could be used similar to that of Golang's GoDoc or Java's javadoc, this would allow for the the documentation to stay up to date given any changes to the underlying code. Well documented examples could mitigate the requirement for extensive documentation, however, both would be ideal.
+
+	%Design stuff 
+	
+	For the game engine to function well there are a number of required systems that must be incorporated into the core of the engine. There are 5 main elements, the window, the physics world, the resource manager, the gamestate manager and the Lua state.
+
+	\begin{figure}[h] 
+		\centering
+		\includegraphics[scale=0.75]{core1}
+		\caption{Core Systems Diagram}
+		\label{fig:CoreDiagram1}
+	\end{figure}
+
+	In figure \ref{fig:CoreDiagram1} the design of the core is outlined, any lateral connections will be available to each system through the core, drawable components and sound objects will have access to the resource manager.
+
+	%pseudo code of gamestate
+	\lstinputlisting[style=Lua, label={lst:pseudo1}, caption={Gamestate Pseudo Code}, firstline=0, lastline=18]{codeSamples/pseudocode.code}
+
+	%pseudo code/diagrams of ECS
+
+
+	%resource manager pseudo
+
+
+	%components
+
+
+
+
+
+
+
+
+
+
+\section{Implementation}
+
+	%Got project building with Lua and SFML
+    
+    An important first step was to get Lua, SFML and Box2D building together within a single cpp project. Once the project was building correctly, the next step was to create some example classes and a simple main program loop to create a test bed for future work.
+
+    At each major stage in the development cycle testing the game engine on other platforms was ensured as a cross platform game engine is far more useful to a developer than one that is locked down to a specific platform.
+
+%Created example class in C++ that works in SFML
+%Designed and created first classes of the entity system
+%Created drawable and point classes
+    
+    Creating simple classes that showed that SFML works allowed for the creating of the first classes as shown in the class diagram. The drawable and point classes were then created as well as the surrounding framework to allow for the storing and retrieval of the objects from both Lua and in cpp tests.
+
+    The point class is purely virtual and cannot be instantiated, it provides a think function that will be overridden by all sub classes that are required to do work every cycle of the main loop. This style of programming reduces the amount of duplicated code in the core of the engine.
+
+    The drawable class provides the ability to draw a sprite at a set position and inherits from the point class so that it can be stored in the same vector as other entities and can then be casted as is required. This is a standard example of using the type theory of polymorphism~\cite{PolymorphismDef} and allows for all subtypes to be handled by the same functions while having, potentially, fully unique behaviour.
+
+%Designed and created resource manager
+
+    Creating the resource manager proved to be challenging but ultimately very satisfying when it worked correctly. It allows for the end user of the game engine to not have to bother with resource management as the core engine will handle it, all resources are loaded from file for the first time but are otherwise reused by passing a smart pointer to the resource, when the resource is no longer in use anywhere it is unloaded from the resource manager.
+
+%Expanded Lua integration with the use of the init and think(dt) functions as well as keyboard and mouse 
+
+    Up to this point there was no Lua integration at all, to begin the game engines API, initialisation and a think function were provided, this allowed the cpp environment to call the init function when the lua world needed to be created and called the think function every iteration of the main loop.
+
+    User input is a requirement too so getting when mouse buttons were pressed and released and when keyboard keys were pressed and released were all provided to the Lua API in the form of hooks that were called as and when the events happened. Getting the current mouse position as well as getting the state of all buttons and keys were also provided so the end user of the engine can decide their preferred method of handling input within their game.
+
+%setting and getting some information from the window
+
+   Interaction with the window through SFML allows for the user of the game engine to ensure that their game works on all resolutions.
+
+%Converted the resource manager to be generic and to use smart pointers
+%Added sound to C++ then to Lua
+
+    The resource manager is at the core of all file based operations in the game engine, allowing for its expansion to hold other resources has meant that the implementation of sound within the engine was trivial, using only systems that already existed. 
+    
+    Support for sound in Lua was then also added to allow for use of sount effects by the game developer.
+
+%Created animation system design and began implementation
+%Created Animation class and created animatable
+%Got animation and animatable working in Lua
+
+    The animation system must be tightly integrated into the core of the engine to ensure that there will be excellent performance passed forward.
+
+    The animation class handles all of frames, settings and timing for all animations within the game engine, having a class handling all of this allows for various systems and processes to use the same code. The UI system could use the animation class just the same as the animatable class could.
+
+    Seamless integration with Lua was required as animations are an important part of any game, ensuring that this was achieved was very difficult.
+
+%Did some work on the gamestate system
+%Designed and created the camera system
+%View system now works in Lua
+
+    Management of what the players can see needs to be handled by the game engine to massively simplify the Lua code required to achieve the same thing, this can be accomplished by using the SFML view class and setting the render target on the drawable objects. This is easily exposed to Lua allowing the game developer to manage a complex feature.
+
+%Created ECS design and started conversion to ECS	
+%Created animation component
+
+
+
+%Built on Linux
+%Finished conversion to ECS and fixed in Lua
+%Combined the drawable and animatable components into a single drawable component
+
+    Conversion to an ECS based design proved to be quite straight forward as only the parts of the engine that directly interacted with the standard approach classes had to be changed.
+
+%Added b2d
+%Created physics component and added it to Lua
+
+
+
+%Command line args added
+%created pong and realised circle physbox was a requirement
+%created snake
+%created fall
+
+
+
+%Documentation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Evaluation}
+
+%Other people use the engine
+%see what they say
+
+%Conclusion
+
+    %For a game engine to be a complete engine a wide variety of features are required especially when a high level scripting language is the only input for developers to use when creating a game.
+
+	%The engine will provide a Lua interface to all required core engine features using the Lua C API.
+
+	%The engine will need the ability to render, reposition, angle and animate sprites provided from a spritesheet.
+
+	%Physics will also need to be provided by the engine to allow for much improved performance over having physics implemented in Lua.
+
+    %Both the physics and rendering capabilities of the game engine will need to be fully accessed through the provided Lua API. The Lua API should be consistent and easy to use, matching, where possible, the Lua style completely.
+    
+    Throughout the course of this project I have learnt a multitude of new techniques thanks to thorough research and a very interesting prompt.
+
+    Discuss completion of objectives
+
+    refer back to objectives and explain how they were accomplished
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Conclusion}
+
+    i have learned alot
 
 	\newpage
 

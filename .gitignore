@@ -44,3 +44,13 @@ Report/pdflatex2016.fls
 Report/pdflatex3756.fls
 Report/pdflatex3964.fls
 Report/pdflatex8820.fls
+*.toc
+*.gz
+*.xml
+*.log
+*.fls
+*.fdb_latexmk
+*.blg
+*.bbl
+*.aux
+*.bib

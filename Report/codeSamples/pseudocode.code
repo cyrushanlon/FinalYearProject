@@ -1,0 +1,18 @@
+class Gamestate 
+{
+    Map of Sounds
+    Map of UI
+    Map of Drawables
+    Map of Physics Components
+    Map of Views
+
+    SetPaused
+    GetPaused
+
+    Think
+        Drawables Think
+        Physics Think
+    Draw
+        UI Draw
+        Drawables Draw
+}
