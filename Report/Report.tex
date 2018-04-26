@@ -363,8 +363,6 @@
 
 	The animation class holds all information required to animate from a sprite sheet including frame rate, frame count, frame size, the positions of each frame on the sprite sheet, the sprite sheet URI and various flags. All should be easily configured from Lua to ensure that the system is effective.
 
-	%components
-	%ECS
 	%ECS components
 	%Explanation
 
@@ -376,7 +374,18 @@
 
 	Additional components, beyond the core components, could include a networkable component, a health component, an AI component and many more.
 
+	\begin{figure}[h] 
+		\centering
+		\includegraphics[scale=0.75]{ecsmanager1}
+		\caption{Animatable System}
+		\label{fig:ECSmanager1}
+	\end{figure}
 
+	Handling the components will be done by a system per component all handled by an ECS manager as is shown in \ref{fig:ECSManager1}
+
+	%how to run code
+
+	Testing game code needs to be a simple process, to achieve this, calling the game engine from the command line with a single argument is the best approach as this will also allow for the dragging and dropping of Lua files onto the exe. This method also means that an IDE would be able to launch the game as though it was anything else.
 
 
 
@@ -410,7 +419,7 @@
 
 	Creating the resource manager proved to be challenging but ultimately very satisfying when it worked correctly. It allows for the end user of the game engine to not have to bother with resource management as the core engine will handle it, all resources are loaded from file for the first time but are otherwise reused by passing a smart pointer to the resource, when the resource is no longer in use anywhere it is unloaded from the resource manager.
 	
-	\lstinputlisting[style=C++, label={lst:implementation1}, caption={Resource Manager generic load function}, firstline=1, lastline=19]{codeSamples/implementation.cpp}
+	\lstinputlisting[style=C++, label={lst:implementation1}, caption={Resource Manager generic load function}, firstline=1, lastline=18]{codeSamples/implementation.cpp}
 
 	As shown in listing~\ref{lst:implementation1} C++ templating is used to ensure that the load function of the resource manager is capable of handling all types of resource. The first thing that the function does is check if the resource is already in the map, if it isn't, it then creates a smart pointer and loads the resource from file and inserts it into the resource map. The resource is then pulled from the map using the uri and returned to the caller. The usage is not incremented as the resource manager simply uses the count functionality of smart pointers instead of manually handling them.
 
@@ -434,9 +443,14 @@
 
     The animation system must be tightly integrated into the core of the engine to ensure that there will be excellent performance passed forward.
 
-    The animation class handles all of frames, settings and timing for all animations within the game engine, having a class handling all of this allows for various systems and processes to use the same code. The UI system could use the animation class just the same as the animatable class could.
+    The animation class handles all of frames, settings and timing for all animations within the game engine, having a class handling all of this allows for various systems and processes to use the same code. The UI system could use the animation class just the same as the animatable class could. Seamless integration with Lua was required as animations are an important part of any game, ensuring that this was achieved was very difficult.
 
-    Seamless integration with Lua was required as animations are an important part of any game, ensuring that this was achieved was very difficult.
+	%Added b2d
+	%Created physics component and added it to Lua
+
+	Box2D was added to the engine and the Lua. Binding the fixture definitions and body definitions was an interesting challenge as it was difficult to decide what the best method of doing it was. It was clear that using a table with only the required parameters was the best option, as having to use a large selection of setter functions would have been painful for the end developer.
+
+	%show lua example
 
 %Did some work on the gamestate system
 %Designed and created the camera system
@@ -445,20 +459,17 @@
     Management of what the players can see needs to be handled by the game engine to massively simplify the Lua code required to achieve the same thing, this can be accomplished by using the SFML view class and setting the render target on the drawable objects. This is easily exposed to Lua allowing the game developer to manage a complex feature.
 
 %Created ECS design and started conversion to ECS	
-%Created animation component
-
-
-
-%Built on Linux
-%Finished conversion to ECS and fixed in Lua
+%Created animation system
 %Combined the drawable and animatable components into a single drawable component
+	
+	Before the core of the engine got too big it was required to convert to the ECS design from the standard hierarchy design. Conversion to an ECS based design proved to be quite straight forward as only the parts of the engine that directly interacted with the standard approach classes had to be changed.
 
-    Conversion to an ECS based design proved to be quite straight forward as only the parts of the engine that directly interacted with the standard approach classes had to be changed.
+	The animation system was almost implemented as designed but a clear improvement was found in that the drawable and animatable components could be combined, doing so removed any duplicated code and simplified the process for the end developer as they no longer need to think about overlapping behaviour. The animatable and animation classes were then exposed, in full, to Lua.
 
-%Added b2d
-%Created physics component and added it to Lua
+%Finished conversion to ECS and fixed in Lua
+%ECS manager
 
-
+	Implementation of the ECS manager and the component systems was mostly a case of copying and modifying existing code before deleting the old classes, the Lua API did not need to change very much. Adding the add component functions was trivial. All references to the old system have now been removed and replaced with their ECS counterparts.
 
 %Command line args added
 %created pong and realised circle physbox was a requirement
@@ -468,6 +479,10 @@
 
 
 %Documentation
+
+
+
+%testing
 
 
 

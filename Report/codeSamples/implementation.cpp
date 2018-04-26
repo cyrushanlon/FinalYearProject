@@ -9,7 +9,6 @@ std::shared_ptr<T> load(std::string uri)
         Resource<T>* newResource = new Resource<T>(rsc);
 
         resources.insert({uri, newResource});
-        std::cout << "[ResourceManager] Loaded  |\"" << uri <<"\"" <<std::endl;
     }
 
     //resources[uri]->Useage++;
