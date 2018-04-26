@@ -1,4 +1,4 @@
-\documentclass[11pt,a4paper,titlepage]{report}
+\documentclass[12pt,a4paper,titlepage]{report}
 
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -10,6 +10,8 @@
 \usepackage[none]{hyphenat}
 \usepackage{textcomp}
 \usepackage{parskip}
+\usepackage{setspace}
+\doublespacing
 \setlength{\parskip}{1em}
 
 \usepackage{graphicx}
@@ -75,7 +77,10 @@
 		numberstyle=\color[rgb]{0.205, 0.142, 0.73},
 	}
 
+	\singlespacing
 	\tableofcontents{}
+	\doublespacing
+	
 	\newpage
 
 \chapter{Introduction}
@@ -130,65 +135,111 @@
 
 	An example of Lua's control statements are shown in listing~\ref{lst:SyntaxSample1}. The use of \texttt{elseif} as a single keyword is useful and avoids the need to use an \texttt{end} per \texttt{if}. The conditions in each of the statements do not need to be wrapped in parenthesis and allow for logical operators. 
 
+	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:SyntaxSample1}, caption={Lua Syntax Sample 1}, firstline=63, lastline=80]{codeSamples/1.lua}
+	\doublespacing
 
 	There are two types of \texttt{for} loop in Lua, one is a numeric \texttt{for} and is shown in listing~\ref{lst:SyntaxSample1}, the other is the generic \texttt{for} that uses an iterator and allows for the traversal of all values. The numeric \texttt{for} uses a very simple syntax and so is very easy to write, the first argument is the starting value of the iteration variable, the second is the end value and the third is the value to add with each loop.
 
 	The logical operators in Lua are \texttt{and}, \texttt{or} and \texttt{not}. Logical operators and control statement expressions take \texttt{nil} and \texttt{false} as \texttt{false} and anything else as \texttt{true}~\cite{LuaMan} This allows for some unique syntax that more advanced Lua programmers will use to reduce the amount of code required.
 
 	Each of the three logical operators behave differently when used in this way. The \texttt{and} operator returns its first argument if it is \texttt{false} and otherwise returns its second argument. The \texttt{or} operator returns its first argument if this value isn't \texttt{false} and returns its second argument otherwise. The \texttt{not} operator always returns \texttt{true} or \texttt{false} based on the argument. The Lua 5.3 manual~\cite{LuaMan} has an excellent set of examples as shown in listing~\ref{lst:SyntaxSample2}.
+	
+	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:SyntaxSample2}, caption={Lua Syntax Sample 2 (taken from \cite{LuaMan})}, firstline=82, lastline=89]{codeSamples/1.lua}
+	\doublespacing
 
 	Using this behaviour of logical operators allows for quickly and easily assigning variables using, for example, a configuration file.
 
 	Lua allows for assigning multiple variables on the same line as shown in listing~\ref{lst:SyntaxSample3}. When used in conjunction with returning multiple values from a function this can reduce the amount of code required and therefore improve development time.
+	
+	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:SyntaxSample3}, caption={Lua Syntax Sample 3}, firstline=134, lastline=135]{codeSamples/1.lua} 
+	\doublespacing
+
 
 	With the introduction of Lua 5.2, the \texttt{bit32} library added support for bitwise operations and with Lua 5.3 came native support for bitwise operators. Behaviour is exactly the same as in any other language with support for them as is shown in listing~\ref{lst:bitwise1}.
+
+	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:bitwise1}, caption={Lua Bitwise Operations}, firstline=137, lastline=142]{codeSamples/1.lua} 
+	\doublespacing
 
 	Lua has some syntactic sugar which helps to simplify what the Lua developer will have to interact with.
 	
+	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:SyntacticSugarSample1}, caption={Syntactic Sugar Sample 1}, firstline=1, lastline=8]{codeSamples/1.lua}
+	\doublespacing
+
 	In listing~\ref{lst:SyntacticSugarSample1} we can see how to inline declare a table with a sub table that is also inline declared.
+	\doublespacing
 
+	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:SyntacticSugarSample2}, caption={Syntactic Sugar Sample 2}, firstline=17, lastline=21]{codeSamples/1.lua}
-	We can see how to declare a member function using some syntactic sugar in listing~\ref{lst:SyntacticSugarSample2}. Which is equivalent to listing~\ref{lst:SyntacticSugarSample3}.
+	\doublespacing
 
+	We can see how to declare a member function using some syntactic sugar in listing~\ref{lst:SyntacticSugarSample2}. Which is equivalent to listing~\ref{lst:SyntacticSugarSample3}.
+	\doublespacing
+
+	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:SyntacticSugarSample3}, caption={Syntactic Sugar Sample 3}, firstline=10, lastline=15]{codeSamples/1.lua}
+	\doublespacing
+
 
 	There are also several ways to access entries within a table all of which can be mixed and matched based on the programmers preference.
 
+	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:SyntacticSugarSample4}, caption={Syntactic Sugar Sample 4}, firstline=23, lastline=25]{codeSamples/1.lua}
+	\doublespacing
+
 
 	Lua's support for coercion allows for the automatic conversion of strings and numbers, this helps developers with rapid development as they would not need to have to think about converting types in many situations when Lua itself handles it for them. Bitwise operators always convert numbers to integers, mathematic operations always convert operands to floats ~\cite{LuaMan}.
 	
 	String concatenation using the \texttt{..} operator converts numbers to strings wherever is needed but using the \texttt{string.format} function will allow for fine tuned control of how the number will be converted.
 
 	Examples of Lua's coercion in action are shown in listing~\ref{lst:Coercion 1}.
+
+	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:Coercion 1}, caption={Coercion Sample 1}, firstline=144, lastline=148]{codeSamples/1.lua}
+	\doublespacing
+
 
 	Lua's tables have a length operator in the form of \texttt{\#}, it returns the length of a table as would be found by the \texttt{ipairs} operator. It counts through integers starting at 1 and stopping when the first nil value is found, this means that the operator is only useful for finding the length of array-like tables.
 
 \subsection{Functions}
 	Lua allows for a function to return multiple values, this is an interesting concept and can have some downsides, it can make it quite difficult to correctly name a function to reflect the return values. It is a very powerful feature and if handled correctly can improve productivity especially when combined with Lua's variable number of arguments. An example is shown in listing~\ref{lst:Functions1}.
+
+	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:Functions1}, caption={Functions Sample 1}, firstline=97, lastline=105]{codeSamples/1.lua}
+	\doublespacing
+
 
 	Functions, in Lua, are first class values with proper lexical scoping~\cite{Ierusalimschy:2013:PLT:2502646}. A first class value in Lua means that a function is essentially the same as any other regular variable, this allows a Lua developer to pass functions into other functions as arguments, return functions, use functions of keys and values of tables and can be assigned to a variable. This is a very valuable trait for a high level scripting language to have as it allows for very interesting techniques such as functional programming, closures are fully supported in Lua as a result of this.
 
 	Lua has proper tail calls which allows for recursion. If the last thing that a function does is call another function, the calling function is no longer required and is no longer required on the stack, this allows for an infinite recursion without overflowing the stack~\cite{Ierusalimschy:2013:PLT:2502646}. An example of a Lua tail call is shown in listing~\ref{lst:Functions2}.
+
+	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:Functions2}, caption={Functions Sample 2}, firstline=91, lastline=95]{codeSamples/1.lua}
+	\doublespacing
+
 
 	Without proper tail calls, recursion could overflow the stack but with proper tail calls this is impossible and fits in perfectly with a high level scripting language such as Lua.
 
 \subsection{Tables}
 	Tables are the only data structure in Lua but are extremely flexible and can be used to provide the functionality of almost any data structure as required. They are very similar in use to a hash map and allow for any variable of any type to be assigned to a key or value within the same table with the exception of \texttt{nil}, it is also possible to treat a table similar to an array as shown in listing~\ref{lst:TablesSample1}.
+
+	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:TablesSample1}, caption={Tables in Lua Sample 1}, firstline=27, lastline=36]{codeSamples/1.lua}
+	\doublespacing
+
 
 	Lua has a variety of built in functions for the use of manipulating and getting data from tables all available through the table library~\cite{LuaMan}.
 
 	To loop over all key-value pairs in a table lua provides the \texttt{ipairs} and \texttt{pairs} iterators. Used with a \texttt{for} loop a Lua developer is provided with a powerful method of quickly and easily accessing anything within a table as shown in listing~\ref{lst:TablesSample2}.
+
+	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:TablesSample2}, caption={Tables in Lua Sample 2}, firstline=38, lastline=61]{codeSamples/1.lua}
+	\doublespacing
+
 
 	The \texttt{pairs} function iterates over all elements in a table while the \texttt{ipairs} function will return all key-value pairs where the keys are numbers, starting at the first index and stopping when it hits the first nil value.~\cite{Ierusalimschy:2013:PLT:2502646} 
 	
@@ -198,10 +249,18 @@
 	
 \subsection{Metatables and Object Oriented Programming}
 	All tables in Lua are permitted to have a metatable\cite{Ierusalimschy:2013:PLT:2502646}. They allow for changing the behaviour of various aspects of a lua table, such as the add operator, by setting the \texttt{\_\_add} value to a new function this code will be called instead of the default add functionality as is shown in listing~\ref{lst:MetaTables1}.
+
+	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:MetaTables1}, caption={Metatables Sample 1}, firstline=107, lastline=117]{codeSamples/1.lua}
+	\doublespacing
+
 
 	These functions are called metamethods and allow for any interaction with a table to be altered. While classes do not exist in Lua, using a meta table and first class value functions, behaviour similar to object oriented programming can be achieved especially with the use of factory methods. An example of a class is shown in listing~\ref{lst:MetaTables2}. On line 13 a table with the metatable \texttt{Dog} is created and returned to \texttt{myDog}.
+
+	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:MetaTables2}, caption={Metatables Sample 2}, firstline=119, lastline=132]{codeSamples/1.lua}
+	\doublespacing
+
 
 	While this concept is very useful, if the \texttt{new} function is ever changed by mistake, a difficult to locate bug could be created.
 
@@ -209,14 +268,22 @@
 	A coroutine is similar to a thread in that it has its own line of execution, its own stack, its own local variables, and its own instruction pointer but shares global variables and almost anything else with other coroutines. The main difference to a thread is that a program with threads runs things concurrently while a coroutine in Lua is collaborative and at any given time only 1 is running~\cite{Ierusalimschy:2013:PLT:2502646}. While there may not be a performance gain from using coroutines, it allows a developer to easily orchestrate multitasking that would otherwise be difficult to implement.
 
 	To create a coroutine it is as simple as calling the \texttt{coroutine.create} and passing a function as shown in listing~\ref{lst:Couroutine1}.
+
+	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:Couroutine1}, caption={Couroutine Sample ~\cite{Ierusalimschy:2013:PLT:2502646}}, firstline=150, lastline=153]{codeSamples/1.lua} 
+	\doublespacing
+
 
 \subsection{Garbage Collection}
 
 	Lua automatically manages memory, Lua destroys objects when all references to them are lost. There is no function to delete them manually, a program can only create objects which means that the developer will not need to bother with the majority of memory management~\cite{Ierusalimschy:2013:PLT:2502646}. Lua has no issues dealing with cyclic references unlike simple garbage collectors. Lua allows for manually calling the garbage collector using the \texttt{collectgarbage} function as even the best garbage collector isn't perfect, the Lua garbage collector sometimes needs some help. It is even possible to manually pause, stop and restart the garbage collector to allow for fine tuned adjustments to the use of memory in a Lua program, it is also possible to get the total amount of memory being used.
 
 	In very high performance scenarios a Lua developer may need to assume control of the garbage collector, a simple example is shown in listing~\ref{lst:GC1}.
+
+	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:GC1}, caption={Manual Garbage Collector Sample}, firstline=155, lastline=165]{codeSamples/1.lua}
+	\doublespacing
+
 	
 	Although the reference to the table is removed the table still exists in memory until the next pass of the garbage collector.
 
@@ -227,7 +294,11 @@
 	A major component of the Lua C API is that new functions can be registered with the virtual machine allowing for behaviour that would be otherwise impossible to implement in pure Lua. Class like objects called userdata can also be implemented in C and used in Lua allowing for interaction between the program and Lua, in the case of a game engine, objects such as sprites could be accessed in both C and Lua and provide a developer with the ability to create high performance games in a much easier to use package than C.
 
 	An example of registering a function in the Lua vm is shown in listing~\ref{lst:CAPISample1}.
+
+	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:CAPISample1}, caption={Sample function implementation in C API~\cite{Ierusalimschy:2013:PLT:2502646}}, firstline=1, lastline=12]{codeSamples/1.cpp}
+	\doublespacing
+
 
 \newpage
 
@@ -337,14 +408,20 @@
 	The storage of all game objects within the engine will be handled by the gamestate, allowing for the use of mulitple game states will allow for the use of main menus, loading screens, pausing and resuming and much more. For this reason a strong design is very important
 
 	%pseudo code of gamestate
+	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:pseudo1}, caption={Gamestate Pseudo Code}, firstline=0, lastline=15]{codeSamples/pseudocode.code}
+	\doublespacing
+
 
 	An example definition of the gamestate class written in pseudo code is shown in listing~\ref{lst:pseudo1}. Using polymorphism all objects that need to think or be drawn can be stored in the points map and then every think all objects will think and every draw every object will draw. By overriding the think and draw functions different behaviour can be achieved for each sub class of point.
 
 	%resource manager pseudo
-	Reusing resources will ensure that the memory footprint of a game is kept as low as possible and will reduce the number of file operations thus improving the performance for the end user.
-
+	Reusing resources will ensure that the memory footprint of a game is kept as low as possible and will reduce the number of file operations thus improving the performance for the 
+	
+	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:pseudo2}, caption={Resource Manager Pseudo Code}, firstline=17, lastline=30]{codeSamples/pseudocode.code}
+	\doublespacing
+
 
 	An example of a highly generic resource manager is shown in listing~\ref{lst:pseudo2} alongside an example of a resource wrapper class. It is highly generic as within the resources map there will be all types of resource. The exists function will return if a given resource is currently in the resources map. The load function will check that the map has the resource already and return it if so, otherwise, it will load from file and add to the map before returning the resource. The unload function reduces the use count of the resource by one and then checks if there are 0 uses, if there are the resource is removed from the map.
 
@@ -372,7 +449,10 @@
 
 	Using the entity component system uses composition over inheritance and allows for far greater flexibility than the standard inheritance approach, it also makes maintenance and expansion easier, this makes it an ideal methodology to use in this project.
 
+	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:pseudo3}, caption={Resource Manager Pseudo Code}, firstline=32, lastline=46]{codeSamples/pseudocode.code}
+	\doublespacing
+
 
 	All components inherit from a base component which provides functionality for setting and getting the parent of the component and provides the name of the component as is set in the child constructor. This is shown in listing~\ref{lst:pseudo3} In addition to all game objects being composed of a variety of components there are systems required to handle these components. These systems know how the components must be used and must iterate over all components of it's given type in order to provide the engine with that components functionality.
 
@@ -424,7 +504,10 @@
 
 	Creating the resource manager proved to be challenging but ultimately very satisfying when it worked correctly. It allows for the end user of the game engine to not have to bother with resource management as the core engine will handle it, all resources are loaded from file for the first time but are otherwise reused by passing a smart pointer to the resource, when the resource is no longer in use anywhere it is unloaded from the resource manager.
 	
+	\singlespacing
 	\lstinputlisting[style=C++, label={lst:implementation1}, caption={Resource Manager generic load function}, firstline=1, lastline=18]{codeSamples/implementation.cpp}
+	\doublespacing
+
 
 	As shown in listing~\ref{lst:implementation1} C++ templating is used to ensure that the load function of the resource manager is capable of handling all types of resource. The first thing that the function does is check if the resource is already in the map, if it isn't, it then creates a smart pointer and loads the resource from file and inserts it into the resource map. The resource is then pulled from the map using the uri and returned to the caller. The usage is not incremented as the resource manager simply uses the count functionality of smart pointers instead of manually handling them.
 
@@ -455,7 +538,10 @@
 
 	Box2D was added to the engine and to the Lua API. Binding the fixture definitions and body definitions was an interesting challenge as it was difficult to decide what the best method of doing it was. It was clear that using a table with only the required parameters was the best option, as having to use a large selection of setter functions would have been painful for the end developer.
 
+	\singlespacing
 	\lstinputlisting[style=C++, label={lst:implementation2}, caption={Example of creating a box2d physics component}, firstline=1, lastline=11]{codeSamples/implementation.lua}
+	\doublespacing
+
 
 	As shown in listing~\ref{lst:implementation2} the Lua required to create a physics component is very simple and can easily be modified to allow for any situation. Allowing for the deletion of the bodies proved to be reasonably difficult as just removing the instance of the physics component was not enough, the body also had to be removed from the physics world. 
 
@@ -504,12 +590,9 @@
 
 \chapter{Evaluation}
 
-%Examine  critically  the  completed  work  and  the  results  achieved.    Relative achievements  (or  lack  of  them)  to  the  original  objectives. Depending  on the type of project, this may involve significant user-evaluation, statistical or application-completeness testing.
+	%Examine  critically  the  completed  work  and  the  results  achieved.    Relative achievements  (or  lack  of  them)  to  the  original  objectives. Depending  on the type of project, this may involve significant user-evaluation, statistical or application-completeness testing.
 
-%Other people use the engine
-%see what they say
-
-%Conclusion
+	In order to properly evaluate the product created over the course of this project, a gamejam style event was organised in order to allow impartial developers to use the engine and provide their opinion on it's effectiveness.
 
     %For a game engine to be a complete engine a wide variety of features are required especially when a high level scripting language is the only input for developers to use when creating a game.
 
@@ -520,11 +603,8 @@
 	%Physics will also need to be provided by the engine to allow for much improved performance over having physics implemented in Lua.
 
     %Both the physics and rendering capabilities of the game engine will need to be fully accessed through the provided Lua API. The Lua API should be consistent and easy to use, matching, where possible, the Lua style completely.
-    
-    Throughout the course of this project I have learnt a multitude of new techniques thanks to thorough research and a very interesting prompt.
 
     Discuss completion of objectives
-
 	refer back to objectives and explain how well they were accomplished
 	
 	talk about feedback from Jim / Henry
@@ -541,6 +621,8 @@
 
 
 \chapter{Conclusion}
+
+	Throughout the course of this project I have learnt a multitude of new techniques thanks to thorough research and a very interesting prompt.
 
 	%Briefly restate the work undertaken, summarise any findings or recommendations, acknowledge limitations and make suggestions for further work.
 
