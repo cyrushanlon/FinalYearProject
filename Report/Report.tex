@@ -593,35 +593,37 @@
 	%Examine  critically  the  completed  work  and  the  results  achieved.    Relative achievements  (or  lack  of  them)  to  the  original  objectives. Depending  on the type of project, this may involve significant user-evaluation, statistical or application-completeness testing.
 
 	In order to properly evaluate the product created over the course of this project, a gamejam style event was organised in order to allow impartial developers to use the engine and provide their opinion on it's effectiveness.
-
-    %For a game engine to be a complete engine a wide variety of features are required especially when a high level scripting language is the only input for developers to use when creating a game.
-
-	%The engine will provide a Lua interface to all required core engine features using the Lua C API.
-
-	%The engine will need the ability to render, reposition, angle and animate sprites provided from a spritesheet.
-
-	%Physics will also need to be provided by the engine to allow for much improved performance over having physics implemented in Lua.
-
-	%Both the physics and rendering capabilities of the game engine will need to be fully accessed through the provided Lua API. The Lua API should be consistent and easy to use, matching, where possible, the Lua style completely.
-	
-	All work completed on the project has been towards achieving the objectives.
-
-    %Discuss completion of objectives
-	%refer back to objectives and explain how well they were accomplished
 	
 	%talk about feedback from Jim / Henry / Roman
 
-	For the gamejam a range of participants were found with a wide range of skill, starting from first year computer science students to passionate hobbyist turned professional. This was done in order to get different perspectives on the game engine. A series of questions were asked after using the engine in order to ascertain their opinions.
+	For the gamejam several participants were found with a wide range of skill, starting from first year computer science students to passionate hobbyist turned professional. This was done in order to get different perspectives on the game engine. A series of questions were asked after using the engine in order to ascertain their opinions.
 
 	Starting from the least experienced and moving towards the most experienced the results of the questionnaires will be analysed. The questionnaires can be found in the appendix of this report.
 
-	First is a Dutch first year computer science student. Overall very positive feedback across the board. They enjoyed using the engine and found it to be very easy to pick up and create with, they would also choose to use this engine if they had a game idea they would like to prototype.
+	First is a Dutch first year computer science student called Roman. Overall very positive feedback across the board. They enjoyed using the engine and found it to be very easy to pick up and create with, they would also choose to use this engine if they had a game idea they would like to prototype.
 
-	Next is an English engineer graduate with no education or professional experience in programming for games or otherwise, managed to produce a simple zombie survival game within a few hours of starting
+	Next is an English engineer graduate, called Henry, with no education or professional experience in programming for games or otherwise, they managed to produce a simple zombie survival game within a few hours of starting. They praised the ease of setting up the engine and liked the fact that the engine was very easy to use with little to no experience. A suggestion was made for improved support of different resolutions.
 
-	Finally a Dutch professional developer with years of experience developing in Lua for various games. Produced an excellent showcase of the engine utilising many of the major features of the engine with no prompts other than the use of the examples and Lua binding source code.
+	Finally a Dutch professional developer, called Jim, with years of experience developing in many technologies including scripting in Lua for various games. Produced an excellent showcase of the engine utilising many of the major features of the engine with no prompts other than the use of the examples and Lua binding source code. Given his experience with Lua in other settings he found it very easy to pick up and go given just the sample code provided with the engine. During his time developing in the gamejam a few points were brought to my attention and the engine was quickly extended to cover his requirements.
 
+	Constructive criticism included providing better documentation for inexperienced developers, this is reasonable and should be one of the first things to be completed if the project is continued. Further criticism included the lack of a large standard library such as a vector library, which is very relevant to game development, another very reasonable point.
 
+%For a game engine to be a complete engine a wide variety of features are required especially when a high level scripting language is the only input for developers to use when creating a game.
+
+%The engine will provide a Lua interface to all required core engine features using the Lua C API.
+
+%The engine will need the ability to render, reposition, angle and animate sprites provided from a spritesheet.
+
+%Physics will also need to be provided by the engine to allow for much improved performance over having physics implemented in Lua.
+
+%Both the physics and rendering capabilities of the game engine will need to be fully accessed through the provided Lua API. The Lua API should be consistent and easy to use, matching, where possible, the Lua style completely.
+	
+	All work completed on the project has been towards achieving the objectives. Almost all objectives have been completed entirely, however, the fulfilment of the requirement for a fully featured Lua API could be improved upon. The API is complete but is missing some nice to have features such as a standard vector library and full control over the game window as per the feedback from the gamejam. The lack of thorough documentation is also an issue, this can quickly be dealt with using automated tools and comments in the correct style. The game samples that are provided with the engine provided enough documentation for even a total beginner to create something interesting and unique.
+
+	The engine has various entry points from C++ to Lua that are synonymous with other game engines.	The performance is superior to that of LOVE2D as the core engine handles much of the expensive processing in C++. The engine is proven to be easily expandable as the design was created from the ground up with expandability in mind and during the gamejam several features were quickly implemented.
+
+%Discuss completion of objectives
+%refer back to objectives and explain how well they were accomplished
 
 
 
@@ -642,5 +644,7 @@
 
 	\newpage
 
+	\singlespacing
 	\printbibliography{}
+	\doublespacing
 \end{document}
