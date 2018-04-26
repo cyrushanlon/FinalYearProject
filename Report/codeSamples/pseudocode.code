@@ -28,3 +28,19 @@ class ResourceInterface
     UseCount
     Resource
 }
+
+class Component
+{
+    Name
+    ParentID
+}
+
+class DrawableComponent : Component 
+{
+    SetViewTarget
+    SetPosition
+    SetAngle
+    SetTexture
+
+    Draw
+}

@@ -337,9 +337,6 @@
 
 	An example definition of the gamestate class written in pseudo code is shown in listing~\ref{lst:pseudo1}. Using polymorphism all objects that need to think or be drawn can be stored in the points map and then every think all objects will think and every draw every object will draw. By overriding the think and draw functions different behaviour can be achieved for each sub class of point.
 
-	%pseudo code/diagrams of ECS
-
-
 	%resource manager pseudo
 	Reusing resources will ensure that the memory footprint of a game is kept as low as possible and will reduce the number of file operations thus improving the performance for the end user.
 
@@ -348,6 +345,17 @@
 	An example of a highly generic resource manager is shown in listing~\ref{lst:pseudo2} alongside an example of a resource wrapper class. It is highly generic as within the resources map there will be all types of resource. The exists function will return if a given resource is currently in the resources map. The load function will check that the map has the resource already and return it if so, otherwise, it will load from file and add to the map before returning the resource. The unload function reduces the use count of the resource by one and then checks if there are 0 uses, if there are the resource is removed from the map.
 
 	%components
+	%ECS
+	%ECS components
+	%Explanation
+
+	Using the entity component system uses composition over inheritance and allows for far greater flexibility than the standard inheritance approach, it also makes maintenance and expansion easier, this makes it an ideal methodology to use in this project.
+
+	\lstinputlisting[style=Lua, label={lst:pseudo3}, caption={Resource Manager Pseudo Code}, firstline=32, lastline=46]{codeSamples/pseudocode.code}
+
+	All components inherit from a base component which provides functionality for setting and getting the parent of the component and provides the name of the component as is set in the child constructor. This is shown in listing~\ref{lst:pseudo3} In addition to all game objects being composed of a variety of components there are systems required to handle these components. These systems know how the components must be used and must iterate over all components of it's given type in order to provide the engine with that components functionality.
+
+	Additional components, beyond the core components, could include a networkable component, a health component, an AI component and many more.
 
 
 
@@ -478,7 +486,9 @@
 
     Discuss completion of objectives
 
-    refer back to objectives and explain how they were accomplished
+	refer back to objectives and explain how well they were accomplished
+	
+	talk about feedback from Jim / Henry
 
 
 
@@ -495,7 +505,9 @@
 
 	%Briefly restate the work undertaken, summarise any findings or recommendations, acknowledge limitations and make suggestions for further work.
 
-    %i have learned a lot
+	%i have learned a lot
+	%potential new features etc
+	%network, AI etc component
 
 	\newpage
 
