@@ -344,6 +344,25 @@
 
 	An example of a highly generic resource manager is shown in listing~\ref{lst:pseudo2} alongside an example of a resource wrapper class. It is highly generic as within the resources map there will be all types of resource. The exists function will return if a given resource is currently in the resources map. The load function will check that the map has the resource already and return it if so, otherwise, it will load from file and add to the map before returning the resource. The unload function reduces the use count of the resource by one and then checks if there are 0 uses, if there are the resource is removed from the map.
 
+	%input handling
+
+	For input handling there are two approaches that any game developer should have the option of choosing from real time or as and when checking. Both should be accommodated, with specially named functions being called in Lua for the real time solution and functions that may be called anywhere in Lua querying whether a key is pressed for the as and when solution.
+
+	%Animations
+
+	Animations are extremely useful to any game as they provide a sense of polish when used correctly. For this reason the animation system needs to be very simple to use but still very powerful.
+
+	\begin{figure}[h] 
+		\centering
+		\includegraphics[scale=0.75]{animation1}
+		\caption{Animatable System}
+		\label{fig:Animation1}
+	\end{figure}
+
+	In figure \ref{fig:Animation1} an outline of what is required for a functional animation system is shown. The resource manager will hold the sprite sheet for all animations so that the whole sprite sheet is only required to be loaded in a single time. The animation is then stored in the animatable so that any object can have as many animations as required.
+
+	The animation class holds all information required to animate from a sprite sheet including frame rate, frame count, frame size, the positions of each frame on the sprite sheet, the sprite sheet URI and various flags. All should be easily configured from Lua to ensure that the system is effective.
+
 	%components
 	%ECS
 	%ECS components
