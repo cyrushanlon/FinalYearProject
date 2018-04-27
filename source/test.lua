@@ -22,15 +22,16 @@ end
 function Init()
     local testEnt1 = Entity.New("testEnt1")
 
+    local anim = Animation.New("walk", "resources/textures/metalslug_mummy37x45.png", 37, 45, 50, 18)
+    anim:SetLooping(true)
+    anim:Regenerate()
+
     local testDrc1 = DrawableComponent.New()
     testDrc1:SetTexture("resources/textures/box.png")
-    --local anim = Animation.New("walk", "resources/textures/metalslug_mummy37x45.png", 37, 45, 50, 18)
-    --anim:SetLooping(true)
-    --anim:Regenerate()
-    --testDrc1:AddAnimation(anim)
-    --testDrc1:SetAnimation("walk")
-    --testDrc1:SetAnimates(true)
-    --testDrc1:SetOrigin(18, 22)
+    testDrc1:AddAnimation(anim)
+    testDrc1:SetAnimation("walk")
+    testDrc1:SetAnimates(true)
+    testDrc1:SetOrigin(18, 22)
 
     local testPhy1 = PhysicsComponent.New(
     b2BodyDef.New({
