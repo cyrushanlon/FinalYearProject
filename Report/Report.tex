@@ -10,6 +10,9 @@
 \usepackage[none]{hyphenat}
 \usepackage{textcomp}
 \usepackage{parskip}
+
+\usepackage{pdfpages}
+
 \usepackage{setspace}
 \onehalfspacing
 \setlength{\parskip}{1em}
@@ -473,7 +476,6 @@
 	\lstinputlisting[style=Lua, label={lst:pseudo3}, caption={Resource Manager Pseudo Code}, firstline=32, lastline=46]{codeSamples/pseudocode.code}
 	\onehalfspacing
 
-
 	All components inherit from a base component which provides functionality for setting and getting the parent of the component and provides the name of the component as is set in the child constructor. This is shown in listing~\ref{lst:pseudo3} In addition to all game objects being composed of a variety of components there are systems required to handle these components. These systems know how the components must be used and must iterate over all components of it's given type in order to provide the engine with that components functionality.
 
 	Additional components, beyond the core components, could include a networkable component, a health component, an AI component and many more.
@@ -608,7 +610,7 @@
 
 %testing
 
-	Testing something as broad as a game engine can prove to be difficult as there are so many components that could be causing issues. To test that each feature was working correctly, small code samples were created and ran with any issues being picked up along the way. During the development of both examples several issues were spotted and quickly patched, this style of testing is ideal for this style of project.
+	Testing something as broad as a game engine can prove to be difficult as there are so many components that could be causing issues. To test that each feature was working correctly, small code samples were created and ran with any issues being picked up along the way. During the development of both examples several issues were spotted and quickly patched, this style of testing is ideal for this style of project. Creating robust code can only be achieved through testing, to effectively test and improve the engine people need to use it and fix any issues they find by making pull requests on github.
 
 
 
@@ -637,11 +639,13 @@
 
 	Next is an English engineer graduate, called Henry, with no education or professional experience in programming for games or otherwise, they managed to produce a simple zombie survival game within a few hours of starting. They praised the ease of setting up the engine and liked the fact that the engine was very easy to use with little to no experience. A suggestion was made for improved support of different resolutions, this could be achieved by abstracting the positions and sizes to be virtual ones that are fully unrelated to the size and shape of the window.
 
-	Finally a Dutch professional developer, called Jim, with years of experience developing in many technologies including scripting in Lua for various games. Produced an excellent showcase of the engine utilising many of the major features of the engine with no prompts other than the use of the examples and Lua binding source code. Given his experience with Lua in other settings he found it very easy to pick up and go given just the sample code provided with the engine. During his time developing in the game jam a few points were brought to my attention and the engine was quickly extended to cover his requirements.
+	Finally a Dutch professional developer, called Jim, with years of experience developing in many technologies including scripting in Lua for various games. Produced an excellent showcase of the engine utilising many of the major features of the engine with no prompts other than the use of the examples and Lua binding source code. Given his experience with Lua in other settings he found it very easy to pick up and go given just the sample code provided with the engine. During his time developing in the game jam a few points were brought up and the engine was quickly extended to cover his requirements. This shows that the engine is very easy to extend which is one of the objectives of the project.
 
-	Constructive criticism included providing better documentation for inexperienced developers, this is reasonable and should be one of the first things to be completed if the project is continued. Further criticism included the lack of a large standard library such as a vector library, which is very relevant to game development, another very reasonable point. 
+	Initially there were no physics contact hooks but within 15 minutes they were added to the engine as well as hooks provided to Lua.
+
+	Constructive criticism included providing better documentation for inexperienced developers, this is reasonable and should be one of the first things to be completed if the project is continued to be developed. Further Constructive criticism included the lack of a large standard library such as a vector library, which is very relevant to game development, another very reasonable point. 
 	
-	In figure \ref{fig:Game1} a print screen taken while playing the game is shown. The objective is to collect as many gold rocks as you can in the hopper to the left of the screen by first shooting the large rocks to break them down into tiny rocks.
+	In figure \ref{fig:Game1} a print screen taken whilst playing the game is shown. The objective is to collect as many gold rocks as you can in the hopper to the left of the screen by first shooting the large rocks to break them down into tiny rocks.
 
 	\begin{figure}[h] 
 		\centering
@@ -662,7 +666,11 @@
 	
 	All work completed on the project has been towards achieving the objectives. Almost all objectives have been completed entirely, however, the fulfilment of the requirement for a fully featured Lua API could be improved upon. The API is complete but is missing some nice to have features such as a standard vector library and full control over the game window as per the feedback from the game jam. The lack of thorough documentation is also an issue, this can quickly be dealt with using automated tools and comments in the correct style. The game samples that are provided with the engine provided enough documentation for even a total beginner to create something interesting and unique.
 
-	The engine has various entry points from C++ to Lua that are synonymous with other game engines.	The performance is superior to that of LOVE2D as the core engine handles much of the expensive processing in C++. The engine is proven to be easily expandable as the design was created from the ground up with expandability in mind and during the game jam several features were quickly implemented.
+	The engine has various entry points from C++ to Lua that are synonymous with other game engines.	All of the hooks that relate to user input, physics collisions as well as the think and init functions all provide enough for almost any developer to complete any task.
+	
+	The performance is superior to that of LOVE2D as the core engine handles much of the expensive processing in C++. As the physics engine and all rendering is taken care of in C++ much of what reduces the performance of LOVE2D has been improved upon. 
+	
+	The engine is proven to be easily expandable as the design was created from the ground up with expandability in mind and during the game jam several features were quickly and effectively implemented.
 
 %Discuss completion of objectives
 %refer back to objectives and explain how well they were accomplished
@@ -678,7 +686,9 @@
 
 %Briefly restate the work undertaken, summarise any findings or recommendations, acknowledge limitations and make suggestions for further work.
 	
-	Over the course of this project a scriptable 2D game engine written in C++ has been designed and created, the engine itself is, in it's current state, a viable prototyping tool that may be used by anyone as the code is fully open source and available on github. A game jam has been successfully organised in order to effectively evaluate the game engine, this proved the engines effectiveness and ease of use as people with no development experience were able to create games. 
+	Over the course of this project a scriptable 2D game engine written in C++ has been designed and created, the engine itself is, in it's current state, a viable prototyping tool that may be used by anyone as the code is fully open source and available on github. The engine handles a wide range of things for the game developer including resources, animations, sounds, the camera, user input and much more. It is very easy to extend and improve.
+	
+	A game jam has been successfully organised in order to effectively evaluate the game engine, this proved the engines effectiveness and ease of use as people with no development experience were able to create games and people with a lot of experience found it to be similar in style to other engines and games. 
 
 %potential new features etc
 %network, AI etc component
@@ -689,13 +699,22 @@
 
 	Replacing or supplementing the current SFML renderer with a 3D one would allow the engine to eventually compete with the likes of Unity while still providing an easy to use Lua API, this would allow for even new developers to create 3D games.
 
-	%i have learned a lot
-
-	While completing this project I have learned a multitude of new techniques thanks to thorough research and a very interesting prompt. I have explored many ideas that I have been passionate about but never had the motivation to carry out.
+	While completing this project I have learned a multitude of new techniques thanks to thorough research and a very interesting prompt. I have explored many ideas that I have been passionate about for years and am very happy that I have had the opportunity to create this product.
 
 	\newpage
 
 	\singlespacing
 	\printbibliography{}
 	\onehalfspacing
+
+\appendix
+
+\includepdf[]{Hanlon_Cyrus_ToR_signed.pdf}
+\includepdf[]{Hanlon-CMMU-Ethics-Check-List-v9-10-Jan-2017.pdf}
+\includepdf[]{RA_Project_SoftwareDevelopment_090517.pdf}
+\includepdf[pages={1-2}]{Presentation.pdf}
+\includepdf[]{HenryEvaluationQuestionnaire.pdf}
+\includepdf[]{RomanEvaluationQuestionnaire.pdf}
+\includepdf[]{JimEvaluationQuestionnaire.pdf}
+
 \end{document}
