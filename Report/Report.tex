@@ -92,7 +92,7 @@
 
 	There are many game engines that already exist but nothing combines ease of use with raw speed.
 	
-	From Unreal Engine~\cite{UE} with its complete design versus much lighter weight engines such as LÖVE~\cite{LOVE}, there is a very wide range of technologies and techniques at work. There is a definitive gap between large heavy engines and the small and lightweight that this project will fill. By having many features written into the core engine but keeping a lightweight and easy to use API at the front, it will be possible to quickly learn how to prototype games, as well as, achieve excellent real world performance.
+	From Unreal Engine~\cite{UE} with its complete design versus much lighter weight engines such as LÖVE~\cite{LOVE}, there is a very wide range of technologies and techniques at work. There is a definitive gap between large heavy engines and the small and lightweight that this project will fill. By having many features written into the core engine but keeping a lightweight and easy to use API at the front, it will be possible to quickly learn how to prototype games, while aiming to achieve excellent real world performance.
 
 	A very important part of any game engine is the interface between developer and the inner workings. There are many scripting languages that can be chosen from and there are many important factors when selecting a language to use, the most important factors include: popularity, execution speed and learning curve. Lua is at the top of the pile when it comes to games. Other languages such as JavaScript and Python are extremely popular in other areas but are not anywhere near as often used in games as they are more difficult to bind.
 				
@@ -106,13 +106,13 @@
 
 	Have various entry points that should be synonymous with what other game engines have such as standard entry points like initialise, update and draw.
 
-	Ensure full expandability. This will be a major factor when it comes to designing and implementing the core engine as the engine will need to be as general purpose as possible and should be tweakable for any use case.
+	Ensure full expandability. This will be a major factor when it comes to designing and implementing the core engine, which must be as general purpose as possible and should be tweakable for any use case.
 
 	Improve performance beyond LOVE2D by using techniques such as moving more of the core processing to the C++ side.
 
-	A maintainable codebase is very important for expandability and will ensure a fluid development process through the project as well as into the future beyond the project.
+	A maintainable codebase is very important for expandability and will ensure a fluid development process through the project and into the future beyond the project.
 
-	Document the engine and scripting language API. Implementing a game in a short space of time is very difficult without documentation as developers without any intimate knowledge of the engine will still be required to fully utilise the various features of the engine.
+	Document the engine and scripting language API. Implementing a game in a short space of time is very difficult without documentation since developers without any intimate knowledge of the engine will still be required to fully utilise the various features of the engine.
 
 	Compete in a game jam to verify how effective the various aspects of the game engine are under high stress rapid development.
 	
@@ -132,27 +132,27 @@
 
 %Relate your work to previous work (literature). Give the context of the Analysis work and any technical details necessary for understanding the work. Establish motivation for the present work.
 
-	In this chapter the existing technologies surrounding the projects intended market will be described and discussed and technical details necessary for understanding the work will be explained.
+	In this chapter the existing technologies surrounding the project's intended market will be described and discussed and technical details necessary for understanding the work will be explained.
 
 \section{Lua}
 \subsection{About Lua}
-	Lua was created for extending applications, there was an increase in demand for customisation and no was language available that combined procedural features with powerful data description facilities.~\cite{Ierusalimschy02software} Lua came from the languages SOL and DEL~\cite{Ierusalimschy01theevolution} both of which were made by the company Tecgraf.
+	Lua was created for extending applications, there was an increase in demand for customisation and no language was available that combined procedural features with powerful data description facilities.~\cite{Ierusalimschy02software} Lua came from the languages SOL and DEL~\cite{Ierusalimschy01theevolution} both of which were made by the company Tecgraf.
 	
-	SOL is an acronym for Simple Object Language was a specialized data description language used for customising software. The SOL syntax was strongly influenced by the syntax of BiBTeX~\cite{Lamport:1989:LDP:63364}. DEL is an acronym for Data Entry Language, an entity in DEL is effectively an object or record in other languages~\cite{Ierusalimschy01theevolution}. Lua was created as a unique combination of the two more primitive languages, it was designed to avoid unique syntax so that anyone could use it effectively with limited training and for the language to have built in type checking.
+	SOL is an acronym for Simple Object Language and was a specialised data description language used for customising software. The SOL syntax was strongly influenced by the syntax of BiBTeX~\cite{Lamport:1989:LDP:63364}. DEL is an acronym for Data Entry Language, an entity in DEL is effectively an object or record in other languages~\cite{Ierusalimschy01theevolution}. Lua was created as a unique combination of the two more primitive languages, it was designed to avoid unique syntax so that anyone could use it effectively with limited training and for the language to have built-in type checking.
 	
-	Lua is written in C and so, is very cross platform~\cite{LuaSource}, it is used in projects ranging from Cheat Engine~\cite{CheatEngine}, an open source memory scanner and hex editor for Windows, to Android and iOS games using something such as Cocos2d~\cite{COCOS2D}, an open source software framework used in the creation of apps or games. Therefore Lua is widely used thanks to its simple learning curve, ease of implementation using the provided minimalistic C API and its fast execution when compared to similar languages. It is also used in many non game settings such as in embedded systems using eLua~\cite{eLua} thanks to its low memory footprint.
+	Lua is written in C which allows it to be very cross platform~\cite{LuaSource}, it is used in projects ranging from Cheat Engine~\cite{CheatEngine}, an open source memory scanner and hex editor for Windows, to Android and iOS games using something such as Cocos2d~\cite{COCOS2D}, an open source software framework used in the creation of apps or games. Therefore Lua is widely used thanks to its simple learning curve, ease of implementation using the provided minimalistic C API and its fast execution when compared to similar languages. It is also used in many non-game settings such as in embedded systems using eLua~\cite{eLua} thanks to its low memory footprint.
 
-	Lua allows for loading modules at run time that were not required at build time, this allows for extremely flexible program extensions. A module is made available through the use of an ordinary table with functions or variables being accessed through the table. Loading, compiling then executing Lua files from within Lua is easily possible and allows for things such as hot reloading code vastly improving the development rate as developers could just save a file and the Lua program would simply start using it.
+	Lua allows for loading modules at run time that were not required at build time, this allows for extremely flexible program extensions. A module is made available through the use of an ordinary table with functions or variables being accessed through the table. Loading, compiling then executing Lua files from within Lua is easily possible and allows for things such as hot reloading code, vastly improving the development rate, as developers could just save a file and the Lua program would simply start using it.
 		
 \subsection{Running Lua}
 	Lua is not interpreted directly but is instead compiled into bytecode, this is then run on the Lua virtual machine. Because of this Lua is a fast language, considering how high level it is. Lua used a stack based virtual machine initially but with the release of Lua 5.0, Lua began to use a register based machine. It also uses a stack for allocating activation records where the registers live~\cite{IerusalimschyImplementation}.
 
 	First class functions with lexical scoping is difficult to implement for languages that use a stack based vm, Lua uses a stack for local variables and a heap for when they go out of scope while being referenced to by nested functions~\cite{IerusalimschyImplementation}. Using this concept Lua successfully implements features such as closures that rely on register based VMs.
 
-	Lua can also be used from the command line which allows for productivity scripts to be written and used without the need for it to be embedded into another application. Lua can also be used as a standalone program using the tool srLua which was created by one of the Lua authors~\cite{tecgrafLibAndTools}, this allows the language to be used almost anywhere on almost anything.
+	Lua can also be used from the command line which allows for productivity scripts to be written and used without the need for it to be embedded into another application. Lua can also be used as a standalone program using the tool srLua which was created by one of the Lua authors~\cite{tecgrafLibAndTools}, this allows the language to be used on any platform.
 
 \subsection{Syntax}
-	The syntax of Lua was designed so that it combined simple procedural syntax with powerful data description constructs, the general syntax is very easy to learn with its roots in SOL and DEL, both were designed for ease of use. It borrows much of its syntax from other languages, its comment syntax, for example, is similar to that of Haskell and SQL. It's control flow is similar to that of pascal using keywords such as \texttt{then} and \texttt{end} for \texttt{if} statements. It is, however, renowned for being very easy to write with its simple syntax and extremely powerful table constructs. A quirk when working with Lua is the fact that tables start at an index of 1 instead of 0 as is very common throughout programming languages.
+	The syntax of Lua was designed so that it combined simple procedural syntax with powerful data description constructs, the general syntax is very easy to learn with its roots in SOL and DEL, both were designed for ease of use. It borrows much of its syntax from other languages, comment syntax, for example, is similar to that of Haskell and SQL. The control flow is similar to that of pascal using keywords such as \texttt{then} and \texttt{end} for \texttt{if} statements. It is, however, renowned for being very easy to write with its simple syntax and extremely powerful table constructs. A quirk when working with Lua is the fact that tables start at an index of 1 instead of 0 as is very common throughout programming languages.
 
 	An example of Lua's control statements are shown in listing~\ref{lst:SyntaxSample1}. The use of \texttt{elseif} as a single keyword is useful and avoids the need to use an \texttt{end} per \texttt{if}. The conditions in each of the statements do not need to be wrapped in parenthesis and allow for logical operators. 
 
@@ -162,9 +162,9 @@
 
 	There are two types of \texttt{for} loop in Lua, one is a numeric \texttt{for} and is shown in listing~\ref{lst:SyntaxSample1}, the other is the generic \texttt{for} that uses an iterator and allows for the traversal of all values. The numeric \texttt{for} uses a very simple syntax and so is very easy to write, the first argument is the starting value of the iteration variable, the second is the end value and the third is the value to add with each loop.
 
-	The logical operators in Lua are \texttt{and}, \texttt{or} and \texttt{not}. Logical operators and control statement expressions take \texttt{nil} and \texttt{false} as \texttt{false} and anything else as \texttt{true}~\cite{LuaMan} This allows for some unique syntax that more advanced Lua programmers will use to reduce the amount of code required.
+	The logical operators in Lua are \texttt{and}, \texttt{or} and \texttt{not}. Logical operators and control statement expressions take \texttt{nil} and \texttt{false} as \texttt{false} and anything else as \texttt{true}~\cite{LuaMan}. This allows for some unique syntax that more advanced Lua programmers will use to reduce the amount of code required.
 
-	Each of the three logical operators behave differently when used in this way. The \texttt{and} operator returns its first argument if it is \texttt{false} and otherwise returns its second argument. The \texttt{or} operator returns its first argument if this value isn't \texttt{false} and returns its second argument otherwise. The \texttt{not} operator always returns \texttt{true} or \texttt{false} based on the argument. The Lua 5.3 manual~\cite{LuaMan} has an excellent set of examples as shown in listing~\ref{lst:SyntaxSample2}.
+	Each of the three logical operators behave differently when used in this way. The \texttt{and} operator returns the first argument if it is evaluated to \texttt{false} and otherwise returns the second argument. The \texttt{or} operator returns the first argument if this value isn't \texttt{false} and returns the second argument otherwise. The \texttt{not} operator always returns \texttt{true} or \texttt{false} by inverting the boolean. The Lua 5.3 manual~\cite{LuaMan} has an excellent set of examples as shown in listing~\ref{lst:SyntaxSample2}.
 	
 	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:SyntaxSample2}, caption={Lua Syntax Sample 2 (taken from \cite{LuaMan})}, firstline=82, lastline=89]{codeSamples/1.lua}
@@ -172,7 +172,7 @@
 
 	Using this behaviour of logical operators allows for quickly and easily assigning variables using, for example, a configuration file.
 
-	Lua allows for assigning multiple variables on the same line as shown in listing~\ref{lst:SyntaxSample3}. When used in conjunction with returning multiple values from a function this can reduce the amount of code required and therefore improve development time.
+	Lua allows for assigning multiple variables on the same line as shown in listing~\ref{lst:SyntaxSample3}. When used in conjunction with returning multiple values from a function, this can reduce the amount of code required and therefore improve development time.
 	
 	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:SyntaxSample3}, caption={Lua Syntax Sample 3}, firstline=134, lastline=135]{codeSamples/1.lua} 
@@ -285,7 +285,7 @@
 
 	While this concept is very useful, if the \texttt{new} function is ever changed by mistake, a difficult to locate bug could be created.
 
-\subsection{Couroutines}
+\subsection{Coroutines}
 	A coroutine is similar to a thread in that it has its own line of execution, its own stack, its own local variables, and its own instruction pointer but shares global variables and almost anything else with other coroutines. The main difference to a thread is that a program with threads runs things concurrently while a coroutine in Lua is collaborative and at any given time only 1 is running~\cite{Ierusalimschy:2013:PLT:2502646}. While there may not be a performance gain from using coroutines, it allows a developer to easily orchestrate multitasking that would otherwise be difficult to implement.
 
 	To create a coroutine it is as simple as calling the \texttt{coroutine.create} and passing a function as shown in listing~\ref{lst:Couroutine1}.
@@ -333,7 +333,7 @@
 	LÖVE~\cite{LOVE} provides a limited set of features and leaves the majority of the work on the internals of the engine to the game developer. This allows for very fast prototyping of small example games but when creating a larger game things can get difficult. The engine does include some things at a lower level such as physics, GLSL shaders, image loading, TCP and UDP networking. Because LÖVE doesn't manage entities there is quite a low performance ceiling especially with the addition of lighting and particles, other engines address this at the cost of development time. LÖVE is completely open source and completely free.
 
 \subsection{Unity and Unreal Engine}
-	Unity~\cite{Unity} and Unreal Engine~\cite{UE} both manage every aspect of the game while still allowing massive extensibility. Both have unique development flows and both take a very long time to master, because of just have massive they are, development can be very slow when compared to lightweight prototyping engines. The Unity engine is not fully open source but allows source access for certain modules of the engine while the latest versions of Unreal Engine are fully open source, both adopt similar payment patterns making the developer pay based on the number of sales rather than a fixed fee, this allows for smaller studios and individuals to create very professional products.
+	Unity~\cite{Unity} and Unreal Engine~\cite{UE} both manage every aspect of the game while still allowing massive extensibility. Both have unique development flows and both take a very long time to master, because of just how massive they are, development can be very slow when compared to lightweight prototyping engines. The Unity engine is not fully open source but allows source access for certain modules of the engine while the latest versions of Unreal Engine are fully open source, both adopt similar payment patterns making the developer pay based on the number of sales rather than a fixed fee, this allows for smaller studios and individuals to create very professional products.
 
 \subsection{Cocos2d}
 	Cocos2d is an open source framework designed for creating cross platform games, apps and other GUI based programs~\cite{COCOS2D}, it has support for scripting in both Lua and JavaScript but requires C++ code to initialize any scripts. There is an IDE created for cocos2D that provides similar workflow to the full engines while having the flexibility of text only engines such as LÖVE.
@@ -357,11 +357,11 @@
 
 \section{Requirements}
 
-	Using an agile methodology will be an important part of the development of this project as it provides a far superior work flow as opposed to far more static methodologies such as the waterfall method. This will result in an improved rate of work and the addition of currently undiscovered ideas. Although an agile methodology will be in use, the requirements of the project are still be fixed and all efforts will be devoted to ensuring that they are fulfilled.
+	Using an agile methodology will be an important part of the development of this project as it provides a far superior work flow when compared to far more static methodologies, for example, the waterfall method. This will result in an improved rate of work and the addition of currently undiscovered ideas. Although an agile methodology will be in use, the requirements of the project are still fixed and all efforts will be devoted to ensuring that they are fulfilled.
 
 %Write about requirements
 
-	For a game engine to be a complete engine a wide variety of features are required especially when a high level scripting language is the only input for developers to use when creating a game.
+	For a game engine to be complete, a wide variety of features are required especially when a high level scripting language is the only input for developers to use when creating a game.
 
 	The engine will provide a Lua interface to all required core engine features using the Lua C API.
 
@@ -377,23 +377,23 @@
 
 	Parts of the engine will be handled by external libraries, an important property of these libraries is performance and modernness as well as cross platform capability. Ideally the libraries will be open source.
 
-	Rendering, physics, scripting and sound will be handled by external libraries and implemented in the game engine. For rendering and sound there are several choices: SDL, SFML, DirectX and OpenGL with a sound library. SDL is widely used and has very good performance but it is written in pure C so has no object oriented code and is therefore quite dated when compared to SFML. DirectX is only available on the windows and Xbox platforms and is therefore not ideal for this project as cross platform is a requirement. OpenGL with a sound library has the best performance of all of the options but is also the most difficult to use and both SDL and SFML wrap OpenGL and provide access to the context so would be better options.
+	Rendering, physics, scripting and sound will be handled by external libraries and implemented in the game engine. For rendering and sound there are several choices: SDL, SFML, DirectX and OpenGL with a sound library. SDL is widely used and has very good performance but it is written in pure C so has no object oriented code and is therefore quite dated when compared to SFML. DirectX is only available on the Windows and Xbox platforms and is therefore not ideal for this project as cross platform is a requirement. OpenGL with a sound library has the best performance of all of the options but is also the most difficult to use and both SDL and SFML wrap OpenGL and provide access to the context so would be better options.
 
-	SFML or Simple and Fast Multimedia Library is written in C++ and is available on Linux, Mac, Windows and FreeBSD and is fully open source with its code available on github. SFML handles everything from window management and input to sound and networking, the performance is very similar to that of SDL but provides a modern object oriented API unlike SDL. These reasons make SFML the perfect choice for the projects requirements.
+	SFML or Simple and Fast Multimedia Library is written in C++ and is available on Linux, Mac, Windows and FreeBSD and is fully open source with its code available on Github. SFML handles everything from window management and input to sound and networking, the performance is very similar to that of SDL but provides a modern object oriented API unlike SDL. These reasons make SFML the perfect choice for the projects requirements.
 
-	For the physics library there is only one real option when it comes to games. Box2d is an open source C++ physics engine for simulating rigid bodies in 2D~\cite{Box2D}. It has excellent performance and is well proven for it's suitability for this project as many games and game engines on all platforms use it to great effect.
+	For the physics library there is only one real option when it comes to games. Box2d is an open source C++ physics engine for simulating rigid bodies in 2D~\cite{Box2D}. It has excellent performance and is well proven for its suitability for this project as many games and game engines on all platforms use it to great effect.
 
 	As for scripting the game engine there are several options such as C\#, Javascript and Lua. For the purposes of this project, Lua is the best option due to it's simple binding process and powerful syntax. Many games use Lua as their embedded scripting language such as Garry's Mod, World of Warcraft, Angry Birds and many, many more.
 
-	For the UI an external library created to provide UI capabilities to SFML could be used such as SFGUI or TGUI. This will need binding for use in Lua which could prove to be challenging, however getting the minimum working example would not be too difficult. It may be better for the development time if only text rendering is implemented as other UI elements can be achieved using sprites.
+	For the UI an external library created to provide UI capabilities to SFML could be used such as SFGUI~\cite{SFGUI} or TGUI~\cite{TGUI}. This will need binding for use in Lua which could prove to be challenging, however getting the minimum working example would not be too difficult. It may be better for the development time if only text rendering is implemented as other UI elements can be achieved using sprites.
 
 %Write what needs to be done and in what order 
 
 \section{Engine Design}
 
-	The first step to creating a game engine is to get each of the libraries working correctly in a single project. As the project will be completed in an agile fashion it may be difficult to know exactly what will be created and in what order, however, that does not mean that designs can be drawn up outlining potential solutions.
+	The first step to creating a game engine is to get each of the libraries working correctly in a single project. As the project will be completed in an agile fashion it may be difficult to know exactly what will be created and in what order, however, this does not mean that designs cannot be drawn up outlining potential solutions.
 
-	The engine will require a variety of features including an entity management system, such as the entity component system, this will allow for dynamic game objects that are easily pieced together by a developer. This system will need to manage a wide variety of entities in various forms including drawing, animating, playing sounds and others. An example entity that will behave as a player controlled car would have the following class diagram, the entity component system example is shown in \ref{fig:ClassDiagram1}.
+	The engine will require a variety of features including an entity management system, such as the entity component system, this will allow for dynamic game objects that are easily pieced together by a developer. This system will need to manage a wide variety of entities in various forms including drawing, animating, playing sounds and others. An example entity that will behave as a player controlled car would have the class diagram as shown in figure\ref{fig:ClassDiagram1}.
 
 	\begin{figure}[h] 
 		\centering
@@ -411,15 +411,15 @@
 		\label{fig:ClassDiagram2}
 	\end{figure}
 
-	Another example of the same in game behaviour in the more traditional class hierarchy system is much simpler to implement but doesn't allow for the dynamism of the entity component system as is shown in \ref{fig:ClassDiagram2} and the diagram is clearly more complicated and may result in repeated code. For the sake of development it may be better to first implement the more traditional system and then convert over to the ECS style.
+	Another example of the same in game behaviour in the more traditional class hierarchy system is much simpler to implement but does not allow for the dynamism of the entity component system as is shown in figure\ref{fig:ClassDiagram2} and the diagram is clearly more complicated and may result in repeated code. For the sake of development it may be better to first implement the more traditional system and then convert over to the ECS style.
 
-	Lua script management will be entirely handled within the core of the game engine allowing for creating and removing objects, managing object behaviour, physics interactions, UI, the camera and more. The engine will be a completely open source and will be easily expandable and improvable by the community as a result.
+	Lua script management will be entirely handled within the core of the game engine allowing for creating and removing objects, managing object behaviour, physics interactions, UI, the camera and more. The engine will be completely open source and will be easily expandable and improvable by the community as a result.
 
-	Loading and saving of the game state should be integrated into the game engine to speed up development time for the game developer. Level loading should also be integrated, an external open source level editor application could be used for the creation of the levels, a json or other data file could then be loaded into the game engine reducing the development time even further. Settings should also be managed by the game allowing the Lua developer to load and save any required key value pairs using a provided API, by implementing these features in the game engine the game developer can focus more on the actual game rather than semantics.
+	Loading and saving of the game state should be integrated into the game engine to speed up development time for the game developer. Level loading should also be integrated, an external open source level editor application could be used for the creation of the levels, a JSON or other data file could then be loaded into the game engine reducing the development time even further. Settings should also be managed by the game engine allowing the Lua developer to load and save any required key value pairs using a provided API. By implementing these features in the game engine the game developer can focus more on the actual game rather than semantics.
 
-	Documentation is a requirement for people to be able to use the engine to create games effectively and helps to reduce the learning curve. Each part of the documentation should be completed after the completion of every Lua accessible feature to ensure that it is kept on top of. Some kind of automatic documentation tool could be used similar to that of Golang's GoDoc or Java's javadoc, this would allow for the the documentation to stay up to date given any changes to the underlying code. Well documented examples could mitigate the requirement for extensive documentation, however, both would be ideal.
+	Documentation is a requirement for people to be able to use the engine to create games effectively and helps to reduce the learning curve. Each part of the documentation should be completed after the completion of every Lua accessible feature, to ensure that it is appropriately maintained. Some kind of automatic documentation tool could be used similar to that of Golang's GoDoc or Java's javadoc, this would allow for the the documentation to stay up to date given any changes to the underlying code. Well documented examples could mitigate the requirement for extensive documentation, however, both would be ideal.
 	
-	For the game engine to function well there are a number of required systems that must be incorporated into the core of the engine. There are 5 main elements, the window, the physics world, the resource manager, the gamestate manager and the Lua state. Designing the core of the engine to be robust and lightweight is important as anything that the game engine is used for will rely heavily upon it, the better the design the better the implementation.
+	For the game engine to function well there are a number of required systems that must be incorporated into the core of the engine. There are 5 main elements, the window, the physics world, the resource manager, the gamestate manager and the Lua state. Designing the core of the engine to be robust and lightweight is important. Anything that the game engine is used for will rely heavily upon it, the better the design, the better the implementation.
 
 	\begin{figure}[h] 
 		\centering
@@ -430,27 +430,27 @@
 
 	In figure \ref{fig:CoreDiagram1} the design of the core is outlined, any lateral connections will be available to each system through the core, drawable components and sound objects will have access to the resource manager.
 
-	The storage of all game objects within the engine will be handled by the gamestate, allowing for the use of mulitple game states will allow for the use of main menus, loading screens, pausing and resuming and much more. For this reason a strong design is very important
+	The storage of all game objects within the engine will be handled by the gamestate, allowing for the use of multiple game states will allow for the use of main menus, loading screens, pausing and resuming and much more. For this reason a strong design is very important
 
 	%pseudo code of gamestate
 	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:pseudo1}, caption={Gamestate Pseudo Code}, firstline=0, lastline=15]{codeSamples/pseudocode.code}
 	\onehalfspacing
 
-	An example definition of the gamestate class written in pseudo code is shown in listing~\ref{lst:pseudo1}. Using polymorphism all objects that need to think or be drawn can be stored in the points map and then every think all objects will think and every draw every object will draw. By overriding the think and draw functions different behaviour can be achieved for each sub class of point.
+	An example definition of the gamestate class written in pseudo code is shown in listing~\ref{lst:pseudo1}. Using polymorphism all objects that need to think or be drawn can be stored in the points map and then at every think time, all objects will think, and at every draw time, all objects will draw. By overriding the think and draw functions, different behaviour can be achieved for each sub class of point.
 
 	%resource manager pseudo
-	Reusing resources will ensure that the memory footprint of a game is kept as low as possible and will reduce the number of file operations thus improving the performance for the 
+	Reusing resources will ensure that the memory footprint of a game is kept as low as possible and this will reduce the number of file operations thus improving the performance.
 	
 	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:pseudo2}, caption={Resource Manager Pseudo Code}, firstline=17, lastline=30]{codeSamples/pseudocode.code}
 	\onehalfspacing
 
-	An example of a highly generic resource manager is shown in listing~\ref{lst:pseudo2} alongside an example of a resource wrapper class. It is highly generic as within the resources map there will be all types of resource. The exists function will return if a given resource is currently in the resources map. The load function will check that the map has the resource already and return it if so, otherwise, it will load from file and add to the map before returning the resource. The unload function reduces the use count of the resource by one and then checks if there are 0 uses, if there are the resource is removed from the map.
+	An example of a highly generic resource manager is shown in listing~\ref{lst:pseudo2}, alongside an example of a resource wrapper class. It is highly generic, as within the resources map, all types of resource may be stored. The exists function will return if a given resource is currently in the resources map. The load function will check that the map has the resource already and return it if so, otherwise, it will load from file and add to the map before returning the resource. The unload function reduces the use count of the resource by one and then checks if there are 0 uses, if there are the resource is removed from the map.
 
 	%input handling
 
-	For input handling there are two approaches that any game developer should have the option of choosing from real time or as and when checking. Both should be accommodated, with specially named functions being called in Lua for the real time solution and functions that may be called anywhere in Lua querying whether a key is pressed for the as and when solution.
+	For input handling, there are two approaches that any game developer should have the option of choosing from, real time or as and when checking. Both should be accommodated, with specially named functions being called in Lua for the real time solution and functions that may be called anywhere in Lua querying whether a key is pressed for the as and when solution.
 
 	%Animations
 
@@ -476,7 +476,7 @@
 	\lstinputlisting[style=Lua, label={lst:pseudo3}, caption={Resource Manager Pseudo Code}, firstline=32, lastline=46]{codeSamples/pseudocode.code}
 	\onehalfspacing
 
-	All components inherit from a base component which provides functionality for setting and getting the parent of the component and provides the name of the component as is set in the child constructor. This is shown in listing~\ref{lst:pseudo3} In addition to all game objects being composed of a variety of components there are systems required to handle these components. These systems know how the components must be used and must iterate over all components of it's given type in order to provide the engine with that components functionality.
+	All components inherit from a base component which provides functionality for setting and getting the parent of the component and provides the name of the component as is set in the child constructor. This is shown in listing~\ref{lst:pseudo3} In addition to all game objects being composed of a variety of components there are systems required to handle these components. These systems know how the components must be used and must iterate over all components of its given type in order to provide the engine with that components functionality.
 
 	Additional components, beyond the core components, could include a networkable component, a health component, an AI component and many more.
 
@@ -509,9 +509,9 @@
 
 	%Got project building with Lua and SFML
     
-    An important first step was to get Lua, SFML and Box2D building together within a single cpp project. Once the project was building correctly, the next step was to create some example classes and a simple main program loop to create a test bed for future work. Setting up a github repository as another important step, this is a big project, change control is extremely useful especially when the project is spread over many source files.
+    An important first step was to get Lua, SFML and Box2D building together within a single cpp project. Once the project was building correctly, the next step was to create some example classes and a simple main program loop to create a test bed for future work. Setting up a Github repository was another important step, this is a big project, change control is extremely useful especially when the project is spread over many source files.
 
-    At each major stage in the development cycle testing the game engine on other platforms was ensured as a cross platform game engine is far more useful to a developer than one that is locked down to a specific platform. Doing so should never take much effort as all code will be written using cross platform libraries using modern C++.
+    At each major stage in the development cycle testing the game engine on other platforms was ensured as a cross platform game engine is far more useful to a developer than one that is locked down to a specific platform. Doing so should never take much effort since all code will be written using cross platform libraries using modern C++.
 
 %Created example class in C++ that works in SFML
 %Designed and created first classes of the entity system
@@ -538,9 +538,9 @@
 
 %Expanded Lua integration with the use of the init and think(dt) functions as well as keyboard and mouse 
 
-    Up to this point there was no Lua integration at all, to begin the game engines API, initialisation and a think function were provided, this allowed the cpp environment to call the init function when the lua world needed to be created and called the think function every iteration of the main loop.
+    Up to this point there was no Lua integration at all, to begin the game engines API, initialisation and a think function were provided, this allowed the cpp environment to call the init function when the Lua world needed to be created and called the think function every iteration of the main loop.
 
-    User input is a requirement too so getting when mouse buttons were pressed and released and when keyboard keys were pressed and released were all provided to the Lua API in the form of hooks that were called as and when the events happened. Getting the current mouse position as well as getting the state of all buttons and keys were also provided so the end user of the engine can decide their preferred method of handling input within their game.
+    User input is a requirement too, so getting when mouse buttons were pressed and released and when keyboard keys were pressed and released were all provided to the Lua API in the form of hooks that were called as and when the events happened. Getting the current mouse position and the state of all buttons and keys was also provided so the end user of the engine can decide their preferred method of handling input within their game.
 
 %setting and getting some information from the window
 
@@ -556,7 +556,7 @@
 
     The animation system must be tightly integrated into the core of the engine to ensure that there will be excellent performance passed forward to the Lua API. By extending the drawable class some rendering code had to be duplicated in order for the correct behaviour to be possible.
 
-	The animation class handles all of frames, settings and timing for all animations within the game engine, having a class handling all of this allows for various systems and processes to use the same code. It also ensures that all animation code is easy to find and modify should the need arise. The UI system could use the animation class just the same as the animatable class could. Seamless integration with Lua was required as animations are an important part of any game, ensuring that this was achieved was very difficult.
+	The animation class handles all of the frames, settings and timing for all animations within the game engine, having a class handling all of this allows for various systems and processes to use the same code. It also ensures that all animation code is easy to find and modify should the need arise. The UI system could use the animation class just the same as the animatable class could. Seamless integration with Lua was required since animations are an important part of any game, ensuring that this was achieved was very difficult.
 
 	In early versions of the animation system the sprite sheets were cut up into frames and stored in the resource manager separately from the animation class. Through stepwise refinement the system was changed to simply require integer rectangles of the frames, this simplified the system and reduced the reliance on the resource manager, the performance improved as a result.
 
@@ -569,7 +569,7 @@
 %Added b2d
 %Created physics component and added it to Lua
 
-	Box2D was added to the engine and to the Lua API. Binding the fixture definitions and body definitions was an interesting challenge as it was difficult to decide what the best method of doing it was. It was clear that using a table with only the required parameters was the best option, as having to use a large selection of setter functions would have been painful for the end developer.
+	Box2D was added to the engine and to the Lua API. Binding the fixture definitions and body definitions was an interesting challenge but was difficult to decide the best method. It was clear that using a table with only the required parameters was the best option, as having to use a large selection of setter functions would have been painful for the end developer.
 
 	\singlespacing
 	\lstinputlisting[style=C++, label={lst:implementation2}, caption={Example of creating a Box2D physics component}, firstline=1, lastline=11]{codeSamples/implementation.lua}
@@ -600,7 +600,7 @@
 %Command line args added
 %created snake, fall
 
-	In order for the engines features and performance to be showcased, a pair of examples were created with the intention of releasing them with the source code. First a simple example of snake was created to show examples of using key pressed hooks for user input, text rendering, resource management as well as the general style of coding in Lua. A second example, called fall, was created to showcase the Box2D physics integration, performance and the camera system.
+	In order for the engines features and performance to be showcased, a pair of examples were created with the intention of releasing them with the source code. First, a version of snake was created to show examples of using key pressed hooks for user input, text rendering, resource management as well as the general style of coding in Lua. A second code sample, called fall, was created to showcase the Box2D physics integration, performance and the camera system.
 
 	Some developers prefer to learn by example rather than by reading documentation so this option was provided.
 
@@ -610,7 +610,7 @@
 
 %testing
 
-	Testing something as broad as a game engine can prove to be difficult as there are so many components that could be causing issues. To test that each feature was working correctly, small code samples were created and ran with any issues being picked up along the way. During the development of both examples several issues were spotted and quickly patched, this style of testing is ideal for this style of project. Creating robust code can only be achieved through testing, to effectively test and improve the engine people need to use it and fix any issues they find by making pull requests on github.
+	Testing something as broad as a game engine can prove to be difficult as there are so many components that could be causing issues. To test that each feature was working correctly, small code samples were created and ran with any issues being picked up along the way. During the development of both examples several issues were spotted and quickly patched, this style of testing is ideal for this style of project. Creating robust code can only be achieved through testing, to effectively test and improve the engine people need to use it and fix any issues they find by making pull requests on Github.
 
 
 
@@ -635,15 +635,15 @@
 
 	Starting from the least experienced and moving towards the most experienced the results of the questionnaires will be analysed. The questionnaires can be found in the appendix of this report.
 
-	First is a Dutch first year computer science student called Roman. Overall very positive feedback across the board. They enjoyed using the engine and found it to be very easy to pick up and create with, they would also choose to use this engine if they had a game idea they would like to prototype.
+	First is a first year computer science student called Roman. Overall, he provided very positive feedback across the board. They enjoyed using the engine and found it to be very easy to pick up and create with, they would also choose to use this engine if they had a game idea they would like to prototype.
 
-	Next is an English engineer graduate, called Henry, with no education or professional experience in programming for games or otherwise, they managed to produce a simple zombie survival game within a few hours of starting. They praised the ease of setting up the engine and liked the fact that the engine was very easy to use with little to no experience. A suggestion was made for improved support of different resolutions, this could be achieved by abstracting the positions and sizes to be virtual ones that are fully unrelated to the size and shape of the window.
+	Next is an engineer graduate, called Henry, with no education or professional experience in programming for games or otherwise, they managed to produce a simple zombie survival game within a few hours of starting. They praised the ease of setting up the engine and liked the fact that the engine was very easy to use with little to no experience. A suggestion was made for improved support of different resolutions, this could be achieved by abstracting the positions and sizes to be virtual ones that are fully unrelated to the size and shape of the window.
 
-	Finally a Dutch professional developer, called Jim, with years of experience developing in many technologies including scripting in Lua for various games. Produced an excellent showcase of the engine utilising many of the major features of the engine with no prompts other than the use of the examples and Lua binding source code. Given his experience with Lua in other settings he found it very easy to pick up and go given just the sample code provided with the engine. During his time developing in the game jam a few points were brought up and the engine was quickly extended to cover his requirements. This shows that the engine is very easy to extend which is one of the objectives of the project.
+	Finally a professional developer, called Jim, with years of experience developing in many technologies including scripting in Lua for various games produced an excellent showcase of the engine utilising many of the major features of the engine with no prompts other than the use of the examples and Lua binding source code. Given his experience with Lua in other settings he found it very easy to pick up given just the sample code provided with the engine. During his time developing in the game jam a few points were brought up and the engine was quickly extended to cover his requirements. This shows that the engine is very easy to extend which is one of the objectives of the project.
 
 	Initially there were no physics contact hooks but within 15 minutes they were added to the engine as well as hooks provided to Lua.
 
-	Constructive criticism included providing better documentation for inexperienced developers, this is reasonable and should be one of the first things to be completed if the project is continued to be developed. Further Constructive criticism included the lack of a large standard library such as a vector library, which is very relevant to game development, another very reasonable point. 
+	Constructive criticism included providing better documentation for inexperienced developers, this is reasonable and should be one of the first things to be completed if the project is continued to be developed. Further constructive criticism included the lack of a large standard library such as a vector library, which is very relevant to game development, another very reasonable point. 
 	
 	In figure \ref{fig:Game1} a print screen taken whilst playing the game is shown. The objective is to collect as many gold rocks as you can in the hopper to the left of the screen by first shooting the large rocks to break them down into tiny rocks.
 
@@ -686,7 +686,7 @@
 
 %Briefly restate the work undertaken, summarise any findings or recommendations, acknowledge limitations and make suggestions for further work.
 	
-	Over the course of this project a scriptable 2D game engine written in C++ has been designed and created, the engine itself is, in it's current state, a viable prototyping tool that may be used by anyone as the code is fully open source and available on github. The engine handles a wide range of things for the game developer including resources, animations, sounds, the camera, user input and much more. It is very easy to extend and improve.
+	Over the course of this project a scriptable 2D game engine written in C++ has been designed and created, the engine itself is, in its current state, a viable prototyping tool that may be used by anyone as the code is fully open source and available on Github. The engine handles a wide range of things for the game developer including resources, animations, sounds, the camera, user input and much more. It is very easy to extend and improve.
 	
 	A game jam has been successfully organised in order to effectively evaluate the game engine, this proved the engines effectiveness and ease of use as people with no development experience were able to create games and people with a lot of experience found it to be similar in style to other engines and games. 
 
@@ -699,7 +699,7 @@
 
 	Replacing or supplementing the current SFML renderer with a 3D one would allow the engine to eventually compete with the likes of Unity while still providing an easy to use Lua API, this would allow for even new developers to create 3D games.
 
-	While completing this project I have learned a multitude of new techniques thanks to thorough research and a very interesting prompt. I have explored many ideas that I have been passionate about for years and am very happy that I have had the opportunity to create this product.
+	While completing this project I have learned a multitude of new techniques thanks to thorough research and a very interesting project. I have explored many ideas that I have been passionate about for years and am very happy that I have had the opportunity to create this product.
 
 	\newpage
 
@@ -709,8 +709,8 @@
 
 \appendix
 
-\includepdf[]{Hanlon_Cyrus_ToR_signed.pdf}
-\includepdf[]{Hanlon-CMMU-Ethics-Check-List-v9-10-Jan-2017.pdf}
+\includepdf[pages={1-3}]{Hanlon_Cyrus_ToR_signed.pdf}
+\includepdf[pages={1-3}]{Hanlon-CMMU-Ethics-Check-List-v9-10-Jan-2017.pdf}
 \includepdf[]{RA_Project_SoftwareDevelopment_090517.pdf}
 \includepdf[pages={1-2}]{Presentation.pdf}
 \includepdf[]{HenryEvaluationQuestionnaire.pdf}
