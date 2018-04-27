@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper,titlepage]{report}
+\documentclass[11pt,a4paper,titlepage]{report}
 
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -310,8 +310,10 @@
 
 \subsection{LÖVE}
 	LÖVE~\cite{LOVE} provides a limited set of features and leaves the majority of the work on the internals of the engine to the game developer. This allows for very fast prototyping of small example games but when creating a larger game things can get difficult. The engine does include some things at a lower level such as physics, GLSL shaders, image loading, TCP and UDP networking. Because LÖVE doesn't manage entities there is quite a low performance ceiling especially with the addition of lighting and particles, other engines address this at the cost of development time. LÖVE is completely open source and completely free.
+
 \subsection{Unity and Unreal Engine}
 	Unity~\cite{Unity} and Unreal Engine~\cite{UE} both manage every aspect of the game while still allowing massive extensibility. Both have unique development flows and both take a very long time to master, because of just have massive they are, development can be very slow when compared to lightweight prototyping engines. The Unity engine is not fully open source but allows source access for certain modules of the engine while the latest versions of Unreal Engine are fully open source, both adopt similar payment patterns making the developer pay based on the number of sales rather than a fixed fee, this allows for smaller studios and individuals to create very professional products.
+	
 \subsection{Cocos2d}
 	Cocos2d is an open source framework designed for creating cross platform games, apps and other GUI based programs~\cite{COCOS2D}, it has support for scripting in both Lua and JavaScript but requires C++ code to initialize any scripts. There is an IDE created for cocos2D that provides similar workflow to the full engines while having the flexibility of text only engines such as LÖVE.
 
@@ -412,7 +414,6 @@
 	\lstinputlisting[style=Lua, label={lst:pseudo1}, caption={Gamestate Pseudo Code}, firstline=0, lastline=15]{codeSamples/pseudocode.code}
 	\doublespacing
 
-
 	An example definition of the gamestate class written in pseudo code is shown in listing~\ref{lst:pseudo1}. Using polymorphism all objects that need to think or be drawn can be stored in the points map and then every think all objects will think and every draw every object will draw. By overriding the think and draw functions different behaviour can be achieved for each sub class of point.
 
 	%resource manager pseudo
@@ -421,7 +422,6 @@
 	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:pseudo2}, caption={Resource Manager Pseudo Code}, firstline=17, lastline=30]{codeSamples/pseudocode.code}
 	\doublespacing
-
 
 	An example of a highly generic resource manager is shown in listing~\ref{lst:pseudo2} alongside an example of a resource wrapper class. It is highly generic as within the resources map there will be all types of resource. The exists function will return if a given resource is currently in the resources map. The load function will check that the map has the resource already and return it if so, otherwise, it will load from file and add to the map before returning the resource. The unload function reduces the use count of the resource by one and then checks if there are 0 uses, if there are the resource is removed from the map.
 
@@ -575,7 +575,7 @@
 
 %testing
 
-
+	Testing something as broad as a game engine can prove to be difficult as there are so many components that could be causing issues. To test that each feature was working correctly, small code samples were created and ran with any issues being picked up along the way. During the development of both examples several issues were spotted and quickly patched, this style of testing is ideal for this style of project.
 
 
 
@@ -634,13 +634,22 @@
 
 \chapter{Conclusion}
 
-	Throughout the course of this project I have learnt a multitude of new techniques thanks to thorough research and a very interesting prompt.
+%Briefly restate the work undertaken, summarise any findings or recommendations, acknowledge limitations and make suggestions for further work.
+	
+	Over the course of this project I have designed and created a C++ scriptable 2D game engine and successfully organised a gamejam in order to effectively evaluate the game engine.
+	
+%i have learned a lot
 
-	%Briefly restate the work undertaken, summarise any findings or recommendations, acknowledge limitations and make suggestions for further work.
+	While completing this project I have learnt a multitude of new techniques thanks to thorough research and a very interesting prompt. I have explored many ideas that I have been passionate about but never had the motivation to carry out.
 
-	%i have learned a lot
-	%potential new features etc
-	%network, AI etc component
+%potential new features etc
+%network, AI etc component
+
+	In the future there are a wide range of potential features that could make this project even greater. Code that is required for every game such as loading and saving levels, a larger standard library that could help improve development times even further, additional components and much more.
+
+	Adding support for networking along with a networkable component would be a great addition to the engine allowing for multiplayer games to quickly be implemented using just the Lua API. An additional component that could be added is an AI component, this would handle all behaviour for allied or enemy units and would open the door to more advanced game play mechanics with minimal code changes.
+
+	Replacing or supplementing the current SFML renderer with a 3D one would allow the engine to eventually compete with the likes of Unity while still providing an easy to use Lua API, this would allow for even new developers
 
 	\newpage
 
