@@ -18,11 +18,11 @@ function HookKeyPressed(key)
 end
 
 function HookBeginContact(a, b)
-    print("begin " .. a .. " " .. b)
+    --print("begin " .. a .. " " .. b)
 end
 
 function HookEndContact(a, b)
-    print("end " .. a .. " " .. b)
+    --print("end " .. a .. " " .. b)
 end
 
 function reset()
@@ -93,10 +93,9 @@ function Init()
     local box = {}
     box.drawable = DrawableComponent.New()
     box.drawable:SetTexture("resources/textures/box.png")
+    box.drawable:SetViewTarget("otherView")
     box.entity = Entity.New("testBox")
     box.entity:AddDrawable(box.drawable)
-    box.drawable:SetViewTarget("otherView")
-    box.drawable:SetPos(50,50)
 
     --set view position and zoom level
     mainView:Move(-300, 0)
@@ -126,9 +125,7 @@ function Think(dt)
     end
     if (IsKeyPressed("S")) then
         yMove = yMove + 1000
-    end
-
-    
+    end    
 
     if (IsKeyPressed("Y")) then
         for y = 1, 120 do
@@ -136,7 +133,6 @@ function Think(dt)
         end
     end
         
-
     if (IsKeyPressed("LControl")) then
         zoom = zoom + (0.5 * dt)
     end

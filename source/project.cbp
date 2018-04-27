@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add library="sfml-graphics-d" />
@@ -28,6 +29,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -60,6 +62,7 @@
 		<Unit filename="include/Components/DrawableComponent.h" />
 		<Unit filename="include/Components/Entity.h" />
 		<Unit filename="include/Components/PhysicsComponent.h" />
+		<Unit filename="include/ContactListener.h" />
 		<Unit filename="include/ECSManager.h" />
 		<Unit filename="include/Gamestate.h" />
 		<Unit filename="include/GamestateManager.h" />
@@ -185,6 +188,7 @@
 		<Unit filename="src/Components/DrawableComponent.cpp" />
 		<Unit filename="src/Components/Entity.cpp" />
 		<Unit filename="src/Components/PhysicsComponent.cpp" />
+		<Unit filename="src/ContactListener.cpp" />
 		<Unit filename="src/ECSManager.cpp" />
 		<Unit filename="src/Gamestate.cpp" />
 		<Unit filename="src/GamestateManager.cpp" />

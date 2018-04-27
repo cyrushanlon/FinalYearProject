@@ -26,7 +26,7 @@ public:
     virtual sf::Vector2f GetOrigin();
     virtual void SetOrigin(sf::Vector2f);
 
-    virtual void SetTexture (std::string);
+    virtual void SetTexture(std::string);
 
     //animatable stuff:
     bool Animates();

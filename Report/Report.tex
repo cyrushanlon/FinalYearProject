@@ -193,7 +193,7 @@
 
 	In listing~\ref{lst:SyntacticSugarSample1} we can see how to inline declare a table with a sub table that is also inline declared.
 	\onehalfspacing
-
+	\newpage
 	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:SyntacticSugarSample2}, caption={Syntactic Sugar Sample 2}, firstline=17, lastline=21]{codeSamples/1.lua}
 	\onehalfspacing
@@ -289,6 +289,8 @@
 	A coroutine is similar to a thread in that it has its own line of execution, its own stack, its own local variables, and its own instruction pointer but shares global variables and almost anything else with other coroutines. The main difference to a thread is that a program with threads runs things concurrently while a coroutine in Lua is collaborative and at any given time only 1 is running~\cite{Ierusalimschy:2013:PLT:2502646}. While there may not be a performance gain from using coroutines, it allows a developer to easily orchestrate multitasking that would otherwise be difficult to implement.
 
 	To create a coroutine it is as simple as calling the \texttt{coroutine.create} and passing a function as shown in listing~\ref{lst:Couroutine1}.
+
+	\newpage
 
 	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:Couroutine1}, caption={Couroutine Sample ~\cite{Ierusalimschy:2013:PLT:2502646}}, firstline=150, lastline=153]{codeSamples/1.lua} 
@@ -393,16 +395,18 @@
 
 	The first step to creating a game engine is to get each of the libraries working correctly in a single project. As the project will be completed in an agile fashion it may be difficult to know exactly what will be created and in what order, however, this does not mean that designs cannot be drawn up outlining potential solutions.
 
-	The engine will require a variety of features including an entity management system, such as the entity component system, this will allow for dynamic game objects that are easily pieced together by a developer. This system will need to manage a wide variety of entities in various forms including drawing, animating, playing sounds and others. An example entity that will behave as a player controlled car would have the class diagram as shown in figure\ref{fig:ClassDiagram1}.
+	The engine will require a variety of features including an entity management system, such as the entity component system, this will allow for dynamic game objects that are easily pieced together by a developer. This system will need to manage a wide variety of entities in various forms including drawing, animating, playing sounds and others. An example entity that will behave as a player controlled car would have the class diagram as shown in figure~\ref{fig:ClassDiagram1}.
+
+	\newpage
+
+	For a car to be functional in a game it will need to be drawn and animated, have a physical presence in the world and receive player input. Behaviour can be easily placed into new components when repeated code is required, in the static inheritance system this is not as simple.
 
 	\begin{figure}[h] 
 		\centering
 		\includegraphics[scale=0.75]{ECS1}
 		\caption{ECS Class Diagram Example}
 		\label{fig:ClassDiagram1}
-	\end{figure}
-
-	For a car to be functional in a game it will need to be drawn and animated, have a physical presence in the world and receive player input. Behaviour can be easily placed into new components when repeated code is required, in the static inheritance system this is not as simple.
+	\end{figure} 
 
 	\begin{figure}[h]
 		\centering
@@ -421,6 +425,7 @@
 	
 	For the game engine to function well there are a number of required systems that must be incorporated into the core of the engine. There are 5 main elements, the window, the physics world, the resource manager, the gamestate manager and the Lua state. Designing the core of the engine to be robust and lightweight is important. Anything that the game engine is used for will rely heavily upon it, the better the design, the better the implementation.
 
+	\newpage
 	\begin{figure}[h] 
 		\centering
 		\includegraphics[scale=0.75]{core1}
@@ -530,6 +535,8 @@
 
 	The initial versions of the resource manager used raw pointers, this caused a few issues with leaving dangling pointers when trying to write modern code, to resolve this issue, smart pointers were used. The shared pointer class from the C++ standard library was the perfect type of smart pointer for use in this case as the resources were being shared an additional time with each use. Shared pointers also allowed for getting the use count of itself as opposed to raw pointers which have no idea how many times they are being used.
 	
+	\newpage
+	
 	\singlespacing
 	\lstinputlisting[style=C++, label={lst:implementation1}, caption={Resource Manager generic load function}, firstline=1, lastline=18]{codeSamples/implementation.cpp}
 	\onehalfspacing
@@ -560,6 +567,8 @@
 
 	In early versions of the animation system the sprite sheets were cut up into frames and stored in the resource manager separately from the animation class. Through stepwise refinement the system was changed to simply require integer rectangles of the frames, this simplified the system and reduced the reliance on the resource manager, the performance improved as a result.
 
+	\newpage
+
 	\singlespacing
 	\lstinputlisting[style=Lua, label={lst:implementation2}, caption={Lua API Animation}, firstline=13, lastline=23]{codeSamples/implementation.lua}
 	\onehalfspacing
@@ -587,7 +596,7 @@
 
 %Created ECS design and started conversion to ECS
 %ECS manager
-	
+
 	Before the core of the engine got too big it was required to convert to the ECS design from the standard hierarchy design because the ECS style improves the expandability and makes the engine easier to use especially from the Lua API. Composition of entities could be left entirely down to the game developer rather than the engine developer. Conversion to an ECS based design proved to be quite straight forward as only the parts of the engine that directly interacted with the standard approach classes had to be changed.
 
 	Implementation of the ECS manager and the component systems was mostly a case of copying and modifying existing code before deleting the old classes, the Lua API did not need to change very much. Adding the add component functions was trivial. All references to the old system have now been removed and replaced with their ECS counterparts.
@@ -600,9 +609,7 @@
 %Command line args added
 %created snake, fall
 
-	In order for the engines features and performance to be showcased, a pair of examples were created with the intention of releasing them with the source code. First, a version of snake was created to show examples of using key pressed hooks for user input, text rendering, resource management as well as the general style of coding in Lua. A second code sample, called fall, was created to showcase the Box2D physics integration, performance and the camera system.
-
-	Some developers prefer to learn by example rather than by reading documentation so this option was provided.
+	In order for the engines features and performance to be showcased, a pair of examples were created with the intention of releasing them with the source code. First, a version of snake was created to show examples of using key pressed hooks for user input, text rendering, resource management as well as the general style of coding in Lua. A second code sample, called fall, was created to showcase the Box2D physics integration, performance and the camera system. Some developers prefer to learn by example rather than by reading documentation so this option was provided.
 
 %Documentation
 
@@ -710,11 +717,16 @@
 \appendix
 
 \includepdf[pages={1-3}]{Hanlon_Cyrus_ToR_signed.pdf}
-\includepdf[pages={1-3}]{Hanlon-CMMU-Ethics-Check-List-v9-10-Jan-2017.pdf}
+%\includepdf[pages={1-3}]{Hanlon-CMMU-Ethics-Check-List-v9-10-Jan-2017.pdf}
 \includepdf[]{RA_Project_SoftwareDevelopment_090517.pdf}
 \includepdf[pages={1-2}]{Presentation.pdf}
 \includepdf[]{HenryEvaluationQuestionnaire.pdf}
 \includepdf[]{RomanEvaluationQuestionnaire.pdf}
 \includepdf[]{JimEvaluationQuestionnaire.pdf}
+
+\newpage
+
+OneDrive Link:
+\url{https://stummuac-my.sharepoint.com/:u:/g/personal/14061650_stu_mmu_ac_uk/Ee0M7wLuyvdBiu2FrcX5bDQBQbpX4jA4n_ojZZJ9GXafTw}
 
 \end{document}
